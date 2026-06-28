@@ -1,0 +1,21 @@
+server {
+  listen 80;
+  root /usr/share/nginx/html;
+  index index.html;
+
+  # config.js de runtime nunca deve ser cacheado (muda por ambiente).
+  location = /config.js { add_header Cache-Control "no-store"; try_files $uri =404; }
+
+  # SPA: rotas do React Router caem no index.html.
+  location / { try_files $uri /index.html; }
+
+  # Proxy da API. BACKEND_ORIGIN é injetado pelo container (ex.:
+  # https://triscal-api.<env>.azurecontainerapps.io ; em dev: http://backend:8080).
+  location /api/ {
+    proxy_pass ${BACKEND_ORIGIN}/api/;
+    proxy_http_version 1.1;
+    proxy_set_header Host $proxy_host;
+    proxy_set_header Authorization $http_authorization;
+    proxy_ssl_server_name on;
+  }
+}

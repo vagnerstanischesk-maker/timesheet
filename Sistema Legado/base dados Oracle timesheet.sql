@@ -1,0 +1,12863 @@
+--------------------------------------------------------
+--  Arquivo criado - Quinta-feira-Maio-21-2026   
+--------------------------------------------------------
+--------------------------------------------------------
+--  DDL for View COM_ACES_GRUPOS
+--------------------------------------------------------
+
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "TIMESHEET"."COM_ACES_GRUPOS" ("CDG_USUR", "DESCRICAO") AS 
+  select u.CDG_USUR, p.DESCRICAO
+  from com_aces_usuario u, com_aces_usuario_perfil up, com_aces_perfil p
+ where u.CDG_USUR = up.CDG_USUR
+   and up.CDG_PERFIL = p.CDG_PERFIL
+ ;
+--------------------------------------------------------
+--  DDL for View LOG_TRISCAL
+--------------------------------------------------------
+
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "TIMESHEET"."LOG_TRISCAL" ("ID_TRSC", "ID_POSC_TRSC", "DT_TRSC", "DC_TRSC") AS 
+  SELECT "ID_TRSC","ID_POSC_TRSC","DT_TRSC","DC_TRSC" FROM T_LOG_TRISCAL
+ ;
+--------------------------------------------------------
+--  DDL for View V_CLIFOR
+--------------------------------------------------------
+
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "TIMESHEET"."V_CLIFOR" ("CD_CLIFOR", "NM_RAZAOSOCIAL", "NM_FANTASIA", "NR_CNPJ", "DS_EMAIL", "DS_WEB", "DT_CADASTRAMENTO", "DT_ULTVISITA", "ST_CLIFOR", "TIP_CLIFOR", "CD_ORIGEM", "QTDE_FUNCIONARIO", "PC_ISS", "CD_GERENTECONTA", "CD_FILIAL_ORIGEM", "DT_ULT_ALT") AS 
+  SELECT CD_CLIFOR,
+  NM_RAZAOSOCIAL,
+  NM_FANTASIA,
+  NR_CNPJ,
+  DS_EMAIL,
+  DS_WEB,
+  DT_CADASTRAMENTO,
+  DT_ULTVISITA,
+  ST_CLIFOR,
+  TIP_CLIFOR,
+  CD_ORIGEM,
+  QTDE_FUNCIONARIO,
+  PC_ISS,
+  CD_GERENTECONTA,
+  CD_FILIAL_ORIGEM,
+  DT_ULT_ALT
+FROM CLIFOR
+ ;
+--------------------------------------------------------
+--  DDL for View V_EMAILS
+--------------------------------------------------------
+
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "TIMESHEET"."V_EMAILS" ("DT_INCLUSAO", "DTHR_INCLUSAO", "MAILTO", "MAILFROM", "NM_FUNCIONARIO", "ASSUNTO", "TX_EMAIL1", "TX_EMAIL2", "TX_EMAIL3", "TX_EMAIL4") AS 
+  SELECT DT_INCLUSAO, DTHR_INCLUSAO, MAILTO, MAILFROM, NM_FUNCIONARIO, ASSUNTO, TX_EMAIL1, TX_EMAIL2, TX_EMAIL3, TX_EMAIL4 FROM TIMESHEET.T_EMAILS WHERE DT_INCLUSAO = TRUNC(SYSDATE)
+order by NM_FUNCIONARIO;
+--------------------------------------------------------
+--  DDL for View V_EMPRESA
+--------------------------------------------------------
+
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "TIMESHEET"."V_EMPRESA" ("CD_EMPRESA", "NM_EMPRESA") AS 
+  SELECT CD_EMPRESA,
+  NM_EMPRESA
+FROM EMPRESA
+ ;
+--------------------------------------------------------
+--  DDL for View V_FERIADO
+--------------------------------------------------------
+
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "TIMESHEET"."V_FERIADO" ("FERI_CD_FERIADO", "FERI_NM_FERIADO", "FERI_NR_ANO", "FERI_NR_MES", "FERI_NR_DIA", "FILIAL_CD_FILIAL", "DTA_ULT_ALT", "USUR_CD_USUR", "FERI_TP_FERIADO", "FERI_NR_HORAS_A_TRABALHAR", "FERI_STT_INATIVO") AS 
+  select "FERI_CD_FERIADO","FERI_NM_FERIADO","FERI_NR_ANO","FERI_NR_MES","FERI_NR_DIA","FILIAL_CD_FILIAL","DTA_ULT_ALT","USUR_CD_USUR","FERI_TP_FERIADO","FERI_NR_HORAS_A_TRABALHAR","FERI_STT_INATIVO" from FERIADO
+ ;
+--------------------------------------------------------
+--  DDL for View V_FUNCIONARIO
+--------------------------------------------------------
+
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "TIMESHEET"."V_FUNCIONARIO" ("CD_FUNCIONARIO", "TP_FUNCIONARIO", "NM_FUNCIONARIO", "NR_RG", "DS_ORGAO_EMISSOR", "NR_CPF", "NR_TITULO_ELEITOR", "NR_ZONA_ELEITOR", "NR_SECAO_ELEITOR", "DS_NACIONALIDADE", "NM_PAI", "NM_MAE", "DT_ANIVERSARIO", "ST_EST_CIVIL", "DT_ADMISSAO", "DT_RESCISAO", "CD_BANCO", "CD_AGENCIA", "NR_DIGITO", "NR_CONTABANC", "NR_DIGITOCONTA", "CDG_USUR", "CD_CARGO", "CD_NIVEL", "CD_EMPRESA", "IN_SETOR", "FUNC_NR_SALDO_BHE100", "FUNC_NR_SALDO_BHE50", "DT_ULT_ALT", "NR_CARTEIRA", "NR_PIS", "ST_IN_PLANO", "ST_VALE_TRANSP", "NR_SERIE", "NR_CONTRATO", "DS_CONTRATO", "DS_ENDERECO", "DS_BAIRRO", "NU_CEP", "NR_FONE_RES", "NR_FONE_CEL", "DS_EMAIL", "ST_REQUER_APROVACAO_ADMIN", "DT_ULTIMA_VERIFICACAO_REP") AS 
+  SELECT CD_FUNCIONARIO,
+  TP_FUNCIONARIO,
+  NM_FUNCIONARIO,
+  NR_RG,
+  DS_ORGAO_EMISSOR,
+  NR_CPF,
+  NR_TITULO_ELEITOR,
+  NR_ZONA_ELEITOR,
+  NR_SECAO_ELEITOR,
+  DS_NACIONALIDADE,
+  NM_PAI,
+  NM_MAE,
+  DT_ANIVERSARIO,
+  ST_EST_CIVIL,
+  DT_ADMISSAO,
+  DT_RESCISAO,
+  CD_BANCO,
+  CD_AGENCIA,
+  NR_DIGITO,
+  NR_CONTABANC,
+  NR_DIGITOCONTA,
+  CDG_USUR,
+  CD_CARGO,
+  CD_NIVEL,
+  CD_EMPRESA,
+  IN_SETOR,
+  FUNC_NR_SALDO_BHE100,
+  FUNC_NR_SALDO_BHE50,
+  DT_ULT_ALT,
+  NR_CARTEIRA,
+  NR_PIS,
+  ST_IN_PLANO,
+  ST_VALE_TRANSP,
+  NR_SERIE,
+  NR_CONTRATO,
+  DS_CONTRATO,
+  DS_ENDERECO,
+  DS_BAIRRO,
+  NU_CEP,
+  NR_FONE_RES,
+  NR_FONE_CEL,
+  DS_EMAIL,
+  ST_REQUER_APROVACAO_ADMIN,
+  DT_ULTIMA_VERIFICACAO_REP
+FROM FUNCIONARIO
+ ;
+--------------------------------------------------------
+--  DDL for View V_JORNADA_TRABALHO
+--------------------------------------------------------
+
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "TIMESHEET"."V_JORNADA_TRABALHO" ("CD_FUNCIONARIO", "HORA_INICIO", "HORA_FIM", "DT_INICIO_VIGENCIA", "DT_FIM_VIGENCIA", "DT_ULT_ALT", "USUR_CD_USUR") AS 
+  select "CD_FUNCIONARIO","HORA_INICIO","HORA_FIM","DT_INICIO_VIGENCIA","DT_FIM_VIGENCIA","DT_ULT_ALT","USUR_CD_USUR" from JORNADA_TRABALHO
+ ;
+--------------------------------------------------------
+--  DDL for View V_LINHA_SERVICO
+--------------------------------------------------------
+
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "TIMESHEET"."V_LINHA_SERVICO" ("LINHA_SERVICO") AS 
+  select "LINHA_SERVICO" from LINHA_SERVICO
+ ;
+--------------------------------------------------------
+--  DDL for View V_LOG_PERIODO
+--------------------------------------------------------
+
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "TIMESHEET"."V_LOG_PERIODO" ("FUNC_CD_FUNC", "LOPE_NR_ANO", "LOPE_NR_MES", "PERI_CD_PERIODO", "LOPE_STT_LOG", "DTA_ULT_ALT", "USUR_CD_USUR") AS 
+  select "FUNC_CD_FUNC","LOPE_NR_ANO","LOPE_NR_MES","PERI_CD_PERIODO","LOPE_STT_LOG","DTA_ULT_ALT","USUR_CD_USUR" from LOG_PERIODO
+ ;
+--------------------------------------------------------
+--  DDL for View V_PLATAFORMA
+--------------------------------------------------------
+
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "TIMESHEET"."V_PLATAFORMA" ("CD_PLATAFORMA", "DS_PLATAFORMA") AS 
+  select "CD_PLATAFORMA","DS_PLATAFORMA" from PLATAFORMA
+ ;
+--------------------------------------------------------
+--  DDL for View V_PLATAFORMA_VENDOR
+--------------------------------------------------------
+
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "TIMESHEET"."V_PLATAFORMA_VENDOR" ("PLATAFORMA_VENDOR") AS 
+  select "PLATAFORMA_VENDOR" from PLATAFORMA_VENDOR
+ ;
+--------------------------------------------------------
+--  DDL for View V_PROJETO
+--------------------------------------------------------
+
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "TIMESHEET"."V_PROJETO" ("CD_PROJETO", "DS_PROJETO", "DT_INICIO_PREV", "DT_FIM_PREVISTO", "DT_INICIO_REAL", "DS_OBSERVACAO", "TP_COBRANCA", "ST_PROJETO", "CD_CONTATO", "CD_CLIFOR", "CD_RESP_TECNICO", "CD_RESP_COML", "DT_FIM_REAL", "CD_EMPRESA", "IN_INTERNO", "LINHA_SERVICO", "DT_ULT_ALT", "TIPO_SERVICO", "PLATAFORMA_VENDOR", "TECNOLOGIA", "TIPO_CONTRATO", "FG_COMISSAO", "NR_HORASPREVISTAS", "NR_HORASREAL", "ACEITA_HORAS_CO_S_N", "ACEITA_HORAS_NC_S_N") AS 
+  SELECT CD_PROJETO,
+  DS_PROJETO,
+  DT_INICIO_PREV,
+  DT_FIM_PREVISTO,
+  DT_INICIO_REAL,
+  DS_OBSERVACAO,
+  TP_COBRANCA,
+  ST_PROJETO,
+  CD_CONTATO,
+  CD_CLIFOR,
+  CD_RESP_TECNICO,
+  CD_RESP_COML,
+  DT_FIM_REAL,
+  CD_EMPRESA,
+  IN_INTERNO,
+  LINHA_SERVICO,
+  DT_ULT_ALT,
+  TIPO_SERVICO,
+  PLATAFORMA_VENDOR,
+  TECNOLOGIA,
+  TIPO_CONTRATO,
+  FG_COMISSAO,
+  NR_HORASPREVISTAS,
+  NR_HORASREAL,
+  ACEITA_HORAS_CO_S_N,
+  ACEITA_HORAS_NC_S_N
+FROM PROJETO
+ ;
+--------------------------------------------------------
+--  DDL for View V_PROJETO_FASE
+--------------------------------------------------------
+
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "TIMESHEET"."V_PROJETO_FASE" ("CD_PROJETO", "SEQ_PROJETO_FASE", "DS_FASE", "CD_CATEGORIA_FASE", "ST_FASEPROJ", "DT_INICIO_PREV", "DT_FIM_PREVISTO", "DT_INICIO_REAL", "DT_FIM_REAL", "NR_HORASPREVISTAS", "NR_HORASREAL", "DURACAO_FASE_DIAS_UTEIS", "FASE_POR_DATA_OU_DURACAO", "FASE_REPETICAO_MENSAL", "PERC_CONCLUSAO_FASE", "DT_ULT_ALT", "USUR_CD_USUR", "DS_OBSERVACAO") AS 
+  SELECT CD_PROJETO,
+  SEQ_PROJETO_FASE,
+  DS_FASE,
+  CD_CATEGORIA_FASE,
+  ST_FASEPROJ,
+  DT_INICIO_PREV,
+  DT_FIM_PREVISTO,
+  DT_INICIO_REAL,
+  DT_FIM_REAL,
+  NR_HORASPREVISTAS,
+  NR_HORASREAL,
+  DURACAO_FASE_DIAS_UTEIS,
+  FASE_POR_DATA_OU_DURACAO,
+  FASE_REPETICAO_MENSAL,
+  PERC_CONCLUSAO_FASE,
+  DT_ULT_ALT,
+  USUR_CD_USUR,
+  DS_OBSERVACAO
+FROM PROJETO_FASE
+ ;
+--------------------------------------------------------
+--  DDL for View V_PROJETO_TAREFA
+--------------------------------------------------------
+
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "TIMESHEET"."V_PROJETO_TAREFA" ("CD_PROJETO", "SEQ_PROJETO_FASE", "SEQ_PROJETO_TAREFA", "DS_TAREFA", "ST_TAREFA", "CD_CATEGORIA_TAREFA", "DT_INICIO_PREV", "DT_FIM_PREVISTO", "DT_INICIO_REAL", "DT_FIM_REAL", "NR_HORASPREVISTAS", "NR_HORASREAL", "DURACAO_TAREFA_DIAS_UTEIS", "TAREFA_POR_DATA_OU_DURACAO", "TAREFA_REPETICAO_MENSAL", "TAREFA_ALOCACAO_S_N", "PERC_CONCLUSAO_TAREFA", "PRIORIDADE_TAREFA", "IN_TAREFA_EXTERNA", "DT_ULT_ALT", "USUR_CD_USUR", "DS_OBSERVACAO") AS 
+  SELECT CD_PROJETO,
+  SEQ_PROJETO_FASE,
+  SEQ_PROJETO_TAREFA,
+  DS_TAREFA,
+  ST_TAREFA,
+  CD_CATEGORIA_TAREFA,
+  DT_INICIO_PREV,
+  DT_FIM_PREVISTO,
+  DT_INICIO_REAL,
+  DT_FIM_REAL,
+  NR_HORASPREVISTAS,
+  NR_HORASREAL,
+  DURACAO_TAREFA_DIAS_UTEIS,
+  TAREFA_POR_DATA_OU_DURACAO,
+  TAREFA_REPETICAO_MENSAL,
+  TAREFA_ALOCACAO_S_N,
+  PERC_CONCLUSAO_TAREFA,
+  PRIORIDADE_TAREFA,
+  IN_TAREFA_EXTERNA,
+  DT_ULT_ALT,
+  USUR_CD_USUR,
+  DS_OBSERVACAO
+FROM PROJETO_TAREFA
+ ;
+--------------------------------------------------------
+--  DDL for View V_PROJETO_TAREFA_FUNCIONARIO
+--------------------------------------------------------
+
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "TIMESHEET"."V_PROJETO_TAREFA_FUNCIONARIO" ("CD_PROJETO", "SEQ_PROJETO_FASE", "SEQ_PROJETO_TAREFA", "FUNC_CD_FUNC", "ST_ALOCACAO", "PERC_CONCLUSAO_TAREFA_FUNC", "DT_ULT_ALT", "USUR_CD_USUR") AS 
+  SELECT CD_PROJETO,
+  SEQ_PROJETO_FASE,
+  SEQ_PROJETO_TAREFA,
+  FUNC_CD_FUNC,
+  ST_ALOCACAO,
+  PERC_CONCLUSAO_TAREFA_FUNC,
+  DT_ULT_ALT,
+  USUR_CD_USUR
+FROM PROJETO_TAREFA_FUNCIONARIO
+ ;
+--------------------------------------------------------
+--  DDL for View V_TECNOLOGIA
+--------------------------------------------------------
+
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "TIMESHEET"."V_TECNOLOGIA" ("TECNOLOGIA") AS 
+  select "TECNOLOGIA" from TECNOLOGIA
+ ;
+--------------------------------------------------------
+--  DDL for View V_TIMESHEET_DIA
+--------------------------------------------------------
+
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "TIMESHEET"."V_TIMESHEET_DIA" ("FUNC_CD_FUNC", "LOPE_NR_ANO", "LOPE_NR_MES", "LOG_NR_DIA", "LOG_QN_AUSBHE", "LOG_QN_AUSABN", "LOG_NR_HNORMAL", "ST_TIMESHEET_DIA", "DT_ULT_ALT", "USUR_CD_USUR", "OBS") AS 
+  select "FUNC_CD_FUNC","LOPE_NR_ANO","LOPE_NR_MES","LOG_NR_DIA","LOG_QN_AUSBHE","LOG_QN_AUSABN","LOG_NR_HNORMAL","ST_TIMESHEET_DIA","DT_ULT_ALT","USUR_CD_USUR","OBS" from TIMESHEET_DIA
+ ;
+--------------------------------------------------------
+--  DDL for View V_TIMESHEET_DIA_TAREFA
+--------------------------------------------------------
+
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "TIMESHEET"."V_TIMESHEET_DIA_TAREFA" ("FUNC_CD_FUNC", "CD_PROJETO", "SEQ_PROJETO_FASE", "SEQ_PROJETO_TAREFA", "LOPE_NR_ANO", "LOPE_NR_MES", "LOG_NR_DIA", "HORAS_NR_NC", "HORAS_NR_CO", "HORAS_NR_NCEXTRA", "HORAS_NR_COEXTRA", "HORARIO_INI_CO", "HORARIO_FIM_CO", "HORARIO_INI_HE", "HORARIO_FIM_HE", "DT_ULT_ALT", "USUR_CD_USUR", "HORAS_TX_OBS") AS 
+  select "FUNC_CD_FUNC","CD_PROJETO","SEQ_PROJETO_FASE","SEQ_PROJETO_TAREFA","LOPE_NR_ANO","LOPE_NR_MES","LOG_NR_DIA","HORAS_NR_NC","HORAS_NR_CO","HORAS_NR_NCEXTRA","HORAS_NR_COEXTRA","HORARIO_INI_CO","HORARIO_FIM_CO","HORARIO_INI_HE","HORARIO_FIM_HE","DT_ULT_ALT","USUR_CD_USUR","HORAS_TX_OBS" from TIMESHEET_DIA_TAREFA
+ ;
+--------------------------------------------------------
+--  DDL for View V_TIPO_CONTRATO
+--------------------------------------------------------
+
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "TIMESHEET"."V_TIPO_CONTRATO" ("TIPO_CONTRATO") AS 
+  select "TIPO_CONTRATO" from TIPO_CONTRATO
+ ;
+--------------------------------------------------------
+--  DDL for View V_TIPO_SERVICO
+--------------------------------------------------------
+
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "TIMESHEET"."V_TIPO_SERVICO" ("TIPO_SERVICO") AS 
+  select "TIPO_SERVICO" from TIPO_SERVICO
+ ;
+--------------------------------------------------------
+--  DDL for View VW_DIAS_POR_PERIODO
+--------------------------------------------------------
+
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "TIMESHEET"."VW_DIAS_POR_PERIODO" ("PERI_CD_PERIODO", "LOG_NR_DIA") AS 
+  SELECT 1 PERI_CD_PERIODO, 11 LOG_NR_DIA FROM DUAL UNION
+SELECT 1 PERI_CD_PERIODO, 12 LOG_NR_DIA FROM DUAL UNION
+SELECT 1 PERI_CD_PERIODO, 13 LOG_NR_DIA FROM DUAL UNION
+SELECT 1 PERI_CD_PERIODO, 14 LOG_NR_DIA FROM DUAL UNION
+SELECT 1 PERI_CD_PERIODO, 15 LOG_NR_DIA FROM DUAL UNION
+SELECT 1 PERI_CD_PERIODO, 16 LOG_NR_DIA FROM DUAL UNION
+SELECT 1 PERI_CD_PERIODO, 17 LOG_NR_DIA FROM DUAL UNION
+SELECT 1 PERI_CD_PERIODO, 18 LOG_NR_DIA FROM DUAL UNION
+SELECT 1 PERI_CD_PERIODO, 19 LOG_NR_DIA FROM DUAL UNION
+SELECT 1 PERI_CD_PERIODO, 20 LOG_NR_DIA FROM DUAL UNION
+SELECT 1 PERI_CD_PERIODO, 21 LOG_NR_DIA FROM DUAL UNION
+SELECT 1 PERI_CD_PERIODO, 22 LOG_NR_DIA FROM DUAL UNION
+SELECT 1 PERI_CD_PERIODO, 23 LOG_NR_DIA FROM DUAL UNION
+SELECT 1 PERI_CD_PERIODO, 24 LOG_NR_DIA FROM DUAL UNION
+SELECT 1 PERI_CD_PERIODO, 25 LOG_NR_DIA FROM DUAL UNION
+SELECT 2 PERI_CD_PERIODO, 26 LOG_NR_DIA FROM DUAL UNION
+SELECT 2 PERI_CD_PERIODO, 27 LOG_NR_DIA FROM DUAL UNION
+SELECT 2 PERI_CD_PERIODO, 28 LOG_NR_DIA FROM DUAL UNION
+SELECT 2 PERI_CD_PERIODO, 29 LOG_NR_DIA FROM DUAL UNION
+SELECT 2 PERI_CD_PERIODO, 30 LOG_NR_DIA FROM DUAL UNION
+SELECT 2 PERI_CD_PERIODO, 31 LOG_NR_DIA FROM DUAL UNION
+SELECT 2 PERI_CD_PERIODO, 1 LOG_NR_DIA FROM DUAL UNION
+SELECT 2 PERI_CD_PERIODO, 2 LOG_NR_DIA FROM DUAL UNION
+SELECT 2 PERI_CD_PERIODO, 3 LOG_NR_DIA FROM DUAL UNION
+SELECT 2 PERI_CD_PERIODO, 4 LOG_NR_DIA FROM DUAL UNION
+SELECT 2 PERI_CD_PERIODO, 5 LOG_NR_DIA FROM DUAL UNION
+SELECT 2 PERI_CD_PERIODO, 6 LOG_NR_DIA FROM DUAL UNION
+SELECT 2 PERI_CD_PERIODO, 7 LOG_NR_DIA FROM DUAL UNION
+SELECT 2 PERI_CD_PERIODO, 8 LOG_NR_DIA FROM DUAL UNION
+SELECT 2 PERI_CD_PERIODO, 9 LOG_NR_DIA FROM DUAL UNION
+SELECT 2 PERI_CD_PERIODO, 10 LOG_NR_DIA FROM DUAL
+
+ 
+ ;
+--------------------------------------------------------
+--  DDL for View VW_ENDERECO_CLIFOR
+--------------------------------------------------------
+
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "TIMESHEET"."VW_ENDERECO_CLIFOR" ("CD_CLIFOR", "CD_ENDERECO", "DS_LOGRADOURO", "DS_BAIRRO", "NR_INSCRESTADUAL", "NR_TELEFONE", "NR_FAX", "TP_ENDERECO", "CD_CIDADE", "DS_CIDADE", "SG_ESTADO", "CD_CEP", "DS_ESTADO") AS 
+  SELECT A.CD_CLIFOR,
+  A.CD_ENDERECO,
+  A.DS_LOGRADOURO,
+  A.DS_BAIRRO,
+  A.NR_INSCRESTADUAL,
+  A.NR_TELEFONE,
+  A.NR_FAX,
+  A.TP_ENDERECO,
+  B.CD_CIDADE,
+  B.DS_CIDADE,
+  B.SG_ESTADO,
+  C.CD_CEP,
+  D.DS_ESTADO
+FROM
+  ENDERECO A, CIDADE B, CEP C, ESTADO D
+  WHERE A.CD_CEP = C.CD_CEP (+) AND
+  A.CD_CIDADE = B.CD_CIDADE (+) AND
+  B.SG_ESTADO = D.SG_ESTADO (+)
+
+ 
+ ;
+--------------------------------------------------------
+--  DDL for Type T_LOG_HANDLER
+--------------------------------------------------------
+
+  CREATE OR REPLACE EDITIONABLE TYPE "TIMESHEET"."T_LOG_HANDLER" AS OBJECT (
+    HANDLER_ID NUMBER(9,0),
+    HANDLER_POS NUMBER(4),
+    LOG_LEVEL INTEGER,
+    STATIC FUNCTION LOG_LEVEL_NONE RETURN INTEGER,
+    STATIC FUNCTION LOG_LEVEL_ERROR RETURN INTEGER,
+    STATIC FUNCTION LOG_LEVEL_WARNING RETURN INTEGER,
+    STATIC FUNCTION LOG_LEVEL_FINE RETURN INTEGER,
+    STATIC FUNCTION LOG_LEVEL_FINEST RETURN INTEGER,
+    MEMBER PROCEDURE LOG_IT(P_LOG_LEVEL IN INTEGER, P_MESSAGE IN VARCHAR2),
+    CONSTRUCTOR FUNCTION T_LOG_HANDLER(P_LOG_LEVEL INTEGER) RETURN SELF AS RESULT
+);
+/
+CREATE OR REPLACE EDITIONABLE TYPE BODY "TIMESHEET"."T_LOG_HANDLER" AS
+  
+  CONSTRUCTOR FUNCTION T_LOG_HANDLER(P_LOG_LEVEL INTEGER) RETURN SELF AS RESULT AS
+  BEGIN
+    DBMS_OUTPUT.PUT_LINE('[CONSTRUCTOR] P_LOG_LEVEL=' || P_LOG_LEVEL);
+    SELECT S_LOG_TRISCAL.NEXTVAL INTO HANDLER_ID FROM DUAL;
+    HANDLER_POS:=0;
+    IF P_LOG_LEVEL < 0 OR P_LOG_LEVEL > 4 THEN
+      DBMS_OUTPUT.PUT_LINE('[CONSTRUCTOR] P_LOG_LEVEL=FAIL');
+      RAISE "VALUE_ERROR";
+    ELSE
+      LOG_LEVEL:=P_LOG_LEVEL;
+      DBMS_OUTPUT.PUT_LINE('[CONSTRUCTOR] P_LOG_LEVEL=OK');
+    END IF;
+    RETURN;
+  END;
+
+  STATIC FUNCTION LOG_LEVEL_NONE RETURN INTEGER AS
+  BEGIN
+    RETURN 0;
+  END;
+  
+  STATIC FUNCTION LOG_LEVEL_ERROR RETURN INTEGER AS
+  BEGIN
+    RETURN 1;
+  END;
+  
+  STATIC FUNCTION LOG_LEVEL_WARNING RETURN INTEGER AS
+  BEGIN
+    RETURN 2;
+  END;
+  
+  STATIC FUNCTION LOG_LEVEL_FINE RETURN INTEGER AS
+  BEGIN
+    RETURN 3;
+  END;
+  
+  STATIC FUNCTION LOG_LEVEL_FINEST RETURN INTEGER AS
+  BEGIN
+    RETURN 4;
+  END;
+
+  MEMBER PROCEDURE LOG_IT(P_LOG_LEVEL IN INTEGER, P_MESSAGE IN VARCHAR2) AS
+    PRAGMA AUTONOMOUS_TRANSACTION;
+  BEGIN
+    DBMS_OUTPUT.PUT_LINE('[LOG_IT] LOG_HANDLER.HANDLER_ID=' || HANDLER_ID || '; P_LOG_LEVEL=' || P_LOG_LEVEL || '; LOG_HANDLER.LOG_LEVEL=' || LOG_LEVEL);
+    IF HANDLER_ID IS NOT NULL AND NOT LOG_LEVEL < P_LOG_LEVEL THEN      
+      HANDLER_POS:=HANDLER_POS + 1;
+      DBMS_OUTPUT.PUT_LINE('[LOG_IT] LOG_HANDLER.HANDLER_ID=' || HANDLER_ID || '; LOG_HANDLER.HANDLER_POS=' || HANDLER_POS);
+      INSERT INTO LOG_TRISCAL (ID_TRSC, ID_POSC_TRSC, DT_TRSC, DC_TRSC) VALUES (HANDLER_ID, HANDLER_POS, SYSDATE, P_MESSAGE);
+      COMMIT;
+      DBMS_OUTPUT.PUT_LINE('[LOG_IT] COMMIT');
+    END IF;
+  EXCEPTION
+    WHEN OTHERS THEN
+      ROLLBACK;
+      DBMS_OUTPUT.PUT_LINE('[LOG_IT] ROLLBACK SQLCODE=' || SQLCODE || '; SQLERRM=' || SQLERRM);
+  END LOG_IT;
+
+END;
+
+/
+--------------------------------------------------------
+--  DDL for Table AGENCIABCO
+--------------------------------------------------------
+
+  CREATE TABLE "TIMESHEET"."AGENCIABCO" 
+   (	"CD_BANCO" VARCHAR2(7 BYTE), 
+	"CD_AGENCIA" VARCHAR2(10 BYTE), 
+	"NR_DIGITO" NUMBER(2,0), 
+	"NM_AGENCIA" VARCHAR2(30 BYTE)
+   ) ;
+--------------------------------------------------------
+--  DDL for Table ALOCACAOPROJ
+--------------------------------------------------------
+
+  CREATE TABLE "TIMESHEET"."ALOCACAOPROJ" 
+   (	"CD_PROJETO" NUMBER(7,0), 
+	"CD_FASE" NUMBER(3,0), 
+	"CD_FUNCIONARIO" NUMBER(7,0), 
+	"CD_CARGO" NUMBER(3,0)
+   ) ;
+
+   COMMENT ON COLUMN "TIMESHEET"."ALOCACAOPROJ"."CD_PROJETO" IS 'Cod. Projeto';
+   COMMENT ON COLUMN "TIMESHEET"."ALOCACAOPROJ"."CD_FASE" IS 'Cod. Fase';
+   COMMENT ON COLUMN "TIMESHEET"."ALOCACAOPROJ"."CD_FUNCIONARIO" IS 'Cod. Funcionario';
+--------------------------------------------------------
+--  DDL for Table AMBIENTE_CLIFOR
+--------------------------------------------------------
+
+  CREATE TABLE "TIMESHEET"."AMBIENTE_CLIFOR" 
+   (	"CD_CLIFOR" NUMBER(7,0), 
+	"NR_AMBIENTE" NUMBER(2,0), 
+	"CD_PLATAFORMA" NUMBER(3,0), 
+	"CD_ERP" NUMBER(3,0), 
+	"CD_SERVIDOR" NUMBER(4,0), 
+	"CD_FER_DESENV" NUMBER(5,0), 
+	"CD_APPL_SERVER" NUMBER(3,0), 
+	"CD_FER_CASE" NUMBER(3,0), 
+	"CD_GER_REDE" NUMBER(3,0), 
+	"CD_BANCO" NUMBER(4,0), 
+	"CD_CRM" NUMBER(3,0), 
+	"DS_OBSERVACAO" VARCHAR2(500 BYTE)
+   ) ;
+--------------------------------------------------------
+--  DDL for Table APPL_SERVER
+--------------------------------------------------------
+
+  CREATE TABLE "TIMESHEET"."APPL_SERVER" 
+   (	"CD_APPL_SERVER" NUMBER(3,0), 
+	"DS_APPL_SERVER" VARCHAR2(50 BYTE)
+   ) ;
+--------------------------------------------------------
+--  DDL for Table ATIVIDADE_PROJ
+--------------------------------------------------------
+
+  CREATE TABLE "TIMESHEET"."ATIVIDADE_PROJ" 
+   (	"CD_PROJETO" NUMBER(7,0), 
+	"CD_FASE" NUMBER(7,0), 
+	"CD_FUNCIONARIO" NUMBER(7,0), 
+	"DT_ATIVIDADE" DATE, 
+	"HR_ATIVIDADE" NUMBER(2,0), 
+	"DS_ATIVIDADE" VARCHAR2(200 BYTE)
+   ) ;
+--------------------------------------------------------
+--  DDL for Table BANCO
+--------------------------------------------------------
+
+  CREATE TABLE "TIMESHEET"."BANCO" 
+   (	"CD_BANCO" VARCHAR2(7 BYTE), 
+	"NM_BANCO" VARCHAR2(40 BYTE)
+   ) ;
+--------------------------------------------------------
+--  DDL for Table BANCODADO
+--------------------------------------------------------
+
+  CREATE TABLE "TIMESHEET"."BANCODADO" 
+   (	"CD_BANCO" NUMBER(4,0), 
+	"DS_BANCO" VARCHAR2(50 BYTE)
+   ) ;
+--------------------------------------------------------
+--  DDL for Table CARGO
+--------------------------------------------------------
+
+  CREATE TABLE "TIMESHEET"."CARGO" 
+   (	"CD_CARGO" NUMBER(3,0), 
+	"DS_CARGO" VARCHAR2(30 BYTE), 
+	"VL_BASE" NUMBER(12,2) DEFAULT 0
+   ) ;
+--------------------------------------------------------
+--  DDL for Table CATEGORIA_FASE
+--------------------------------------------------------
+
+  CREATE TABLE "TIMESHEET"."CATEGORIA_FASE" 
+   (	"CD_CATEGORIA_FASE" NUMBER(7,0), 
+	"DS_CATEGORIA_FASE" VARCHAR2(50 BYTE), 
+	"ST_CATEGORIA_FASE" VARCHAR2(3 BYTE), 
+	"DT_ULT_ALT" DATE, 
+	"USUR_CD_USUR" VARCHAR2(16 BYTE)
+   ) ;
+--------------------------------------------------------
+--  DDL for Table CATEGORIA_TAREFA
+--------------------------------------------------------
+
+  CREATE TABLE "TIMESHEET"."CATEGORIA_TAREFA" 
+   (	"CD_CATEGORIA_TAREFA" NUMBER(7,0), 
+	"DS_CATEGORIA_TAREFA" VARCHAR2(50 BYTE), 
+	"ST_CATEGORIA_TAREFA" VARCHAR2(3 BYTE), 
+	"DT_ULT_ALT" DATE, 
+	"USUR_CD_USUR" VARCHAR2(16 BYTE)
+   ) ;
+--------------------------------------------------------
+--  DDL for Table CEP
+--------------------------------------------------------
+
+  CREATE TABLE "TIMESHEET"."CEP" 
+   (	"CD_CEP" NUMBER(8,0), 
+	"CD_CIDADE" NUMBER(7,0)
+   ) ;
+--------------------------------------------------------
+--  DDL for Table CG_REF_CODES
+--------------------------------------------------------
+
+  CREATE TABLE "TIMESHEET"."CG_REF_CODES" 
+   (	"RV_HIGH_VALUE" VARCHAR2(240 BYTE), 
+	"RV_LOW_VALUE" VARCHAR2(240 BYTE), 
+	"RV_MEANING" VARCHAR2(240 BYTE), 
+	"RV_ABBREVIATION" VARCHAR2(240 BYTE), 
+	"RV_DOMAIN" VARCHAR2(240 BYTE)
+   ) ;
+--------------------------------------------------------
+--  DDL for Table CIDADE
+--------------------------------------------------------
+
+  CREATE TABLE "TIMESHEET"."CIDADE" 
+   (	"CD_CIDADE" NUMBER(7,0), 
+	"DS_CIDADE" VARCHAR2(30 BYTE), 
+	"SG_ESTADO" VARCHAR2(2 BYTE)
+   ) ;
+--------------------------------------------------------
+--  DDL for Table CLASSES
+--------------------------------------------------------
+
+  CREATE TABLE "TIMESHEET"."CLASSES" 
+   (	"CLAS_CD_CLASSE" CHAR(3 BYTE), 
+	"CLAS_TX_DESCRICAO" VARCHAR2(20 BYTE), 
+	"CLAS_IN_TIPO" CHAR(1 BYTE)
+   ) ;
+--------------------------------------------------------
+--  DDL for Table CLAUSULA
+--------------------------------------------------------
+
+  CREATE TABLE "TIMESHEET"."CLAUSULA" 
+   (	"CD_CONTRATO" NUMBER(7,0), 
+	"CD_CLAUSULA" NUMBER(7,0), 
+	"DS_CLAUSULA" VARCHAR2(500 BYTE)
+   ) ;
+--------------------------------------------------------
+--  DDL for Table CLIENTES_IBM
+--------------------------------------------------------
+
+  CREATE TABLE "TIMESHEET"."CLIENTES_IBM" 
+   (	"COD_CLIENTE" NUMBER, 
+	"NOME_CLIENTE" VARCHAR2(300 BYTE), 
+	"TIPO_CLIENTE" VARCHAR2(1 BYTE)
+   ) ;
+
+   COMMENT ON COLUMN "TIMESHEET"."CLIENTES_IBM"."TIPO_CLIENTE" IS 'classificac?o especifica da IBM - SMB, Cluster ou Government';
+--------------------------------------------------------
+--  DDL for Table CLIFOR
+--------------------------------------------------------
+
+  CREATE TABLE "TIMESHEET"."CLIFOR" 
+   (	"CD_CLIFOR" NUMBER(7,0), 
+	"NM_RAZAOSOCIAL" VARCHAR2(70 BYTE), 
+	"NM_FANTASIA" VARCHAR2(30 BYTE), 
+	"NR_CNPJ" NUMBER(14,0), 
+	"DS_EMAIL" VARCHAR2(40 BYTE), 
+	"DS_WEB" VARCHAR2(40 BYTE), 
+	"DT_CADASTRAMENTO" DATE, 
+	"DT_ULTVISITA" DATE, 
+	"ST_CLIFOR" VARCHAR2(3 BYTE), 
+	"TIP_CLIFOR" VARCHAR2(1 BYTE), 
+	"CD_ORIGEM" NUMBER(3,0), 
+	"VL_FATURAMENTO" NUMBER(15,2), 
+	"QTDE_FUNCIONARIO" NUMBER(5,0), 
+	"PC_ISS" NUMBER(7,3), 
+	"CD_GERENTECONTA" NUMBER(7,0), 
+	"CD_FILIAL_ORIGEM" NUMBER(3,0), 
+	"DT_ULT_ALT" DATE
+   ) ;
+--------------------------------------------------------
+--  DDL for Table COM_ACES_APLICACAO
+--------------------------------------------------------
+
+  CREATE TABLE "TIMESHEET"."COM_ACES_APLICACAO" 
+   (	"CDG_APLICACAO" NUMBER(7,0), 
+	"DESCRICAO" VARCHAR2(200 BYTE), 
+	"DESCRICAO_RESUMIDA" VARCHAR2(50 BYTE), 
+	"EXECUTAVEL" VARCHAR2(80 BYTE), 
+	"IN_BLOQUEADO" VARCHAR2(1 BYTE) DEFAULT 'N', 
+	"IN_RASTREAVEL" VARCHAR2(1 BYTE) DEFAULT 'N', 
+	"DT_INCLUSAO" DATE, 
+	"USUR_INCLUSAO" VARCHAR2(16 BYTE), 
+	"DT_ALTERACAO" DATE, 
+	"ICONE" LONG RAW, 
+	"URL_HELP" VARCHAR2(50 BYTE), 
+	"EXE_REDIR_QUEDA_SESSAO" VARCHAR2(80 BYTE), 
+	"SQLCMD_HABILITA" VARCHAR2(300 BYTE), 
+	"CDG_GRUPO_ACESSO" VARCHAR2(2 BYTE)
+   ) ;
+--------------------------------------------------------
+--  DDL for Table COM_ACES_ATRIBUTOS
+--------------------------------------------------------
+
+  CREATE TABLE "TIMESHEET"."COM_ACES_ATRIBUTOS" 
+   (	"CDG_MENU" NUMBER(7,0), 
+	"NOME_ATRIBUTO" VARCHAR2(50 BYTE), 
+	"DT_INCLUSAO" DATE, 
+	"USUR_INCLUSAO" VARCHAR2(16 BYTE)
+   ) ;
+--------------------------------------------------------
+--  DDL for Table COM_ACES_FAVORITOS
+--------------------------------------------------------
+
+  CREATE TABLE "TIMESHEET"."COM_ACES_FAVORITOS" 
+   (	"CDG_USUR" VARCHAR2(16 BYTE), 
+	"CDG_MENU" NUMBER(7,0)
+   ) ;
+--------------------------------------------------------
+--  DDL for Table COM_ACES_HISTORICO_LOGIN
+--------------------------------------------------------
+
+  CREATE TABLE "TIMESHEET"."COM_ACES_HISTORICO_LOGIN" 
+   (	"COM_SESSAOJSP" VARCHAR2(40 BYTE), 
+	"DTA_LOGIN" DATE, 
+	"CDG_USUR" VARCHAR2(16 BYTE), 
+	"STT_LOGIN_LOGOUT" CHAR(1 BYTE) DEFAULT 'I', 
+	"DTA_LOGOUT" DATE, 
+	"SESSIONID" VARCHAR2(20 BYTE), 
+	"NME_HTTP_REMOTE_HOST" VARCHAR2(100 BYTE), 
+	"NME_HTTP_REMOTE_ADDR" VARCHAR2(15 BYTE), 
+	"NME_HTTP_USER_AGENT" VARCHAR2(100 BYTE), 
+	"CDG_GRUPO_ACESSO" VARCHAR2(2 BYTE)
+   ) ;
+--------------------------------------------------------
+--  DDL for Table COM_ACES_HISTORICO_TELA
+--------------------------------------------------------
+
+  CREATE TABLE "TIMESHEET"."COM_ACES_HISTORICO_TELA" 
+   (	"DTA_ACESSO" DATE, 
+	"CDG_USUR" VARCHAR2(16 BYTE), 
+	"EXECUTAVEL" VARCHAR2(100 BYTE), 
+	"NME_HTTP_REMOTE_ADDR" VARCHAR2(15 BYTE), 
+	"SESSIONID" VARCHAR2(20 BYTE), 
+	"SESSAOJSP" VARCHAR2(20 BYTE)
+   ) ;
+--------------------------------------------------------
+--  DDL for Table COM_ACES_LOG_ERROS
+--------------------------------------------------------
+
+  CREATE TABLE "TIMESHEET"."COM_ACES_LOG_ERROS" 
+   (	"TPO_ERRO" CHAR(1 BYTE), 
+	"NMR_ERRO" NUMBER(7,0), 
+	"DSC_CONSTRAINT_EXCEPTION" VARCHAR2(240 BYTE), 
+	"DTA_ERRO" DATE DEFAULT SYSDATE, 
+	"CDG_USUR" VARCHAR2(16 BYTE), 
+	"DSC_SERVERNAME" VARCHAR2(50 BYTE), 
+	"DSC_REFERER" VARCHAR2(100 BYTE), 
+	"DSC_ULTIMA_PAGINA" VARCHAR2(100 BYTE), 
+	"DSC_PAGINA_ATUAL" VARCHAR2(100 BYTE)
+   ) ;
+--------------------------------------------------------
+--  DDL for Table COM_ACES_MENU
+--------------------------------------------------------
+
+  CREATE TABLE "TIMESHEET"."COM_ACES_MENU" 
+   (	"CDG_MENU" NUMBER(7,0), 
+	"DESCRICAO" VARCHAR2(200 BYTE), 
+	"DESCR_RESUMIDA" VARCHAR2(50 BYTE), 
+	"DT_INICIO" DATE, 
+	"DT_FIM" DATE, 
+	"IN_BLOQUEADO" VARCHAR2(1 BYTE) DEFAULT 'N', 
+	"IN_RASTREAVEL" VARCHAR2(1 BYTE) DEFAULT 'N', 
+	"DT_INCLUSAO" DATE, 
+	"USUR_INCLUSAO" VARCHAR2(16 BYTE), 
+	"CDG_MENU_PAI" NUMBER(7,0), 
+	"IN_VOLTAR" VARCHAR2(1 BYTE) DEFAULT 'N', 
+	"IN_VISIVEL" VARCHAR2(1 BYTE) DEFAULT 'S', 
+	"DT_ALTERACAO" DATE, 
+	"USUR_ALTERACAO" VARCHAR2(16 BYTE), 
+	"ICONE" LONG RAW, 
+	"IN_POPUP" VARCHAR2(1 BYTE) DEFAULT 'N', 
+	"EXECUTAVEL" VARCHAR2(80 BYTE), 
+	"URL_HELP" VARCHAR2(50 BYTE), 
+	"EXE_REDIR_QUEDA_SESSAO" VARCHAR2(80 BYTE), 
+	"SQLCMD_HABILITA" VARCHAR2(300 BYTE), 
+	"CD_MODULO" VARCHAR2(3 BYTE), 
+	"TP_MODULO" VARCHAR2(1 BYTE)
+   ) ;
+--------------------------------------------------------
+--  DDL for Table COM_ACES_MENU_BKP
+--------------------------------------------------------
+
+  CREATE TABLE "TIMESHEET"."COM_ACES_MENU_BKP" 
+   (	"CDG_MENU" NUMBER(7,0), 
+	"DESCRICAO" VARCHAR2(200 BYTE), 
+	"DESCR_RESUMIDA" VARCHAR2(50 BYTE), 
+	"DT_INICIO" DATE, 
+	"DT_FIM" DATE, 
+	"IN_BLOQUEADO" VARCHAR2(1 BYTE), 
+	"IN_RASTREAVEL" VARCHAR2(1 BYTE), 
+	"DT_INCLUSAO" DATE, 
+	"USUR_INCLUSAO" VARCHAR2(16 BYTE), 
+	"CDG_MENU_PAI" NUMBER(7,0), 
+	"IN_VOLTAR" VARCHAR2(1 BYTE), 
+	"IN_VISIVEL" VARCHAR2(1 BYTE), 
+	"DT_ALTERACAO" DATE, 
+	"USUR_ALTERACAO" VARCHAR2(16 BYTE), 
+	"IN_POPUP" VARCHAR2(1 BYTE), 
+	"EXECUTAVEL" VARCHAR2(80 BYTE), 
+	"URL_HELP" VARCHAR2(50 BYTE), 
+	"EXE_REDIR_QUEDA_SESSAO" VARCHAR2(80 BYTE), 
+	"SQLCMD_HABILITA" VARCHAR2(300 BYTE), 
+	"CD_MODULO" VARCHAR2(3 BYTE), 
+	"TP_MODULO" VARCHAR2(1 BYTE)
+   ) ;
+--------------------------------------------------------
+--  DDL for Table COM_ACES_MODULOS
+--------------------------------------------------------
+
+  CREATE TABLE "TIMESHEET"."COM_ACES_MODULOS" 
+   (	"CD_MODULO" VARCHAR2(3 BYTE), 
+	"NM_DESCRICAO" VARCHAR2(50 BYTE)
+   ) ;
+--------------------------------------------------------
+--  DDL for Table COM_ACES_MSG_SISTEMA
+--------------------------------------------------------
+
+  CREATE TABLE "TIMESHEET"."COM_ACES_MSG_SISTEMA" 
+   (	"CD_MSG" NUMBER(4,0), 
+	"TP_MSG" CHAR(1 BYTE) DEFAULT 'A', 
+	"TP_SUBTIPO_MSG" CHAR(1 BYTE) DEFAULT 'N', 
+	"TX_MSG" VARCHAR2(80 BYTE), 
+	"TX_INGLES" VARCHAR2(80 BYTE), 
+	"TM_ESPERA" NUMBER(4,0), 
+	"TP_DEFAULT_CONFIRM" CHAR(1 BYTE), 
+	"ID_CANCELAR" CHAR(1 BYTE) DEFAULT 'S'
+   ) ;
+--------------------------------------------------------
+--  DDL for Table COM_ACES_PERFIL
+--------------------------------------------------------
+
+  CREATE TABLE "TIMESHEET"."COM_ACES_PERFIL" 
+   (	"CDG_PERFIL" NUMBER(4,0), 
+	"DESCRICAO" VARCHAR2(50 BYTE), 
+	"DT_INCLUSAO" DATE, 
+	"USUR_INCLUSAO" VARCHAR2(16 BYTE), 
+	"DT_ALTERACAO" DATE, 
+	"USUR_ALTERACAO" VARCHAR2(16 BYTE)
+   ) ;
+--------------------------------------------------------
+--  DDL for Table COM_ACES_PERFIL_ATRIBUTOS
+--------------------------------------------------------
+
+  CREATE TABLE "TIMESHEET"."COM_ACES_PERFIL_ATRIBUTOS" 
+   (	"CDG_PERFIL" NUMBER(4,0), 
+	"CDG_MENU" NUMBER(7,0), 
+	"NOME_ATRIBUTO" VARCHAR2(50 BYTE), 
+	"TIPO_ACESSO" VARCHAR2(1 BYTE) DEFAULT 'T', 
+	"DT_INCLUSAO" DATE, 
+	"USUR_INCLUSAO" VARCHAR2(16 BYTE), 
+	"DT_ALTERACAO" DATE, 
+	"USUR_ALTERACAO" VARCHAR2(16 BYTE)
+   ) ;
+--------------------------------------------------------
+--  DDL for Table COM_ACES_PERFIL_MENU
+--------------------------------------------------------
+
+  CREATE TABLE "TIMESHEET"."COM_ACES_PERFIL_MENU" 
+   (	"CDG_PERFIL" NUMBER(4,0), 
+	"CDG_MENU" NUMBER(7,0), 
+	"TIPO_ACESSO" VARCHAR2(1 BYTE) DEFAULT 'T', 
+	"DT_INICIO" DATE, 
+	"DT_FIM" DATE, 
+	"DT_INCLUSAO" DATE, 
+	"USUR_INCLUSAO" VARCHAR2(16 BYTE), 
+	"ORDEM" NUMBER(2,0), 
+	"DT_ALTERACAO" DATE, 
+	"USUR_ALTERACAO" VARCHAR2(16 BYTE)
+   ) ;
+--------------------------------------------------------
+--  DDL for Table COM_ACES_PERFIL_MENU_BKP
+--------------------------------------------------------
+
+  CREATE TABLE "TIMESHEET"."COM_ACES_PERFIL_MENU_BKP" 
+   (	"CDG_PERFIL" NUMBER(4,0), 
+	"CDG_MENU" NUMBER(7,0), 
+	"TIPO_ACESSO" VARCHAR2(1 BYTE), 
+	"DT_INICIO" DATE, 
+	"DT_FIM" DATE, 
+	"DT_INCLUSAO" DATE, 
+	"USUR_INCLUSAO" VARCHAR2(16 BYTE), 
+	"ORDEM" NUMBER(2,0), 
+	"DT_ALTERACAO" DATE, 
+	"USUR_ALTERACAO" VARCHAR2(16 BYTE)
+   ) ;
+--------------------------------------------------------
+--  DDL for Table COM_ACES_TRATA_ERRO
+--------------------------------------------------------
+
+  CREATE TABLE "TIMESHEET"."COM_ACES_TRATA_ERRO" 
+   (	"TPO_ERRO" CHAR(1 BYTE), 
+	"NMR_ERRO" NUMBER(7,0), 
+	"DSC_CONSTRAINT_EXCEPTION" VARCHAR2(240 BYTE), 
+	"TPO_RETORNO" CHAR(1 BYTE), 
+	"TXT_RETORNO" VARCHAR2(2000 BYTE), 
+	"IN_GERA_LOG" VARCHAR2(1 BYTE) DEFAULT 'N', 
+	"DTA_CADASTRO" DATE DEFAULT SYSDATE
+   ) ;
+--------------------------------------------------------
+--  DDL for Table COM_ACES_USUARIO
+--------------------------------------------------------
+
+  CREATE TABLE "TIMESHEET"."COM_ACES_USUARIO" 
+   (	"CDG_USUR" VARCHAR2(16 BYTE), 
+	"NOME" VARCHAR2(40 BYTE), 
+	"NOME_ABREVIADO" VARCHAR2(15 BYTE), 
+	"DT_INCLUSAO" DATE, 
+	"USUR_INCLUSAO" VARCHAR2(16 BYTE), 
+	"STATUS" VARCHAR2(1 BYTE) DEFAULT 'L', 
+	"SENHA" VARCHAR2(200 BYTE), 
+	"DSC_EMAIL" VARCHAR2(40 BYTE), 
+	"DT_ALTERACAO" DATE, 
+	"USUR_ALTERACAO" VARCHAR2(16 BYTE), 
+	"DT_EXCLUSAO" DATE, 
+	"IN_ALTEROU_SENHA" CHAR(1 BYTE) DEFAULT 'N', 
+	"DT_ULT_ALT" DATE
+   ) ;
+--------------------------------------------------------
+--  DDL for Table COM_ACES_USUARIO_BKP20230214
+--------------------------------------------------------
+
+  CREATE TABLE "TIMESHEET"."COM_ACES_USUARIO_BKP20230214" 
+   (	"CDG_USUR" VARCHAR2(16 BYTE), 
+	"NOME" VARCHAR2(40 BYTE), 
+	"NOME_ABREVIADO" VARCHAR2(15 BYTE), 
+	"DT_INCLUSAO" DATE, 
+	"USUR_INCLUSAO" VARCHAR2(16 BYTE), 
+	"STATUS" VARCHAR2(1 BYTE), 
+	"SENHA" VARCHAR2(200 BYTE), 
+	"DSC_EMAIL" VARCHAR2(40 BYTE), 
+	"DT_ALTERACAO" DATE, 
+	"USUR_ALTERACAO" VARCHAR2(16 BYTE), 
+	"DT_EXCLUSAO" DATE, 
+	"IN_ALTEROU_SENHA" CHAR(1 BYTE), 
+	"DT_ULT_ALT" DATE
+   ) ;
+--------------------------------------------------------
+--  DDL for Table COM_ACES_USUARIO_PERFIL
+--------------------------------------------------------
+
+  CREATE TABLE "TIMESHEET"."COM_ACES_USUARIO_PERFIL" 
+   (	"CDG_USUR" VARCHAR2(16 BYTE), 
+	"CDG_PERFIL" NUMBER(4,0), 
+	"DT_INCLUSAO" DATE, 
+	"USUR_INCLUSAO" VARCHAR2(16 BYTE)
+   ) ;
+--------------------------------------------------------
+--  DDL for Table COM_DEBUG
+--------------------------------------------------------
+
+  CREATE TABLE "TIMESHEET"."COM_DEBUG" 
+   (	"TEXTO" VARCHAR2(3000 BYTE), 
+	"DATA" DATE, 
+	"SEQ" NUMBER
+   ) ;
+--------------------------------------------------------
+--  DDL for Table COM_PARAM_ADMIN_GERAL
+--------------------------------------------------------
+
+  CREATE TABLE "TIMESHEET"."COM_PARAM_ADMIN_GERAL" 
+   (	"CDG_PARAM" NUMBER(3,0), 
+	"VLR_INI_PARAM" VARCHAR2(200 BYTE), 
+	"VLR_FIM_PARAM" VARCHAR2(100 BYTE), 
+	"CDG_USUR_PARAM" VARCHAR2(16 BYTE), 
+	"DTA_ULT_ALT" DATE
+   ) ;
+--------------------------------------------------------
+--  DDL for Table COM_PARAMETROS_ADMINISTRATIVOS
+--------------------------------------------------------
+
+  CREATE TABLE "TIMESHEET"."COM_PARAMETROS_ADMINISTRATIVOS" 
+   (	"CDG_PARAM" NUMBER(3,0), 
+	"NME_PARAM" VARCHAR2(20 BYTE), 
+	"CDG_USUR_ADM" VARCHAR2(16 BYTE), 
+	"DTA_ULT_ALT" DATE
+   ) ;
+
+   COMMENT ON COLUMN "TIMESHEET"."COM_PARAMETROS_ADMINISTRATIVOS"."CDG_PARAM" IS 'Codigo do Parametro';
+   COMMENT ON COLUMN "TIMESHEET"."COM_PARAMETROS_ADMINISTRATIVOS"."NME_PARAM" IS 'Nome do Parametro';
+--------------------------------------------------------
+--  DDL for Table CONDPAGTO
+--------------------------------------------------------
+
+  CREATE TABLE "TIMESHEET"."CONDPAGTO" 
+   (	"CD_CONDPAGTO" NUMBER(3,0), 
+	"DS_CONDPAGTO" VARCHAR2(30 BYTE), 
+	"QT_DIASPRAZO" NUMBER(4,0)
+   ) ;
+--------------------------------------------------------
+--  DDL for Table CONTA_BANCARIA
+--------------------------------------------------------
+
+  CREATE TABLE "TIMESHEET"."CONTA_BANCARIA" 
+   (	"CONTA_CD_CONTA" NUMBER(2,0), 
+	"CONTA_NR_CONTA" VARCHAR2(10 BYTE), 
+	"CONTA_NM_GERENTE" VARCHAR2(20 BYTE), 
+	"CONTA_NR_TELEFONE" VARCHAR2(8 BYTE), 
+	"CONTA_NR_DDD" VARCHAR2(6 BYTE), 
+	"CONTA_NR_RAMAL" VARCHAR2(4 BYTE), 
+	"CD_BANCO" VARCHAR2(7 BYTE)
+   ) ;
+--------------------------------------------------------
+--  DDL for Table CONTABCO
+--------------------------------------------------------
+
+  CREATE TABLE "TIMESHEET"."CONTABCO" 
+   (	"CD_BANCO" VARCHAR2(7 BYTE), 
+	"CD_AGENCIA" VARCHAR2(10 BYTE), 
+	"NR_DIGITO" NUMBER(1,0), 
+	"NR_CONTABCO" NUMBER(15,0), 
+	"DG_CONTABCO" NUMBER(1,0), 
+	"TP_CONTA" VARCHAR2(2 BYTE), 
+	"NM_GERENTE" VARCHAR2(50 BYTE), 
+	"NR_FONE" VARCHAR2(15 BYTE)
+   ) ;
+--------------------------------------------------------
+--  DDL for Table CONTATO
+--------------------------------------------------------
+
+  CREATE TABLE "TIMESHEET"."CONTATO" 
+   (	"CD_CLIFOR" NUMBER(7,0), 
+	"CD_CONTATO" NUMBER(3,0), 
+	"NM_CONTATO" VARCHAR2(30 BYTE), 
+	"DT_CADASTRAMENTO" DATE, 
+	"DT_ANIVERSARIO" DATE, 
+	"DS_OBSERVACAO" LONG, 
+	"DS_FUNCAO" VARCHAR2(30 BYTE), 
+	"CD_ENDERECO" NUMBER(3,0), 
+	"ST_MALADIRETA" VARCHAR2(1 BYTE) DEFAULT 'S'
+   ) ;
+--------------------------------------------------------
+--  DDL for Table CONTRATO
+--------------------------------------------------------
+
+  CREATE TABLE "TIMESHEET"."CONTRATO" 
+   (	"CD_CONTRATO" NUMBER(7,0), 
+	"DS_CONTRATO" VARCHAR2(50 BYTE)
+   ) ;
+--------------------------------------------------------
+--  DDL for Table COUNTRY
+--------------------------------------------------------
+
+  CREATE TABLE "TIMESHEET"."COUNTRY" 
+   (	"CD_COUTRY" NUMBER(4,0), 
+	"DS_COUNTRY" VARCHAR2(30 BYTE)
+   ) ;
+--------------------------------------------------------
+--  DDL for Table CRM
+--------------------------------------------------------
+
+  CREATE TABLE "TIMESHEET"."CRM" 
+   (	"CD_CRM" NUMBER(3,0), 
+	"DS_CRM" VARCHAR2(50 BYTE)
+   ) ;
+--------------------------------------------------------
+--  DDL for Table CRONOGRAMA_FATURAMENTO
+--------------------------------------------------------
+
+  CREATE TABLE "TIMESHEET"."CRONOGRAMA_FATURAMENTO" 
+   (	"CD_PROJETO" NUMBER(7,0), 
+	"SEQ_CRONOGRAMA_FATURAMENTO" NUMBER(7,0), 
+	"ST_CRONOGRAMA_FATURAMENTO" VARCHAR2(3 BYTE), 
+	"DIA_DO_MES_A_FATURAR_HH" NUMBER(2,0), 
+	"ANOMES_INI_FATURAMENTO_HH" NUMBER(4,0), 
+	"ANOMES_FIM_FATURAMENTO_HH" NUMBER(4,0), 
+	"VALOR_A_FATURAR_FECHADO_MENSAL" NUMBER, 
+	"DIA_DO_MES_A_FATURAR_FECHADO" NUMBER(2,0), 
+	"ANOMES_INI_FATURAMENTO_FECHADO" NUMBER(4,0), 
+	"ANOMES_FIM_FATURAMENTO_FECHADO" NUMBER(4,0), 
+	"SEQ_PROJETO_FASE" NUMBER(3,0), 
+	"VALOR_A_FATURAR_FASE" NUMBER, 
+	"DIA_DO_MES_A_FATURAR_FASE" NUMBER(2,0), 
+	"FASE_FATURADA_S_N" VARCHAR2(1 BYTE), 
+	"DT_FATURAMENTO_CUSTOM" DATE, 
+	"VALOR_A_FATURAR_CUSTOM" NUMBER, 
+	"CUSTOM_FATURADO_S_N" VARCHAR2(1 BYTE)
+   ) ;
+--------------------------------------------------------
+--  DDL for Table CTRL_NAV_USUR
+--------------------------------------------------------
+
+  CREATE TABLE "TIMESHEET"."CTRL_NAV_USUR" 
+   (	"NM_SESSIONID" VARCHAR2(20 BYTE), 
+	"NM_LOGIN_USUARIO" VARCHAR2(30 BYTE), 
+	"CD_MODULO" VARCHAR2(3 BYTE), 
+	"NM_MODULO" VARCHAR2(32 BYTE), 
+	"TP_MODULO" VARCHAR2(1 BYTE), 
+	"DT_HR_ENTRADA" DATE, 
+	"DT_HR_SAIDA" DATE, 
+	"NM_TERMINAL" VARCHAR2(15 BYTE)
+   ) ;
+--------------------------------------------------------
+--  DDL for Table DEBUG
+--------------------------------------------------------
+
+  CREATE TABLE "TIMESHEET"."DEBUG" 
+   (	"SEQ" NUMBER, 
+	"DATA" TIMESTAMP (6), 
+	"TEXTO" VARCHAR2(4000 BYTE)
+   ) ;
+--------------------------------------------------------
+--  DDL for Table DEPT
+--------------------------------------------------------
+
+  CREATE TABLE "TIMESHEET"."DEPT" 
+   (	"DEPTNO" NUMBER(2,0), 
+	"DNAME" VARCHAR2(14 BYTE), 
+	"LOC" VARCHAR2(13 BYTE), 
+	"DIVISOR" NUMBER(1,0)
+   ) ;
+--------------------------------------------------------
+--  DDL for Table DETALHAMENTO_CLASSE
+--------------------------------------------------------
+
+  CREATE TABLE "TIMESHEET"."DETALHAMENTO_CLASSE" 
+   (	"CLAS_CD_CLASSE" CHAR(3 BYTE), 
+	"DETA_NR_SEQUENCIAL" NUMBER(2,0), 
+	"DETA_TX_DESCRICAO" VARCHAR2(20 BYTE)
+   ) ;
+--------------------------------------------------------
+--  DDL for Table DIM_CLIENTE
+--------------------------------------------------------
+
+  CREATE TABLE "TIMESHEET"."DIM_CLIENTE" 
+   (	"SK_CLIENTE" NUMBER(7,0), 
+	"CD_CLIENTE" NUMBER(7,0), 
+	"NM_RAZAOSOCIAL" VARCHAR2(70 BYTE), 
+	"NM_FANTASIA" VARCHAR2(70 BYTE), 
+	"NR_CNPJ" NUMBER(14,0), 
+	"DT_CADASTRAMENTO" DATE, 
+	"DT_ULTVISITA" DATE, 
+	"DT_ULT_ATLZ" DATE
+   ) ;
+--------------------------------------------------------
+--  DDL for Table DIM_FILIAL
+--------------------------------------------------------
+
+  CREATE TABLE "TIMESHEET"."DIM_FILIAL" 
+   (	"SK_FILIAL" NUMBER(3,0), 
+	"CD_FILIAL" NUMBER(3,0), 
+	"NM_FILIAL" VARCHAR2(30 BYTE), 
+	"DT_ULT_ATLZ" DATE
+   ) ;
+--------------------------------------------------------
+--  DDL for Table DIM_FUNCIONARIO
+--------------------------------------------------------
+
+  CREATE TABLE "TIMESHEET"."DIM_FUNCIONARIO" 
+   (	"SK_FUNCIONARIO" NUMBER(7,0), 
+	"CD_FUNCIONARIO" NUMBER(7,0), 
+	"NM_FUNCIONARIO" VARCHAR2(50 BYTE), 
+	"DT_ADMISSAO" DATE, 
+	"CDG_USUR" VARCHAR2(16 BYTE), 
+	"NR_SALDO_BHE50" NUMBER, 
+	"NR_SALDO_BHE100" NUMBER, 
+	"DT_RESCISAO" DATE, 
+	"DT_ULT_ATLZ" DATE
+   ) ;
+--------------------------------------------------------
+--  DDL for Table DIM_PROJETO
+--------------------------------------------------------
+
+  CREATE TABLE "TIMESHEET"."DIM_PROJETO" 
+   (	"SK_PROJETO" NUMBER(7,0), 
+	"SK_CLIENTE" NUMBER(7,0), 
+	"CD_PROJETO" NUMBER(7,0), 
+	"DS_PROJETO" VARCHAR2(200 BYTE), 
+	"DT_INICIO_PREV" DATE, 
+	"DT_INICIO_REAL" DATE, 
+	"DT_FIM_REAL" DATE, 
+	"ST_PROJETO" VARCHAR2(3 BYTE), 
+	"TP_COBRANCA" VARCHAR2(3 BYTE), 
+	"DT_ULT_ATLZ" DATE
+   ) ;
+--------------------------------------------------------
+--  DDL for Table DIM_TEMPO_DIA
+--------------------------------------------------------
+
+  CREATE TABLE "TIMESHEET"."DIM_TEMPO_DIA" 
+   (	"SK_TEMPO_DIA" NUMBER(5,0), 
+	"NR_DATA" DATE, 
+	"NM_DIA_SEMANA" VARCHAR2(8 BYTE), 
+	"NR_DIA" NUMBER(2,0), 
+	"NR_MES" NUMBER(6,0), 
+	"NR_ANO" NUMBER(4,0), 
+	"NR_TRIMESTRE" NUMBER(5,0), 
+	"NR_SEMESTRE" NUMBER(5,0), 
+	"DT_ULT_ATLZ" DATE, 
+	"DC_SEMESTRE" VARCHAR2(20 BYTE), 
+	"DC_MES" VARCHAR2(20 BYTE), 
+	"NR_ANO_MES" NUMBER(6,0), 
+	"ANO_MES_DIA" NUMBER(8,0), 
+	"TX_ANO_MES" VARCHAR2(15 BYTE), 
+	"TX_ANO" VARCHAR2(4 BYTE), 
+	"TX_TRIMESTRE" VARCHAR2(15 BYTE), 
+	"TX_ANO_MES_DIA" VARCHAR2(15 BYTE), 
+	"NR_MES_2_POSICOES" NUMBER(2,0)
+   ) ;
+--------------------------------------------------------
+--  DDL for Table DIM_VERTICAL
+--------------------------------------------------------
+
+  CREATE TABLE "TIMESHEET"."DIM_VERTICAL" 
+   (	"SK_VERTICAL" NUMBER(3,0), 
+	"NM_VERTICAL" VARCHAR2(30 BYTE), 
+	"DT_ULT_ATLZ" DATE
+   ) ;
+--------------------------------------------------------
+--  DDL for Table EMPRESA
+--------------------------------------------------------
+
+  CREATE TABLE "TIMESHEET"."EMPRESA" 
+   (	"CD_EMPRESA" NUMBER(3,0), 
+	"NM_EMPRESA" VARCHAR2(30 BYTE), 
+	"PR_COFINS" NUMBER(5,2), 
+	"PR_PIS" NUMBER(5,2), 
+	"PR_ISS" NUMBER(5,2), 
+	"PR_IR" NUMBER(5,2), 
+	"PC_CONTRSOCIAL" NUMBER(5,2), 
+	"PC_DESC_PROD" NUMBER(6,3), 
+	"PC_DESC_SUP" NUMBER(6,3), 
+	"PC_DESC_MANUT" NUMBER(6,3)
+   ) ;
+--------------------------------------------------------
+--  DDL for Table ENDERECO
+--------------------------------------------------------
+
+  CREATE TABLE "TIMESHEET"."ENDERECO" 
+   (	"CD_CLIFOR" NUMBER(7,0), 
+	"CD_ENDERECO" NUMBER(3,0), 
+	"DS_LOGRADOURO" VARCHAR2(50 BYTE), 
+	"DS_BAIRRO" VARCHAR2(20 BYTE), 
+	"NR_INSCRESTADUAL" VARCHAR2(12 BYTE), 
+	"NR_TELEFONE" VARCHAR2(10 BYTE), 
+	"NR_FAX" VARCHAR2(10 BYTE), 
+	"TP_ENDERECO" VARCHAR2(3 BYTE) DEFAULT 'E04', 
+	"CD_CEP" NUMBER(8,0), 
+	"CD_CIDADE" NUMBER(7,0)
+   ) ;
+--------------------------------------------------------
+--  DDL for Table ERP
+--------------------------------------------------------
+
+  CREATE TABLE "TIMESHEET"."ERP" 
+   (	"CD_ERP" NUMBER(3,0), 
+	"DS_ERP" VARCHAR2(50 BYTE)
+   ) ;
+--------------------------------------------------------
+--  DDL for Table ESTADO
+--------------------------------------------------------
+
+  CREATE TABLE "TIMESHEET"."ESTADO" 
+   (	"SG_ESTADO" VARCHAR2(2 BYTE) DEFAULT 'SP', 
+	"DS_ESTADO" VARCHAR2(20 BYTE)
+   ) ;
+--------------------------------------------------------
+--  DDL for Table FASEPROJETO
+--------------------------------------------------------
+
+  CREATE TABLE "TIMESHEET"."FASEPROJETO" 
+   (	"CD_PROJETO" NUMBER(7,0), 
+	"CD_FASE" NUMBER(3,0), 
+	"ST_FASEPROJ" VARCHAR2(3 BYTE), 
+	"NR_HORASPREVISTA" NUMBER(7,0), 
+	"NR_HORASREAL" NUMBER(7,0), 
+	"DS_FASE" VARCHAR2(50 BYTE), 
+	"TIPO_FATURAMENTO_FASE" VARCHAR2(30 BYTE), 
+	"DATA_INICIO_REALIZADO_FASE" DATE, 
+	"DATA_ULTIMO_FATURAMENTO" DATE, 
+	"VALOR_MENSAL_LIMITE" NUMBER, 
+	"PERC_CONCLUSAO_FASE" NUMBER, 
+	"VALOR_A_FATURAR_FASE" NUMBER, 
+	"FASE_JA_FATURADA" VARCHAR2(3 BYTE), 
+	"VALOR_A_FATURAR_MENSAL" NUMBER, 
+	"DATA_FIM_REALIZADO_FASE" DATE, 
+	"DT_ULT_ALT" DATE
+   ) ;
+
+   COMMENT ON COLUMN "TIMESHEET"."FASEPROJETO"."CD_PROJETO" IS 'Cod. Projeto';
+   COMMENT ON COLUMN "TIMESHEET"."FASEPROJETO"."CD_FASE" IS 'Cod. Fase';
+   COMMENT ON COLUMN "TIMESHEET"."FASEPROJETO"."ST_FASEPROJ" IS 'Status de Registro';
+--------------------------------------------------------
+--  DDL for Table FAT_HR_FUNC_PROJ
+--------------------------------------------------------
+
+  CREATE TABLE "TIMESHEET"."FAT_HR_FUNC_PROJ" 
+   (	"SK_PROJETO" NUMBER(7,0), 
+	"SK_CLIENTE" NUMBER(7,0), 
+	"SK_FILIAL" NUMBER(3,0), 
+	"SK_TEMPO_DIA" NUMBER(5,0), 
+	"SK_FUNCIONARIO" NUMBER(7,0), 
+	"SK_VERTICAL" NUMBER(3,0), 
+	"DT_ULT_ATLZ" DATE, 
+	"QT_HR_CO" NUMBER, 
+	"QT_HR_NC" NUMBER, 
+	"QT_HR_EXTRAS_CO" NUMBER, 
+	"QT_HR_EXTRAS_NC" NUMBER, 
+	"QT_HR_DESALOCACAO" NUMBER, 
+	"QT_HR_TREINAMENTO_AUTOESTUDO" NUMBER, 
+	"QT_HR_FERIAS" NUMBER, 
+	"QT_HR_OUTROS_NC" NUMBER, 
+	"QT_HR_NORMAIS" NUMBER, 
+	"QT_HR_AUSENCIA_BHE" NUMBER, 
+	"QT_HR_AUSENCIA_ABN" NUMBER
+   ) ;
+--------------------------------------------------------
+--  DDL for Table FAT_HR_UTEIS_MES_FILI
+--------------------------------------------------------
+
+  CREATE TABLE "TIMESHEET"."FAT_HR_UTEIS_MES_FILI" 
+   (	"SK_FILIAL" NUMBER(3,0), 
+	"SK_TEMPO_DIA" NUMBER(5,0), 
+	"DT_ULT_ATLZ" DATE, 
+	"QT_DI_UTEIS_MES" NUMBER, 
+	"QT_HR_UTEIS_MES" NUMBER
+   ) ;
+--------------------------------------------------------
+--  DDL for Table FATURAMENTO
+--------------------------------------------------------
+
+  CREATE TABLE "TIMESHEET"."FATURAMENTO" 
+   (	"DT_EMISSAO" DATE, 
+	"NR_NF" NUMBER(15,0), 
+	"CD_CLIFOR" NUMBER(7,0), 
+	"CD_PROJETO" NUMBER(7,0), 
+	"LINHA_SERVICO" VARCHAR2(30 BYTE), 
+	"TIPO_SERVICO" VARCHAR2(30 BYTE), 
+	"PLATAFORMA_VENDOR" VARCHAR2(30 BYTE), 
+	"TIPO_CONTRATO" VARCHAR2(30 BYTE), 
+	"CD_EMPRESA" NUMBER(3,0), 
+	"VALOR" NUMBER, 
+	"REFERENTE" VARCHAR2(50 BYTE), 
+	"DT_TRANSFERENCIA" DATE, 
+	"NM_ARQ_PLANILHA" VARCHAR2(255 BYTE), 
+	"NM_ABA_PLANILHA" VARCHAR2(100 BYTE), 
+	"NR_LINHA_PLANILHA" NUMBER(10,0), 
+	"NM_USUARIO_WINDOWS" VARCHAR2(100 BYTE), 
+	"TECNOLOGIA" VARCHAR2(30 BYTE), 
+	"BLOCO_DE_NF" VARCHAR2(10 BYTE), 
+	"DT_VENCIMENTO" DATE, 
+	"VL_LIQUIDO" NUMBER, 
+	"DT_PAGAMENTO" DATE, 
+	"CONTROLE" VARCHAR2(50 BYTE), 
+	"RECORRENTE" VARCHAR2(10 BYTE), 
+	"HHFECHADO" VARCHAR2(20 BYTE)
+   ) ;
+--------------------------------------------------------
+--  DDL for Table FATURAMENTO_RLZD_PROJETO
+--------------------------------------------------------
+
+  CREATE TABLE "TIMESHEET"."FATURAMENTO_RLZD_PROJETO" 
+   (	"CD_PROJETO" NUMBER(7,0), 
+	"DATA_FATURADO" DATE, 
+	"VALOR_FATURADO" NUMBER, 
+	"RELATIVO_A_ANO_MES_AAAAMM" VARCHAR2(6 BYTE), 
+	"RELATIVO_A_FASE" VARCHAR2(50 BYTE), 
+	"OBS_COMENTARIOS" VARCHAR2(4000 BYTE), 
+	"DT_ULT_ALT" DATE
+   ) ;
+--------------------------------------------------------
+--  DDL for Table FERIADO
+--------------------------------------------------------
+
+  CREATE TABLE "TIMESHEET"."FERIADO" 
+   (	"FERI_CD_FERIADO" NUMBER(9,0), 
+	"FERI_NM_FERIADO" VARCHAR2(250 BYTE), 
+	"FERI_NR_ANO" NUMBER(4,0), 
+	"FERI_NR_MES" NUMBER(2,0), 
+	"FERI_NR_DIA" NUMBER(2,0), 
+	"FILIAL_CD_FILIAL" NUMBER(3,0), 
+	"DTA_ULT_ALT" DATE, 
+	"USUR_CD_USUR" VARCHAR2(16 BYTE), 
+	"FERI_TP_FERIADO" VARCHAR2(2 BYTE) DEFAULT 'LN', 
+	"FERI_NR_HORAS_A_TRABALHAR" NUMBER(5,2), 
+	"FERI_STT_INATIVO" VARCHAR2(1 BYTE) DEFAULT 'N'
+   ) ;
+--------------------------------------------------------
+--  DDL for Table FILA_INTEGRACAO
+--------------------------------------------------------
+
+  CREATE TABLE "TIMESHEET"."FILA_INTEGRACAO" 
+   (	"NR_ORDEM" NUMBER(9,0), 
+	"CDG_USUR" VARCHAR2(16 BYTE), 
+	"TP_OPERACAO" CHAR(1 BYTE), 
+	"DT_INSERCAO" DATE, 
+	"FIRST_NAME" VARCHAR2(30 BYTE), 
+	"MIDDLE_NAME" VARCHAR2(50 BYTE), 
+	"LAST_NAME" VARCHAR2(30 BYTE), 
+	"FULL_NAME" VARCHAR2(200 BYTE), 
+	"CD_EMPRESA" NUMBER(2,0)
+   ) ;
+--------------------------------------------------------
+--  DDL for Table FUNC_CLT
+--------------------------------------------------------
+
+  CREATE TABLE "TIMESHEET"."FUNC_CLT" 
+   (	"CD_FUNCIONARIO" NUMBER(7,0), 
+	"NR_CARTEIRA" VARCHAR2(15 BYTE), 
+	"NR_PIS" VARCHAR2(15 BYTE), 
+	"ST_IN_PLANO" VARCHAR2(1 BYTE) DEFAULT 'N', 
+	"ST_VALE_TRANSP" VARCHAR2(1 BYTE) DEFAULT 'N', 
+	"NR_SERIE" VARCHAR2(5 BYTE)
+   ) ;
+--------------------------------------------------------
+--  DDL for Table FUNC_EMPR
+--------------------------------------------------------
+
+  CREATE TABLE "TIMESHEET"."FUNC_EMPR" 
+   (	"CD_FUNCIONARIO" NUMBER(7,0), 
+	"NR_CONTRATO" NUMBER(10,0), 
+	"DS_CONTRATO" VARCHAR2(50 BYTE), 
+	"CD_CLIFOR" NUMBER(7,0)
+   ) ;
+--------------------------------------------------------
+--  DDL for Table FUNC_ENDERECO
+--------------------------------------------------------
+
+  CREATE TABLE "TIMESHEET"."FUNC_ENDERECO" 
+   (	"CD_FUNCIONARIO" NUMBER(7,0), 
+	"CD_ENDERECO" NUMBER(1,0), 
+	"DS_ENDERECO" VARCHAR2(50 BYTE), 
+	"DS_BAIRRO" VARCHAR2(15 BYTE), 
+	"CD_CEP" NUMBER(8,0), 
+	"NR_FONE_RES" VARCHAR2(15 BYTE), 
+	"NR_FONE_CEL" VARCHAR2(15 BYTE), 
+	"NR_FONE_PAGE" VARCHAR2(15 BYTE), 
+	"CD_PAGE" VARCHAR2(15 BYTE), 
+	"DS_EMAIL" VARCHAR2(50 BYTE), 
+	"TP_ENDERECO" VARCHAR2(1 BYTE) DEFAULT 'R'
+   ) ;
+--------------------------------------------------------
+--  DDL for Table FUNCIONARIO
+--------------------------------------------------------
+
+  CREATE TABLE "TIMESHEET"."FUNCIONARIO" 
+   (	"CD_FUNCIONARIO" NUMBER(7,0), 
+	"TP_FUNCIONARIO" VARCHAR2(1 BYTE), 
+	"NM_FUNCIONARIO" VARCHAR2(50 BYTE), 
+	"NR_RG" VARCHAR2(15 BYTE), 
+	"DS_ORGAO_EMISSOR" VARCHAR2(6 BYTE), 
+	"NR_CPF" VARCHAR2(14 BYTE), 
+	"NR_TITULO_ELEITOR" VARCHAR2(15 BYTE), 
+	"NR_ZONA_ELEITOR" VARCHAR2(5 BYTE), 
+	"NR_SECAO_ELEITOR" VARCHAR2(5 BYTE), 
+	"DS_NACIONALIDADE" VARCHAR2(15 BYTE), 
+	"NM_PAI" VARCHAR2(80 BYTE), 
+	"NM_MAE" VARCHAR2(80 BYTE), 
+	"DT_ANIVERSARIO" DATE, 
+	"ST_EST_CIVIL" VARCHAR2(1 BYTE) DEFAULT 'S', 
+	"DT_ADMISSAO" DATE, 
+	"DT_RESCISAO" DATE, 
+	"CD_BANCO" VARCHAR2(7 BYTE), 
+	"CD_AGENCIA" VARCHAR2(10 BYTE), 
+	"NR_DIGITO" NUMBER(2,0), 
+	"NR_CONTABANC" NUMBER(10,0), 
+	"NR_DIGITOCONTA" NUMBER(1,0), 
+	"CDG_USUR" VARCHAR2(16 BYTE), 
+	"CD_CARGO" NUMBER(3,0), 
+	"CD_NIVEL" NUMBER(2,0), 
+	"CD_EMPRESA" NUMBER(3,0), 
+	"IN_SETOR" VARCHAR2(1 BYTE), 
+	"FUNC_NR_SALDO_BHE100" NUMBER(7,2), 
+	"FUNC_NR_SALDO_BHE50" NUMBER(7,2), 
+	"DT_ULT_ALT" DATE, 
+	"VALOR_ULTIMO_PAGAMENTO" NUMBER, 
+	"NR_CARTEIRA" VARCHAR2(15 BYTE), 
+	"NR_PIS" VARCHAR2(15 BYTE), 
+	"ST_IN_PLANO" VARCHAR2(1 BYTE) DEFAULT 'N', 
+	"ST_VALE_TRANSP" VARCHAR2(1 BYTE) DEFAULT 'N', 
+	"NR_SERIE" VARCHAR2(5 BYTE), 
+	"NR_CONTRATO" NUMBER(10,0), 
+	"DS_CONTRATO" VARCHAR2(50 BYTE), 
+	"DS_ENDERECO" VARCHAR2(50 BYTE), 
+	"DS_BAIRRO" VARCHAR2(15 BYTE), 
+	"NU_CEP" NUMBER(8,0), 
+	"NR_FONE_RES" VARCHAR2(15 BYTE), 
+	"NR_FONE_CEL" VARCHAR2(15 BYTE), 
+	"DS_EMAIL" VARCHAR2(50 BYTE), 
+	"ST_REQUER_APROVACAO_ADMIN" VARCHAR2(1 BYTE), 
+	"DT_ULTIMA_VERIFICACAO_REP" DATE, 
+	"FUNC_CD_FUNC_APROVADOR" NUMBER(7,0), 
+	"IN_POSSUI_BANCO_HORAS" VARCHAR2(1 BYTE) DEFAULT 'S'
+   ) ;
+--------------------------------------------------------
+--  DDL for Table FUNCIONARIO_BKP
+--------------------------------------------------------
+
+  CREATE TABLE "TIMESHEET"."FUNCIONARIO_BKP" 
+   (	"CD_FUNCIONARIO" NUMBER(7,0), 
+	"TP_FUNCIONARIO" VARCHAR2(1 BYTE), 
+	"NM_FUNCIONARIO" VARCHAR2(50 BYTE), 
+	"NR_RG" VARCHAR2(15 BYTE), 
+	"DS_ORGAO_EMISSOR" VARCHAR2(6 BYTE), 
+	"NR_CPF" VARCHAR2(14 BYTE), 
+	"NR_TITULO_ELEITOR" VARCHAR2(15 BYTE), 
+	"NR_ZONA_ELEITOR" VARCHAR2(5 BYTE), 
+	"NR_SECAO_ELEITOR" VARCHAR2(5 BYTE), 
+	"DS_NACIONALIDADE" VARCHAR2(15 BYTE), 
+	"NM_PAI" VARCHAR2(80 BYTE), 
+	"NM_MAE" VARCHAR2(80 BYTE), 
+	"DT_ANIVERSARIO" DATE, 
+	"ST_EST_CIVIL" VARCHAR2(1 BYTE), 
+	"DT_ADMISSAO" DATE, 
+	"DT_RESCISAO" DATE, 
+	"CD_BANCO" VARCHAR2(7 BYTE), 
+	"CD_AGENCIA" VARCHAR2(10 BYTE), 
+	"NR_DIGITO" NUMBER(2,0), 
+	"NR_CONTABANC" NUMBER(10,0), 
+	"NR_DIGITOCONTA" NUMBER(1,0), 
+	"CDG_USUR" VARCHAR2(16 BYTE), 
+	"CD_CARGO" NUMBER(3,0), 
+	"CD_NIVEL" NUMBER(2,0), 
+	"CD_EMPRESA" NUMBER(3,0), 
+	"IN_SETOR" VARCHAR2(1 BYTE), 
+	"FUNC_NR_SALDO_BHE100" NUMBER(7,2), 
+	"FUNC_NR_SALDO_BHE50" NUMBER(7,2), 
+	"DT_ULT_ALT" DATE, 
+	"VALOR_ULTIMO_PAGAMENTO" NUMBER, 
+	"NR_CARTEIRA" VARCHAR2(15 BYTE), 
+	"NR_PIS" VARCHAR2(15 BYTE), 
+	"ST_IN_PLANO" VARCHAR2(1 BYTE), 
+	"ST_VALE_TRANSP" VARCHAR2(1 BYTE), 
+	"NR_SERIE" VARCHAR2(5 BYTE), 
+	"NR_CONTRATO" NUMBER(10,0), 
+	"DS_CONTRATO" VARCHAR2(50 BYTE), 
+	"DS_ENDERECO" VARCHAR2(50 BYTE), 
+	"DS_BAIRRO" VARCHAR2(15 BYTE), 
+	"NU_CEP" NUMBER(8,0), 
+	"NR_FONE_RES" VARCHAR2(15 BYTE), 
+	"NR_FONE_CEL" VARCHAR2(15 BYTE), 
+	"DS_EMAIL" VARCHAR2(50 BYTE), 
+	"ST_REQUER_APROVACAO_ADMIN" VARCHAR2(1 BYTE), 
+	"DT_ULTIMA_VERIFICACAO_REP" DATE, 
+	"FUNC_CD_FUNC_APROVADOR" NUMBER(7,0), 
+	"IN_POSSUI_BANCO_HORAS" VARCHAR2(1 BYTE)
+   ) ;
+--------------------------------------------------------
+--  DDL for Table FUNCIONARIO_20140826
+--------------------------------------------------------
+
+  CREATE TABLE "TIMESHEET"."FUNCIONARIO_20140826" 
+   (	"CD_FUNCIONARIO" NUMBER(7,0), 
+	"TP_FUNCIONARIO" VARCHAR2(1 BYTE), 
+	"NM_FUNCIONARIO" VARCHAR2(50 BYTE), 
+	"NR_RG" VARCHAR2(15 BYTE), 
+	"DS_ORGAO_EMISSOR" VARCHAR2(6 BYTE), 
+	"NR_CPF" VARCHAR2(14 BYTE), 
+	"NR_TITULO_ELEITOR" VARCHAR2(15 BYTE), 
+	"NR_ZONA_ELEITOR" VARCHAR2(5 BYTE), 
+	"NR_SECAO_ELEITOR" VARCHAR2(5 BYTE), 
+	"DS_NACIONALIDADE" VARCHAR2(15 BYTE), 
+	"NM_PAI" VARCHAR2(80 BYTE), 
+	"NM_MAE" VARCHAR2(80 BYTE), 
+	"DT_ANIVERSARIO" DATE, 
+	"ST_EST_CIVIL" VARCHAR2(1 BYTE), 
+	"DT_ADMISSAO" DATE, 
+	"DT_RESCISAO" DATE, 
+	"CD_BANCO" VARCHAR2(7 BYTE), 
+	"CD_AGENCIA" VARCHAR2(10 BYTE), 
+	"NR_DIGITO" NUMBER(2,0), 
+	"NR_CONTABANC" NUMBER(10,0), 
+	"NR_DIGITOCONTA" NUMBER(1,0), 
+	"CDG_USUR" VARCHAR2(16 BYTE), 
+	"CD_CARGO" NUMBER(3,0), 
+	"CD_NIVEL" NUMBER(2,0), 
+	"CD_EMPRESA" NUMBER(3,0), 
+	"IN_SETOR" VARCHAR2(1 BYTE), 
+	"FUNC_NR_SALDO_BHE100" NUMBER(7,2), 
+	"FUNC_NR_SALDO_BHE50" NUMBER(7,2), 
+	"DT_ULT_ALT" DATE, 
+	"VALOR_ULTIMO_PAGAMENTO" NUMBER, 
+	"NR_CARTEIRA" VARCHAR2(15 BYTE), 
+	"NR_PIS" VARCHAR2(15 BYTE), 
+	"ST_IN_PLANO" VARCHAR2(1 BYTE), 
+	"ST_VALE_TRANSP" VARCHAR2(1 BYTE), 
+	"NR_SERIE" VARCHAR2(5 BYTE), 
+	"NR_CONTRATO" NUMBER(10,0), 
+	"DS_CONTRATO" VARCHAR2(50 BYTE), 
+	"DS_ENDERECO" VARCHAR2(50 BYTE), 
+	"DS_BAIRRO" VARCHAR2(15 BYTE), 
+	"NU_CEP" NUMBER(8,0), 
+	"NR_FONE_RES" VARCHAR2(15 BYTE), 
+	"NR_FONE_CEL" VARCHAR2(15 BYTE), 
+	"DS_EMAIL" VARCHAR2(50 BYTE), 
+	"ST_REQUER_APROVACAO_ADMIN" VARCHAR2(1 BYTE), 
+	"DT_ULTIMA_VERIFICACAO_REP" DATE
+   ) ;
+--------------------------------------------------------
+--  DDL for Table GER_REDE
+--------------------------------------------------------
+
+  CREATE TABLE "TIMESHEET"."GER_REDE" 
+   (	"CD_GER_REDE" NUMBER(3,0), 
+	"DS_GER_REDE" VARCHAR2(50 BYTE)
+   ) ;
+--------------------------------------------------------
+--  DDL for Table GRUPOPROD
+--------------------------------------------------------
+
+  CREATE TABLE "TIMESHEET"."GRUPOPROD" 
+   (	"CD_GRUPOPROD" NUMBER(4,0), 
+	"DS_GRUPOPROD" VARCHAR2(40 BYTE)
+   ) ;
+--------------------------------------------------------
+--  DDL for Table HIST_FUNC
+--------------------------------------------------------
+
+  CREATE TABLE "TIMESHEET"."HIST_FUNC" 
+   (	"CD_FUNCIONARIO" NUMBER(7,0), 
+	"CD_HISTORICO" NUMBER(7,0), 
+	"CD_CARGO" NUMBER(3,0), 
+	"CD_NIVEL" NUMBER(2,0), 
+	"VL_SALARIO_BASE" NUMBER(15,2), 
+	"VL_HORA_NORMAL" NUMBER(15,2), 
+	"VL_HORA_EXTRA" NUMBER(15,2), 
+	"VL_HORA_ESPECIAL" NUMBER(15,2), 
+	"DT_HISTORICO" DATE, 
+	"DT_CREATED" DATE, 
+	"DT_MODIFIED" DATE, 
+	"MODIFIED_BY" VARCHAR2(16 BYTE), 
+	"CREATED_BY" VARCHAR2(16 BYTE)
+   ) ;
+--------------------------------------------------------
+--  DDL for Table HISTORICO_VERIFICACAO_REP
+--------------------------------------------------------
+
+  CREATE TABLE "TIMESHEET"."HISTORICO_VERIFICACAO_REP" 
+   (	"FUNC_CD_FUNC" NUMBER(7,0), 
+	"DT_ULTIMA_VERIFICACAO_REP" DATE
+   ) ;
+--------------------------------------------------------
+--  DDL for Table HORAS_DIA
+--------------------------------------------------------
+
+  CREATE TABLE "TIMESHEET"."HORAS_DIA" 
+   (	"FUNC_CD_FUNC" NUMBER(7,0), 
+	"LOPE_NR_ANO" NUMBER(4,0), 
+	"LOPE_NR_MES" NUMBER(2,0), 
+	"PERI_CD_PERIODO" NUMBER(2,0), 
+	"LOG_NR_DIA" NUMBER(2,0), 
+	"PROJ_CD_PROJETO" NUMBER(7,0), 
+	"HORAS_NR_NC" NUMBER(5,2), 
+	"HORAS_NR_CO" NUMBER(5,2), 
+	"DTA_ULT_ALT" DATE, 
+	"USUR_CD_USUR" VARCHAR2(16 BYTE), 
+	"HORAS_TX_OBS" VARCHAR2(1000 BYTE), 
+	"NR_MES_REAL" NUMBER(2,0), 
+	"NR_ANO_REAL" NUMBER(4,0)
+   ) ;
+--------------------------------------------------------
+--  DDL for Table JORNADA_TRABALHO
+--------------------------------------------------------
+
+  CREATE TABLE "TIMESHEET"."JORNADA_TRABALHO" 
+   (	"CD_FUNCIONARIO" NUMBER(7,0), 
+	"HORA_INICIO" NUMBER(4,2), 
+	"HORA_FIM" NUMBER(4,2), 
+	"DT_INICIO_VIGENCIA" DATE, 
+	"DT_FIM_VIGENCIA" DATE, 
+	"DT_ULT_ALT" DATE, 
+	"USUR_CD_USUR" VARCHAR2(16 BYTE)
+   ) ;
+--------------------------------------------------------
+--  DDL for Table LINHA_SERVICO
+--------------------------------------------------------
+
+  CREATE TABLE "TIMESHEET"."LINHA_SERVICO" 
+   (	"LINHA_SERVICO" VARCHAR2(30 BYTE)
+   ) ;
+--------------------------------------------------------
+--  DDL for Table LOG_DIA
+--------------------------------------------------------
+
+  CREATE TABLE "TIMESHEET"."LOG_DIA" 
+   (	"FUNC_CD_FUNC" NUMBER(7,0), 
+	"LOPE_NR_ANO" NUMBER(4,0), 
+	"LOPE_NR_MES" NUMBER(2,0), 
+	"PERI_CD_PERIODO" NUMBER(2,0), 
+	"LOG_NR_DIA" NUMBER(2,0), 
+	"LOG_QN_HEBHE" NUMBER(5,2), 
+	"LOG_QN_HEPGT" NUMBER(5,2), 
+	"LOG_QN_AUSBHE" NUMBER(5,2), 
+	"LOG_QN_AUSPGT" NUMBER(5,2), 
+	"LOG_NR_HNORMAL" NUMBER(5,2) DEFAULT NULL, 
+	"DTA_ULT_ALT" DATE, 
+	"USUR_CD_USUR" VARCHAR2(16 BYTE), 
+	"LOG_QN_AUSABN" NUMBER(5,2), 
+	"NR_MES_REAL" NUMBER(2,0), 
+	"NR_ANO_REAL" NUMBER(4,0)
+   ) ;
+--------------------------------------------------------
+--  DDL for Table LOG_PERIODO
+--------------------------------------------------------
+
+  CREATE TABLE "TIMESHEET"."LOG_PERIODO" 
+   (	"FUNC_CD_FUNC" NUMBER(7,0), 
+	"LOPE_NR_ANO" NUMBER(4,0), 
+	"LOPE_NR_MES" NUMBER(2,0), 
+	"PERI_CD_PERIODO" NUMBER(2,0), 
+	"LOPE_STT_LOG" VARCHAR2(1 BYTE) DEFAULT 'A', 
+	"DTA_ULT_ALT" DATE, 
+	"USUR_CD_USUR" VARCHAR2(16 BYTE)
+   ) ;
+--------------------------------------------------------
+--  DDL for Table LOG_PERIODO_BKP
+--------------------------------------------------------
+
+  CREATE TABLE "TIMESHEET"."LOG_PERIODO_BKP" 
+   (	"FUNC_CD_FUNC" NUMBER(7,0), 
+	"LOPE_NR_ANO" NUMBER(4,0), 
+	"LOPE_NR_MES" NUMBER(2,0), 
+	"PERI_CD_PERIODO" NUMBER(2,0), 
+	"LOPE_STT_LOG" VARCHAR2(1 BYTE), 
+	"DTA_ULT_ALT" DATE, 
+	"USUR_CD_USUR" VARCHAR2(16 BYTE)
+   ) ;
+--------------------------------------------------------
+--  DDL for Table LOG_TIPO_PERIODO
+--------------------------------------------------------
+
+  CREATE TABLE "TIMESHEET"."LOG_TIPO_PERIODO" 
+   (	"PERI_CD_PERIODO" NUMBER(2,0), 
+	"PERI_NM_PERIODO" VARCHAR2(20 BYTE), 
+	"PERI_NR_DIAS_PERIODO" NUMBER(2,0), 
+	"PERI_NR_PERIODO" NUMBER(1,0), 
+	"DTA_ULT_ALT" DATE, 
+	"USUR_CD_USUR" VARCHAR2(16 BYTE), 
+	"PERI_STT_ATIVO" VARCHAR2(1 BYTE) DEFAULT 'N', 
+	"PERI_NR_ANO_ATIVO" NUMBER(4,0), 
+	"PERI_NR_MES_ATIVO" NUMBER(2,0)
+   ) ;
+--------------------------------------------------------
+--  DDL for Table MOEDA
+--------------------------------------------------------
+
+  CREATE TABLE "TIMESHEET"."MOEDA" 
+   (	"CD_MOEDA" NUMBER(3,0), 
+	"SG_MOEDA" VARCHAR2(10 BYTE), 
+	"DS_MOEDA" VARCHAR2(40 BYTE)
+   ) ;
+--------------------------------------------------------
+--  DDL for Table MOVIMENTACAO_SALDO_BHE
+--------------------------------------------------------
+
+  CREATE TABLE "TIMESHEET"."MOVIMENTACAO_SALDO_BHE" 
+   (	"FUNC_CD_FUNC" NUMBER(7,0), 
+	"MOSA_DT_DATA" DATE, 
+	"MOSA_VL_ABATIMENTO50" NUMBER(7,2), 
+	"MOSA_VL_ABATIMENTO100" NUMBER(7,2), 
+	"USUR_CDG_USUR" VARCHAR2(16 BYTE), 
+	"MOSA_IN_LANCAMENTO_MANUAL" VARCHAR2(1 BYTE), 
+	"MOSA_NR_SEQ" NUMBER(8,0), 
+	"LOPE_NR_ANO" NUMBER(4,0), 
+	"LOPE_NR_MES" NUMBER(2,0), 
+	"LOG_NR_DIA" NUMBER(2,0)
+   ) ;
+--------------------------------------------------------
+--  DDL for Table NIVEL
+--------------------------------------------------------
+
+  CREATE TABLE "TIMESHEET"."NIVEL" 
+   (	"CD_CARGO" NUMBER(3,0), 
+	"CD_NIVEL" NUMBER(2,0), 
+	"DS_NIVEL" VARCHAR2(30 BYTE), 
+	"VL_SALARIO" NUMBER(15,2), 
+	"VL_CUSTO_DOLAR" NUMBER(15,2), 
+	"VL_CUSTO_MOEDA" NUMBER(15,2)
+   ) ;
+--------------------------------------------------------
+--  DDL for Table ORIGEM
+--------------------------------------------------------
+
+  CREATE TABLE "TIMESHEET"."ORIGEM" 
+   (	"CD_ORIGEM" NUMBER(3,0), 
+	"DS_ORIGEM" VARCHAR2(40 BYTE)
+   ) ;
+--------------------------------------------------------
+--  DDL for Table OTRS_PROJETOS
+--------------------------------------------------------
+
+  CREATE TABLE "TIMESHEET"."OTRS_PROJETOS" 
+   (	"CODPROJETO" NUMBER(10,0)
+   ) ;
+--------------------------------------------------------
+--  DDL for Table OTRS_STAGE
+--------------------------------------------------------
+
+  CREATE TABLE "TIMESHEET"."OTRS_STAGE" 
+   (	"LOGIN" NVARCHAR2(100), 
+	"DATAFINAL" DATE, 
+	"TEMPOATENDIMENTO" NUMBER, 
+	"CODPROJETO" NUMBER(10,0), 
+	"TICKET_NUMBER" NVARCHAR2(50)
+   ) ;
+--------------------------------------------------------
+--  DDL for Table OTRS_STAGE_NEW
+--------------------------------------------------------
+
+  CREATE TABLE "TIMESHEET"."OTRS_STAGE_NEW" 
+   (	"LOGIN" NVARCHAR2(100), 
+	"DATAINICIAL" DATE, 
+	"DATAFINAL" DATE, 
+	"TEMPOATENDIMENTO" NUMBER, 
+	"CODPROJETO" NUMBER(10,0), 
+	"TICKET_NUMBER" NVARCHAR2(50)
+   ) ;
+--------------------------------------------------------
+--  DDL for Table OTRS_STAGE_NEW_TESTE_201408
+--------------------------------------------------------
+
+  CREATE TABLE "TIMESHEET"."OTRS_STAGE_NEW_TESTE_201408" 
+   (	"LOGIN" NVARCHAR2(100), 
+	"DATAINICIAL" DATE, 
+	"DATAFINAL" DATE, 
+	"TEMPOATENDIMENTO" NUMBER, 
+	"CODPROJETO" NUMBER(10,0), 
+	"TICKET_NUMBER" NVARCHAR2(50)
+   ) ;
+--------------------------------------------------------
+--  DDL for Table PARAM_FASE
+--------------------------------------------------------
+
+  CREATE TABLE "TIMESHEET"."PARAM_FASE" 
+   (	"CD_FASE" NUMBER(4,0), 
+	"DS_FASE" VARCHAR2(40 BYTE)
+   ) ;
+
+   COMMENT ON COLUMN "TIMESHEET"."PARAM_FASE"."CD_FASE" IS 'Fase de Projeto';
+   COMMENT ON COLUMN "TIMESHEET"."PARAM_FASE"."DS_FASE" IS 'Descr. Fase Projeto';
+--------------------------------------------------------
+--  DDL for Table PARAM_GERAL
+--------------------------------------------------------
+
+  CREATE TABLE "TIMESHEET"."PARAM_GERAL" 
+   (	"NM_PARAMETRO" VARCHAR2(20 BYTE), 
+	"DS_PARAMETRO" VARCHAR2(50 BYTE), 
+	"TP_PARAMETRO" VARCHAR2(1 BYTE), 
+	"VL_PARAMETRO" VARCHAR2(50 BYTE), 
+	"VL_COEFICIENTE" NUMBER(7,0)
+   ) ;
+
+   COMMENT ON COLUMN "TIMESHEET"."PARAM_GERAL"."NM_PARAMETRO" IS 'Nome do Parametro';
+   COMMENT ON COLUMN "TIMESHEET"."PARAM_GERAL"."DS_PARAMETRO" IS 'Descric?o';
+   COMMENT ON COLUMN "TIMESHEET"."PARAM_GERAL"."TP_PARAMETRO" IS 'Tipo';
+   COMMENT ON COLUMN "TIMESHEET"."PARAM_GERAL"."VL_PARAMETRO" IS 'Valor';
+   COMMENT ON COLUMN "TIMESHEET"."PARAM_GERAL"."VL_COEFICIENTE" IS 'Coeficiente';
+--------------------------------------------------------
+--  DDL for Table PARM_EMPR
+--------------------------------------------------------
+
+  CREATE TABLE "TIMESHEET"."PARM_EMPR" 
+   (	"CD_EMPRESA" NUMBER(3,0), 
+	"DS_ARQ_PADRAO_PROP" VARCHAR2(240 BYTE), 
+	"DS_PATH_PROPOSTA" VARCHAR2(240 BYTE), 
+	"PC_MANUT_PROD" NUMBER(5,2), 
+	"PC_SUPORTE_PROD" NUMBER(5,2)
+   ) ;
+--------------------------------------------------------
+--  DDL for Table PLAN_TABLE
+--------------------------------------------------------
+
+  CREATE TABLE "TIMESHEET"."PLAN_TABLE" 
+   (	"STATEMENT_ID" VARCHAR2(30 BYTE), 
+	"TIMESTAMP" DATE, 
+	"REMARKS" VARCHAR2(80 BYTE), 
+	"OPERATION" VARCHAR2(30 BYTE), 
+	"OPTIONS" VARCHAR2(30 BYTE), 
+	"OBJECT_NODE" VARCHAR2(128 BYTE), 
+	"OBJECT_OWNER" VARCHAR2(30 BYTE), 
+	"OBJECT_NAME" VARCHAR2(30 BYTE), 
+	"OBJECT_INSTANCE" NUMBER, 
+	"OBJECT_TYPE" VARCHAR2(30 BYTE), 
+	"OPTIMIZER" VARCHAR2(255 BYTE), 
+	"SEARCH_COLUMNS" NUMBER, 
+	"ID" NUMBER, 
+	"PARENT_ID" NUMBER, 
+	"POSITION" NUMBER, 
+	"COST" NUMBER, 
+	"CARDINALITY" NUMBER, 
+	"BYTES" NUMBER, 
+	"OTHER_TAG" VARCHAR2(255 BYTE), 
+	"PARTITION_START" VARCHAR2(255 BYTE), 
+	"PARTITION_STOP" VARCHAR2(255 BYTE), 
+	"PARTITION_ID" NUMBER, 
+	"OTHER" LONG, 
+	"DISTRIBUTION" VARCHAR2(30 BYTE)
+   ) ;
+--------------------------------------------------------
+--  DDL for Table PLATAFORMA
+--------------------------------------------------------
+
+  CREATE TABLE "TIMESHEET"."PLATAFORMA" 
+   (	"CD_PLATAFORMA" NUMBER(3,0), 
+	"DS_PLATAFORMA" VARCHAR2(30 BYTE)
+   ) ;
+--------------------------------------------------------
+--  DDL for Table PLATAFORMA_VENDOR
+--------------------------------------------------------
+
+  CREATE TABLE "TIMESHEET"."PLATAFORMA_VENDOR" 
+   (	"PLATAFORMA_VENDOR" VARCHAR2(30 BYTE)
+   ) ;
+--------------------------------------------------------
+--  DDL for Table PROJETO
+--------------------------------------------------------
+
+  CREATE TABLE "TIMESHEET"."PROJETO" 
+   (	"CD_PROJETO" NUMBER(7,0), 
+	"DS_PROJETO" VARCHAR2(200 BYTE), 
+	"DT_INICIO_PREV" DATE, 
+	"DT_FIM_PREVISTO" DATE, 
+	"DT_INICIO_REAL" DATE, 
+	"VL_CUSTO_PREV" NUMBER(14,2), 
+	"VL_CUSTO_REAL" NUMBER(14,2), 
+	"DS_OBSERVACAO" VARCHAR2(500 BYTE), 
+	"TP_COBRANCA" VARCHAR2(3 BYTE), 
+	"ST_PROJETO" VARCHAR2(3 BYTE) DEFAULT 'A', 
+	"CD_CONTATO" NUMBER(3,0), 
+	"CD_CLIFOR" NUMBER(7,0), 
+	"CD_RESP_TECNICO" NUMBER(7,0), 
+	"CD_RESP_COML" NUMBER(7,0), 
+	"DT_FIM_REAL" DATE, 
+	"CD_EMPRESA" NUMBER(3,0), 
+	"IN_INTERNO" VARCHAR2(1 BYTE), 
+	"LINHA_SERVICO" VARCHAR2(30 BYTE), 
+	"DT_ULT_ALT" DATE, 
+	"TIPO_SERVICO" VARCHAR2(30 BYTE), 
+	"PLATAFORMA_VENDOR" VARCHAR2(30 BYTE), 
+	"TECNOLOGIA" VARCHAR2(30 BYTE), 
+	"TIPO_CONTRATO" VARCHAR2(30 BYTE), 
+	"FG_COMISSAO" NUMBER(1,0) DEFAULT 0, 
+	"NR_HORASPREVISTAS" NUMBER(7,0), 
+	"NR_HORASREAL" NUMBER(7,0), 
+	"ACEITA_HORAS_CO_S_N" CHAR(1 BYTE), 
+	"ACEITA_HORAS_NC_S_N" CHAR(1 BYTE)
+   ) ;
+
+   COMMENT ON COLUMN "TIMESHEET"."PROJETO"."CD_PROJETO" IS 'Cod. Projeto';
+   COMMENT ON COLUMN "TIMESHEET"."PROJETO"."DS_PROJETO" IS 'Descr. Projeto';
+   COMMENT ON COLUMN "TIMESHEET"."PROJETO"."DT_INICIO_PREV" IS 'Data de Inicio Previsto';
+   COMMENT ON COLUMN "TIMESHEET"."PROJETO"."DT_FIM_PREVISTO" IS 'Data de Fim Previsto';
+   COMMENT ON COLUMN "TIMESHEET"."PROJETO"."DT_INICIO_REAL" IS 'Data de Inicio Real';
+   COMMENT ON COLUMN "TIMESHEET"."PROJETO"."VL_CUSTO_PREV" IS 'Vl. Custo Previsto';
+   COMMENT ON COLUMN "TIMESHEET"."PROJETO"."VL_CUSTO_REAL" IS 'Vl. Custo Real';
+   COMMENT ON COLUMN "TIMESHEET"."PROJETO"."DS_OBSERVACAO" IS 'Observacao';
+   COMMENT ON COLUMN "TIMESHEET"."PROJETO"."TP_COBRANCA" IS 'Status de Cobranca';
+   COMMENT ON COLUMN "TIMESHEET"."PROJETO"."ST_PROJETO" IS 'Status de Projeto';
+   COMMENT ON COLUMN "TIMESHEET"."PROJETO"."CD_CONTATO" IS 'Cod.Contato';
+   COMMENT ON COLUMN "TIMESHEET"."PROJETO"."CD_CLIFOR" IS 'Cod.Cliente / Fornecedor';
+   COMMENT ON COLUMN "TIMESHEET"."PROJETO"."CD_RESP_TECNICO" IS 'Cod. Funcionario';
+   COMMENT ON COLUMN "TIMESHEET"."PROJETO"."CD_RESP_COML" IS 'Cod. Funcionario';
+   COMMENT ON COLUMN "TIMESHEET"."PROJETO"."FG_COMISSAO" IS 'Flag Projeto de Comissão: 0 = Não (default); 1 = Sim.';
+--------------------------------------------------------
+--  DDL for Table PROJETO_FASE
+--------------------------------------------------------
+
+  CREATE TABLE "TIMESHEET"."PROJETO_FASE" 
+   (	"CD_PROJETO" NUMBER(7,0), 
+	"SEQ_PROJETO_FASE" NUMBER(3,0), 
+	"DS_FASE" VARCHAR2(50 BYTE), 
+	"CD_CATEGORIA_FASE" NUMBER(7,0), 
+	"ST_FASEPROJ" VARCHAR2(3 BYTE), 
+	"DT_INICIO_PREV" DATE, 
+	"DT_FIM_PREVISTO" DATE, 
+	"DT_INICIO_REAL" DATE, 
+	"DT_FIM_REAL" DATE, 
+	"NR_HORASPREVISTAS" NUMBER(7,0), 
+	"NR_HORASREAL" NUMBER(7,0), 
+	"VL_CUSTO_PREV" NUMBER(14,2), 
+	"VL_CUSTO_REAL" NUMBER(14,2), 
+	"DURACAO_FASE_DIAS_UTEIS" NUMBER(7,0), 
+	"FASE_POR_DATA_OU_DURACAO" VARCHAR2(1 BYTE), 
+	"FASE_REPETICAO_MENSAL" VARCHAR2(1 BYTE), 
+	"PERC_CONCLUSAO_FASE" NUMBER, 
+	"DT_ULT_ALT" DATE, 
+	"USUR_CD_USUR" VARCHAR2(16 BYTE), 
+	"DS_OBSERVACAO" VARCHAR2(4000 BYTE)
+   ) ;
+--------------------------------------------------------
+--  DDL for Table PROJETO_TAREFA
+--------------------------------------------------------
+
+  CREATE TABLE "TIMESHEET"."PROJETO_TAREFA" 
+   (	"CD_PROJETO" NUMBER(7,0), 
+	"SEQ_PROJETO_FASE" NUMBER(3,0), 
+	"SEQ_PROJETO_TAREFA" NUMBER(4,0), 
+	"DS_TAREFA" VARCHAR2(50 BYTE), 
+	"ST_TAREFA" VARCHAR2(3 BYTE), 
+	"CD_CATEGORIA_TAREFA" NUMBER(7,0), 
+	"DT_INICIO_PREV" DATE, 
+	"DT_FIM_PREVISTO" DATE, 
+	"DT_INICIO_REAL" DATE, 
+	"DT_FIM_REAL" DATE, 
+	"NR_HORASPREVISTAS" NUMBER(7,0), 
+	"NR_HORASREAL" NUMBER(7,0), 
+	"VL_CUSTO_PREV" NUMBER(14,2), 
+	"VL_CUSTO_REAL" NUMBER(14,2), 
+	"DURACAO_TAREFA_DIAS_UTEIS" NUMBER(7,0), 
+	"TAREFA_POR_DATA_OU_DURACAO" VARCHAR2(1 BYTE), 
+	"TAREFA_REPETICAO_MENSAL" VARCHAR2(1 BYTE), 
+	"TAREFA_ALOCACAO_S_N" VARCHAR2(1 BYTE), 
+	"PERC_CONCLUSAO_TAREFA" NUMBER, 
+	"PRIORIDADE_TAREFA" VARCHAR2(10 BYTE), 
+	"IN_TAREFA_EXTERNA" VARCHAR2(1 BYTE), 
+	"DT_ULT_ALT" DATE, 
+	"USUR_CD_USUR" VARCHAR2(16 BYTE), 
+	"DS_OBSERVACAO" VARCHAR2(4000 BYTE)
+   ) ;
+--------------------------------------------------------
+--  DDL for Table PROJETO_TAREFA_FUNCIONARIO
+--------------------------------------------------------
+
+  CREATE TABLE "TIMESHEET"."PROJETO_TAREFA_FUNCIONARIO" 
+   (	"CD_PROJETO" NUMBER(7,0), 
+	"SEQ_PROJETO_FASE" NUMBER(3,0), 
+	"SEQ_PROJETO_TAREFA" NUMBER(4,0), 
+	"FUNC_CD_FUNC" NUMBER(7,0), 
+	"TAXA_HORARIA_NORMAL_FUNC" NUMBER, 
+	"TAXA_HORARIA_EXTRA_FUNC" NUMBER, 
+	"ST_ALOCACAO" VARCHAR2(3 BYTE), 
+	"PERC_CONCLUSAO_TAREFA_FUNC" NUMBER, 
+	"DT_ULT_ALT" DATE, 
+	"USUR_CD_USUR" VARCHAR2(16 BYTE)
+   ) ;
+--------------------------------------------------------
+--  DDL for Table PROJ_FUNC
+--------------------------------------------------------
+
+  CREATE TABLE "TIMESHEET"."PROJ_FUNC" 
+   (	"FUNC_CD_FUNC" NUMBER(7,0), 
+	"PROJ_CD_PROJETO" NUMBER(7,0), 
+	"PJFU_STT_INTERNO" VARCHAR2(1 BYTE) DEFAULT 'N', 
+	"DTA_ULT_ALT" DATE, 
+	"USUR_CD_USUR" VARCHAR2(16 BYTE), 
+	"CD_FASE" NUMBER(3,0), 
+	"TAXA" NUMBER, 
+	"HORAS_PREVISTAS" NUMBER, 
+	"DT_ULT_ALT" DATE
+   ) ;
+--------------------------------------------------------
+--  DDL for Table SERVIDOR
+--------------------------------------------------------
+
+  CREATE TABLE "TIMESHEET"."SERVIDOR" 
+   (	"CD_SERVIDOR" NUMBER(4,0), 
+	"DS_SERVIDOR" VARCHAR2(50 BYTE)
+   ) ;
+--------------------------------------------------------
+--  DDL for Table SITE_CLIENTES_IBM
+--------------------------------------------------------
+
+  CREATE TABLE "TIMESHEET"."SITE_CLIENTES_IBM" 
+   (	"COD_CLIENTE" NUMBER, 
+	"CNPJ_SITE" NUMBER(15,0), 
+	"NOME_SITE" VARCHAR2(300 BYTE), 
+	"SAP_ID" NUMBER, 
+	"BANDA" VARCHAR2(50 BYTE)
+   ) ;
+--------------------------------------------------------
+--  DDL for Table STATE
+--------------------------------------------------------
+
+  CREATE TABLE "TIMESHEET"."STATE" 
+   (	"CD_STATE" NUMBER(4,0), 
+	"DS_STATE" VARCHAR2(30 BYTE), 
+	"CD_REGION" NUMBER(3,0)
+   ) ;
+--------------------------------------------------------
+--  DDL for Table SUGAR_HORAS
+--------------------------------------------------------
+
+  CREATE TABLE "TIMESHEET"."SUGAR_HORAS" 
+   (	"FUNC_CD_FUNC" NUMBER(7,0), 
+	"PROJ_CD_PROJETO" NUMBER(10,0), 
+	"DTHR_INI_ATENDIMENTO" DATE, 
+	"DTHR_FIM_ATENDIMENTO" DATE, 
+	"OBS" VARCHAR2(100 BYTE), 
+	"PROCESSADO_S_N" VARCHAR2(1 BYTE)
+   ) ;
+--------------------------------------------------------
+--  DDL for Table SUGAR_STAGE
+--------------------------------------------------------
+
+  CREATE GLOBAL TEMPORARY TABLE "TIMESHEET"."SUGAR_STAGE" 
+   (	"CD_PROJETO" NUMBER(7,0), 
+	"CD_SUGAR" VARCHAR2(36 BYTE), 
+	"FUNC_CD_FUNC" NUMBER(7,0), 
+	"DT_LOG" DATE, 
+	"HORAS_NR" NUMBER(5,2)
+   ) ON COMMIT DELETE ROWS ;
+--------------------------------------------------------
+--  DDL for Table SUPORTE_SITE_IBM
+--------------------------------------------------------
+
+  CREATE TABLE "TIMESHEET"."SUPORTE_SITE_IBM" 
+   (	"COD_CLIENTE" NUMBER, 
+	"CNPJ_SITE" NUMBER(15,0), 
+	"COD_PRODUTO" VARCHAR2(100 BYTE), 
+	"DESCRICAO_PRODUTO" LONG, 
+	"QTDE_PRODUTO" NUMBER(5,0), 
+	"DT_SUPORTE" DATE, 
+	"TEMPO_SUPORTE_ANOS" NUMBER(5,0), 
+	"CADASTRO_OK_S_N" VARCHAR2(1 BYTE), 
+	"SUPORTE_COMMIT_S_N" VARCHAR2(1 BYTE), 
+	"DT_MAIL_LIDO" DATE
+   ) ;
+
+   COMMENT ON COLUMN "TIMESHEET"."SUPORTE_SITE_IBM"."DESCRICAO_PRODUTO" IS 'data em que foi lido o mail de vencimento do suporte';
+   COMMENT ON COLUMN "TIMESHEET"."SUPORTE_SITE_IBM"."CADASTRO_OK_S_N" IS 'indica se o cadastro ja esta completo';
+   COMMENT ON COLUMN "TIMESHEET"."SUPORTE_SITE_IBM"."SUPORTE_COMMIT_S_N" IS 'indica se o suporte do produto foi vendido pela commit';
+--------------------------------------------------------
+--  DDL for Table TECNOLOGIA
+--------------------------------------------------------
+
+  CREATE TABLE "TIMESHEET"."TECNOLOGIA" 
+   (	"TECNOLOGIA" VARCHAR2(30 BYTE)
+   ) ;
+--------------------------------------------------------
+--  DDL for Table T_EMAILS
+--------------------------------------------------------
+
+  CREATE TABLE "TIMESHEET"."T_EMAILS" 
+   (	"DT_INCLUSAO" DATE, 
+	"DTHR_INCLUSAO" DATE, 
+	"MAILTO" VARCHAR2(255 BYTE), 
+	"MAILFROM" VARCHAR2(255 BYTE), 
+	"NM_FUNCIONARIO" VARCHAR2(255 BYTE), 
+	"ASSUNTO" VARCHAR2(1000 BYTE), 
+	"TX_EMAIL1" VARCHAR2(4000 BYTE), 
+	"TX_EMAIL2" VARCHAR2(4000 BYTE), 
+	"TX_EMAIL3" VARCHAR2(4000 BYTE), 
+	"TX_EMAIL4" VARCHAR2(4000 BYTE)
+   ) ;
+--------------------------------------------------------
+--  DDL for Table T_EMAILS_HIST
+--------------------------------------------------------
+
+  CREATE TABLE "TIMESHEET"."T_EMAILS_HIST" 
+   (	"DT_INCLUSAO" DATE, 
+	"DTHR_INCLUSAO" DATE, 
+	"MAILTO" VARCHAR2(255 BYTE), 
+	"MAILFROM" VARCHAR2(255 BYTE), 
+	"NM_FUNCIONARIO" VARCHAR2(255 BYTE), 
+	"ASSUNTO" VARCHAR2(1000 BYTE), 
+	"TX_EMAIL1" VARCHAR2(4000 BYTE), 
+	"TX_EMAIL2" VARCHAR2(4000 BYTE), 
+	"TX_EMAIL3" VARCHAR2(4000 BYTE), 
+	"TX_EMAIL4" VARCHAR2(4000 BYTE)
+   ) ;
+--------------------------------------------------------
+--  DDL for Table TESTE_INCREMENTAL
+--------------------------------------------------------
+
+  CREATE TABLE "TIMESHEET"."TESTE_INCREMENTAL" 
+   (	"CHAVE" NUMBER(10,0), 
+	"DATAHORA" DATE, 
+	"DESCRICAO" VARCHAR2(100 BYTE), 
+	"VALOR" NUMBER(10,0)
+   ) ;
+--------------------------------------------------------
+--  DDL for Table TIMESHEET_DIA
+--------------------------------------------------------
+
+  CREATE TABLE "TIMESHEET"."TIMESHEET_DIA" 
+   (	"FUNC_CD_FUNC" NUMBER(7,0), 
+	"LOPE_NR_ANO" NUMBER(4,0), 
+	"LOPE_NR_MES" NUMBER(2,0), 
+	"LOG_NR_DIA" NUMBER(2,0), 
+	"LOG_QN_AUSBHE" NUMBER(5,2), 
+	"LOG_QN_AUSABN" NUMBER(5,2), 
+	"LOG_NR_HNORMAL" NUMBER(5,2), 
+	"ST_TIMESHEET_DIA" VARCHAR2(1 BYTE), 
+	"DT_ULT_ALT" DATE, 
+	"USUR_CD_USUR" VARCHAR2(16 BYTE), 
+	"OBS" VARCHAR2(1000 BYTE)
+   ) ;
+--------------------------------------------------------
+--  DDL for Table TIMESHEET_DIA_BKP
+--------------------------------------------------------
+
+  CREATE TABLE "TIMESHEET"."TIMESHEET_DIA_BKP" 
+   (	"FUNC_CD_FUNC" NUMBER(7,0), 
+	"LOPE_NR_ANO" NUMBER(4,0), 
+	"LOPE_NR_MES" NUMBER(2,0), 
+	"LOG_NR_DIA" NUMBER(2,0), 
+	"LOG_QN_AUSBHE" NUMBER(5,2), 
+	"LOG_QN_AUSABN" NUMBER(5,2), 
+	"LOG_NR_HNORMAL" NUMBER(5,2), 
+	"ST_TIMESHEET_DIA" VARCHAR2(1 BYTE), 
+	"DT_ULT_ALT" DATE, 
+	"USUR_CD_USUR" VARCHAR2(16 BYTE), 
+	"OBS" VARCHAR2(1000 BYTE)
+   ) ;
+--------------------------------------------------------
+--  DDL for Table TIMESHEET_DIA_TAREFA
+--------------------------------------------------------
+
+  CREATE TABLE "TIMESHEET"."TIMESHEET_DIA_TAREFA" 
+   (	"FUNC_CD_FUNC" NUMBER(7,0), 
+	"CD_PROJETO" NUMBER(7,0), 
+	"SEQ_PROJETO_FASE" NUMBER(3,0), 
+	"SEQ_PROJETO_TAREFA" NUMBER(4,0), 
+	"LOPE_NR_ANO" NUMBER(4,0), 
+	"LOPE_NR_MES" NUMBER(2,0), 
+	"LOG_NR_DIA" NUMBER(2,0), 
+	"HORAS_NR_NC" NUMBER(5,2), 
+	"HORAS_NR_CO" NUMBER(5,2), 
+	"HORAS_NR_NCEXTRA" NUMBER(5,2), 
+	"HORAS_NR_COEXTRA" NUMBER(5,2), 
+	"HORARIO_INI_CO" DATE, 
+	"HORARIO_FIM_CO" DATE, 
+	"HORARIO_INI_HE" DATE, 
+	"HORARIO_FIM_HE" DATE, 
+	"DT_ULT_ALT" DATE, 
+	"USUR_CD_USUR" VARCHAR2(16 BYTE), 
+	"HORAS_TX_OBS" VARCHAR2(1000 BYTE)
+   ) ;
+--------------------------------------------------------
+--  DDL for Table TIMESHEET_DIA_20140826
+--------------------------------------------------------
+
+  CREATE TABLE "TIMESHEET"."TIMESHEET_DIA_20140826" 
+   (	"FUNC_CD_FUNC" NUMBER(7,0), 
+	"LOPE_NR_ANO" NUMBER(4,0), 
+	"LOPE_NR_MES" NUMBER(2,0), 
+	"LOG_NR_DIA" NUMBER(2,0), 
+	"LOG_QN_AUSBHE" NUMBER(5,2), 
+	"LOG_QN_AUSABN" NUMBER(5,2), 
+	"LOG_NR_HNORMAL" NUMBER(5,2), 
+	"ST_TIMESHEET_DIA" VARCHAR2(1 BYTE), 
+	"DT_ULT_ALT" DATE, 
+	"USUR_CD_USUR" VARCHAR2(16 BYTE), 
+	"OBS" VARCHAR2(1000 BYTE)
+   ) ;
+--------------------------------------------------------
+--  DDL for Table TIPO_CONTRATO
+--------------------------------------------------------
+
+  CREATE TABLE "TIMESHEET"."TIPO_CONTRATO" 
+   (	"TIPO_CONTRATO" VARCHAR2(30 BYTE)
+   ) ;
+--------------------------------------------------------
+--  DDL for Table TIPO_LANCAMENTO
+--------------------------------------------------------
+
+  CREATE TABLE "TIMESHEET"."TIPO_LANCAMENTO" 
+   (	"CLAS_CD_CLASSE" CHAR(3 BYTE), 
+	"DETA_NR_SEQUENCIAL" NUMBER(2,0), 
+	"TILA_CD_TIPO_LANC" NUMBER(3,0), 
+	"TILA_TX_DESCRICAO" VARCHAR2(20 BYTE), 
+	"TILA_IN_PREVISAO" VARCHAR2(1 BYTE) DEFAULT 'S', 
+	"TILA_NR_DECENIO" NUMBER(1,0), 
+	"TILA_IN_TIPO_VALOR" VARCHAR2(1 BYTE) DEFAULT 'S', 
+	"TILA_IN_TIPO_CUSTO" VARCHAR2(1 BYTE) DEFAULT 'S'
+   ) ;
+--------------------------------------------------------
+--  DDL for Table TIPOLICENCA
+--------------------------------------------------------
+
+  CREATE TABLE "TIMESHEET"."TIPOLICENCA" 
+   (	"TP_LICENCA" NUMBER(2,0), 
+	"DS_LICENCA" VARCHAR2(40 BYTE)
+   ) ;
+--------------------------------------------------------
+--  DDL for Table TIPO_SERVICO
+--------------------------------------------------------
+
+  CREATE TABLE "TIMESHEET"."TIPO_SERVICO" 
+   (	"TIPO_SERVICO" VARCHAR2(30 BYTE)
+   ) ;
+--------------------------------------------------------
+--  DDL for Table T_LOG_TRISCAL
+--------------------------------------------------------
+
+  CREATE TABLE "TIMESHEET"."T_LOG_TRISCAL" 
+   (	"ID_TRSC" NUMBER(9,0), 
+	"ID_POSC_TRSC" NUMBER(4,0), 
+	"DT_TRSC" DATE, 
+	"DC_TRSC" VARCHAR2(4000 BYTE)
+   ) ;
+
+   COMMENT ON COLUMN "TIMESHEET"."T_LOG_TRISCAL"."ID_TRSC" IS 'Id da transação de BD';
+   COMMENT ON COLUMN "TIMESHEET"."T_LOG_TRISCAL"."ID_POSC_TRSC" IS 'Ordem da mensagem dentro da transação';
+   COMMENT ON COLUMN "TIMESHEET"."T_LOG_TRISCAL"."DT_TRSC" IS 'data da emissão da mensagem';
+   COMMENT ON COLUMN "TIMESHEET"."T_LOG_TRISCAL"."DC_TRSC" IS 'texto da mensagem';
+   COMMENT ON TABLE "TIMESHEET"."T_LOG_TRISCAL"  IS 'Tabela de log do TIMESHEET';
+--------------------------------------------------------
+--  DDL for Sequence S_DIM_CLIENTE
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "TIMESHEET"."S_DIM_CLIENTE"  MINVALUE 1 MAXVALUE 9999977 INCREMENT BY 1 START WITH 483 NOCACHE  NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+--------------------------------------------------------
+--  DDL for Sequence S_DIM_FILIAL
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "TIMESHEET"."S_DIM_FILIAL"  MINVALUE 1 MAXVALUE 999 INCREMENT BY 1 START WITH 15 NOCACHE  NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+--------------------------------------------------------
+--  DDL for Sequence S_DIM_FUNCIONARIO
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "TIMESHEET"."S_DIM_FUNCIONARIO"  MINVALUE 1 MAXVALUE 9999977 INCREMENT BY 1 START WITH 810 NOCACHE  NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+--------------------------------------------------------
+--  DDL for Sequence S_DIM_PROJETO
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "TIMESHEET"."S_DIM_PROJETO"  MINVALUE 1 MAXVALUE 9999999 INCREMENT BY 1 START WITH 1685 NOCACHE  NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+--------------------------------------------------------
+--  DDL for Sequence S_DIM_TEMPO_DIA
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "TIMESHEET"."S_DIM_TEMPO_DIA"  MINVALUE 1 MAXVALUE 99999 INCREMENT BY 1 START WITH 3653 NOCACHE  NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+--------------------------------------------------------
+--  DDL for Sequence S_DIM_VERTICAL
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "TIMESHEET"."S_DIM_VERTICAL"  MINVALUE 1 MAXVALUE 99999 INCREMENT BY 1 START WITH 15 NOCACHE  NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+--------------------------------------------------------
+--  DDL for Sequence SEQ_CD_CIDADE
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "TIMESHEET"."SEQ_CD_CIDADE"  MINVALUE 1 MAXVALUE 999999999999999999999999999 INCREMENT BY 1 START WITH 145 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+--------------------------------------------------------
+--  DDL for Sequence SEQ_CD_CLIENTE
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "TIMESHEET"."SEQ_CD_CLIENTE"  MINVALUE 1 MAXVALUE 999999999999999999999999999 INCREMENT BY 1 START WITH 15 NOCACHE  NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+--------------------------------------------------------
+--  DDL for Sequence SEQ_CD_FERIADO
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "TIMESHEET"."SEQ_CD_FERIADO"  MINVALUE 1 MAXVALUE 999999999999999999999999999 INCREMENT BY 1 START WITH 362 NOCACHE  NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+--------------------------------------------------------
+--  DDL for Sequence SEQ_CD_FERRAMENTA
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "TIMESHEET"."SEQ_CD_FERRAMENTA"  MINVALUE 1 MAXVALUE 999999999999999999999999999 INCREMENT BY 1 START WITH 7 NOCACHE  NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+--------------------------------------------------------
+--  DDL for Sequence SEQ_CD_FUNC
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "TIMESHEET"."SEQ_CD_FUNC"  MINVALUE 1 MAXVALUE 999999999999999999999999999 INCREMENT BY 1 START WITH 41 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+--------------------------------------------------------
+--  DDL for Sequence SEQ_CD_ITENS_PROJETO
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "TIMESHEET"."SEQ_CD_ITENS_PROJETO"  MINVALUE 1 MAXVALUE 999999999999999999999999999 INCREMENT BY 1 START WITH 1 NOCACHE  NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+--------------------------------------------------------
+--  DDL for Sequence SEQ_CD_PROJETO
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "TIMESHEET"."SEQ_CD_PROJETO"  MINVALUE 1 MAXVALUE 999999999999999999999999999 INCREMENT BY 1 START WITH 52 NOCACHE  NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+--------------------------------------------------------
+--  DDL for Sequence SEQ_CODFUNC
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "TIMESHEET"."SEQ_CODFUNC"  MINVALUE 1 MAXVALUE 999999999999999999999999999 INCREMENT BY 1 START WITH 41 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+--------------------------------------------------------
+--  DDL for Sequence SEQ_CODMOEDA
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "TIMESHEET"."SEQ_CODMOEDA"  MINVALUE 1 MAXVALUE 999999999999999999999999999 INCREMENT BY 1 START WITH 61 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+--------------------------------------------------------
+--  DDL for Sequence SEQ_COM_ACES_APP
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "TIMESHEET"."SEQ_COM_ACES_APP"  MINVALUE 1 MAXVALUE 999999999999999999999999999 INCREMENT BY 1 START WITH 29 NOCACHE  NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+--------------------------------------------------------
+--  DDL for Sequence SEQ_COM_ACES_DEBUG
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "TIMESHEET"."SEQ_COM_ACES_DEBUG"  MINVALUE 1 MAXVALUE 999999999999999999999999999 INCREMENT BY 1 START WITH 42293 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+--------------------------------------------------------
+--  DDL for Sequence SEQ_COM_ACES_DEPARTAMENTO
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "TIMESHEET"."SEQ_COM_ACES_DEPARTAMENTO"  MINVALUE 1 MAXVALUE 999999999999999999999999999 INCREMENT BY 1 START WITH 1 NOCACHE  NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+--------------------------------------------------------
+--  DDL for Sequence SEQ_COM_ACES_MENU
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "TIMESHEET"."SEQ_COM_ACES_MENU"  MINVALUE 1 MAXVALUE 999999999999999999999999999 INCREMENT BY 1 START WITH 1295 NOCACHE  NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+--------------------------------------------------------
+--  DDL for Sequence SEQ_COM_ACES_PERFIL
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "TIMESHEET"."SEQ_COM_ACES_PERFIL"  MINVALUE 1 MAXVALUE 999999999999999999999999999 INCREMENT BY 1 START WITH 14 NOCACHE  NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+--------------------------------------------------------
+--  DDL for Sequence SEQ_COM_PARAM_ADMIN
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "TIMESHEET"."SEQ_COM_PARAM_ADMIN"  MINVALUE 1 MAXVALUE 999999999999999999999999999 INCREMENT BY 1 START WITH 4 NOCACHE  NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+--------------------------------------------------------
+--  DDL for Sequence SEQ_DEBUG
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "TIMESHEET"."SEQ_DEBUG"  MINVALUE 1 MAXVALUE 999999999999999999999999999 INCREMENT BY 1 START WITH 68301 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+--------------------------------------------------------
+--  DDL for Sequence SEQ_ENDERECO
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "TIMESHEET"."SEQ_ENDERECO"  MINVALUE 1 MAXVALUE 999999999999999999999999999 INCREMENT BY 1 START WITH 206 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+--------------------------------------------------------
+--  DDL for Sequence SEQ_MOVIMENTACAO_SALDO
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "TIMESHEET"."SEQ_MOVIMENTACAO_SALDO"  MINVALUE 1 MAXVALUE 999999999999999999999999999 INCREMENT BY 1 START WITH 49537 NOCACHE  NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+--------------------------------------------------------
+--  DDL for Sequence SEQ_NR_ORDEM
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "TIMESHEET"."SEQ_NR_ORDEM"  MINVALUE 1 MAXVALUE 999999999999999999999999999 INCREMENT BY 1 START WITH 3371 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+--------------------------------------------------------
+--  DDL for Sequence SEQ_TESTE
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "TIMESHEET"."SEQ_TESTE"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 21 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+--------------------------------------------------------
+--  DDL for Sequence SIP_SQ_ID_RELATORIO
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "TIMESHEET"."SIP_SQ_ID_RELATORIO"  MINVALUE 1 MAXVALUE 999999999999999999999999999 INCREMENT BY 1 START WITH 1 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+--------------------------------------------------------
+--  DDL for Sequence S_LOG_TRISCAL
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "TIMESHEET"."S_LOG_TRISCAL"  MINVALUE 1 MAXVALUE 999999999 INCREMENT BY 1 START WITH 17944 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+--------------------------------------------------------
+--  DDL for Sequence SQ_CLIFOR
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "TIMESHEET"."SQ_CLIFOR"  MINVALUE 1 MAXVALUE 999999999999999999999999999 INCREMENT BY 1 START WITH 6996 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+--------------------------------------------------------
+--  DDL for Sequence SQ_CLIIBM
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "TIMESHEET"."SQ_CLIIBM"  MINVALUE 1 MAXVALUE 999999999999999999999999999 INCREMENT BY 1 START WITH 6 NOCACHE  NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+--------------------------------------------------------
+--  DDL for Sequence SQ_CONTATO
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "TIMESHEET"."SQ_CONTATO"  MINVALUE 1 MAXVALUE 999999999999999999999999999 INCREMENT BY 1 START WITH 14 NOCACHE  NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+--------------------------------------------------------
+--  DDL for Sequence SQ_ENDERECO
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "TIMESHEET"."SQ_ENDERECO"  MINVALUE 1 MAXVALUE 999999999999999999999999999 INCREMENT BY 1 START WITH 450 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+--------------------------------------------------------
+--  DDL for Sequence SQ_FUNCIONARIO
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "TIMESHEET"."SQ_FUNCIONARIO"  MINVALUE 1 MAXVALUE 9999999 INCREMENT BY 1 START WITH 843 NOCACHE  NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+--------------------------------------------------------
+--  DDL for Sequence SQ_HISTFUNC
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "TIMESHEET"."SQ_HISTFUNC"  MINVALUE 1 MAXVALUE 9999999 INCREMENT BY 1 START WITH 16 NOCACHE  NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+--------------------------------------------------------
+--  DDL for Sequence SQ_PLATAFORMA
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "TIMESHEET"."SQ_PLATAFORMA"  MINVALUE 1 MAXVALUE 999999999999999999999999999 INCREMENT BY 1 START WITH 81 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+--------------------------------------------------------
+--  DDL for Sequence SQ_PLATATAFORMA
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "TIMESHEET"."SQ_PLATATAFORMA"  MINVALUE 1 MAXVALUE 999999999999999999999999999 INCREMENT BY 1 START WITH 1 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+--------------------------------------------------------
+--  DDL for Sequence SQ_PROJETO
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "TIMESHEET"."SQ_PROJETO"  MINVALUE 1 MAXVALUE 999999999999999999999999999 INCREMENT BY 1 START WITH 1517 NOCACHE  NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+--------------------------------------------------------
+--  DDL for Index ADMIN_GERA_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "TIMESHEET"."ADMIN_GERA_PK" ON "TIMESHEET"."COM_PARAM_ADMIN_GERAL" ("CDG_PARAM") 
+  ;
+--------------------------------------------------------
+--  DDL for Index AGENCIABCO_BANCO_FK_I
+--------------------------------------------------------
+
+  CREATE INDEX "TIMESHEET"."AGENCIABCO_BANCO_FK_I" ON "TIMESHEET"."AGENCIABCO" ("CD_BANCO") 
+  ;
+--------------------------------------------------------
+--  DDL for Index AGENCIABCO_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "TIMESHEET"."AGENCIABCO_PK" ON "TIMESHEET"."AGENCIABCO" ("CD_BANCO", "CD_AGENCIA", "NR_DIGITO") 
+  ;
+--------------------------------------------------------
+--  DDL for Index ALOCACAOPROJ_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "TIMESHEET"."ALOCACAOPROJ_PK" ON "TIMESHEET"."ALOCACAOPROJ" ("CD_PROJETO", "CD_FASE", "CD_FUNCIONARIO") 
+  ;
+--------------------------------------------------------
+--  DDL for Index AMB_CLI_APPL_SERVE_FK_I
+--------------------------------------------------------
+
+  CREATE INDEX "TIMESHEET"."AMB_CLI_APPL_SERVE_FK_I" ON "TIMESHEET"."AMBIENTE_CLIFOR" ("CD_APPL_SERVER") 
+  ;
+--------------------------------------------------------
+--  DDL for Index AMB_CLI_BANCODADO_FK_I
+--------------------------------------------------------
+
+  CREATE INDEX "TIMESHEET"."AMB_CLI_BANCODADO_FK_I" ON "TIMESHEET"."AMBIENTE_CLIFOR" ("CD_BANCO") 
+  ;
+--------------------------------------------------------
+--  DDL for Index AMB_CLI_CRM_FK_I
+--------------------------------------------------------
+
+  CREATE INDEX "TIMESHEET"."AMB_CLI_CRM_FK_I" ON "TIMESHEET"."AMBIENTE_CLIFOR" ("CD_CRM") 
+  ;
+--------------------------------------------------------
+--  DDL for Index AMB_CLI_ERP_FK_I
+--------------------------------------------------------
+
+  CREATE INDEX "TIMESHEET"."AMB_CLI_ERP_FK_I" ON "TIMESHEET"."AMBIENTE_CLIFOR" ("CD_ERP") 
+  ;
+--------------------------------------------------------
+--  DDL for Index AMB_CLI_FER_CASE_FK_I
+--------------------------------------------------------
+
+  CREATE INDEX "TIMESHEET"."AMB_CLI_FER_CASE_FK_I" ON "TIMESHEET"."AMBIENTE_CLIFOR" ("CD_FER_CASE") 
+  ;
+--------------------------------------------------------
+--  DDL for Index AMB_CLI_FER_DESENV_FK_I
+--------------------------------------------------------
+
+  CREATE INDEX "TIMESHEET"."AMB_CLI_FER_DESENV_FK_I" ON "TIMESHEET"."AMBIENTE_CLIFOR" ("CD_FER_DESENV") 
+  ;
+--------------------------------------------------------
+--  DDL for Index AMB_CLI_GER_REDE_FK_I
+--------------------------------------------------------
+
+  CREATE INDEX "TIMESHEET"."AMB_CLI_GER_REDE_FK_I" ON "TIMESHEET"."AMBIENTE_CLIFOR" ("CD_GER_REDE") 
+  ;
+--------------------------------------------------------
+--  DDL for Index AMB_CLI_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "TIMESHEET"."AMB_CLI_PK" ON "TIMESHEET"."AMBIENTE_CLIFOR" ("CD_CLIFOR", "NR_AMBIENTE") 
+  ;
+--------------------------------------------------------
+--  DDL for Index AMB_CLI_PLATAFORMA_FK_I
+--------------------------------------------------------
+
+  CREATE INDEX "TIMESHEET"."AMB_CLI_PLATAFORMA_FK_I" ON "TIMESHEET"."AMBIENTE_CLIFOR" ("CD_PLATAFORMA") 
+  ;
+--------------------------------------------------------
+--  DDL for Index AMB_CLI_SERVIDOR_FK_I
+--------------------------------------------------------
+
+  CREATE INDEX "TIMESHEET"."AMB_CLI_SERVIDOR_FK_I" ON "TIMESHEET"."AMBIENTE_CLIFOR" ("CD_SERVIDOR") 
+  ;
+--------------------------------------------------------
+--  DDL for Index APPL_SERVE_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "TIMESHEET"."APPL_SERVE_PK" ON "TIMESHEET"."APPL_SERVER" ("CD_APPL_SERVER") 
+  ;
+--------------------------------------------------------
+--  DDL for Index ATIVIDADE_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "TIMESHEET"."ATIVIDADE_PK" ON "TIMESHEET"."ATIVIDADE_PROJ" ("CD_PROJETO", "CD_FASE", "CD_FUNCIONARIO", "DT_ATIVIDADE") 
+  ;
+--------------------------------------------------------
+--  DDL for Index BANCODADO_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "TIMESHEET"."BANCODADO_PK" ON "TIMESHEET"."BANCODADO" ("CD_BANCO") 
+  ;
+--------------------------------------------------------
+--  DDL for Index BANCO_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "TIMESHEET"."BANCO_PK" ON "TIMESHEET"."BANCO" ("CD_BANCO") 
+  ;
+--------------------------------------------------------
+--  DDL for Index CALENDARIO_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "TIMESHEET"."CALENDARIO_PK" ON "TIMESHEET"."FERIADO" ("FERI_CD_FERIADO") 
+  ;
+--------------------------------------------------------
+--  DDL for Index CARGO_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "TIMESHEET"."CARGO_PK" ON "TIMESHEET"."CARGO" ("CD_CARGO") 
+  ;
+--------------------------------------------------------
+--  DDL for Index CATEGORIA_FASE_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "TIMESHEET"."CATEGORIA_FASE_PK" ON "TIMESHEET"."CATEGORIA_FASE" ("CD_CATEGORIA_FASE") 
+  ;
+--------------------------------------------------------
+--  DDL for Index CATEGORIA_TAREFA_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "TIMESHEET"."CATEGORIA_TAREFA_PK" ON "TIMESHEET"."CATEGORIA_TAREFA" ("CD_CATEGORIA_TAREFA") 
+  ;
+--------------------------------------------------------
+--  DDL for Index CD_MOEDA_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "TIMESHEET"."CD_MOEDA_PK" ON "TIMESHEET"."MOEDA" ("CD_MOEDA") 
+  ;
+--------------------------------------------------------
+--  DDL for Index CDPLAT_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "TIMESHEET"."CDPLAT_PK" ON "TIMESHEET"."PLATAFORMA" ("CD_PLATAFORMA") 
+  ;
+--------------------------------------------------------
+--  DDL for Index CEP_CIDADE_FK_I
+--------------------------------------------------------
+
+  CREATE INDEX "TIMESHEET"."CEP_CIDADE_FK_I" ON "TIMESHEET"."CEP" ("CD_CIDADE") 
+  ;
+--------------------------------------------------------
+--  DDL for Index CEP_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "TIMESHEET"."CEP_PK" ON "TIMESHEET"."CEP" ("CD_CEP") 
+  ;
+--------------------------------------------------------
+--  DDL for Index CIDADE_ESTADO_FK_I
+--------------------------------------------------------
+
+  CREATE INDEX "TIMESHEET"."CIDADE_ESTADO_FK_I" ON "TIMESHEET"."CIDADE" ("SG_ESTADO") 
+  ;
+--------------------------------------------------------
+--  DDL for Index CIDADE_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "TIMESHEET"."CIDADE_PK" ON "TIMESHEET"."CIDADE" ("CD_CIDADE") 
+  ;
+--------------------------------------------------------
+--  DDL for Index CLAUSULA_CONTRATO_FK_I
+--------------------------------------------------------
+
+  CREATE INDEX "TIMESHEET"."CLAUSULA_CONTRATO_FK_I" ON "TIMESHEET"."CLAUSULA" ("CD_CONTRATO") 
+  ;
+--------------------------------------------------------
+--  DDL for Index CLAUSULA_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "TIMESHEET"."CLAUSULA_PK" ON "TIMESHEET"."CLAUSULA" ("CD_CONTRATO", "CD_CLAUSULA") 
+  ;
+--------------------------------------------------------
+--  DDL for Index CLIFOR_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "TIMESHEET"."CLIFOR_PK" ON "TIMESHEET"."CLIFOR" ("CD_CLIFOR") 
+  ;
+--------------------------------------------------------
+--  DDL for Index CLI_IBM_FK_I_1
+--------------------------------------------------------
+
+  CREATE INDEX "TIMESHEET"."CLI_IBM_FK_I_1" ON "TIMESHEET"."SITE_CLIENTES_IBM" ("COD_CLIENTE") 
+  ;
+--------------------------------------------------------
+--  DDL for Index CLI_IBM_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "TIMESHEET"."CLI_IBM_PK" ON "TIMESHEET"."CLIENTES_IBM" ("COD_CLIENTE") 
+  ;
+--------------------------------------------------------
+--  DDL for Index C_NAV_USUR_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "TIMESHEET"."C_NAV_USUR_PK" ON "TIMESHEET"."CTRL_NAV_USUR" ("NM_SESSIONID", "NM_LOGIN_USUARIO", "DT_HR_ENTRADA") 
+  ;
+--------------------------------------------------------
+--  DDL for Index COM_ACES_FAVORITOS_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "TIMESHEET"."COM_ACES_FAVORITOS_PK" ON "TIMESHEET"."COM_ACES_FAVORITOS" ("CDG_USUR", "CDG_MENU") 
+  ;
+--------------------------------------------------------
+--  DDL for Index COM_ATRIBUTO_APLICACAO_FK_I
+--------------------------------------------------------
+
+  CREATE INDEX "TIMESHEET"."COM_ATRIBUTO_APLICACAO_FK_I" ON "TIMESHEET"."COM_ACES_ATRIBUTOS" ("CDG_MENU") 
+  ;
+--------------------------------------------------------
+--  DDL for Index COM_ATRIBUTOS_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "TIMESHEET"."COM_ATRIBUTOS_PK" ON "TIMESHEET"."COM_ACES_ATRIBUTOS" ("CDG_MENU", "NOME_ATRIBUTO") 
+  ;
+--------------------------------------------------------
+--  DDL for Index COM_MENU_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "TIMESHEET"."COM_MENU_PK" ON "TIMESHEET"."COM_ACES_MENU" ("CDG_MENU") 
+  ;
+--------------------------------------------------------
+--  DDL for Index COM_PERFILATRIBUTOS_APP_FK_I
+--------------------------------------------------------
+
+  CREATE INDEX "TIMESHEET"."COM_PERFILATRIBUTOS_APP_FK_I" ON "TIMESHEET"."COM_ACES_PERFIL_ATRIBUTOS" ("CDG_MENU", "NOME_ATRIBUTO") 
+  ;
+--------------------------------------------------------
+--  DDL for Index COM_PERFILATRIBUTOS_PERFIL_FKI
+--------------------------------------------------------
+
+  CREATE INDEX "TIMESHEET"."COM_PERFILATRIBUTOS_PERFIL_FKI" ON "TIMESHEET"."COM_ACES_PERFIL_ATRIBUTOS" ("CDG_PERFIL") 
+  ;
+--------------------------------------------------------
+--  DDL for Index COM_PERFIL_ATRIBUTOS_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "TIMESHEET"."COM_PERFIL_ATRIBUTOS_PK" ON "TIMESHEET"."COM_ACES_PERFIL_ATRIBUTOS" ("CDG_PERFIL", "CDG_MENU", "NOME_ATRIBUTO") 
+  ;
+--------------------------------------------------------
+--  DDL for Index COM_PERFILMENU_MENU_FK_I
+--------------------------------------------------------
+
+  CREATE INDEX "TIMESHEET"."COM_PERFILMENU_MENU_FK_I" ON "TIMESHEET"."COM_ACES_PERFIL_MENU" ("CDG_MENU") 
+  ;
+--------------------------------------------------------
+--  DDL for Index COM_PERFILMENU_PERFIL_FK_I
+--------------------------------------------------------
+
+  CREATE INDEX "TIMESHEET"."COM_PERFILMENU_PERFIL_FK_I" ON "TIMESHEET"."COM_ACES_PERFIL_MENU" ("CDG_PERFIL") 
+  ;
+--------------------------------------------------------
+--  DDL for Index COM_PERFIL_MENU_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "TIMESHEET"."COM_PERFIL_MENU_PK" ON "TIMESHEET"."COM_ACES_PERFIL_MENU" ("CDG_PERFIL", "CDG_MENU") 
+  ;
+--------------------------------------------------------
+--  DDL for Index COM_PERFIL_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "TIMESHEET"."COM_PERFIL_PK" ON "TIMESHEET"."COM_ACES_PERFIL" ("CDG_PERFIL") 
+  ;
+--------------------------------------------------------
+--  DDL for Index COM_USUARIOPERFIL_PERFIL_FK_I
+--------------------------------------------------------
+
+  CREATE INDEX "TIMESHEET"."COM_USUARIOPERFIL_PERFIL_FK_I" ON "TIMESHEET"."COM_ACES_USUARIO_PERFIL" ("CDG_PERFIL") 
+  ;
+--------------------------------------------------------
+--  DDL for Index COM_USUARIO_PERFIL_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "TIMESHEET"."COM_USUARIO_PERFIL_PK" ON "TIMESHEET"."COM_ACES_USUARIO_PERFIL" ("CDG_USUR", "CDG_PERFIL") 
+  ;
+--------------------------------------------------------
+--  DDL for Index COM_USUARIOPERFIL_USUARIO_FK_I
+--------------------------------------------------------
+
+  CREATE INDEX "TIMESHEET"."COM_USUARIOPERFIL_USUARIO_FK_I" ON "TIMESHEET"."COM_ACES_USUARIO_PERFIL" ("CDG_USUR") 
+  ;
+--------------------------------------------------------
+--  DDL for Index COM_USUARIO_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "TIMESHEET"."COM_USUARIO_PK" ON "TIMESHEET"."COM_ACES_USUARIO" ("CDG_USUR") 
+  ;
+--------------------------------------------------------
+--  DDL for Index CONDPAGTO_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "TIMESHEET"."CONDPAGTO_PK" ON "TIMESHEET"."CONDPAGTO" ("CD_CONDPAGTO") 
+  ;
+--------------------------------------------------------
+--  DDL for Index CONTABCO_AGENCIABCO_FK_I
+--------------------------------------------------------
+
+  CREATE INDEX "TIMESHEET"."CONTABCO_AGENCIABCO_FK_I" ON "TIMESHEET"."CONTABCO" ("CD_BANCO", "CD_AGENCIA", "NR_DIGITO") 
+  ;
+--------------------------------------------------------
+--  DDL for Index CONTABCO_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "TIMESHEET"."CONTABCO_PK" ON "TIMESHEET"."CONTABCO" ("CD_BANCO", "CD_AGENCIA", "NR_DIGITO", "NR_CONTABCO", "DG_CONTABCO") 
+  ;
+--------------------------------------------------------
+--  DDL for Index CONTA_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "TIMESHEET"."CONTA_PK" ON "TIMESHEET"."CONTA_BANCARIA" ("CONTA_CD_CONTA") 
+  ;
+--------------------------------------------------------
+--  DDL for Index CONTATO_CLIFOR_FK_I
+--------------------------------------------------------
+
+  CREATE INDEX "TIMESHEET"."CONTATO_CLIFOR_FK_I" ON "TIMESHEET"."CONTATO" ("CD_CLIFOR") 
+  ;
+--------------------------------------------------------
+--  DDL for Index CONTATO_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "TIMESHEET"."CONTATO_PK" ON "TIMESHEET"."CONTATO" ("CD_CLIFOR", "CD_CONTATO") 
+  ;
+--------------------------------------------------------
+--  DDL for Index CONTRATO_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "TIMESHEET"."CONTRATO_PK" ON "TIMESHEET"."CONTRATO" ("CD_CONTRATO") 
+  ;
+--------------------------------------------------------
+--  DDL for Index COUNTRY_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "TIMESHEET"."COUNTRY_PK" ON "TIMESHEET"."COUNTRY" ("CD_COUTRY") 
+  ;
+--------------------------------------------------------
+--  DDL for Index CRM_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "TIMESHEET"."CRM_PK" ON "TIMESHEET"."CRM" ("CD_CRM") 
+  ;
+--------------------------------------------------------
+--  DDL for Index CRONOGRAMA_FATURAMENTO_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "TIMESHEET"."CRONOGRAMA_FATURAMENTO_PK" ON "TIMESHEET"."CRONOGRAMA_FATURAMENTO" ("CD_PROJETO", "SEQ_CRONOGRAMA_FATURAMENTO") 
+  ;
+--------------------------------------------------------
+--  DDL for Index DIM_TEMPO_DIA_UK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "TIMESHEET"."DIM_TEMPO_DIA_UK" ON "TIMESHEET"."DIM_TEMPO_DIA" ("NR_ANO", "NR_MES_2_POSICOES", "NR_DIA") 
+  ;
+--------------------------------------------------------
+--  DDL for Index EMPRESA_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "TIMESHEET"."EMPRESA_PK" ON "TIMESHEET"."EMPRESA" ("CD_EMPRESA") 
+  ;
+--------------------------------------------------------
+--  DDL for Index ENDERECO_CEP_FK_I
+--------------------------------------------------------
+
+  CREATE INDEX "TIMESHEET"."ENDERECO_CEP_FK_I" ON "TIMESHEET"."ENDERECO" ("CD_CEP") 
+  ;
+--------------------------------------------------------
+--  DDL for Index ENDERECO_CIDADE_FK_I
+--------------------------------------------------------
+
+  CREATE INDEX "TIMESHEET"."ENDERECO_CIDADE_FK_I" ON "TIMESHEET"."ENDERECO" ("CD_CIDADE") 
+  ;
+--------------------------------------------------------
+--  DDL for Index ENDERECO_CLIFOR_FK_I
+--------------------------------------------------------
+
+  CREATE INDEX "TIMESHEET"."ENDERECO_CLIFOR_FK_I" ON "TIMESHEET"."ENDERECO" ("CD_CLIFOR") 
+  ;
+--------------------------------------------------------
+--  DDL for Index ENDERECO_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "TIMESHEET"."ENDERECO_PK" ON "TIMESHEET"."ENDERECO" ("CD_CLIFOR", "CD_ENDERECO") 
+  ;
+--------------------------------------------------------
+--  DDL for Index ERP_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "TIMESHEET"."ERP_PK" ON "TIMESHEET"."ERP" ("CD_ERP") 
+  ;
+--------------------------------------------------------
+--  DDL for Index ESTADO_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "TIMESHEET"."ESTADO_PK" ON "TIMESHEET"."ESTADO" ("SG_ESTADO") 
+  ;
+--------------------------------------------------------
+--  DDL for Index FASEPROJETO_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "TIMESHEET"."FASEPROJETO_PK" ON "TIMESHEET"."FASEPROJETO" ("CD_PROJETO", "CD_FASE") 
+  ;
+--------------------------------------------------------
+--  DDL for Index FATURAMENTO_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "TIMESHEET"."FATURAMENTO_PK" ON "TIMESHEET"."FATURAMENTO" ("NR_NF", "CD_CLIFOR", "CD_PROJETO", "CD_EMPRESA") 
+  ;
+--------------------------------------------------------
+--  DDL for Index FILA_FUNCIONARIO_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "TIMESHEET"."FILA_FUNCIONARIO_PK" ON "TIMESHEET"."FILA_INTEGRACAO" ("NR_ORDEM", "CDG_USUR") 
+  ;
+--------------------------------------------------------
+--  DDL for Index FUNC_CLT_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "TIMESHEET"."FUNC_CLT_PK" ON "TIMESHEET"."FUNC_CLT" ("CD_FUNCIONARIO", "NR_CARTEIRA") 
+  ;
+--------------------------------------------------------
+--  DDL for Index FUNC_EMPR_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "TIMESHEET"."FUNC_EMPR_PK" ON "TIMESHEET"."FUNC_EMPR" ("CD_FUNCIONARIO", "NR_CONTRATO") 
+  ;
+--------------------------------------------------------
+--  DDL for Index FUNC_END_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "TIMESHEET"."FUNC_END_PK" ON "TIMESHEET"."FUNC_ENDERECO" ("CD_FUNCIONARIO", "CD_ENDERECO") 
+  ;
+--------------------------------------------------------
+--  DDL for Index FUNCIONARIO_CDG_USUR_UK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "TIMESHEET"."FUNCIONARIO_CDG_USUR_UK" ON "TIMESHEET"."FUNCIONARIO" ("CDG_USUR") 
+  ;
+--------------------------------------------------------
+--  DDL for Index FUNC_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "TIMESHEET"."FUNC_PK" ON "TIMESHEET"."FUNCIONARIO" ("CD_FUNCIONARIO") 
+  ;
+--------------------------------------------------------
+--  DDL for Index GER_REDE_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "TIMESHEET"."GER_REDE_PK" ON "TIMESHEET"."GER_REDE" ("CD_GER_REDE") 
+  ;
+--------------------------------------------------------
+--  DDL for Index GRUPOPRO_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "TIMESHEET"."GRUPOPRO_PK" ON "TIMESHEET"."GRUPOPROD" ("CD_GRUPOPROD") 
+  ;
+--------------------------------------------------------
+--  DDL for Index HIST_FUNC_FUNC_FK_I
+--------------------------------------------------------
+
+  CREATE INDEX "TIMESHEET"."HIST_FUNC_FUNC_FK_I" ON "TIMESHEET"."HIST_FUNC" ("CD_FUNCIONARIO") 
+  ;
+--------------------------------------------------------
+--  DDL for Index HIST_FUNC_NIVEL_FK_I
+--------------------------------------------------------
+
+  CREATE INDEX "TIMESHEET"."HIST_FUNC_NIVEL_FK_I" ON "TIMESHEET"."HIST_FUNC" ("CD_NIVEL", "CD_CARGO") 
+  ;
+--------------------------------------------------------
+--  DDL for Index HIST_FUNC_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "TIMESHEET"."HIST_FUNC_PK" ON "TIMESHEET"."HIST_FUNC" ("CD_FUNCIONARIO", "CD_HISTORICO") 
+  ;
+--------------------------------------------------------
+--  DDL for Index IDX_FAT_HR_FUNC_PROJ_01
+--------------------------------------------------------
+
+  CREATE INDEX "TIMESHEET"."IDX_FAT_HR_FUNC_PROJ_01" ON "TIMESHEET"."FAT_HR_FUNC_PROJ" ("SK_PROJETO") 
+  ;
+--------------------------------------------------------
+--  DDL for Index IDX_FAT_HR_FUNC_PROJ_02
+--------------------------------------------------------
+
+  CREATE INDEX "TIMESHEET"."IDX_FAT_HR_FUNC_PROJ_02" ON "TIMESHEET"."FAT_HR_FUNC_PROJ" ("SK_CLIENTE") 
+  ;
+--------------------------------------------------------
+--  DDL for Index IDX_FAT_HR_FUNC_PROJ_03
+--------------------------------------------------------
+
+  CREATE INDEX "TIMESHEET"."IDX_FAT_HR_FUNC_PROJ_03" ON "TIMESHEET"."FAT_HR_FUNC_PROJ" ("SK_FILIAL") 
+  ;
+--------------------------------------------------------
+--  DDL for Index IDX_FAT_HR_FUNC_PROJ_04
+--------------------------------------------------------
+
+  CREATE INDEX "TIMESHEET"."IDX_FAT_HR_FUNC_PROJ_04" ON "TIMESHEET"."FAT_HR_FUNC_PROJ" ("SK_TEMPO_DIA") 
+  ;
+--------------------------------------------------------
+--  DDL for Index IDX_FAT_HR_FUNC_PROJ_05
+--------------------------------------------------------
+
+  CREATE INDEX "TIMESHEET"."IDX_FAT_HR_FUNC_PROJ_05" ON "TIMESHEET"."FAT_HR_FUNC_PROJ" ("SK_FUNCIONARIO") 
+  ;
+--------------------------------------------------------
+--  DDL for Index IDX_FAT_HR_FUNC_PROJ_06
+--------------------------------------------------------
+
+  CREATE INDEX "TIMESHEET"."IDX_FAT_HR_FUNC_PROJ_06" ON "TIMESHEET"."FAT_HR_FUNC_PROJ" ("SK_VERTICAL") 
+  ;
+--------------------------------------------------------
+--  DDL for Index IDX_FAT_HR_UTEIS_MES_FILI_01
+--------------------------------------------------------
+
+  CREATE INDEX "TIMESHEET"."IDX_FAT_HR_UTEIS_MES_FILI_01" ON "TIMESHEET"."FAT_HR_UTEIS_MES_FILI" ("SK_FILIAL") 
+  ;
+--------------------------------------------------------
+--  DDL for Index IDX_FAT_HR_UTEIS_MES_FILI_02
+--------------------------------------------------------
+
+  CREATE INDEX "TIMESHEET"."IDX_FAT_HR_UTEIS_MES_FILI_02" ON "TIMESHEET"."FAT_HR_UTEIS_MES_FILI" ("SK_TEMPO_DIA") 
+  ;
+--------------------------------------------------------
+--  DDL for Index IDX_PROJ_FUNC_FUNCIONARIO
+--------------------------------------------------------
+
+  CREATE INDEX "TIMESHEET"."IDX_PROJ_FUNC_FUNCIONARIO" ON "TIMESHEET"."PROJ_FUNC" ("FUNC_CD_FUNC") 
+  ;
+--------------------------------------------------------
+--  DDL for Index IDXU_CLIFOR_NM_RAZAOSOCIAL
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "TIMESHEET"."IDXU_CLIFOR_NM_RAZAOSOCIAL" ON "TIMESHEET"."CLIFOR" ("NM_RAZAOSOCIAL", "TIP_CLIFOR") 
+  ;
+--------------------------------------------------------
+--  DDL for Index IDXU_CLIFOR_NR_CNPJ
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "TIMESHEET"."IDXU_CLIFOR_NR_CNPJ" ON "TIMESHEET"."CLIFOR" ("NR_CNPJ", "TIP_CLIFOR") 
+  ;
+--------------------------------------------------------
+--  DDL for Index IDXU_NM_FUNCIONARIO
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "TIMESHEET"."IDXU_NM_FUNCIONARIO" ON "TIMESHEET"."FUNCIONARIO" ("NM_FUNCIONARIO") 
+  ;
+--------------------------------------------------------
+--  DDL for Index JORNADA_TRABALHO_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "TIMESHEET"."JORNADA_TRABALHO_PK" ON "TIMESHEET"."JORNADA_TRABALHO" ("CD_FUNCIONARIO", "DT_INICIO_VIGENCIA") 
+  ;
+--------------------------------------------------------
+--  DDL for Index LDA_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "TIMESHEET"."LDA_PK" ON "TIMESHEET"."LOG_DIA" ("LOG_NR_DIA", "LOPE_NR_MES", "LOPE_NR_ANO", "FUNC_CD_FUNC", "PERI_CD_PERIODO") 
+  ;
+--------------------------------------------------------
+--  DDL for Index LINHA_SERVICO_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "TIMESHEET"."LINHA_SERVICO_PK" ON "TIMESHEET"."LINHA_SERVICO" ("LINHA_SERVICO") 
+  ;
+--------------------------------------------------------
+--  DDL for Index LPO_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "TIMESHEET"."LPO_PK" ON "TIMESHEET"."LOG_PERIODO" ("FUNC_CD_FUNC", "LOPE_NR_ANO", "LOPE_NR_MES", "PERI_CD_PERIODO") 
+  ;
+--------------------------------------------------------
+--  DDL for Index MOD_PR_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "TIMESHEET"."MOD_PR_PK" ON "TIMESHEET"."COM_ACES_MODULOS" ("CD_MODULO") 
+  ;
+--------------------------------------------------------
+--  DDL for Index MOSA_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "TIMESHEET"."MOSA_PK" ON "TIMESHEET"."MOVIMENTACAO_SALDO_BHE" ("FUNC_CD_FUNC", "MOSA_DT_DATA", "MOSA_NR_SEQ") 
+  ;
+--------------------------------------------------------
+--  DDL for Index MSGSIS_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "TIMESHEET"."MSGSIS_PK" ON "TIMESHEET"."COM_ACES_MSG_SISTEMA" ("CD_MSG") 
+  ;
+--------------------------------------------------------
+--  DDL for Index NIVEL_CARGO_FK_I
+--------------------------------------------------------
+
+  CREATE INDEX "TIMESHEET"."NIVEL_CARGO_FK_I" ON "TIMESHEET"."NIVEL" ("CD_CARGO") 
+  ;
+--------------------------------------------------------
+--  DDL for Index NIVEL_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "TIMESHEET"."NIVEL_PK" ON "TIMESHEET"."NIVEL" ("CD_CARGO", "CD_NIVEL") 
+  ;
+--------------------------------------------------------
+--  DDL for Index ORIGEM_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "TIMESHEET"."ORIGEM_PK" ON "TIMESHEET"."ORIGEM" ("CD_ORIGEM") 
+  ;
+--------------------------------------------------------
+--  DDL for Index PARAMETRO_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "TIMESHEET"."PARAMETRO_PK" ON "TIMESHEET"."COM_PARAMETROS_ADMINISTRATIVOS" ("CDG_PARAM") 
+  ;
+--------------------------------------------------------
+--  DDL for Index PAR_FASE_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "TIMESHEET"."PAR_FASE_PK" ON "TIMESHEET"."PARAM_FASE" ("CD_FASE") 
+  ;
+--------------------------------------------------------
+--  DDL for Index PARM_EMPR_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "TIMESHEET"."PARM_EMPR_PK" ON "TIMESHEET"."PARM_EMPR" ("CD_EMPRESA") 
+  ;
+--------------------------------------------------------
+--  DDL for Index PEO_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "TIMESHEET"."PEO_PK" ON "TIMESHEET"."LOG_TIPO_PERIODO" ("PERI_CD_PERIODO") 
+  ;
+--------------------------------------------------------
+--  DDL for Index PFC_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "TIMESHEET"."PFC_PK" ON "TIMESHEET"."PROJ_FUNC" ("PROJ_CD_PROJETO", "CD_FASE", "FUNC_CD_FUNC") 
+  ;
+--------------------------------------------------------
+--  DDL for Index PK_CLIENTE
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "TIMESHEET"."PK_CLIENTE" ON "TIMESHEET"."DIM_CLIENTE" ("SK_CLIENTE") 
+  ;
+--------------------------------------------------------
+--  DDL for Index PK_FAT_HR_FUNC_PROJ
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "TIMESHEET"."PK_FAT_HR_FUNC_PROJ" ON "TIMESHEET"."FAT_HR_FUNC_PROJ" ("SK_PROJETO", "SK_CLIENTE", "SK_FILIAL", "SK_TEMPO_DIA", "SK_FUNCIONARIO", "SK_VERTICAL") 
+  ;
+--------------------------------------------------------
+--  DDL for Index PK_FAT_HR_UTEIS_MES_FILI
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "TIMESHEET"."PK_FAT_HR_UTEIS_MES_FILI" ON "TIMESHEET"."FAT_HR_UTEIS_MES_FILI" ("SK_FILIAL", "SK_TEMPO_DIA") 
+  ;
+--------------------------------------------------------
+--  DDL for Index PK_FILIAL
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "TIMESHEET"."PK_FILIAL" ON "TIMESHEET"."DIM_FILIAL" ("SK_FILIAL") 
+  ;
+--------------------------------------------------------
+--  DDL for Index PK_FUNCIONARIO
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "TIMESHEET"."PK_FUNCIONARIO" ON "TIMESHEET"."DIM_FUNCIONARIO" ("SK_FUNCIONARIO") 
+  ;
+--------------------------------------------------------
+--  DDL for Index PK_LOGTRSCCDTRMSTR
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "TIMESHEET"."PK_LOGTRSCCDTRMSTR" ON "TIMESHEET"."T_LOG_TRISCAL" ("ID_TRSC", "ID_POSC_TRSC") 
+  ;
+--------------------------------------------------------
+--  DDL for Index PK_PROJETO
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "TIMESHEET"."PK_PROJETO" ON "TIMESHEET"."DIM_PROJETO" ("SK_PROJETO") 
+  ;
+--------------------------------------------------------
+--  DDL for Index PK_TEMPODIA
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "TIMESHEET"."PK_TEMPODIA" ON "TIMESHEET"."DIM_TEMPO_DIA" ("SK_TEMPO_DIA") 
+  ;
+--------------------------------------------------------
+--  DDL for Index PK_VERTICAL
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "TIMESHEET"."PK_VERTICAL" ON "TIMESHEET"."DIM_VERTICAL" ("SK_VERTICAL") 
+  ;
+--------------------------------------------------------
+--  DDL for Index PLATAFORMA_VENDOR_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "TIMESHEET"."PLATAFORMA_VENDOR_PK" ON "TIMESHEET"."PLATAFORMA_VENDOR" ("PLATAFORMA_VENDOR") 
+  ;
+--------------------------------------------------------
+--  DDL for Index PROJETO_DS_PROJETO_UK
+--------------------------------------------------------
+
+  CREATE INDEX "TIMESHEET"."PROJETO_DS_PROJETO_UK" ON "TIMESHEET"."PROJETO" ("DS_PROJETO") 
+  ;
+--------------------------------------------------------
+--  DDL for Index PROJETO_FASE_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "TIMESHEET"."PROJETO_FASE_PK" ON "TIMESHEET"."PROJETO_FASE" ("CD_PROJETO", "SEQ_PROJETO_FASE") 
+  ;
+--------------------------------------------------------
+--  DDL for Index PROJETO_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "TIMESHEET"."PROJETO_PK" ON "TIMESHEET"."PROJETO" ("CD_PROJETO") 
+  ;
+--------------------------------------------------------
+--  DDL for Index PROJETO_TAREFA_FUNCIONARIO_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "TIMESHEET"."PROJETO_TAREFA_FUNCIONARIO_PK" ON "TIMESHEET"."PROJETO_TAREFA_FUNCIONARIO" ("CD_PROJETO", "SEQ_PROJETO_FASE", "SEQ_PROJETO_TAREFA", "FUNC_CD_FUNC") 
+  ;
+--------------------------------------------------------
+--  DDL for Index PROJETO_TAREFA_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "TIMESHEET"."PROJETO_TAREFA_PK" ON "TIMESHEET"."PROJETO_TAREFA" ("CD_PROJETO", "SEQ_PROJETO_FASE", "SEQ_PROJETO_TAREFA") 
+  ;
+--------------------------------------------------------
+--  DDL for Index S_CLI_IBM_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "TIMESHEET"."S_CLI_IBM_PK" ON "TIMESHEET"."SITE_CLIENTES_IBM" ("COD_CLIENTE", "CNPJ_SITE") 
+  ;
+--------------------------------------------------------
+--  DDL for Index SERVIDOR_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "TIMESHEET"."SERVIDOR_PK" ON "TIMESHEET"."SERVIDOR" ("CD_SERVIDOR") 
+  ;
+--------------------------------------------------------
+--  DDL for Index STATE_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "TIMESHEET"."STATE_PK" ON "TIMESHEET"."STATE" ("CD_STATE") 
+  ;
+--------------------------------------------------------
+--  DDL for Index STATE_REGION_FK_I
+--------------------------------------------------------
+
+  CREATE INDEX "TIMESHEET"."STATE_REGION_FK_I" ON "TIMESHEET"."STATE" ("CD_REGION") 
+  ;
+--------------------------------------------------------
+--  DDL for Index SUGAR_HORAS_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "TIMESHEET"."SUGAR_HORAS_PK" ON "TIMESHEET"."SUGAR_HORAS" ("FUNC_CD_FUNC", "PROJ_CD_PROJETO", "DTHR_INI_ATENDIMENTO") 
+  ;
+--------------------------------------------------------
+--  DDL for Index SUGAR_STAGE_PK1
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "TIMESHEET"."SUGAR_STAGE_PK1" ON "TIMESHEET"."SUGAR_STAGE" ("CD_SUGAR") ;
+--------------------------------------------------------
+--  DDL for Index SUP_SIT_IB_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "TIMESHEET"."SUP_SIT_IB_PK" ON "TIMESHEET"."SUPORTE_SITE_IBM" ("COD_CLIENTE", "CNPJ_SITE", "COD_PRODUTO") 
+  ;
+--------------------------------------------------------
+--  DDL for Index SYS_C0010048
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "TIMESHEET"."SYS_C0010048" ON "TIMESHEET"."TESTE_INCREMENTAL" ("CHAVE") 
+  ;
+--------------------------------------------------------
+--  DDL for Index SYS_C001815
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "TIMESHEET"."SYS_C001815" ON "TIMESHEET"."CLASSES" ("CLAS_CD_CLASSE") 
+  ;
+--------------------------------------------------------
+--  DDL for Index SYS_C001896
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "TIMESHEET"."SYS_C001896" ON "TIMESHEET"."DETALHAMENTO_CLASSE" ("CLAS_CD_CLASSE", "DETA_NR_SEQUENCIAL") 
+  ;
+--------------------------------------------------------
+--  DDL for Index SYS_C001903
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "TIMESHEET"."SYS_C001903" ON "TIMESHEET"."HORAS_DIA" ("FUNC_CD_FUNC", "PROJ_CD_PROJETO", "LOPE_NR_ANO", "PERI_CD_PERIODO", "LOG_NR_DIA", "LOPE_NR_MES") 
+  ;
+--------------------------------------------------------
+--  DDL for Index SYS_C002230
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "TIMESHEET"."SYS_C002230" ON "TIMESHEET"."TIPO_LANCAMENTO" ("CLAS_CD_CLASSE", "DETA_NR_SEQUENCIAL", "TILA_CD_TIPO_LANC") 
+  ;
+--------------------------------------------------------
+--  DDL for Index SYS_C009838
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "TIMESHEET"."SYS_C009838" ON "TIMESHEET"."T_EMAILS" ("DT_INCLUSAO", "NM_FUNCIONARIO") 
+  ;
+--------------------------------------------------------
+--  DDL for Index TECNOLOGIA_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "TIMESHEET"."TECNOLOGIA_PK" ON "TIMESHEET"."TECNOLOGIA" ("TECNOLOGIA") 
+  ;
+--------------------------------------------------------
+--  DDL for Index TIMESHEET_DIA_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "TIMESHEET"."TIMESHEET_DIA_PK" ON "TIMESHEET"."TIMESHEET_DIA" ("FUNC_CD_FUNC", "LOPE_NR_ANO", "LOPE_NR_MES", "LOG_NR_DIA") 
+  ;
+--------------------------------------------------------
+--  DDL for Index TIMESHEET_DIA_TAREFA_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "TIMESHEET"."TIMESHEET_DIA_TAREFA_PK" ON "TIMESHEET"."TIMESHEET_DIA_TAREFA" ("FUNC_CD_FUNC", "LOPE_NR_ANO", "LOPE_NR_MES", "LOG_NR_DIA", "CD_PROJETO", "SEQ_PROJETO_FASE", "SEQ_PROJETO_TAREFA") 
+  ;
+--------------------------------------------------------
+--  DDL for Index TIPO_CONTRATO_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "TIMESHEET"."TIPO_CONTRATO_PK" ON "TIMESHEET"."TIPO_CONTRATO" ("TIPO_CONTRATO") 
+  ;
+--------------------------------------------------------
+--  DDL for Index TIPOLICENCA_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "TIMESHEET"."TIPOLICENCA_PK" ON "TIMESHEET"."TIPOLICENCA" ("TP_LICENCA") 
+  ;
+--------------------------------------------------------
+--  DDL for Index TIPO_SERVICO_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "TIMESHEET"."TIPO_SERVICO_PK" ON "TIMESHEET"."TIPO_SERVICO" ("TIPO_SERVICO") 
+  ;
+--------------------------------------------------------
+--  DDL for Index TRATA_ERRO_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "TIMESHEET"."TRATA_ERRO_PK" ON "TIMESHEET"."COM_ACES_TRATA_ERRO" ("TPO_ERRO", "NMR_ERRO", "DSC_CONSTRAINT_EXCEPTION") 
+  ;
+--------------------------------------------------------
+--  DDL for Index UK_CLIENTE
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "TIMESHEET"."UK_CLIENTE" ON "TIMESHEET"."DIM_CLIENTE" ("CD_CLIENTE") 
+  ;
+--------------------------------------------------------
+--  DDL for Index UK_FILIAL
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "TIMESHEET"."UK_FILIAL" ON "TIMESHEET"."DIM_FILIAL" ("CD_FILIAL") 
+  ;
+--------------------------------------------------------
+--  DDL for Index UK_FUNCIONARIO
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "TIMESHEET"."UK_FUNCIONARIO" ON "TIMESHEET"."DIM_FUNCIONARIO" ("CD_FUNCIONARIO") 
+  ;
+--------------------------------------------------------
+--  DDL for Index UK_PROJETO
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "TIMESHEET"."UK_PROJETO" ON "TIMESHEET"."DIM_PROJETO" ("CD_PROJETO") 
+  ;
+--------------------------------------------------------
+--  DDL for Index UK_TEMPODIA
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "TIMESHEET"."UK_TEMPODIA" ON "TIMESHEET"."DIM_TEMPO_DIA" ("NR_ANO", "NR_MES", "NR_DIA") 
+  ;
+--------------------------------------------------------
+--  DDL for Index UK_VERTICAL
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "TIMESHEET"."UK_VERTICAL" ON "TIMESHEET"."DIM_VERTICAL" ("NM_VERTICAL") 
+  ;
+--------------------------------------------------------
+--  DDL for Trigger TG_DELETA_COM_ACES_USUARIO
+--------------------------------------------------------
+
+  CREATE OR REPLACE EDITIONABLE TRIGGER "TIMESHEET"."TG_DELETA_COM_ACES_USUARIO" 
+ AFTER DELETE ON COM_ACES_USUARIO
+FOR EACH ROW
+
+declare
+   V_CD_EMPRESA FUNCIONARIO.CD_EMPRESA%TYPE;
+   V_FIRSTNAME  VARCHAR2(50);
+   V_LASTNAME   VARCHAR2(50);
+   V_MIDDLENAME VARCHAR2(50);  
+   V_FIRSTPOS   NUMBER(5);
+   V_LASTPOS    NUMBER(5);
+   V_FULLNAME   VARCHAR2(50);
+BEGIN
+
+     V_FULLNAME := TRIM(:OLD.NOME);
+     V_CD_EMPRESA := 0;
+     
+     IF instr(V_FULLNAME,' ') <= 0 THEN
+         V_FIRSTNAME := V_FULLNAME;
+     ELSE
+       V_FIRSTPOS := instr(V_FULLNAME,' ');
+       V_LASTPOS  := instr(V_FULLNAME,' ',-1);
+       V_FIRSTNAME := substr(V_FULLNAME, 1, V_FIRSTPOS-1);
+       IF V_FIRSTPOS <> V_LASTPOS THEN
+         V_MIDDLENAME := substr(V_FULLNAME,V_FIRSTPOS+1, (V_LASTPOS-V_FIRSTPOS)-1); 
+       END IF;
+       V_LASTNAME := substr(V_FULLNAME,V_LASTPOS+1);
+     END IF;
+
+     INSERT INTO FILA_INTEGRACAO (NR_ORDEM
+                                 ,CDG_USUR
+                                 ,TP_OPERACAO
+                                 ,DT_INSERCAO
+                                 ,FIRST_NAME
+                                 ,MIDDLE_NAME
+                                 ,LAST_NAME
+                                 ,FULL_NAME
+                                 ,CD_EMPRESA)
+                          VALUES(SEQ_NR_ORDEM.NEXTVAL
+                                ,:OLD.CDG_USUR
+                                ,'C'
+                                ,SYSDATE
+                                ,V_FIRSTNAME
+                                ,V_MIDDLENAME
+                                ,V_LASTNAME
+                                ,V_FULLNAME
+                                ,V_CD_EMPRESA);                       
+
+      
+EXCEPTION
+ WHEN OTHERS THEN
+    RAISE_APPLICATION_ERROR(-20010, 'Erro ao DELETAR o usuário (TG_DELETA_COM_ACES_USUARIO): ' || TO_CHAR(SQLCODE) || '-' || SQLERRM) ;
+END;
+
+
+
+
+/
+ALTER TRIGGER "TIMESHEET"."TG_DELETA_COM_ACES_USUARIO" ENABLE;
+--------------------------------------------------------
+--  DDL for Trigger TG_DELETA_FUNCIONARIO
+--------------------------------------------------------
+
+  CREATE OR REPLACE EDITIONABLE TRIGGER "TIMESHEET"."TG_DELETA_FUNCIONARIO" 
+ AFTER DELETE ON FUNCIONARIO
+FOR EACH ROW
+
+declare
+   V_CD_EMPRESA FUNCIONARIO.CD_EMPRESA%TYPE;
+   V_FIRSTNAME  VARCHAR2(50);
+   V_LASTNAME   VARCHAR2(50);
+   V_MIDDLENAME VARCHAR2(50);  
+   V_FIRSTPOS   NUMBER(5);
+   V_LASTPOS    NUMBER(5);
+   V_FULLNAME   VARCHAR2(50);
+BEGIN
+
+     V_FULLNAME := TRIM(:OLD.NM_FUNCIONARIO);
+     V_CD_EMPRESA := NVL(:OLD.CD_EMPRESA,0);
+     
+     IF instr(V_FULLNAME,' ') <= 0 THEN
+         V_FIRSTNAME := V_FULLNAME;
+     ELSE
+       V_FIRSTPOS := instr(V_FULLNAME,' ');
+       V_LASTPOS  := instr(V_FULLNAME,' ',-1);
+       V_FIRSTNAME := substr(V_FULLNAME, 1, V_FIRSTPOS-1);
+       IF V_FIRSTPOS <> V_LASTPOS THEN
+         V_MIDDLENAME := substr(V_FULLNAME,V_FIRSTPOS+1, (V_LASTPOS-V_FIRSTPOS)-1); 
+       END IF;
+       V_LASTNAME := substr(V_FULLNAME,V_LASTPOS+1);
+     END IF;
+
+     --Deleta o acesso ao Active Directory  
+     INSERT INTO FILA_INTEGRACAO (NR_ORDEM
+                                 ,CDG_USUR
+                                 ,TP_OPERACAO
+                                 ,DT_INSERCAO
+                                 ,FIRST_NAME
+                                 ,MIDDLE_NAME
+                                 ,LAST_NAME
+                                 ,FULL_NAME
+                                 ,CD_EMPRESA)
+                          VALUES(SEQ_NR_ORDEM.NEXTVAL
+                                ,:OLD.CDG_USUR
+                                ,'D'
+                                ,SYSDATE
+                                ,V_FIRSTNAME
+                                ,V_MIDDLENAME
+                                ,V_LASTNAME
+                                ,V_FULLNAME
+                                ,V_CD_EMPRESA);                       
+
+      
+EXCEPTION
+ WHEN OTHERS THEN
+    RAISE_APPLICATION_ERROR(-20010, 'Erro ao DELETAR o funcionário (TG_DELETA_FUNCIONARIO): ' || TO_CHAR(SQLCODE) || '-' || SQLERRM) ;
+END;
+
+
+
+
+/
+ALTER TRIGGER "TIMESHEET"."TG_DELETA_FUNCIONARIO" ENABLE;
+--------------------------------------------------------
+--  DDL for Trigger TG_DT_ADMISSAO_ROW
+--------------------------------------------------------
+
+  CREATE OR REPLACE EDITIONABLE TRIGGER "TIMESHEET"."TG_DT_ADMISSAO_ROW" 
+ BEFORE UPDATE ON FUNCIONARIO 
+ FOR EACH ROW
+BEGIN
+DECLARE
+BEGIN
+	if(:NEW.DT_RESCISAO IS NULL AND :OLD.DT_RESCISAO IS NOT NULL) THEN
+	  --funcionário saiu e voltou
+	  --nesse caso devemos atualizar a data de admissão dele
+	  --pois senão a rotina de alertas e fechamento automático de logs ia fechar tudo até a antiga data de admissão dele
+	  --gerando horas negativas no BHE sem sentido
+	  
+	  if :new.DT_ADMISSAO <= :OLD.DT_RESCISAO THEN
+	     --a data de admissão não foi atualizada manualmente, então o sistema vai atualizá-la
+		 :new.DT_ADMISSAO := TRUNC(SYSDATE);
+	  end if;
+	end if;
+
+EXCEPTION
+	WHEN OTHERS THEN
+		RAISE_APPLICATION_ERROR(-20010, 'Erro na trigger TG_DT_ADMISSAO_ROW  (' || TO_CHAR(SQLCODE) || '). Favor informar ao administrador.') ;
+   
+END;
+END TG_DT_ADMISSAO_ROW;
+
+/
+ALTER TRIGGER "TIMESHEET"."TG_DT_ADMISSAO_ROW" ENABLE;
+--------------------------------------------------------
+--  DDL for Trigger TG_EMAILS_HISTORY_ROW
+--------------------------------------------------------
+
+  CREATE OR REPLACE EDITIONABLE TRIGGER "TIMESHEET"."TG_EMAILS_HISTORY_ROW" 
+ BEFORE DELETE ON T_EMAILS 
+ FOR EACH ROW
+BEGIN
+DECLARE
+BEGIN
+    insert into TIMESHEET.T_EMAILS_HIST(DT_INCLUSAO, DTHR_INCLUSAO, MAILTO, MAILFROM
+                                       ,NM_FUNCIONARIO, ASSUNTO, TX_EMAIL1, TX_EMAIL2, TX_EMAIL3, TX_EMAIL4)
+      values (:OLD.DT_INCLUSAO, :OLD.DTHR_INCLUSAO, :OLD.MAILTO, :OLD.MAILFROM
+             ,:OLD.NM_FUNCIONARIO, :OLD.ASSUNTO, :OLD.TX_EMAIL1, :OLD.TX_EMAIL2, :OLD.TX_EMAIL3, :OLD.TX_EMAIL4);
+
+EXCEPTION
+	WHEN OTHERS THEN
+		RAISE_APPLICATION_ERROR(-20010, 'Erro na trigger TG_EMAILS_HISTORY_ROW  (' || TO_CHAR(SQLCODE) || '). Favor informar ao administrador.') ;
+   
+END;
+END TG_DT_ADMISSAO_ROW;
+
+/
+ALTER TRIGGER "TIMESHEET"."TG_EMAILS_HISTORY_ROW" ENABLE;
+--------------------------------------------------------
+--  DDL for Trigger TG_FERIADO
+--------------------------------------------------------
+
+  CREATE OR REPLACE EDITIONABLE TRIGGER "TIMESHEET"."TG_FERIADO" 
+BEFORE INSERT OR UPDATE ON FERIADO
+FOR EACH ROW
+
+
+DECLARE
+   CONT NUMBER(3) := 0;
+BEGIN
+-- 0 NF=>NADA
+-- 1 LF=>FILIAL
+-- 2 NN=>ANO
+-- 3 LN=>ANO + FILIAL
+
+   IF :NEW.FERI_TP_FERIADO = 'NF' THEN
+      NULL;
+   ELSIF :NEW.FERI_TP_FERIADO = 'LF' THEN
+      IF :NEW.FILIAL_CD_FILIAL IS NULL THEN
+         raise_application_error(-20011, 'Erro ao inserir/atualizar Feriado: Filial deve ser preenchida para feriados Locais.' );
+      END IF;
+   ELSIF :NEW.FERI_TP_FERIADO = 'NN' THEN
+      IF :NEW.FERI_NR_ANO IS NULL THEN
+         raise_application_error(-20011, 'Erro ao inserir/atualizar Feriado: Ano deve ser preenchido para feriados n?o-fixos.' );
+      END IF;
+   ELSIF :NEW.FERI_TP_FERIADO = 'LN' THEN
+      IF :NEW.FILIAL_CD_FILIAL IS NULL THEN
+         raise_application_error(-20011, 'Erro ao inserir/atualizar Feriado: Filial deve ser preenchida para feriados Locais.' );
+      END IF;
+      IF :NEW.FERI_NR_ANO IS NULL THEN
+         raise_application_error(-20011, 'Erro ao inserir/atualizar Feriado: Ano deve ser preenchido para feriados n?o-fixos.' );
+      END IF;
+   END IF;
+
+   IF INSERTING THEN
+      IF :NEW.FERI_TP_FERIADO = 'NF' THEN
+         SELECT COUNT(*) INTO CONT FROM FERIADO
+          WHERE FERI_STT_INATIVO = 'N' AND FERI_NR_DIA = :NEW.FERI_NR_DIA AND FERI_NR_MES = :NEW.FERI_NR_MES;
+         IF CONT > 0 THEN
+            raise_application_error(-20011, 'Erro ao inserir/atualizar Feriado: Ja existe outro feriado no mesmo dia/mes.' );
+         END IF;
+
+      ELSIF :NEW.FERI_TP_FERIADO = 'LF' THEN
+         SELECT COUNT(*) INTO CONT FROM FERIADO
+          WHERE FERI_STT_INATIVO = 'N' AND FERI_NR_DIA = :NEW.FERI_NR_DIA AND FERI_NR_MES = :NEW.FERI_NR_MES
+            AND FILIAL_CD_FILIAL = :NEW.FILIAL_CD_FILIAL;
+         IF CONT > 0 THEN
+            raise_application_error(-20011, 'Erro ao inserir/atualizar Feriado: Ja existe outro feriado com mesmo dia/mes/filial.' );
+         END IF;
+         SELECT COUNT(*) INTO CONT FROM FERIADO
+          WHERE FERI_STT_INATIVO = 'N' AND FERI_NR_DIA = :NEW.FERI_NR_DIA AND FERI_NR_MES = :NEW.FERI_NR_MES
+            AND ((FERI_TP_FERIADO = 'NF') OR (FERI_TP_FERIADO = 'NN'));
+         IF CONT > 0 THEN
+            raise_application_error(-20011, 'Erro ao inserir/atualizar Feriado: Ja existe outro feriado com mesmo dia/mes.' );
+         END IF;
+
+      ELSIF :NEW.FERI_TP_FERIADO = 'NN' THEN
+         SELECT COUNT(*) INTO CONT FROM FERIADO
+          WHERE FERI_STT_INATIVO = 'N' AND FERI_NR_DIA = :NEW.FERI_NR_DIA AND FERI_NR_MES = :NEW.FERI_NR_MES
+            AND FERI_NR_ANO = :NEW.FERI_NR_ANO;
+         IF CONT > 0 THEN
+            raise_application_error(-20011, 'Erro ao inserir/atualizar Feriado: Ja existe outro feriado com mesmo dia/mes/ano.' );
+         END IF;
+         SELECT COUNT(*) INTO CONT FROM FERIADO
+          WHERE FERI_STT_INATIVO = 'N' AND FERI_NR_DIA = :NEW.FERI_NR_DIA AND FERI_NR_MES = :NEW.FERI_NR_MES
+            AND ((FERI_TP_FERIADO = 'NF') OR (FERI_TP_FERIADO = 'LF')
+              OR (FERI_TP_FERIADO = 'LN' AND FERI_NR_ANO = :NEW.FERI_NR_ANO));
+         IF CONT > 0 THEN
+            raise_application_error(-20011, 'Erro ao inserir/atualizar Feriado: Ja existe outro feriado com mesmo dia/mes/ano.' );
+         END IF;
+
+      ELSIF :NEW.FERI_TP_FERIADO = 'LN' THEN
+         SELECT COUNT(*) INTO CONT FROM FERIADO
+          WHERE FERI_STT_INATIVO = 'N' AND FERI_NR_DIA = :NEW.FERI_NR_DIA AND FERI_NR_MES = :NEW.FERI_NR_MES
+            AND FILIAL_CD_FILIAL = :NEW.FILIAL_CD_FILIAL
+            AND FERI_NR_ANO = :NEW.FERI_NR_ANO;
+         IF CONT > 0 THEN
+            raise_application_error(-20011, 'Erro ao inserir/atualizar Feriado: Ja existe outro feriado com mesmo dia/mes/ano/filial.' );
+         END IF;
+         SELECT COUNT(*) INTO CONT FROM FERIADO
+          WHERE FERI_STT_INATIVO = 'N' AND FERI_NR_DIA = :NEW.FERI_NR_DIA AND FERI_NR_MES = :NEW.FERI_NR_MES
+            AND ((FERI_TP_FERIADO = 'NF') OR (FERI_TP_FERIADO = 'LF' AND FILIAL_CD_FILIAL = :NEW.FILIAL_CD_FILIAL)
+                 OR (FERI_TP_FERIADO = 'NN' AND FERI_NR_ANO = :NEW.FERI_NR_ANO));
+         IF CONT > 0 THEN
+            raise_application_error(-20011, 'Erro ao inserir/atualizar Feriado: Ja existe outro feriado com mesmo dia/mes/ano ou filial.' );
+         END IF;
+      END IF;
+
+   ELSIF UPDATING THEN
+      IF :NEW.FERI_TP_FERIADO = 'NF' THEN
+         SELECT COUNT(*) INTO CONT FROM FERIADO
+          WHERE FERI_STT_INATIVO = 'N' AND FERI_NR_DIA = :NEW.FERI_NR_DIA AND FERI_NR_MES = :NEW.FERI_NR_MES
+            AND ROWID <> :OLD.ROWID;
+         IF CONT > 0 THEN
+            raise_application_error(-20011, 'Erro ao inserir/atualizar Feriado: Ja existe outro feriado no mesmo dia/mes.' );
+         END IF;
+
+      ELSIF :NEW.FERI_TP_FERIADO = 'LF' THEN
+         SELECT COUNT(*) INTO CONT FROM FERIADO
+          WHERE FERI_STT_INATIVO = 'N' AND FERI_NR_DIA = :NEW.FERI_NR_DIA AND FERI_NR_MES = :NEW.FERI_NR_MES
+            AND FILIAL_CD_FILIAL = :NEW.FILIAL_CD_FILIAL
+            AND ROWID <> :OLD.ROWID;
+         IF CONT > 0 THEN
+            raise_application_error(-20011, 'Erro ao inserir/atualizar Feriado: Ja existe outro feriado com mesmo dia/mes/filial.' );
+         END IF;
+         SELECT COUNT(*) INTO CONT FROM FERIADO
+          WHERE FERI_STT_INATIVO = 'N' AND FERI_NR_DIA = :NEW.FERI_NR_DIA AND FERI_NR_MES = :NEW.FERI_NR_MES
+            AND ((FERI_TP_FERIADO = 'NF') OR (FERI_TP_FERIADO = 'NN'))
+            AND ROWID <> :OLD.ROWID;
+         IF CONT > 0 THEN
+            raise_application_error(-20011, 'Erro ao inserir/atualizar Feriado: Ja existe outro feriado com mesmo dia/mes.' );
+         END IF;
+
+      ELSIF :NEW.FERI_TP_FERIADO = 'NN' THEN
+         SELECT COUNT(*) INTO CONT FROM FERIADO
+          WHERE FERI_STT_INATIVO = 'N' AND FERI_NR_DIA = :NEW.FERI_NR_DIA AND FERI_NR_MES = :NEW.FERI_NR_MES
+            AND FERI_NR_ANO = :NEW.FERI_NR_ANO
+            AND ROWID <> :OLD.ROWID;
+         IF CONT > 0 THEN
+            raise_application_error(-20011, 'Erro ao inserir/atualizar Feriado: Ja existe outro feriado com mesmo dia/mes/ano.' );
+         END IF;
+         SELECT COUNT(*) INTO CONT FROM FERIADO
+          WHERE FERI_STT_INATIVO = 'N' AND FERI_NR_DIA = :NEW.FERI_NR_DIA AND FERI_NR_MES = :NEW.FERI_NR_MES
+            AND ((FERI_TP_FERIADO = 'NF') OR (FERI_TP_FERIADO = 'LF')
+              OR (FERI_TP_FERIADO = 'LN' AND FERI_NR_ANO = :NEW.FERI_NR_ANO))
+            AND ROWID <> :OLD.ROWID;
+         IF CONT > 0 THEN
+            raise_application_error(-20011, 'Erro ao inserir/atualizar Feriado: Ja existe outro feriado com mesmo dia/mes/ano.' );
+         END IF;
+
+      ELSIF :NEW.FERI_TP_FERIADO = 'LN' THEN
+         SELECT COUNT(*) INTO CONT FROM FERIADO
+          WHERE FERI_STT_INATIVO = 'N' AND FERI_NR_DIA = :NEW.FERI_NR_DIA AND FERI_NR_MES = :NEW.FERI_NR_MES
+            AND FILIAL_CD_FILIAL = :NEW.FILIAL_CD_FILIAL
+            AND FERI_NR_ANO = :NEW.FERI_NR_ANO
+            AND ROWID <> :OLD.ROWID;
+         IF CONT > 0 THEN
+            raise_application_error(-20011, 'Erro ao inserir/atualizar Feriado: Ja existe outro feriado com mesmo dia/mes/ano/filial.' );
+         END IF;
+         SELECT COUNT(*) INTO CONT FROM FERIADO
+          WHERE FERI_STT_INATIVO = 'N' AND FERI_NR_DIA = :NEW.FERI_NR_DIA AND FERI_NR_MES = :NEW.FERI_NR_MES
+            AND ((FERI_TP_FERIADO = 'NF') OR (FERI_TP_FERIADO = 'LF' AND FILIAL_CD_FILIAL = :NEW.FILIAL_CD_FILIAL)
+                 OR (FERI_TP_FERIADO = 'NN' AND FERI_NR_ANO = :NEW.FERI_NR_ANO))
+            AND ROWID <> :OLD.ROWID;
+         IF CONT > 0 THEN
+            raise_application_error(-20011, 'Erro ao inserir/atualizar Feriado: Ja existe outro feriado com mesmo dia/mes/ano ou filial.' );
+         END IF;
+      END IF;
+
+   END IF;
+EXCEPTION
+   when others then
+      if sqlcode = -20011 then
+         raise_application_error(-20011, SQLERRM );
+      else
+         raise_application_error(-20010, 'Erro no trigger TG_FERIADO: ' || SQLCODE || SQLERRM );
+      end if;
+END;
+
+
+
+/
+ALTER TRIGGER "TIMESHEET"."TG_FERIADO" ENABLE;
+--------------------------------------------------------
+--  DDL for Trigger TG_HISTFUNC_SEGURANCA
+--------------------------------------------------------
+
+  CREATE OR REPLACE EDITIONABLE TRIGGER "TIMESHEET"."TG_HISTFUNC_SEGURANCA" 
+ BEFORE INSERT OR UPDATE
+ ON HIST_FUNC
+ REFERENCING OLD AS OLD NEW AS NEW
+ FOR EACH ROW
+
+
+
+BEGIN
+  :NEW.DT_MODIFIED := SYSDATE;
+  --:NEW.MODIFIED_BY := USER;
+
+  IF INSERTING THEN
+    :NEW.DT_CREATED := SYSDATE;
+    --:NEW.CREATED_BY := USER;
+  END IF;
+END;
+
+
+
+
+/
+ALTER TRIGGER "TIMESHEET"."TG_HISTFUNC_SEGURANCA" ENABLE;
+--------------------------------------------------------
+--  DDL for Trigger TG_HORAS_DIA
+--------------------------------------------------------
+
+  CREATE OR REPLACE EDITIONABLE TRIGGER "TIMESHEET"."TG_HORAS_DIA" 
+ AFTER UPDATE OF HORAS_NR_CO, HORAS_NR_NC
+ ON HORAS_DIA
+
+
+BEGIN
+DECLARE
+   v_FUNC NUMBER(7);
+BEGIN
+/* =================== Alexandre 04/07/2002 ===============================
+    Na alterac?o : verifica se todas as horas(cobraveis e n?o cobraveis)
+                   de um determinado dia est?o nulas ou zeradas e deleta
+                   o registro e podendo deletar tambem o registro PAI.
+   ======================================================================== */
+
+  FOR I IN 1.. PKG_HORAS_DIA.v_NumRow LOOP
+    BEGIN
+       DELETE FROM HORAS_DIA
+       WHERE FUNC_CD_FUNC    = PKG_HORAS_DIA.v_FUNC_CD_FUNC(I)
+         AND LOPE_NR_ANO     = PKG_HORAS_DIA.v_LOPE_NR_ANO(I)
+         AND LOPE_NR_MES     = PKG_HORAS_DIA.v_LOPE_NR_MES(I)
+         AND PERI_CD_PERIODO = PKG_HORAS_DIA.v_PERI_CD_PERIODO(I)
+         AND LOG_NR_DIA      = PKG_HORAS_DIA.v_LOG_NR_DIA(I)
+         AND PROJ_CD_PROJETO = PKG_HORAS_DIA.v_PROJ_CD_PROJETO(I);
+
+       IF SQL%NOTFOUND THEN
+         RAISE_APPLICATION_ERROR(-20010, 'Erro na DELEC?O de HORAS_DIA da trigger TG_HORAS_DIA  (' || TO_CHAR(SQLCODE) || ')') ;
+       END IF;
+
+ 	   SELECT COUNT(*) INTO v_FUNC FROM HORAS_DIA
+	   WHERE FUNC_CD_FUNC    = PKG_HORAS_DIA.v_FUNC_CD_FUNC(I)
+	     AND LOPE_NR_ANO     = PKG_HORAS_DIA.v_LOPE_NR_ANO(I)
+	     AND LOPE_NR_MES     = PKG_HORAS_DIA.v_LOPE_NR_MES(I)
+	     AND PERI_CD_PERIODO = PKG_HORAS_DIA.v_PERI_CD_PERIODO(I)
+	     AND LOG_NR_DIA      = PKG_HORAS_DIA.v_LOG_NR_DIA(I);
+
+	   -- Deleta o registro da tabela PAI
+	   IF v_FUNC = 0 THEN
+               --Christiano---18_12_2002---Coloquei as 5 linhas abaixo no comando para n?o apagar os registros de
+               --horas ja cadastrados independentemente de projeto (ausencia, hora extra)---
+               --    AND ( NVL(LOG_QN_HEBHE,0) = 0)
+               --    AND ( NVL(LOG_QN_HEPGT,0) = 0)
+               --    AND ( NVL(LOG_QN_AUSBHE,0) = 0)
+               --    AND ( NVL(LOG_QN_AUSPGT,0) = 0)
+               --    AND ( NVL(LOG_QN_AUSABN,0) = 0);
+	       DELETE FROM LOG_DIA
+	       WHERE FUNC_CD_FUNC    = PKG_HORAS_DIA.v_FUNC_CD_FUNC(I)
+	         AND LOPE_NR_ANO     = PKG_HORAS_DIA.v_LOPE_NR_ANO(I)
+	         AND LOPE_NR_MES     = PKG_HORAS_DIA.v_LOPE_NR_MES(I)
+	         AND PERI_CD_PERIODO = PKG_HORAS_DIA.v_PERI_CD_PERIODO(I)
+	         AND LOG_NR_DIA      = PKG_HORAS_DIA.v_LOG_NR_DIA(I)
+                     AND ( NVL(LOG_QN_HEBHE,0) = 0)
+                     AND ( NVL(LOG_QN_HEPGT,0) = 0)
+                     AND ( NVL(LOG_QN_AUSBHE,0) = 0)
+                     AND ( NVL(LOG_QN_AUSPGT,0) = 0)
+                     AND ( NVL(LOG_QN_AUSABN,0) = 0);
+	       --c IF SQL%NOTFOUND THEN
+	       --c   RAISE_APPLICATION_ERROR(-20010, 'Erro na DELEC?O de LOG_DIA da trigger TG_HORAS_DIA  (' || TO_CHAR(SQLCODE) || ')') ;
+	       --c END IF;
+       END IF;
+     EXCEPTION
+       WHEN OTHERS THEN
+       RAISE_APPLICATION_ERROR(-20010, 'Erro na DELEC?O da trigger TG_HORAS_DIA  (' || TO_CHAR(SQLCODE) || ')') ;
+     END;
+  END LOOP;
+
+  PKG_HORAS_DIA.v_NumRow := 0;
+
+EXCEPTION
+ WHEN OTHERS THEN
+  RAISE_APPLICATION_ERROR(-20010, 'Erro na contabilizacao das horas da trigger TG_HORAS_DIA (' || TO_CHAR(SQLCODE) || ')') ;
+END;
+END TG_HORAS_DIA;
+
+
+
+
+/
+ALTER TRIGGER "TIMESHEET"."TG_HORAS_DIA" ENABLE;
+--------------------------------------------------------
+--  DDL for Trigger TG_HORAS_DIA_ROW
+--------------------------------------------------------
+
+  CREATE OR REPLACE EDITIONABLE TRIGGER "TIMESHEET"."TG_HORAS_DIA_ROW" 
+ BEFORE INSERT OR UPDATE OF HORAS_NR_CO, HORAS_NR_NC
+ ON HORAS_DIA
+ FOR EACH ROW
+BEGIN
+DECLARE
+   v_FUNC           NUMBER(7);
+   v_HORA           NUMBER(5,2);
+   v_SEMANA         NUMBER(1);
+   V_ANO            FERIADO.FERI_NR_ANO%TYPE;
+   V_MES            FERIADO.FERI_NR_MES%TYPE;
+   V_PROJETO_OTRS   NUMBER(10);
+BEGIN
+  /*Christiano Chamma em 18/11/2013: Não deve permitir a alteração de horas lançadas pela interface do OTRS---Inicio*/
+  SELECT COUNT(*) INTO V_PROJETO_OTRS
+    FROM OTRS_PROJETOS
+   WHERE CODPROJETO = :NEW.PROJ_CD_PROJETO;
+  
+  --Se o projeto é "controlado" pelo OTRS e o lançamento das horas não foi realizado pela Interface então não permite:
+  IF V_PROJETO_OTRS > 0 AND :NEW.USUR_CD_USUR <> 'OTRS' THEN
+    IF :NEW.USUR_CD_USUR <> 'CLAUDIAR' THEN
+       RAISE_APPLICATION_ERROR(-20010, 'Não é possível lançar horas em projetos de suporte controlados pelo OTRS.') ;  
+    END IF;
+  END IF;  
+  /*Christiano Chamma em 18/11/2013: Não deve permitir a alteração de horas lançadas pela interface do OTRS---Fim*/
+
+/* =================== Alexandre 04/07/2002 ===============================
+    Na inclus?o  : verifica se existe o registro PAI sen?o inclui o PAI.
+    Na alterac?o : seta a chave na Package(PKG_HORAS_DIA) para cada linha,
+                   dispara a Trigger(TG_HORAS_DIA) na alterac?o da tabela
+                   para validar os campos.
+   ======================================================================== */
+  IF INSERTING THEN
+    BEGIN
+       --Christiano---18_12_2002---Alteracao Periodo do Log para 11a25 e 26a10---inicio---
+       -- se o dia for maior que 10, cai no mesmo mes, sen?o cai no mes seguinte
+       IF (:NEW.PERI_CD_PERIODO = 1) OR (:NEW.LOG_NR_DIA > 10) THEN
+          V_MES := :NEW.LOPE_NR_MES;
+          V_ANO := :NEW.LOPE_NR_ANO;
+       ELSE
+          V_MES := :NEW.LOPE_NR_MES;
+          V_ANO := :NEW.LOPE_NR_ANO;
+          IF (V_MES = 12) THEN
+             V_MES := 1;
+             V_ANO := V_ANO + 1;
+          ELSE
+             V_MES := V_MES + 1;
+          END IF;
+       END IF;
+       :NEW.NR_MES_REAL := V_MES;
+       :NEW.NR_ANO_REAL := V_ANO;
+       --Christiano---18_12_2002---Alteracao Periodo do Log para 11a25 e 26a10---fim------
+
+       SELECT FUNC_CD_FUNC INTO v_FUNC FROM LOG_DIA
+	    WHERE FUNC_CD_FUNC    = :NEW.FUNC_CD_FUNC
+	      AND LOPE_NR_ANO     = :NEW.LOPE_NR_ANO
+	      AND LOPE_NR_MES     = :NEW.LOPE_NR_MES
+	      AND LOG_NR_DIA      = :NEW.LOG_NR_DIA
+	      AND PERI_CD_PERIODO = :NEW.PERI_CD_PERIODO;
+    EXCEPTION
+      WHEN NO_DATA_FOUND THEN
+	    BEGIN
+	        -- Verifica se existe feriado para o dia a ser inserido
+                --Christiano---18_12_2002---Alteracao Periodo do Log para 11a25 e 26a10---inicio---
+	        SELECT FERI_NR_HORAS_A_TRABALHAR INTO v_HORA FROM FERIADO
+                    WHERE FERI_STT_INATIVO = 'N'
+                      AND FERI_NR_DIA = :NEW.LOG_NR_DIA
+                      AND FERI_NR_MES = V_MES
+                      AND ( (FERI_TP_FERIADO = 'LN'
+                             AND FERI_NR_ANO = V_ANO
+                             AND FILIAL_CD_FILIAL = (SELECT CD_EMPRESA FROM FUNCIONARIO
+                                                      WHERE CD_FUNCIONARIO = :NEW.FUNC_CD_FUNC))
+                         OR (FERI_TP_FERIADO = 'NN'
+                             AND FERI_NR_ANO = V_ANO)
+                         OR (FERI_TP_FERIADO = 'LF'
+                           AND FILIAL_CD_FILIAL = (SELECT CD_EMPRESA FROM FUNCIONARIO
+                                                   WHERE CD_FUNCIONARIO = :NEW.FUNC_CD_FUNC))
+                         OR (FERI_TP_FERIADO IN ('NF')) );
+                --Christiano---18_12_2002---Alteracao Periodo do Log para 11a25 e 26a10---fim------
+
+                BEGIN
+			      INSERT INTO LOG_DIA (FUNC_CD_FUNC, LOPE_NR_ANO, LOPE_NR_MES,
+			             PERI_CD_PERIODO, LOG_NR_DIA, LOG_NR_HNORMAL, DTA_ULT_ALT, USUR_CD_USUR)
+			      VALUES (:NEW.FUNC_CD_FUNC, :NEW.LOPE_NR_ANO, :NEW.LOPE_NR_MES,
+			              :NEW.PERI_CD_PERIODO, :NEW.LOG_NR_DIA, v_HORA, :NEW.DTA_ULT_ALT,
+			              :NEW.USUR_CD_USUR);
+		EXCEPTION
+    	            WHEN OTHERS THEN
+                      RAISE_APPLICATION_ERROR(-20010, 'Erro na INSERC?O COM FERIADO da trigger TG_HORAS_DIA_ROW  (' || TO_CHAR(SQLCODE) || ')') ;
+  		END;
+	    EXCEPTION
+	      WHEN NO_DATA_FOUND THEN --se n?o achou feriado
+	        BEGIN
+                   --Christiano---18_12_2002---Alteracao Periodo do Log para 11a25 e 26a10---inicio---
+                   SELECT TO_NUMBER(TO_CHAR(TO_DATE(V_ANO||TO_CHAR(V_MES,'09')||TO_CHAR(:NEW.LOG_NR_DIA,'09'),'RRRRMMDD'),'D'))
+                     INTO v_SEMANA FROM DUAL;
+                   --Christiano---18_12_2002---Alteracao Periodo do Log para 11a25 e 26a10---fim------
+	           -- Sabado e Domingo n?o inseri a hora_normal
+                   IF( (v_SEMANA = 1) OR (v_SEMANA = 7) ) THEN
+                      BEGIN
+  		         INSERT INTO LOG_DIA (FUNC_CD_FUNC, LOPE_NR_ANO, LOPE_NR_MES,
+			             PERI_CD_PERIODO, LOG_NR_DIA, DTA_ULT_ALT, USUR_CD_USUR)
+			      VALUES (:NEW.FUNC_CD_FUNC, :NEW.LOPE_NR_ANO, :NEW.LOPE_NR_MES,
+			              :NEW.PERI_CD_PERIODO, :NEW.LOG_NR_DIA, :NEW.DTA_ULT_ALT,
+			              :NEW.USUR_CD_USUR);
+   		      EXCEPTION
+    	                 WHEN OTHERS THEN
+                            RAISE_APPLICATION_ERROR(-20010, 'Erro na INSERC?O SEM FERIADO (1) da trigger TG_HORAS_DIA_ROW  (' || TO_CHAR(SQLCODE) || ')') ;
+	              END;
+	           ELSE
+	              BEGIN
+	                 --inseri a hora-normal default com 8
+			 INSERT INTO LOG_DIA (FUNC_CD_FUNC, LOPE_NR_ANO, LOPE_NR_MES,
+			             PERI_CD_PERIODO, LOG_NR_DIA, LOG_NR_HNORMAL, DTA_ULT_ALT, USUR_CD_USUR)
+			      VALUES (:NEW.FUNC_CD_FUNC, :NEW.LOPE_NR_ANO, :NEW.LOPE_NR_MES,
+			              :NEW.PERI_CD_PERIODO, :NEW.LOG_NR_DIA, 8, :NEW.DTA_ULT_ALT,
+			              :NEW.USUR_CD_USUR);
+   		      EXCEPTION
+    	                 WHEN OTHERS THEN
+                            RAISE_APPLICATION_ERROR(-20010, 'Erro na INSERC?O SEM FERIADO (2) da trigger TG_HORAS_DIA_ROW  (' || TO_CHAR(SQLCODE) || ')') ;
+	              END;
+	           END IF;
+	        END;
+	  END;
+ 	  WHEN OTHERS THEN
+        RAISE_APPLICATION_ERROR(-20010, 'Erro na INSERC?O da trigger TG_HORAS_DIA_ROW  (' || TO_CHAR(SQLCODE) || ')') ;
+    END;
+    BEGIN
+      IF ( NVL(:NEW.HORAS_NR_NC,0) <> 0 OR NVL(:NEW.HORAS_NR_CO,0) <> 0 ) THEN
+        IF ( :NEW.NR_MES_REAL > 7 AND :NEW.NR_ANO_REAL = 2014 ) THEN
+          RAISE_APPLICATION_ERROR(-20010, '===>>> O lançamento de Horas após 31/07 deverá ser realizado apenas no sistema de Timesheet novo. Por favor preencha até o dia 31/07 apenas. <<<===                    ') ;
+        END IF;
+      END IF;
+    END;
+  ELSIF UPDATING THEN
+    BEGIN
+      IF ( NVL(:NEW.HORAS_NR_NC,0) <> 0 OR NVL(:NEW.HORAS_NR_CO,0) <> 0 ) THEN
+        IF ( :OLD.NR_MES_REAL > 7 AND :OLD.NR_ANO_REAL = 2014 ) THEN
+          RAISE_APPLICATION_ERROR(-20010, '===>>> O lançamento de Horas após 31/07 deverá ser realizado apenas no sistema de Timesheet novo. Por favor preencha até o dia 31/07 apenas. <<<===                    ') ;
+        END IF;
+      END IF;
+    END;
+
+    BEGIN
+       IF ( ((:NEW.HORAS_NR_NC IS NULL) OR (:NEW.HORAS_NR_NC = 0)) AND
+            ((:NEW.HORAS_NR_CO IS NULL) OR (:NEW.HORAS_NR_CO = 0)) ) THEN
+	      PKG_HORAS_DIA.v_NumRow := PKG_HORAS_DIA.v_NumRow + 1;
+          PKG_HORAS_DIA.v_FUNC_CD_FUNC(PKG_HORAS_DIA.v_NumRow)    := :OLD.FUNC_CD_FUNC;
+		  PKG_HORAS_DIA.v_LOPE_NR_ANO(PKG_HORAS_DIA.v_NumRow)     := :OLD.LOPE_NR_ANO;
+		  PKG_HORAS_DIA.v_LOPE_NR_MES(PKG_HORAS_DIA.v_NumRow)     := :OLD.LOPE_NR_MES;
+		  PKG_HORAS_DIA.v_LOG_NR_DIA(PKG_HORAS_DIA.v_NumRow)      := :OLD.LOG_NR_DIA;
+		  PKG_HORAS_DIA.v_PERI_CD_PERIODO(PKG_HORAS_DIA.v_NumRow) := :OLD.PERI_CD_PERIODO;
+		  PKG_HORAS_DIA.v_PROJ_CD_PROJETO(PKG_HORAS_DIA.v_NumRow) := :OLD.PROJ_CD_PROJETO;
+	   END IF;
+    EXCEPTION
+     WHEN OTHERS THEN
+	   RAISE_APPLICATION_ERROR(-20010, 'Erro na ALTERAC?O da trigger TG_HORAS_DIA_ROW  (' || TO_CHAR(SQLCODE) || ')') ;
+    END;
+  END IF;
+END;
+END TG_HORAS_DIA_ROW;
+
+
+/
+ALTER TRIGGER "TIMESHEET"."TG_HORAS_DIA_ROW" ENABLE;
+--------------------------------------------------------
+--  DDL for Trigger TG_LOG_DIA
+--------------------------------------------------------
+
+  CREATE OR REPLACE EDITIONABLE TRIGGER "TIMESHEET"."TG_LOG_DIA" 
+ AFTER UPDATE OF LOG_QN_AUSABN, LOG_QN_AUSBHE, LOG_QN_AUSPGT
+--LOG_QN_HEBHE   Christiano: ?
+--LOG_QN_HEPGT   Christiano: ?
+ ON LOG_DIA
+
+
+BEGIN
+DECLARE
+   v_FUNC NUMBER(7);
+BEGIN
+/* =================== Alexandre 04/07/2002 ===============================
+    Na alterac?o : verifica se todas as horas(cobraveis e n?o cobraveis)
+                   de um determinado dia est?o nulas ou zeradas e deleta
+                   o registro.
+   ======================================================================== */
+
+  FOR I IN 1.. PKG_LOG_DIA.v_NumRow LOOP
+    BEGIN
+
+     SELECT COUNT(*) INTO v_FUNC FROM HORAS_DIA
+    WHERE FUNC_CD_FUNC    = PKG_LOG_DIA.v_FUNC_CD_FUNC(I)
+      AND LOPE_NR_ANO     = PKG_LOG_DIA.v_LOPE_NR_ANO(I)
+      AND LOPE_NR_MES     = PKG_LOG_DIA.v_LOPE_NR_MES(I)
+      AND PERI_CD_PERIODO = PKG_LOG_DIA.v_PERI_CD_PERIODO(I)
+      AND LOG_NR_DIA      = PKG_LOG_DIA.v_LOG_NR_DIA(I);
+
+    -- Deleta o registro
+    IF v_FUNC = 0 THEN
+        --Christiano---18_12_2002---Coloquei as 5 linhas abaixo no comando para n?o apagar os registros de
+        --horas ja cadastrados independentemente de projeto (ausencia, hora extra)---
+        --    AND ( NVL(LOG_QN_HEBHE,0) = 0)
+        --    AND ( NVL(LOG_QN_HEPGT,0) = 0)
+        --    AND ( NVL(LOG_QN_AUSBHE,0) = 0)
+        --    AND ( NVL(LOG_QN_AUSPGT,0) = 0)
+        --    AND ( NVL(LOG_QN_AUSABN,0) = 0);
+        DELETE FROM LOG_DIA
+        WHERE FUNC_CD_FUNC    = PKG_LOG_DIA.v_FUNC_CD_FUNC(I)
+          AND LOPE_NR_ANO     = PKG_LOG_DIA.v_LOPE_NR_ANO(I)
+          AND LOPE_NR_MES     = PKG_LOG_DIA.v_LOPE_NR_MES(I)
+          AND PERI_CD_PERIODO = PKG_LOG_DIA.v_PERI_CD_PERIODO(I)
+          AND LOG_NR_DIA      = PKG_LOG_DIA.v_LOG_NR_DIA(I)
+              AND ( NVL(LOG_QN_HEBHE,0) = 0)
+              AND ( NVL(LOG_QN_HEPGT,0) = 0)
+              AND ( NVL(LOG_QN_AUSBHE,0) = 0)
+              AND ( NVL(LOG_QN_AUSPGT,0) = 0)
+              AND ( NVL(LOG_QN_AUSABN,0) = 0);
+        --c IF SQL%NOTFOUND THEN
+        --c   RAISE_APPLICATION_ERROR(-20010, 'Erro na DELEC?O de LOG_DIA da trigger TG_LOG_DIA  (' || TO_CHAR(SQLCODE) || ')') ;
+        --c END IF;
+       END IF;
+     EXCEPTION
+       WHEN OTHERS THEN
+       RAISE_APPLICATION_ERROR(-20010, 'Erro na DELEC?O da trigger TG_LOG_DIA  (' || TO_CHAR(SQLCODE) || ')') ;
+     END;
+  END LOOP;
+
+  PKG_LOG_DIA.v_NumRow := 0;
+
+EXCEPTION
+ WHEN OTHERS THEN
+  RAISE_APPLICATION_ERROR(-20010, 'Erro na contabilizacao das horas da trigger TG_LOG_DIA (' || TO_CHAR(SQLCODE) || ')') ;
+END;
+END TG_LOG_DIA;
+
+
+
+
+/
+ALTER TRIGGER "TIMESHEET"."TG_LOG_DIA" ENABLE;
+--------------------------------------------------------
+--  DDL for Trigger TG_LOG_DIA_ROW
+--------------------------------------------------------
+
+  CREATE OR REPLACE EDITIONABLE TRIGGER "TIMESHEET"."TG_LOG_DIA_ROW" 
+ BEFORE INSERT OR UPDATE OF LOG_QN_AUSPGT, LOG_QN_AUSABN, LOG_QN_AUSBHE
+--LOG_QN_HEBHE   Christiano: ?
+--LOG_QN_HEPGT   Christiano: ?
+ ON LOG_DIA
+ REFERENCING OLD AS OLD NEW AS NEW
+ FOR EACH ROW
+
+
+BEGIN
+DECLARE
+   v_HORA NUMBER(5,2);
+   v_SEMANA NUMBER(1);
+   V_ANO FERIADO.FERI_NR_ANO%TYPE;
+   V_MES FERIADO.FERI_NR_MES%TYPE;
+BEGIN
+/* =================== Alexandre 04/07/2002 ===============================
+    Na alterac?o : seta a chave na Package(PKG_LOG_DIA) para cada linha,
+                   dispara a Trigger(TG_LOG_DIA) na alterac?o da tabela
+                   para validar os campos.
+   ======================================================================== */
+  IF INSERTING THEN
+    BEGIN
+      -- Verifica se existe feriado para o dia a ser inserido
+      --Christiano---18_12_2002---Alteracao Periodo do Log para 11a25 e 26a10---inicio---
+      -- se o dia for maior que 10, cai no mesmo mes, sen?o cai no mes seguinte
+      IF (:NEW.PERI_CD_PERIODO = 1) OR (:NEW.LOG_NR_DIA > 10) THEN
+         V_MES := :NEW.LOPE_NR_MES;
+         V_ANO := :NEW.LOPE_NR_ANO;
+      ELSE
+         V_MES := :NEW.LOPE_NR_MES;
+         V_ANO := :NEW.LOPE_NR_ANO;
+         IF (V_MES = 12) THEN
+            V_MES := 1;
+            V_ANO := V_ANO + 1;
+         ELSE
+            V_MES := V_MES + 1;
+         END IF;
+      END IF;
+      :NEW.NR_MES_REAL := V_MES;
+      :NEW.NR_ANO_REAL := V_ANO;
+      SELECT FERI_NR_HORAS_A_TRABALHAR INTO v_HORA FROM FERIADO
+          WHERE FERI_STT_INATIVO = 'N'
+            AND FERI_NR_DIA = :NEW.LOG_NR_DIA
+            AND FERI_NR_MES = V_MES
+            AND ( (FERI_TP_FERIADO = 'LN'
+                   AND FERI_NR_ANO = V_ANO
+                   AND FILIAL_CD_FILIAL = (SELECT CD_EMPRESA FROM FUNCIONARIO
+                                            WHERE CD_FUNCIONARIO = :NEW.FUNC_CD_FUNC))
+               OR (FERI_TP_FERIADO = 'NN'
+                   AND FERI_NR_ANO = V_ANO)
+               OR (FERI_TP_FERIADO = 'LF'
+                 AND FILIAL_CD_FILIAL = (SELECT CD_EMPRESA FROM FUNCIONARIO
+                                         WHERE CD_FUNCIONARIO = :NEW.FUNC_CD_FUNC))
+               OR (FERI_TP_FERIADO IN ('NF')) );
+      --Christiano---18_12_2002---Alteracao Periodo do Log para 11a25 e 26a10---fim------
+
+      --seta a hora normal para as horas a trabalhar do feriado.
+      :NEW.LOG_NR_HNORMAL := v_HORA;
+    EXCEPTION
+      WHEN NO_DATA_FOUND THEN
+        BEGIN
+              --Christiano---18_12_2002---Alteracao Periodo do Log para 11a25 e 26a10---inicio---
+              SELECT TO_NUMBER(TO_CHAR(TO_DATE(V_ANO||TO_CHAR(V_MES,'09')||TO_CHAR(:NEW.LOG_NR_DIA,'09'),'RRRRMMDD'),'D'))
+                INTO v_SEMANA FROM DUAL;
+              --Christiano---18_12_2002---Alteracao Periodo do Log para 11a25 e 26a10---fim------
+              -- Sabado e Domingo n?o inseri a hora_normal
+              IF( (v_SEMANA > 1) AND (v_SEMANA < 7) ) THEN
+                BEGIN
+                  :NEW.LOG_NR_HNORMAL := 8;
+                END;
+              END IF;
+        END;
+ 	  WHEN OTHERS THEN
+        RAISE_APPLICATION_ERROR(-20010, 'Erro na INSERC?O da trigger TG_LOG_DIA_ROW  (' || TO_CHAR(SQLCODE) || ')') ;
+    END;
+  ELSIF UPDATING THEN
+    BEGIN
+       IF ( ((:NEW.LOG_QN_AUSBHE IS NULL) OR (:NEW.LOG_QN_AUSBHE = 0)) AND
+            ((:NEW.LOG_QN_AUSPGT IS NULL) OR (:NEW.LOG_QN_AUSPGT = 0)) AND
+            ((:NEW.LOG_QN_AUSABN IS NULL) OR (:NEW.LOG_QN_AUSABN = 0)) ) THEN
+	      PKG_LOG_DIA.v_NumRow := PKG_LOG_DIA.v_NumRow + 1;
+          PKG_LOG_DIA.v_FUNC_CD_FUNC(PKG_LOG_DIA.v_NumRow)    := :OLD.FUNC_CD_FUNC;
+		  PKG_LOG_DIA.v_LOPE_NR_ANO(PKG_LOG_DIA.v_NumRow)     := :OLD.LOPE_NR_ANO;
+		  PKG_LOG_DIA.v_LOPE_NR_MES(PKG_LOG_DIA.v_NumRow)     := :OLD.LOPE_NR_MES;
+		  PKG_LOG_DIA.v_LOG_NR_DIA(PKG_LOG_DIA.v_NumRow)      := :OLD.LOG_NR_DIA;
+		  PKG_LOG_DIA.v_PERI_CD_PERIODO(PKG_LOG_DIA.v_NumRow) := :OLD.PERI_CD_PERIODO;
+	   END IF;
+    EXCEPTION
+     WHEN OTHERS THEN
+	   RAISE_APPLICATION_ERROR(-20010, 'Erro na ALTERAC?O da trigger TG_LOG_DIA_ROW  (' || TO_CHAR(SQLCODE) || ')') ;
+    END;
+  END IF;
+END;
+END TG_LOG_DIA_ROW;
+
+
+/
+ALTER TRIGGER "TIMESHEET"."TG_LOG_DIA_ROW" ENABLE;
+--------------------------------------------------------
+--  DDL for Trigger TG_LOG_DIA_ROW2
+--------------------------------------------------------
+
+  CREATE OR REPLACE EDITIONABLE TRIGGER "TIMESHEET"."TG_LOG_DIA_ROW2" 
+ BEFORE INSERT OR UPDATE 
+ ON LOG_DIA
+ REFERENCING OLD AS OLD NEW AS NEW
+ FOR EACH ROW
+
+BEGIN
+DECLARE
+   v_HORA NUMBER(5,2);
+   v_SEMANA NUMBER(1);
+   V_ANO FERIADO.FERI_NR_ANO%TYPE;
+   V_MES FERIADO.FERI_NR_MES%TYPE;
+BEGIN
+--IF :NEW.USUR_CD_USUR <> 'COMMIT' THEN
+  IF INSERTING THEN
+    BEGIN
+      -- Verifica se existe feriado para o dia a ser inserido
+      --Christiano---18_12_2002---Alteracao Periodo do Log para 11a25 e 26a10---inicio---
+      -- se o dia for maior que 10, cai no mesmo mes, sen?o cai no mes seguinte
+      IF (:NEW.PERI_CD_PERIODO = 1) OR (:NEW.LOG_NR_DIA > 10) THEN
+         V_MES := :NEW.LOPE_NR_MES;
+         V_ANO := :NEW.LOPE_NR_ANO;
+      ELSE
+         V_MES := :NEW.LOPE_NR_MES;
+         V_ANO := :NEW.LOPE_NR_ANO;
+         IF (V_MES = 12) THEN
+            V_MES := 1;
+            V_ANO := V_ANO + 1;
+         ELSE
+            V_MES := V_MES + 1;
+         END IF;
+      END IF;
+      :NEW.NR_MES_REAL := V_MES;
+      :NEW.NR_ANO_REAL := V_ANO;
+      --Christiano---18_12_2002---Alteracao Periodo do Log para 11a25 e 26a10---fim------
+    END;
+    BEGIN
+      IF ( NVL(:NEW.LOG_QN_AUSBHE,0) <> 0 OR NVL(:NEW.LOG_QN_AUSPGT,0) <> 0 OR NVL(:NEW.LOG_QN_AUSABN,0) <> 0 
+           OR NVL(:NEW.LOG_QN_HEBHE,0) <> 0 OR NVL(:NEW.LOG_QN_HEPGT,0) <> 0 ) THEN
+        IF ( :NEW.NR_MES_REAL > 7 AND :NEW.NR_ANO_REAL = 2014 ) THEN
+          RAISE_APPLICATION_ERROR(-20010, '===>>> O lançamento de Horas após 31/07 deverá ser realizado apenas no sistema de Timesheet novo. Por favor preencha até o dia 31/07 apenas. <<<===                    ') ;
+        END IF;
+      END IF;
+    END;
+  ELSIF UPDATING THEN
+    BEGIN
+      IF ( NVL(:NEW.LOG_QN_AUSBHE,0) <> 0 OR NVL(:NEW.LOG_QN_AUSPGT,0) <> 0 OR NVL(:NEW.LOG_QN_AUSABN,0) <> 0 
+           OR NVL(:NEW.LOG_QN_HEBHE,0) <> 0 OR NVL(:NEW.LOG_QN_HEPGT,0) <> 0 ) THEN
+        IF ( :OLD.NR_MES_REAL > 7 AND :OLD.NR_ANO_REAL = 2014 ) THEN
+          RAISE_APPLICATION_ERROR(-20010, '===>>> O lançamento de Horas após 31/07 deverá ser realizado apenas no sistema de Timesheet novo. Por favor preencha até o dia 31/07 apenas. <<<===                    ') ;
+        END IF;
+      END IF;
+    END;
+  END IF;
+--END IF;
+END;
+END TG_LOG_DIA_ROW2;
+ 
+
+
+
+/
+ALTER TRIGGER "TIMESHEET"."TG_LOG_DIA_ROW2" ENABLE;
+--------------------------------------------------------
+--  DDL for Trigger TG_LOG_PERIODO_ROW
+--------------------------------------------------------
+
+  CREATE OR REPLACE EDITIONABLE TRIGGER "TIMESHEET"."TG_LOG_PERIODO_ROW" 
+ AFTER INSERT ON LOG_PERIODO
+ FOR EACH ROW
+BEGIN
+DECLARE
+   v_SEMANA         NUMBER(1);
+   v_INIDIA         NUMBER(3);
+   v_FIMDIA         NUMBER(3);
+   I                NUMBER(3);
+   v_HORAS          TIMESHEET_DIA.LOG_NR_HNORMAL%TYPE;
+BEGIN
+--FUNC_CD_FUNC
+--LOPE_NR_ANO
+--LOPE_NR_MES
+--PERI_CD_PERIODO
+--LOPE_STT_LOG
+--DTA_ULT_ALT
+--USUR_CD_USUR
+	if(:NEW.LOPE_NR_ANO > 2052) THEN
+	  RAISE_APPLICATION_ERROR(-20001, 'O sistema nao suporta ano maior do que 2052.');
+	end if;
+
+	if (:NEW.PERI_CD_PERIODO = 1) then
+	   v_INIDIA := 1;
+	   --v_FIMDIA := 15;
+	   v_FIMDIA := calculaDiaFimPeriodo(:NEW.LOPE_NR_ANO, :NEW.LOPE_NR_MES, :NEW.PERI_CD_PERIODO);
+	else
+       v_INIDIA := 16;	
+	   v_FIMDIA := calculaDiaFimPeriodo(:NEW.LOPE_NR_ANO, :NEW.LOPE_NR_MES, :NEW.PERI_CD_PERIODO);
+	end if;
+
+	FOR I IN v_INIDIA..v_FIMDIA LOOP
+
+		SELECT TO_NUMBER(TO_CHAR(TO_DATE(:NEW.LOPE_NR_ANO||TO_CHAR(:NEW.LOPE_NR_MES,'09')||TO_CHAR(I,'09'),'RRRRMMDD'),'D'))
+			INTO v_SEMANA FROM DUAL;
+			
+		-- Sabado e Domingo
+		IF( (v_SEMANA = 1) OR (v_SEMANA = 7) ) THEN
+			v_HORAS := 0;
+		ELSE
+
+	    BEGIN
+		
+	      SELECT (HORA_FIM - HORA_INICIO) - 1
+		      INTO v_HORAS 
+		      FROM JORNADA_TRABALHO
+		     WHERE CD_FUNCIONARIO = :NEW.FUNC_CD_FUNC
+		       AND TO_DATE(:NEW.LOPE_NR_ANO||TO_CHAR(:NEW.LOPE_NR_MES,'09')||TO_CHAR(I,'09'),'RRRRMMDD') BETWEEN DT_INICIO_VIGENCIA AND DT_FIM_VIGENCIA;	  
+			 
+	    EXCEPTION
+		    WHEN NO_DATA_FOUND THEN
+          RAISE_APPLICATION_ERROR(-20010, 'Erro ao buscar a JORNADA de TRABALHO na trigger TG_LOG_PERIODO_ROW  (' || TO_CHAR(SQLCODE) || '). Favor informar ao administrador. FUNC_CD_FUNC=' || 
+                                  :NEW.FUNC_CD_FUNC || ',ANO/MES/DIA=' || :NEW.LOPE_NR_ANO || '/' || :NEW.LOPE_NR_MES || '/' || I || '.') ;
+		    WHEN TOO_MANY_ROWS THEN
+          RAISE_APPLICATION_ERROR(-20010, 'Erro ao buscar a JORNADA de TRABALHO na trigger TG_LOG_PERIODO_ROW  (' || TO_CHAR(SQLCODE) || '). Favor informar ao administrador. FUNC_CD_FUNC=' || 
+                                  :NEW.FUNC_CD_FUNC || ',ANO/MES/DIA=' || :NEW.LOPE_NR_ANO || '/' || :NEW.LOPE_NR_MES || '/' || I || '.') ;
+		  END;
+
+			-- Verifica se existe feriado para o dia a ser inserido
+	        SELECT --NVL(MIN(FERI_NR_HORAS_A_TRABALHAR),8) INTO v_HORAS 
+			       case when count(*) = 0 then v_HORAS else NVL(MIN(FERI_NR_HORAS_A_TRABALHAR),0) end INTO v_HORAS
+			  FROM FERIADO
+			 WHERE FERI_STT_INATIVO = 'N'
+			   AND FERI_NR_DIA = I
+			   AND FERI_NR_MES = :NEW.LOPE_NR_MES
+			   AND ( (FERI_TP_FERIADO = 'LN'
+					 AND FERI_NR_ANO = :NEW.LOPE_NR_ANO
+					 AND FILIAL_CD_FILIAL = (SELECT CD_EMPRESA FROM FUNCIONARIO
+											  WHERE CD_FUNCIONARIO = :NEW.FUNC_CD_FUNC))
+				 OR (FERI_TP_FERIADO = 'NN'
+					 AND FERI_NR_ANO = :NEW.LOPE_NR_ANO)
+         OR (FERI_TP_FERIADO = 'LF'
+           AND FILIAL_CD_FILIAL = (SELECT CD_EMPRESA FROM FUNCIONARIO
+                                   WHERE CD_FUNCIONARIO = :NEW.FUNC_CD_FUNC))
+				 OR (FERI_TP_FERIADO IN ('NF')) );
+		END IF;
+		
+		BEGIN
+			INSERT INTO TIMESHEET_DIA (FUNC_CD_FUNC,LOPE_NR_ANO,LOPE_NR_MES,LOG_NR_DIA,LOG_QN_AUSBHE,LOG_QN_AUSABN
+                                ,LOG_NR_HNORMAL,ST_TIMESHEET_DIA,DT_ULT_ALT,USUR_CD_USUR)
+								VALUES (:NEW.FUNC_CD_FUNC,:NEW.LOPE_NR_ANO,:NEW.LOPE_NR_MES,I,null,null
+                       ,v_HORAS,'A',sysdate,:NEW.USUR_CD_USUR);
+			
+		EXCEPTION
+			WHEN DUP_VAL_ON_INDEX THEN
+				NULL;
+			WHEN OTHERS THEN
+				RAISE_APPLICATION_ERROR(-20010, 'Erro na INSERCAO da trigger TG_LOG_PERIODO_ROW  (' || TO_CHAR(SQLCODE) || '). Favor informar ao administrador.') ;
+		END;
+	END LOOP;
+	   
+END;
+END TG_LOG_PERIODO_ROW;
+
+
+/
+ALTER TRIGGER "TIMESHEET"."TG_LOG_PERIODO_ROW" ENABLE;
+--------------------------------------------------------
+--  DDL for Trigger TG_MOVIMENTACAO_SALDO_BHE
+--------------------------------------------------------
+
+  CREATE OR REPLACE EDITIONABLE TRIGGER "TIMESHEET"."TG_MOVIMENTACAO_SALDO_BHE" 
+ AFTER INSERT OR UPDATE OR DELETE ON MOVIMENTACAO_SALDO_BHE
+ FOR EACH ROW
+
+
+BEGIN
+   IF INSERTING THEN
+      UPDATE FUNCIONARIO SET FUNC_NR_SALDO_BHE50 = NVL(FUNC_NR_SALDO_BHE50, 0) - NVL(:NEW.MOSA_VL_ABATIMENTO50, 0),
+                             FUNC_NR_SALDO_BHE100 = NVL(FUNC_NR_SALDO_BHE100, 0) - NVL(:NEW.MOSA_VL_ABATIMENTO100, 0)
+       WHERE CD_FUNCIONARIO = :NEW.FUNC_CD_FUNC;
+   ELSIF UPDATING THEN
+      IF (:NEW.FUNC_CD_FUNC <> :OLD.FUNC_CD_FUNC) THEN
+         RAISE_APPLICATION_ERROR(-20011, 'Erro ao atualizar movimentac?o de saldo de horas (TG_MOVIMENTACAO_SALDO_BHE): o
+funcionario n?o pode ser alterado.' );
+      END IF;
+      UPDATE FUNCIONARIO SET FUNC_NR_SALDO_BHE50 = NVL(FUNC_NR_SALDO_BHE50, 0) - NVL(:NEW.MOSA_VL_ABATIMENTO50, 0) +
+NVL(:OLD.MOSA_VL_ABATIMENTO50, 0),
+                             FUNC_NR_SALDO_BHE100 = NVL(FUNC_NR_SALDO_BHE100, 0) - NVL(:NEW.MOSA_VL_ABATIMENTO100, 0) +
+NVL(:OLD.MOSA_VL_ABATIMENTO100, 0)
+       WHERE CD_FUNCIONARIO = :NEW.FUNC_CD_FUNC;
+   ELSIF DELETING THEN
+      UPDATE FUNCIONARIO SET FUNC_NR_SALDO_BHE50 = NVL(FUNC_NR_SALDO_BHE50,0) + NVL(:OLD.MOSA_VL_ABATIMENTO50, 0),
+                             FUNC_NR_SALDO_BHE100 = NVL(FUNC_NR_SALDO_BHE100,0) + NVL(:OLD.MOSA_VL_ABATIMENTO100, 0)
+       WHERE CD_FUNCIONARIO = :OLD.FUNC_CD_FUNC;
+   END IF;
+
+EXCEPTION
+ WHEN OTHERS THEN
+   IF SQLCODE = -20011 THEN
+     RAISE_APPLICATION_ERROR(-20011, 'Erro ao atualizar movimentac?o de saldo de horas (TG_MOVIMENTACAO_SALDO_BHE): o
+funcionario n?o pode ser alterado.' );
+   ELSE
+     RAISE_APPLICATION_ERROR(-20010, 'Erro ao atualizar movimentac?o de saldo de horas na trigger TG_MOVIMENTACAO_SALDO_BHE
+(' || TO_CHAR(SQLCODE) || ')' || SQLERRM) ;
+   END IF;
+
+END;
+
+
+
+/
+ALTER TRIGGER "TIMESHEET"."TG_MOVIMENTACAO_SALDO_BHE" ENABLE;
+--------------------------------------------------------
+--  DDL for Trigger TG_PRE_MOVIMENTACAO_SALDO
+--------------------------------------------------------
+
+  CREATE OR REPLACE EDITIONABLE TRIGGER "TIMESHEET"."TG_PRE_MOVIMENTACAO_SALDO" 
+ BEFORE INSERT
+ ON MOVIMENTACAO_SALDO_BHE
+ FOR EACH ROW
+
+
+BEGIN
+-- PL/SQL Block
+SELECT SEQ_MOVIMENTACAO_SALDO.NEXTVAL INTO :NEW.MOSA_NR_SEQ
+FROM DUAL;
+END;
+
+
+
+/
+ALTER TRIGGER "TIMESHEET"."TG_PRE_MOVIMENTACAO_SALDO" ENABLE;
+--------------------------------------------------------
+--  DDL for Trigger TG_PROJETO_FASE_ROW
+--------------------------------------------------------
+
+  CREATE OR REPLACE EDITIONABLE TRIGGER "TIMESHEET"."TG_PROJETO_FASE_ROW" 
+ BEFORE INSERT OR UPDATE ON PROJETO_FASE 
+ FOR EACH ROW
+BEGIN
+DECLARE
+BEGIN
+    :NEW.DT_ULT_ALT := SYSDATE;
+
+EXCEPTION
+	WHEN OTHERS THEN
+		RAISE_APPLICATION_ERROR(-20010, 'Erro na trigger PROJETO_FASE  (' || TO_CHAR(SQLCODE) || '). Favor informar ao administrador.') ;
+   
+END;
+END;
+
+/
+ALTER TRIGGER "TIMESHEET"."TG_PROJETO_FASE_ROW" ENABLE;
+--------------------------------------------------------
+--  DDL for Trigger TG_PROJETO_ROW
+--------------------------------------------------------
+
+  CREATE OR REPLACE EDITIONABLE TRIGGER "TIMESHEET"."TG_PROJETO_ROW" 
+ BEFORE INSERT OR UPDATE ON PROJETO 
+ FOR EACH ROW
+BEGIN
+DECLARE
+BEGIN
+    :NEW.DT_ULT_ALT := SYSDATE;
+
+EXCEPTION
+	WHEN OTHERS THEN
+		RAISE_APPLICATION_ERROR(-20010, 'Erro na trigger PROJETO  (' || TO_CHAR(SQLCODE) || '). Favor informar ao administrador.') ;
+   
+END;
+END;
+
+/
+ALTER TRIGGER "TIMESHEET"."TG_PROJETO_ROW" ENABLE;
+--------------------------------------------------------
+--  DDL for Trigger TG_PROJETO_TAREFA_ROW
+--------------------------------------------------------
+
+  CREATE OR REPLACE EDITIONABLE TRIGGER "TIMESHEET"."TG_PROJETO_TAREFA_ROW" 
+ BEFORE INSERT OR UPDATE ON PROJETO_TAREFA 
+ FOR EACH ROW
+BEGIN
+DECLARE
+BEGIN
+    :NEW.DT_ULT_ALT := SYSDATE;
+
+EXCEPTION
+	WHEN OTHERS THEN
+		RAISE_APPLICATION_ERROR(-20010, 'Erro na trigger PROJETO_TAREFA  (' || TO_CHAR(SQLCODE) || '). Favor informar ao administrador.') ;
+   
+END;
+END;
+
+/
+ALTER TRIGGER "TIMESHEET"."TG_PROJETO_TAREFA_ROW" ENABLE;
+--------------------------------------------------------
+--  DDL for Trigger TG_TIMESHEET_DIA_ROW
+--------------------------------------------------------
+
+  CREATE OR REPLACE EDITIONABLE TRIGGER "TIMESHEET"."TG_TIMESHEET_DIA_ROW" 
+ BEFORE INSERT OR UPDATE ON TIMESHEET_DIA 
+ FOR EACH ROW
+BEGIN
+DECLARE
+BEGIN
+    :NEW.DT_ULT_ALT := SYSDATE;
+
+EXCEPTION
+	WHEN OTHERS THEN
+		RAISE_APPLICATION_ERROR(-20010, 'Erro na trigger TIMESHEET_DIA  (' || TO_CHAR(SQLCODE) || '). Favor informar ao administrador.') ;
+   
+END;
+END;
+
+/
+ALTER TRIGGER "TIMESHEET"."TG_TIMESHEET_DIA_ROW" ENABLE;
+--------------------------------------------------------
+--  DDL for Trigger TG_TIMESHEET_DIA_TAREFA_ROW
+--------------------------------------------------------
+
+  CREATE OR REPLACE EDITIONABLE TRIGGER "TIMESHEET"."TG_TIMESHEET_DIA_TAREFA_ROW" 
+ BEFORE INSERT OR UPDATE ON TIMESHEET_DIA_TAREFA 
+ FOR EACH ROW
+BEGIN
+DECLARE
+BEGIN
+    :NEW.DT_ULT_ALT := SYSDATE;
+
+EXCEPTION
+	WHEN OTHERS THEN
+		RAISE_APPLICATION_ERROR(-20010, 'Erro na trigger TIMESHEET_DIA_TAREFA  (' || TO_CHAR(SQLCODE) || '). Favor informar ao administrador.') ;
+   
+END;
+END;
+
+/
+ALTER TRIGGER "TIMESHEET"."TG_TIMESHEET_DIA_TAREFA_ROW" ENABLE;
+--------------------------------------------------------
+--  DDL for Trigger TRD_DIMCLIENTE_01
+--------------------------------------------------------
+
+  CREATE OR REPLACE EDITIONABLE TRIGGER "TIMESHEET"."TRD_DIMCLIENTE_01" 
+before
+  insert on dim_cliente referencing old as old new as new for each row
+begin
+    if
+    (  :new.sk_cliente  <> 0
+    or :new.sk_cliente is null
+    )
+    then
+  select s_dim_cliente.nextval
+  into :new.sk_cliente
+  from dual;
+end if;
+end trd_dimcliente_01;
+
+
+/
+ALTER TRIGGER "TIMESHEET"."TRD_DIMCLIENTE_01" ENABLE;
+--------------------------------------------------------
+--  DDL for Trigger TRD_DIMFILIAL_01
+--------------------------------------------------------
+
+  CREATE OR REPLACE EDITIONABLE TRIGGER "TIMESHEET"."TRD_DIMFILIAL_01" 
+before
+  insert on dim_filial referencing old as old new as new for each row
+begin
+    if
+    (  :new.sk_filial  <> 0
+    or :new.sk_filial is null
+    )
+    then
+  select s_dim_filial.nextval
+  into :new.sk_filial
+  from dual;
+end if;
+end trd_dimfilial_01;
+
+
+/
+ALTER TRIGGER "TIMESHEET"."TRD_DIMFILIAL_01" ENABLE;
+--------------------------------------------------------
+--  DDL for Trigger TRD_DIMFUNCIONARIO_01
+--------------------------------------------------------
+
+  CREATE OR REPLACE EDITIONABLE TRIGGER "TIMESHEET"."TRD_DIMFUNCIONARIO_01" 
+before
+  insert on dim_funcionario referencing old as old new as new for each row
+begin
+    if
+    (  :new.sk_funcionario  <> 0
+    or :new.sk_funcionario is null
+    )
+    then
+  select s_dim_funcionario.nextval
+  into :new.sk_funcionario
+  from dual;
+end if;
+end trd_dimfuncionario_01;
+
+
+/
+ALTER TRIGGER "TIMESHEET"."TRD_DIMFUNCIONARIO_01" ENABLE;
+--------------------------------------------------------
+--  DDL for Trigger TRD_DIMPROJETO_01
+--------------------------------------------------------
+
+  CREATE OR REPLACE EDITIONABLE TRIGGER "TIMESHEET"."TRD_DIMPROJETO_01" 
+before
+  insert on dim_projeto referencing old as old new as new for each row
+begin
+    if
+    (  :new.sk_projeto  <> 0
+    or :new.sk_projeto is null
+    )
+    then
+  select s_dim_projeto.nextval
+  into :new.sk_projeto
+  from dual;
+end if;
+end trd_dimprojeto_01;
+
+
+/
+ALTER TRIGGER "TIMESHEET"."TRD_DIMPROJETO_01" ENABLE;
+--------------------------------------------------------
+--  DDL for Trigger TRD_DIMTEMPODIA_01
+--------------------------------------------------------
+
+  CREATE OR REPLACE EDITIONABLE TRIGGER "TIMESHEET"."TRD_DIMTEMPODIA_01" 
+before
+  insert on dim_tempo_dia referencing old as old new as new for each row
+begin
+    if
+    (  :new.sk_tempo_dia  <> 0
+    or :new.sk_tempo_dia is null
+    )
+    then
+  select s_dim_tempo_dia.nextval
+  into :new.sk_tempo_dia
+  from dual;
+end if;
+end trd_dimtempodia_01;
+
+
+/
+ALTER TRIGGER "TIMESHEET"."TRD_DIMTEMPODIA_01" ENABLE;
+--------------------------------------------------------
+--  DDL for Trigger TRD_DIMVERTICAL_01
+--------------------------------------------------------
+
+  CREATE OR REPLACE EDITIONABLE TRIGGER "TIMESHEET"."TRD_DIMVERTICAL_01" 
+before
+  insert on dim_VERTICAL referencing old as old new as new for each row
+begin
+    if
+    (  :new.sk_VERTICAL  <> 0
+    or :new.sk_VERTICAL is null
+    )
+    then
+  select s_dim_VERTICAL.nextval
+  into :new.sk_VERTICAL
+  from dual;
+end if;
+end trd_dimVERTICAL_01;
+
+
+/
+ALTER TRIGGER "TIMESHEET"."TRD_DIMVERTICAL_01" ENABLE;
+--------------------------------------------------------
+--  DDL for Trigger TRG_ALOCACAOPROJ
+--------------------------------------------------------
+
+  CREATE OR REPLACE EDITIONABLE TRIGGER "TIMESHEET"."TRG_ALOCACAOPROJ" 
+ AFTER DELETE OR INSERT OR UPDATE
+ ON ALOCACAOPROJ
+ FOR EACH ROW
+-- PL/SQL Block
+
+
+BEGIN
+   IF INSERTING THEN
+      INSERT INTO PROJ_FUNC (FUNC_CD_FUNC,PROJ_CD_PROJETO,CD_FASE,PJFU_STT_INTERNO,
+                             DTA_ULT_ALT,USUR_CD_USUR)
+      VALUES (:NEW.CD_FUNCIONARIO, :NEW.CD_PROJETO, :NEW.CD_FASE, 'N', SYSDATE, USER);
+   END IF;
+   IF DELETING THEN
+      DELETE FROM PROJ_FUNC
+       WHERE FUNC_CD_FUNC = :OLD.CD_FUNCIONARIO
+         AND PROJ_CD_PROJETO = :OLD.CD_PROJETO
+         AND CD_FASE = :OLD.CD_FASE;
+   END IF;
+   IF UPDATING THEN
+      DELETE FROM PROJ_FUNC
+       WHERE FUNC_CD_FUNC = :OLD.CD_FUNCIONARIO
+         AND PROJ_CD_PROJETO = :OLD.CD_PROJETO
+         AND CD_FASE = :OLD.CD_FASE;
+      INSERT INTO PROJ_FUNC (FUNC_CD_FUNC,PROJ_CD_PROJETO,CD_FASE,PJFU_STT_INTERNO,
+                             DTA_ULT_ALT,USUR_CD_USUR)
+      VALUES (:NEW.CD_FUNCIONARIO, :NEW.CD_PROJETO, :NEW.CD_FASE, 'N', SYSDATE, USER);
+   END IF;
+EXCEPTION
+   WHEN OTHERS THEN
+      RAISE_APPLICATION_ERROR(-20001, 'Erro na trigger em ALOCACAOPROJ: ' || SQLERRM );
+END;
+
+
+
+
+/
+ALTER TRIGGER "TIMESHEET"."TRG_ALOCACAOPROJ" ENABLE;
+--------------------------------------------------------
+--  DDL for Trigger TRG_CLIFOR
+--------------------------------------------------------
+
+  CREATE OR REPLACE EDITIONABLE TRIGGER "TIMESHEET"."TRG_CLIFOR" before insert or update on clifor for each row
+declare
+begin
+   :new.dt_ult_alt := SYSDATE;
+end;
+
+
+
+/
+ALTER TRIGGER "TIMESHEET"."TRG_CLIFOR" ENABLE;
+--------------------------------------------------------
+--  DDL for Trigger TRG_COM_DEBUG
+--------------------------------------------------------
+
+  CREATE OR REPLACE EDITIONABLE TRIGGER "TIMESHEET"."TRG_COM_DEBUG" before insert on COM_DEBUG for each row
+
+
+begin
+   select SEQ_COM_ACES_DEBUG.NEXTVAL into :new.SEQ from dual;
+end;
+
+
+
+/
+ALTER TRIGGER "TIMESHEET"."TRG_COM_DEBUG" ENABLE;
+--------------------------------------------------------
+--  DDL for Trigger TRG_FUNCIONARIO
+--------------------------------------------------------
+
+  CREATE OR REPLACE EDITIONABLE TRIGGER "TIMESHEET"."TRG_FUNCIONARIO" before insert or update on funcionario for each row
+declare
+begin
+   :new.dt_ult_alt := SYSDATE;
+end;
+
+
+
+/
+ALTER TRIGGER "TIMESHEET"."TRG_FUNCIONARIO" ENABLE;
+--------------------------------------------------------
+--  DDL for Trigger TRG_HISTORICO_VERIFICACAO_REP
+--------------------------------------------------------
+
+  CREATE OR REPLACE EDITIONABLE TRIGGER "TIMESHEET"."TRG_HISTORICO_VERIFICACAO_REP" 
+after update of DT_ULTIMA_VERIFICACAO_REP on funcionario
+for each row 
+begin
+  if (:new.DT_ULTIMA_VERIFICACAO_REP IS NOT NULL) then
+    insert into HISTORICO_VERIFICACAO_REP (FUNC_CD_FUNC, DT_ULTIMA_VERIFICACAO_REP) values (:new.CD_FUNCIONARIO, :new.DT_ULTIMA_VERIFICACAO_REP);
+  end if;
+exception
+  when others then 
+    raise_application_error(-20001, 'Erro na Trigger TRG_HISTORICO_VERIFICACAO_REP: sqlcode=' || SQLCODE);
+end;
+
+
+/
+ALTER TRIGGER "TIMESHEET"."TRG_HISTORICO_VERIFICACAO_REP" ENABLE;
+--------------------------------------------------------
+--  DDL for Trigger TRG_PROJETO
+--------------------------------------------------------
+
+  CREATE OR REPLACE EDITIONABLE TRIGGER "TIMESHEET"."TRG_PROJETO" before insert or update on projeto for each row
+declare
+begin
+   :new.dt_ult_alt := SYSDATE;
+end;
+
+
+
+/
+ALTER TRIGGER "TIMESHEET"."TRG_PROJETO" ENABLE;
+--------------------------------------------------------
+--  DDL for Trigger TRG_TIMESHEET_DIA_BANCO_HE
+--------------------------------------------------------
+
+  CREATE OR REPLACE EDITIONABLE TRIGGER "TIMESHEET"."TRG_TIMESHEET_DIA_BANCO_HE" 
+after update 
+ ON TIMESHEET_DIA
+ REFERENCING OLD AS OLD NEW AS NEW
+ FOR EACH ROW
+begin
+declare
+  vHORAS_NR_NCEXTRA   number;
+  vHORAS_NR_COEXTRA   number;
+  vHORAS_NR_NC        number;
+  vHORAS_NR_CO        number;
+  vTP_FUNCIONARIO     funcionario.TP_FUNCIONARIO%type;
+  v_SEMANA            NUMBER(1);
+  vContFeriadoDomingo NUMBER(1) := 0;
+  vHORASEXTRAS50      NUMBER;
+  vHORASEXTRAS100     NUMBER;
+  vHORAS_TRABALHADAS  number;
+  vHORAS_AUSENCIA     number;
+  vHORAS_NORMAIS      number;
+  --vContinua           VARCHAR2(1) := 'N';
+  --vST_REQUER_APROVACAO_ADMIN VARCHAR2(1);
+begin
+  if(:NEW.ST_TIMESHEET_DIA = 'P' /*Aprovado*/ AND :OLD.ST_TIMESHEET_DIA <> 'P') then
+    --Acabou de aprovar o dia, devo atualizar o saldo BHE 
+
+    --select ST_REQUER_APROVACAO_ADMIN into vST_REQUER_APROVACAO_ADMIN
+    --  from FUNCIONARIO where cd_funcionario = :NEW.FUNC_CD_FUNC;
+      
+    --if vST_REQUER_APROVACAO_ADMIN = 'N' then
+    --  vContinua := 'S';
+    --  --:NEW.ST_APROVACAO_ADMIN_DIA := 'S';
+    --else
+    --  if :new.ST_APROVACAO_ADMIN_DIA = 'S' then
+    --    vContinua := 'S';
+    --  end if;
+    --end if;
+    --vContinua := 'S';
+  --else
+  --  if(:NEW.ST_APROVACAO_ADMIN_DIA = 'S' /*Aprovado*/ AND :OLD.ST_APROVACAO_ADMIN_DIA <> 'S') then
+  --    --Acabou de aprovar o dia, devo atualizar o saldo BHE ? Só se tb estiver aprovado pelo gestor:
+  --    if(:NEW.ST_TIMESHEET_DIA = 'P' /*Aprovado*/) then
+  --      vContinua := 'S';
+  --    end if;
+  --  end if;
+
+    select nvl(sum(nvl(HORAS_NR_NCEXTRA,0)),0), nvl(sum(nvl(HORAS_NR_COEXTRA,0)),0)
+	        ,nvl(sum(nvl(HORAS_NR_NC,0)),0), nvl(sum(nvl(HORAS_NR_CO,0)),0)
+      into vHORAS_NR_NCEXTRA, vHORAS_NR_COEXTRA
+          ,vHORAS_NR_NC, vHORAS_NR_CO
+      from TIMESHEET_DIA_TAREFA
+     where FUNC_CD_FUNC = :NEW.FUNC_CD_FUNC
+       and LOPE_NR_ANO = :NEW.LOPE_NR_ANO
+       and LOPE_NR_MES = :NEW.LOPE_NR_MES
+       and LOG_NR_DIA = :NEW.LOG_NR_DIA;
+
+    select TP_FUNCIONARIO into vTP_FUNCIONARIO /*E=Empresa, F=CLT*/
+      from FUNCIONARIO
+     where CD_FUNCIONARIO = :NEW.FUNC_CD_FUNC;    
+
+	  vHORAS_TRABALHADAS := nvl(vHORAS_NR_NCEXTRA,0) + nvl(vHORAS_NR_COEXTRA,0) + nvl(vHORAS_NR_NC,0) + nvl(vHORAS_NR_CO,0);
+	  vHORAS_AUSENCIA := nvl(:NEW.LOG_QN_AUSBHE,0);
+	  vHORAS_NORMAIS := nvl(:NEW.LOG_NR_HNORMAL,0);
+--exemplo1:
+--  1 extra
+--  4 normais
+--  3 ausencia
+--exemplo2:
+--  2 extra
+--  8 normais
+--  0 ausencia
+	 
+    if vTP_FUNCIONARIO = 'E' then
+      --Pessoa Juridica n¿o possui hora extra 100%, apenas 50%
+
+      if vHORAS_TRABALHADAS > vHORAS_NORMAIS then
+	    vHORASEXTRAS50  := (vHORAS_TRABALHADAS - vHORAS_NORMAIS) - vHORAS_AUSENCIA;
+	  else
+	    vHORASEXTRAS50  := 0 - vHORAS_AUSENCIA;
+	  end if;
+	  
+      --vHORASEXTRAS50  := (nvl(vHORAS_NR_NCEXTRA,0) + nvl(vHORAS_NR_COEXTRA,0)) - nvl(:NEW.LOG_QN_AUSBHE,0);
+      vHORASEXTRAS100 := 0;
+
+    else
+      --CLT possui hora extra 100% caso Domingo ou Feriado
+
+      SELECT TO_NUMBER(TO_CHAR(TO_DATE(:NEW.LOPE_NR_ANO||TO_CHAR(:NEW.LOPE_NR_MES,'09')||TO_CHAR(:NEW.LOG_NR_DIA,'09'),'RRRRMMDD'),'D'))
+        INTO v_SEMANA FROM DUAL;
+
+      -- Domingo 
+      IF( (v_SEMANA = 1) /*OR (v_SEMANA = 7)*/ ) THEN
+        vContFeriadoDomingo := 1;
+      ELSE
+        -- Verifica se existe feriado para o dia a ser inserido
+        SELECT count(*) into vContFeriadoDomingo 
+          FROM FERIADO
+         WHERE FERI_STT_INATIVO = 'N'
+           AND FERI_NR_DIA = :NEW.LOG_NR_DIA
+           AND FERI_NR_MES = :NEW.LOPE_NR_MES
+           AND ( (FERI_TP_FERIADO = 'LN'
+              AND FERI_NR_ANO = :NEW.LOPE_NR_ANO
+              AND FILIAL_CD_FILIAL = (SELECT CD_EMPRESA FROM FUNCIONARIO
+                                       WHERE CD_FUNCIONARIO = :NEW.FUNC_CD_FUNC))
+            OR (FERI_TP_FERIADO = 'NN'
+            AND FERI_NR_ANO = :NEW.LOPE_NR_ANO)
+             OR (FERI_TP_FERIADO = 'LF'
+               AND FILIAL_CD_FILIAL = (SELECT CD_EMPRESA FROM FUNCIONARIO
+                                       WHERE CD_FUNCIONARIO = :NEW.FUNC_CD_FUNC))
+            OR (FERI_TP_FERIADO IN ('NF')) );
+      END IF;
+
+      if vContFeriadoDomingo > 0 then
+        vHORASEXTRAS50  := 0;
+        --vHORASEXTRAS100 := (nvl(vHORAS_NR_NCEXTRA,0) + nvl(vHORAS_NR_COEXTRA,0)) - nvl(:NEW.LOG_QN_AUSBHE,0);
+        if vHORAS_TRABALHADAS > vHORAS_NORMAIS then
+	      vHORASEXTRAS100  := (vHORAS_TRABALHADAS - vHORAS_NORMAIS) - vHORAS_AUSENCIA;
+	    else
+		  --nunca vai entrar nesta op¿¿o pois est¿ em um Domingo ou Feriado, mas deixei mesmo assim
+	      vHORASEXTRAS100  := 0 - vHORAS_AUSENCIA;
+	    end if;
+		
+      else
+        --vHORASEXTRAS50  := (nvl(vHORAS_NR_NCEXTRA,0) + nvl(vHORAS_NR_COEXTRA,0)) - nvl(:NEW.LOG_QN_AUSBHE,0);
+        if vHORAS_TRABALHADAS > vHORAS_NORMAIS then
+	      vHORASEXTRAS50  := (vHORAS_TRABALHADAS - vHORAS_NORMAIS) - vHORAS_AUSENCIA;
+	    else
+	      vHORASEXTRAS50  := 0 - vHORAS_AUSENCIA;
+	    end if;
+        vHORASEXTRAS100 := 0;
+      end if;
+    end if;  
+
+--p_debug('vHORAS_NR_NCEXTRA='||nvl(vHORAS_NR_NCEXTRA,-1)||', vHORAS_NR_COEXTRA='||nvl(vHORAS_NR_COEXTRA,-1)||'.');
+--p_debug('vHORASEXTRAS50='||nvl(vHORASEXTRAS50,-1)||', vHORASEXTRAS100='||nvl(vHORASEXTRAS100,-1)||', :NEW.LOG_QN_AUSBHE='||nvl(:NEW.LOG_QN_AUSBHE,-1)||'.');
+
+    if nvl(vHORASEXTRAS50,0) <> 0 OR nvl(vHORASEXTRAS100,0) <> 0 then
+  
+      INSERT INTO MOVIMENTACAO_SALDO_BHE (FUNC_CD_FUNC, MOSA_DT_DATA, MOSA_VL_ABATIMENTO50, MOSA_VL_ABATIMENTO100, USUR_CDG_USUR
+                                        , MOSA_IN_LANCAMENTO_MANUAL, LOPE_NR_ANO, LOPE_NR_MES, LOG_NR_DIA) 
+                                  VALUES (:NEW.FUNC_CD_FUNC
+                                        , TO_DATE(:NEW.LOPE_NR_ANO||TO_CHAR(:NEW.LOPE_NR_MES,'09')||TO_CHAR(:NEW.LOG_NR_DIA,'09'),'RRRRMMDD')
+                                        , nvl(vHORASEXTRAS50,0) * -1
+                                        , nvl(vHORASEXTRAS100,0) * -1
+                                        , :NEW.USUR_CD_USUR
+                                        , 'N'
+                                        , :NEW.LOPE_NR_ANO
+                                        , :NEW.LOPE_NR_MES
+                                        , :NEW.LOG_NR_DIA);
+    
+    end if;
+
+  end if;
+
+  if(:NEW.ST_TIMESHEET_DIA <> 'P'  AND :OLD.ST_TIMESHEET_DIA = 'P' /*Aprovado*/) then
+    --Acabou de desaprovar o dia, devo atualizar o saldo BHE 
+
+    --select ST_REQUER_APROVACAO_ADMIN into vST_REQUER_APROVACAO_ADMIN
+    --  from FUNCIONARIO where cd_funcionario = :NEW.FUNC_CD_FUNC;
+      
+    --if vST_REQUER_APROVACAO_ADMIN = 'N' then
+    --  vContinua := 'S';
+    --  --:NEW.ST_APROVACAO_ADMIN_DIA := 'S';
+    --else
+    --  if :new.ST_APROVACAO_ADMIN_DIA = 'S' then
+    --    vContinua := 'S';
+    --  end if;
+    --end if;
+    --vContinua := 'S';
+  --else
+  --  if(:NEW.ST_APROVACAO_ADMIN_DIA = 'S' /*Aprovado*/ AND :OLD.ST_APROVACAO_ADMIN_DIA <> 'S') then
+  --    --Acabou de aprovar o dia, devo atualizar o saldo BHE ? Só se tb estiver aprovado pelo gestor:
+  --    if(:NEW.ST_TIMESHEET_DIA = 'P' /*Aprovado*/) then
+  --      vContinua := 'S';
+  --    end if;
+  --  end if;
+
+    select nvl(sum(nvl(HORAS_NR_NCEXTRA,0)),0), nvl(sum(nvl(HORAS_NR_COEXTRA,0)),0)
+	        ,nvl(sum(nvl(HORAS_NR_NC,0)),0), nvl(sum(nvl(HORAS_NR_CO,0)),0)
+      into vHORAS_NR_NCEXTRA, vHORAS_NR_COEXTRA
+          ,vHORAS_NR_NC, vHORAS_NR_CO
+      from TIMESHEET_DIA_TAREFA
+     where FUNC_CD_FUNC = :NEW.FUNC_CD_FUNC
+       and LOPE_NR_ANO = :NEW.LOPE_NR_ANO
+       and LOPE_NR_MES = :NEW.LOPE_NR_MES
+       and LOG_NR_DIA = :NEW.LOG_NR_DIA;
+
+    select TP_FUNCIONARIO into vTP_FUNCIONARIO /*E=Empresa, F=CLT*/
+      from FUNCIONARIO
+     where CD_FUNCIONARIO = :NEW.FUNC_CD_FUNC;    
+
+	  vHORAS_TRABALHADAS := nvl(vHORAS_NR_NCEXTRA,0) + nvl(vHORAS_NR_COEXTRA,0) + nvl(vHORAS_NR_NC,0) + nvl(vHORAS_NR_CO,0);
+	  vHORAS_AUSENCIA := nvl(:NEW.LOG_QN_AUSBHE,0);
+	  vHORAS_NORMAIS := nvl(:NEW.LOG_NR_HNORMAL,0);
+--exemplo1:
+--  1 extra
+--  4 normais
+--  3 ausencia
+--exemplo2:
+--  2 extra
+--  8 normais
+--  0 ausencia
+	 
+    if vTP_FUNCIONARIO = 'E' then
+      --Pessoa Juridica n¿o possui hora extra 100%, apenas 50%
+
+      if vHORAS_TRABALHADAS > vHORAS_NORMAIS then
+	    vHORASEXTRAS50  := (vHORAS_TRABALHADAS - vHORAS_NORMAIS) - vHORAS_AUSENCIA;
+	  else
+	    vHORASEXTRAS50  := 0 - vHORAS_AUSENCIA;
+	  end if;
+	  
+      --vHORASEXTRAS50  := (nvl(vHORAS_NR_NCEXTRA,0) + nvl(vHORAS_NR_COEXTRA,0)) - nvl(:NEW.LOG_QN_AUSBHE,0);
+      vHORASEXTRAS100 := 0;
+
+    else
+      --CLT possui hora extra 100% caso Domingo ou Feriado
+
+      SELECT TO_NUMBER(TO_CHAR(TO_DATE(:NEW.LOPE_NR_ANO||TO_CHAR(:NEW.LOPE_NR_MES,'09')||TO_CHAR(:NEW.LOG_NR_DIA,'09'),'RRRRMMDD'),'D'))
+        INTO v_SEMANA FROM DUAL;
+
+      -- Domingo 
+      IF( (v_SEMANA = 1) /*OR (v_SEMANA = 7)*/ ) THEN
+        vContFeriadoDomingo := 1;
+      ELSE
+        -- Verifica se existe feriado para o dia a ser inserido
+        SELECT count(*) into vContFeriadoDomingo 
+          FROM FERIADO
+         WHERE FERI_STT_INATIVO = 'N'
+           AND FERI_NR_DIA = :NEW.LOG_NR_DIA
+           AND FERI_NR_MES = :NEW.LOPE_NR_MES
+           AND ( (FERI_TP_FERIADO = 'LN'
+              AND FERI_NR_ANO = :NEW.LOPE_NR_ANO
+              AND FILIAL_CD_FILIAL = (SELECT CD_EMPRESA FROM FUNCIONARIO
+                                       WHERE CD_FUNCIONARIO = :NEW.FUNC_CD_FUNC))
+            OR (FERI_TP_FERIADO = 'NN'
+            AND FERI_NR_ANO = :NEW.LOPE_NR_ANO)
+             OR (FERI_TP_FERIADO = 'LF'
+               AND FILIAL_CD_FILIAL = (SELECT CD_EMPRESA FROM FUNCIONARIO
+                                       WHERE CD_FUNCIONARIO = :NEW.FUNC_CD_FUNC))
+            OR (FERI_TP_FERIADO IN ('NF')) );
+      END IF;
+
+      if vContFeriadoDomingo > 0 then
+        vHORASEXTRAS50  := 0;
+        --vHORASEXTRAS100 := (nvl(vHORAS_NR_NCEXTRA,0) + nvl(vHORAS_NR_COEXTRA,0)) - nvl(:NEW.LOG_QN_AUSBHE,0);
+        if vHORAS_TRABALHADAS > vHORAS_NORMAIS then
+	      vHORASEXTRAS100  := (vHORAS_TRABALHADAS - vHORAS_NORMAIS) - vHORAS_AUSENCIA;
+	    else
+		  --nunca vai entrar nesta op¿¿o pois est¿ em um Domingo ou Feriado, mas deixei mesmo assim
+	      vHORASEXTRAS100  := 0 - vHORAS_AUSENCIA;
+	    end if;
+		
+      else
+        --vHORASEXTRAS50  := (nvl(vHORAS_NR_NCEXTRA,0) + nvl(vHORAS_NR_COEXTRA,0)) - nvl(:NEW.LOG_QN_AUSBHE,0);
+        if vHORAS_TRABALHADAS > vHORAS_NORMAIS then
+	      vHORASEXTRAS50  := (vHORAS_TRABALHADAS - vHORAS_NORMAIS) - vHORAS_AUSENCIA;
+	    else
+	      vHORASEXTRAS50  := 0 - vHORAS_AUSENCIA;
+	    end if;
+        vHORASEXTRAS100 := 0;
+      end if;
+    end if;  
+
+--p_debug('vHORAS_NR_NCEXTRA='||nvl(vHORAS_NR_NCEXTRA,-1)||', vHORAS_NR_COEXTRA='||nvl(vHORAS_NR_COEXTRA,-1)||'.');
+--p_debug('vHORASEXTRAS50='||nvl(vHORASEXTRAS50,-1)||', vHORASEXTRAS100='||nvl(vHORASEXTRAS100,-1)||', :NEW.LOG_QN_AUSBHE='||nvl(:NEW.LOG_QN_AUSBHE,-1)||'.');
+
+    if nvl(vHORASEXTRAS50,0) <> 0 OR nvl(vHORASEXTRAS100,0) <> 0 then
+  
+      INSERT INTO MOVIMENTACAO_SALDO_BHE (FUNC_CD_FUNC, MOSA_DT_DATA, MOSA_VL_ABATIMENTO50, MOSA_VL_ABATIMENTO100, USUR_CDG_USUR
+                                        , MOSA_IN_LANCAMENTO_MANUAL, LOPE_NR_ANO, LOPE_NR_MES, LOG_NR_DIA) 
+                                  VALUES (:NEW.FUNC_CD_FUNC
+                                        , TO_DATE(:NEW.LOPE_NR_ANO||TO_CHAR(:NEW.LOPE_NR_MES,'09')||TO_CHAR(:NEW.LOG_NR_DIA,'09'),'RRRRMMDD')
+                                        , nvl(vHORASEXTRAS50,0)  
+                                        , nvl(vHORASEXTRAS100,0)  
+                                        , :NEW.USUR_CD_USUR
+                                        , 'N'
+                                        , :NEW.LOPE_NR_ANO
+                                        , :NEW.LOPE_NR_MES
+                                        , :NEW.LOG_NR_DIA);
+    
+    end if;
+
+  end if;
+  
+exception
+  when others then
+    RAISE_APPLICATION_ERROR(-20001, 'Erro no trigger TRG_TIMESHEET_DIA_BANCO_HE  (' || TO_CHAR(SQLCODE) || '). Favor informar ao administrador.') ;
+end;
+end;
+
+
+/
+ALTER TRIGGER "TIMESHEET"."TRG_TIMESHEET_DIA_BANCO_HE" ENABLE;
+--------------------------------------------------------
+--  DDL for Trigger TRG_USUARIO
+--------------------------------------------------------
+
+  CREATE OR REPLACE EDITIONABLE TRIGGER "TIMESHEET"."TRG_USUARIO" before insert or update on com_aces_usuario for each row
+declare
+begin
+   :new.dt_ult_alt := SYSDATE;
+end;
+
+
+
+/
+ALTER TRIGGER "TIMESHEET"."TRG_USUARIO" ENABLE;
+--------------------------------------------------------
+--  DDL for Procedure COM_ACES_ADICIONA_FAVORITO
+--------------------------------------------------------
+set define off;
+
+  CREATE OR REPLACE EDITIONABLE PROCEDURE "TIMESHEET"."COM_ACES_ADICIONA_FAVORITO" (P_USUARIO IN VARCHAR2, P_PROGRAMA IN VARCHAR2, P_ERRO IN OUT VARCHAR2) IS
+   PRAGMA AUTONOMOUS_TRANSACTION;
+v_cdg_menu com_aces_menu.cdg_menu%type;
+BEGIN
+   select cdg_menu into v_cdg_menu from com_aces_menu
+    where executavel = p_programa and rownum = 1;
+   insert into com_aces_favoritos (cdg_usur, cdg_menu) values (P_USUARIO, v_cdg_menu);
+   commit;
+exception
+   when dup_val_on_index then null;
+   when others then
+      p_erro := 'Erro ao adicionar favorito: ' || SQLERRM;
+      rollback;
+END;
+ 
+ 
+
+/
+--------------------------------------------------------
+--  DDL for Procedure COM_ACES_GRAVA_HIST_TELA
+--------------------------------------------------------
+set define off;
+
+  CREATE OR REPLACE EDITIONABLE PROCEDURE "TIMESHEET"."COM_ACES_GRAVA_HIST_TELA" 
+ (P_CDG_USUR VARCHAR2
+ ,P_EXECUTAVEL VARCHAR2
+ ,P_NME_HTTP_REMOTE_ADDR VARCHAR2
+ ,P_SESSAOJSP VARCHAR2
+ )
+ IS
+PRAGMA AUTONOMOUS_TRANSACTION;
+begin
+   insert into com_aces_historico_tela (DTA_ACESSO, CDG_USUR, EXECUTAVEL,
+                                         NME_HTTP_REMOTE_ADDR, SESSIONID, SESSAOJSP)
+                                 values (sysdate, p_CDG_USUR, p_EXECUTAVEL,
+                                         p_NME_HTTP_REMOTE_ADDR, userenv('SESSIONID'), p_SESSAOJSP);
+   commit;
+end;
+
+ 
+ 
+
+/
+--------------------------------------------------------
+--  DDL for Procedure COM_ACES_LIMPA_TABELAS
+--------------------------------------------------------
+set define off;
+
+  CREATE OR REPLACE EDITIONABLE PROCEDURE "TIMESHEET"."COM_ACES_LIMPA_TABELAS" IS
+begin
+   -- delete from COM_ACES_HISTORICO_LOGIN where DTA_LOGIN < (SYSDATE - 100);
+   delete from COM_ACES_HISTORICO_TELA where DTA_ACESSO < (SYSDATE - 100);
+   delete from COM_ACES_LOG_ERROS where DTA_ERRO < (SYSDATE - 100);
+   delete from COM_DEBUG;
+   delete from CTRL_NAV_USUR where DT_HR_ENTRADA < (SYSDATE - 100);
+   --delete from WWSEC_SSO_LOG$ where LOG_DATE < (SYSDATE - 100);
+   commit;
+exception
+   when others then
+      rollback;
+      raise_application_error(-20010, 'Erro na procedure COM_ACES_LIMPA_TABELAS: ' || SQLCODE || SQLERRM );
+end;
+ 
+
+/
+--------------------------------------------------------
+--  DDL for Procedure COM_ACES_PROC_LOG_ERRO
+--------------------------------------------------------
+set define off;
+
+  CREATE OR REPLACE EDITIONABLE PROCEDURE "TIMESHEET"."COM_ACES_PROC_LOG_ERRO" 
+ (P_TPO_ERRO IN CHAR
+ ,P_NMR_ERRO IN NUMBER
+ ,P_DSC_CONSTRAINT_EXCEPTION IN VARCHAR2
+ ,P_DTA_ERRO IN DATE
+ ,P_CDG_USUR IN VARCHAR2
+ ,P_DSC_SERVERNAME IN VARCHAR2
+ ,P_DSC_REFERER IN VARCHAR2
+ ,P_DSC_ULTIMA_PAGINA IN VARCHAR2
+ ,P_DSC_PAGINA_ATUAL IN VARCHAR2
+ )
+ IS
+-- PL/SQL Specification
+-- PL/SQL Specification
+PRAGMA AUTONOMOUS_TRANSACTION;
+-- PL/SQL Block
+
+-- PL/SQL Block
+BEGIN
+   INSERT INTO COM_ACES_LOG_ERROS (TPO_ERRO,
+                                   NMR_ERRO,
+                                   DSC_CONSTRAINT_EXCEPTION,
+                                   DTA_ERRO,
+                                   CDG_USUR,
+                                   DSC_SERVERNAME,
+                                   DSC_REFERER,
+                                   DSC_ULTIMA_PAGINA,
+                                   DSC_PAGINA_ATUAL)
+                           VALUES (P_TPO_ERRO,
+                                   P_NMR_ERRO,
+                                   P_DSC_CONSTRAINT_EXCEPTION,
+                                   P_DTA_ERRO,
+                                   P_CDG_USUR,
+                                   P_DSC_SERVERNAME,
+                                   P_DSC_REFERER,
+                                   P_DSC_ULTIMA_PAGINA,
+                                   P_DSC_PAGINA_ATUAL);
+   COMMIT;
+EXCEPTION
+   WHEN OTHERS THEN
+      NULL;
+END;
+
+ 
+ 
+
+/
+--------------------------------------------------------
+--  DDL for Procedure COM_AC_GRAVA_HIST_LOGIN
+--------------------------------------------------------
+set define off;
+
+  CREATE OR REPLACE EDITIONABLE PROCEDURE "TIMESHEET"."COM_AC_GRAVA_HIST_LOGIN" 
+ (P_CDG_USUR IN COM_ACES_HISTORICO_LOGIN.CDG_USUR%TYPE
+ ,P_STT_LOGIN_LOGOUT IN COM_ACES_HISTORICO_LOGIN.STT_LOGIN_LOGOUT%TYPE
+ ,P_NME_HTTP_REMOTE_HOST IN COM_ACES_HISTORICO_LOGIN.NME_HTTP_REMOTE_HOST%TYPE
+ ,P_NME_HTTP_REMOTE_ADDR IN COM_ACES_HISTORICO_LOGIN.NME_HTTP_REMOTE_ADDR%TYPE
+ ,P_NME_HTTP_USER_AGENT IN COM_ACES_HISTORICO_LOGIN.NME_HTTP_USER_AGENT%TYPE
+ ,P_SESSAOJSP IN COM_ACES_HISTORICO_LOGIN.COM_SESSAOJSP%TYPE
+ ,P_CDG_GRUPO_ACESSO COM_ACES_HISTORICO_LOGIN.CDG_GRUPO_ACESSO%TYPE
+ )
+ IS
+-- PL/SQL Specification
+PRAGMA AUTONOMOUS_TRANSACTION;
+
+-- PL/SQL Block
+begin
+   IF p_STT_LOGIN_LOGOUT = 'I' THEN
+      insert into com_aces_historico_login (DTA_LOGIN, CDG_USUR, STT_LOGIN_LOGOUT,
+                                         NME_HTTP_REMOTE_HOST, NME_HTTP_REMOTE_ADDR, NME_HTTP_USER_AGENT,
+                                         SESSIONID, COM_SESSAOJSP, CDG_GRUPO_ACESSO)
+                                 values (sysdate, p_CDG_USUR, p_STT_LOGIN_LOGOUT,
+                                         p_NME_HTTP_REMOTE_HOST, p_NME_HTTP_REMOTE_ADDR, p_NME_HTTP_USER_AGENT,
+                                         userenv('SESSIONID'), p_SESSAOJSP, P_CDG_GRUPO_ACESSO);
+   ELSE
+      UPDATE com_aces_historico_login SET DTA_LOGOUT = sysdate WHERE COM_SESSAOJSP = p_SESSAOJSP;
+      IF SQL%NOTFOUND THEN
+         insert into com_aces_historico_login (DTA_LOGIN, CDG_USUR, STT_LOGIN_LOGOUT,
+                                         NME_HTTP_REMOTE_HOST, NME_HTTP_REMOTE_ADDR, NME_HTTP_USER_AGENT,
+                                         SESSIONID, COM_SESSAOJSP, DTA_LOGOUT)
+                                 values (sysdate, p_CDG_USUR, p_STT_LOGIN_LOGOUT,
+                                         p_NME_HTTP_REMOTE_HOST, p_NME_HTTP_REMOTE_ADDR, p_NME_HTTP_USER_AGENT,
+                                         userenv('SESSIONID'), p_SESSAOJSP, sysdate);
+      END IF;
+   END IF;
+   commit;
+EXCEPTION
+   WHEN OTHERS THEN
+      RAISE_APPLICATION_ERROR(-20001, 'COM Erro na procedure GRAVA_HISTORICO_LOGIN: ' || SQLERRM);
+end;
+
+ 
+ 
+
+/
+--------------------------------------------------------
+--  DDL for Procedure DEBUG_PRINT
+--------------------------------------------------------
+set define off;
+
+  CREATE OR REPLACE EDITIONABLE PROCEDURE "TIMESHEET"."DEBUG_PRINT" wrapped
+0
+abcd
+abcd
+abcd
+abcd
+abcd
+abcd
+abcd
+abcd
+abcd
+abcd
+abcd
+abcd
+abcd
+abcd
+abcd
+3
+7
+8106000
+1
+4
+0
+3
+2 :e:
+1DEBUG_PRINT:
+1STR:
+1VARCHAR2:
+0
+
+0
+0
+14
+2
+0 1d 9a 8f a0 b0 3d b4
+55 6a 4f b7 a4 a0 b1 11
+68 4f 17 b5
+14
+2
+0 3 4 1d 19 18 25 15
+2a 2e 32 34 36 3a 3e 40
+4c 50 52 5b
+14
+2
+0 1 b 18 1c :2 18 17 :5 1
+5 :6 1
+14
+2
+0 :9 1 7 :2 4 8 :3 1 8 :2 1
+
+5d
+4
+:4 0 1 :a 0 10
+1 :4 0 5 :2 0
+:2 3 :3 0 2 :7 0
+5 4 :3 0 7
+:2 0 10 2 8
+:3 0 b 9 f
+:3 0 f 1 :4 0
+f e b c
+:6 0 10 :2 0 2
+8 f 12 :2 0
+1 10 13 :8 0
+
+c
+4
+:3 0 1 3 1
+6 1 a 2
+a 11
+1
+4
+0
+12
+0
+1
+14
+1
+2
+0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0
+0 0 0 0
+3 1 0
+2 0 1
+0
+
+ 
+ 
+
+/
+--------------------------------------------------------
+--  DDL for Procedure GERA_DEBUG
+--------------------------------------------------------
+set define off;
+
+  CREATE OR REPLACE EDITIONABLE PROCEDURE "TIMESHEET"."GERA_DEBUG" (pTEXTO IN VARCHAR2) IS
+   PRAGMA AUTONOMOUS_TRANSACTION;
+BEGIN
+   INSERT INTO COM_DEBUG (TEXTO, DATA) VALUES (pTEXTO, SYSDATE);
+   COMMIT;
+END;
+ 
+ 
+
+/
+--------------------------------------------------------
+--  DDL for Procedure GERA_LOG
+--------------------------------------------------------
+set define off;
+
+  CREATE OR REPLACE EDITIONABLE PROCEDURE "TIMESHEET"."GERA_LOG" 
+(P_NM_LOGIN_USUARIO IN com_aces_usuario.NOME%TYPE,
+ P_NM_TERMINAL      IN CTRL_NAV_USUR.NM_TERMINAL%TYPE,
+ P_ENTRADA_SAIDA    IN CHAR,
+ P_NM_SESSIONID     IN CTRL_NAV_USUR.NM_SESSIONID%TYPE,
+ P_CD_MODULO        IN CTRL_NAV_USUR.CD_MODULO%TYPE,
+ P_NM_MODULO        IN CTRL_NAV_USUR.NM_MODULO%TYPE,
+ P_TP_MODULO        IN CTRL_NAV_USUR.TP_MODULO%TYPE,
+ P_MSG_ERRO         IN OUT VARCHAR2) IS
+   PRAGMA AUTONOMOUS_TRANSACTION;
+BEGIN
+   P_MSG_ERRO := NULL;
+   IF P_ENTRADA_SAIDA = 'E' THEN
+      BEGIN
+         IF P_TP_MODULO = 'F' THEN
+            INSERT INTO CTRL_NAV_USUR (NM_SESSIONID,NM_LOGIN_USUARIO,CD_MODULO,NM_MODULO,
+                                       TP_MODULO,DT_HR_ENTRADA,DT_HR_SAIDA,NM_TERMINAL)
+                               VALUES (P_NM_SESSIONID,P_NM_LOGIN_USUARIO,P_CD_MODULO,P_NM_MODULO,
+                                       P_TP_MODULO,SYSDATE,NULL,P_NM_TERMINAL);
+         ELSE
+            INSERT INTO CTRL_NAV_USUR (NM_SESSIONID,NM_LOGIN_USUARIO,CD_MODULO,NM_MODULO,
+                                       TP_MODULO,DT_HR_ENTRADA,DT_HR_SAIDA,NM_TERMINAL)
+                               VALUES (P_NM_SESSIONID,P_NM_LOGIN_USUARIO,P_CD_MODULO,P_NM_MODULO,
+                                       P_TP_MODULO,SYSDATE,SYSDATE,P_NM_TERMINAL);
+         END IF;
+         COMMIT;
+      EXCEPTION
+         WHEN OTHERS THEN
+            P_MSG_ERRO := 'Ocorreu um erro ao inserir Controle de Navegac?o. Contacte o setor de PCP e Microinformatica. Erro=' || sqlerrm;
+            ROLLBACK;
+      END;
+   ELSE
+      BEGIN
+         UPDATE CTRL_NAV_USUR C1 SET C1.DT_HR_SAIDA = SYSDATE
+          WHERE C1.NM_SESSIONID = P_NM_SESSIONID AND C1.NM_LOGIN_USUARIO = P_NM_LOGIN_USUARIO
+            AND C1.CD_MODULO = P_CD_MODULO AND C1.NM_MODULO = P_NM_MODULO AND C1.TP_MODULO = P_TP_MODULO
+            AND C1.DT_HR_SAIDA IS NULL
+            AND C1.DT_HR_ENTRADA IN (SELECT MAX(C2.DT_HR_ENTRADA) FROM CTRL_NAV_USUR C2
+                                      WHERE C2.NM_SESSIONID = P_NM_SESSIONID AND C2.NM_LOGIN_USUARIO = P_NM_LOGIN_USUARIO
+                                        AND C2.CD_MODULO = P_CD_MODULO AND C2.NM_MODULO = P_NM_MODULO AND C2.TP_MODULO = P_TP_MODULO
+                                        AND C2.DT_HR_SAIDA IS NULL);
+         COMMIT;
+      EXCEPTION
+         WHEN OTHERS THEN
+            P_MSG_ERRO := 'Ocorreu um erro ao atualizar Controle de Navegac?o. Contacte o setor de PCP e Microinformatica. Erro=' || sqlerrm;
+            ROLLBACK;
+      END;
+   END IF;
+END;
+ 
+ 
+
+/
+--------------------------------------------------------
+--  DDL for Procedure GERARTXT
+--------------------------------------------------------
+set define off;
+
+  CREATE OR REPLACE EDITIONABLE PROCEDURE "TIMESHEET"."GERARTXT" 
+(chrDir    IN VARCHAR2,
+ chrNomArq IN VARCHAR2) AS
+  vHandleDoTxt UTL_FILE.FILE_TYPE;
+  chrLinha     VARCHAR2(100);
+  CURSOR curEstado IS SELECT * FROM ESTADO ORDER BY SG_ESTADO;
+  recEstado curEstado%ROWTYPE;
+BEGIN
+   BEGIN
+     vHandleDoTxt := UTL_FILE.FOPEN(chrDir, chrNomArq, 'W');
+	 FOR recEstado IN curEstado LOOP
+	   chrLinha := RPAD(recEstado.SG_ESTADO, 02) +
+	   			   RPAD(recEstado.DS_ESTADO, 20);
+	   UTL_FILE.PUT_LINE(vHandleDoTxt,chrLinha);
+	 END LOOP; /* loop */
+   EXCEPTION
+     WHEN OTHERS THEN
+	    UTL_FILE.FCLOSE(vHandleDoTxt);
+		RAISE_APPLICATION_ERROR(-20100, 'xi, fodeu...');
+   END; /* abertura do arquivo */
+END GerarTxt;
+
+ 
+ 
+
+/
+--------------------------------------------------------
+--  DDL for Procedure P_ANALYZE_BI
+--------------------------------------------------------
+set define off;
+
+  CREATE OR REPLACE EDITIONABLE PROCEDURE "TIMESHEET"."P_ANALYZE_BI" is
+begin
+  execute immediate 'ANALYZE TABLE commit9ias.clifor compute statistics for table for all indexes for all indexed columns';
+  execute immediate 'ANALYZE TABLE commit9ias.empresa compute statistics for table for all indexes for all indexed columns';
+  execute immediate 'ANALYZE TABLE commit9ias.feriado compute statistics for table for all indexes for all indexed columns';
+  execute immediate 'ANALYZE TABLE commit9ias.funcionario compute statistics for table for all indexes for all indexed columns';
+  execute immediate 'ANALYZE TABLE commit9ias.projeto compute statistics for table for all indexes for all indexed columns';
+  execute immediate 'ANALYZE TABLE commit9ias.log_dia compute statistics for table for all indexes for all indexed columns';
+  execute immediate 'ANALYZE TABLE commit9ias.horas_dia compute statistics for table for all indexes for all indexed columns';
+
+  execute immediate 'ANALYZE TABLE commit9ias.faturamento compute statistics for table for all indexes for all indexed columns';
+  execute immediate 'ANALYZE TABLE commit9ias.linha_servico compute statistics for table for all indexes for all indexed columns';
+  execute immediate 'ANALYZE TABLE commit9ias.tipo_servico compute statistics for table for all indexes for all indexed columns';
+  execute immediate 'ANALYZE TABLE commit9ias.plataforma_vendor compute statistics for table for all indexes for all indexed columns';
+  execute immediate 'ANALYZE TABLE commit9ias.tipo_contrato compute statistics for table for all indexes for all indexed columns';
+end;
+ 
+ 
+
+/
+--------------------------------------------------------
+--  DDL for Procedure P_CARGA_BITRISCAL
+--------------------------------------------------------
+set define off;
+
+  CREATE OR REPLACE EDITIONABLE PROCEDURE "TIMESHEET"."P_CARGA_BITRISCAL" IS
+  contador number;
+begin
+
+  --Inicio - Tratamento do projeto e cliente com SK = 0. Esse projeto e utilizado para armazenar as horas lancadas que sao
+  --por Funcionario,Filial e Dia mas nao sao respectivas a nenhum projeto. Essas horas sao:
+  -- Horas de Ausencia BHE, Horas de Ausencia para Pagamento e Horas Normais
+  select count(*) into contador
+    from dim_cliente
+   where sk_cliente = 0;
+
+  if contador = 0 then
+
+    insert into dim_cliente (sk_cliente,
+                              cd_cliente,
+                              nm_razaosocial,
+                              nm_fantasia,
+                              nr_cnpj,
+                              dt_cadastramento,
+                              dt_ultvisita,
+                              dt_ult_atlz)
+    values (0, 0, 'Triscal', 'Triscal', null, trunc(sysdate), null, trunc(sysdate));
+
+  end if;
+
+  select count(*) into contador
+    from dim_projeto
+   where sk_projeto = 0;
+
+  if contador = 0 then
+
+    insert into dim_projeto (sk_projeto,
+                              sk_cliente,
+                              cd_projeto,
+                              ds_projeto,
+                              dt_inicio_prev,
+                              dt_inicio_real,
+                              dt_fim_real,
+                              st_projeto,
+                              tp_cobranca,
+                              dt_ult_atlz) values
+    (0, 0, 0, 'Lancamento de Horas Normais ou Ausencia', null, null, null, 'A', 'HH', TRUNC(SYSDATE));
+
+  end if;
+
+  select count(*) into contador
+    from dim_vertical
+   where sk_vertical = 0;
+
+  if contador = 0 then
+
+    insert into dim_vertical (sk_vertical,
+                              nm_vertical,
+                              dt_ult_atlz) values
+    (0, 'NA', TRUNC(SYSDATE));
+
+  end if;
+
+  commit;
+
+  --ANALYZE
+	--  execute immediate 'ANALYZE TABLE commit9ias.clifor compute statistics for table for all indexes for all indexed columns';
+	--  execute immediate 'ANALYZE TABLE commit9ias.empresa compute statistics for table for all indexes for all indexed columns';
+	--  execute immediate 'ANALYZE TABLE commit9ias.feriado compute statistics for table for all indexes for all indexed columns';
+	--  execute immediate 'ANALYZE TABLE commit9ias.funcionario compute statistics for table for all indexes for all indexed columns';
+	--  execute immediate 'ANALYZE TABLE commit9ias.projeto compute statistics for table for all indexes for all indexed columns';
+	--  execute immediate 'ANALYZE TABLE commit9ias.log_dia compute statistics for table for all indexes for all indexed columns';
+	--  execute immediate 'ANALYZE TABLE commit9ias.horas_dia compute statistics for table for all indexes for all indexed columns';
+
+	--  execute immediate 'ANALYZE TABLE commit9ias.faturamento compute statistics for table for all indexes for all indexed columns';
+	--  execute immediate 'ANALYZE TABLE commit9ias.linha_servico compute statistics for table for all indexes for all indexed columns';
+	--  execute immediate 'ANALYZE TABLE commit9ias.tipo_servico compute statistics for table for all indexes for all indexed columns';
+	--  execute immediate 'ANALYZE TABLE commit9ias.plataforma_vendor compute statistics for table for all indexes for all indexed columns';
+	--  execute immediate 'ANALYZE TABLE commit9ias.tipo_contrato compute statistics for table for all indexes for all indexed columns';
+	--  --execute immediate 'ANALYZE TABLE commit9ias.area_ti compute statistics for table for all indexes for all indexed columns';
+  --commit9ias.p_analyze_bi@dblink_commit9ias;
+
+
+  --Limpeza das cargas
+  --execute immediate 'truncate table fat_ind_mensais';
+  --execute immediate 'truncate table fat_ind_clientes';
+  --execute immediate 'truncate table fat_ind_funcionarios';
+  execute immediate 'truncate table FAT_HR_FUNC_PROJ';
+  execute immediate 'truncate table FAT_HR_UTEIS_MES_FILI';
+
+  delete from dim_vertical where SK_VERTICAL <> 0;
+  delete from dim_projeto where SK_PROJETO <> 0;
+  delete from dim_cliente where SK_CLIENTE <> 0;
+  delete from dim_filial;
+  delete from dim_funcionario;
+  delete from dim_tempo_dia;
+
+  commit;
+
+  --Carga das dimensoes
+  insert into dim_cliente (
+  cd_cliente,
+  nm_razaosocial,
+  nm_fantasia,
+  nr_cnpj,
+  dt_cadastramento,
+  dt_ultvisita,
+  dt_ult_atlz)
+  select CD_CLIFOR, NM_RAZAOSOCIAL, nvl(replace(nm_fantasia,'0',null), nm_razaosocial), NR_CNPJ, DT_CADASTRAMENTO, DT_ULTVISITA, TRUNC(SYSDATE)
+    from clifor c
+   where c.tip_clifor = 'C'
+  ;
+
+  insert into dim_filial (
+  cd_filial,
+  nm_filial,
+  dt_ult_atlz)
+  select CD_EMPRESA, NM_EMPRESA, TRUNC(SYSDATE)
+    from empresa
+  ;
+  
+  delete from dim_filial where cd_filial in (0, 1, 2, 4, 6);
+
+  insert into dim_funcionario (
+  cd_funcionario,
+  nm_funcionario,
+  dt_admissao,
+  cdg_usur,
+  nr_saldo_bhe50,
+  nr_saldo_bhe100,
+  DT_RESCISAO,
+  dt_ult_atlz)
+  select CD_FUNCIONARIO, NM_FUNCIONARIO, DT_ADMISSAO, CDG_USUR, nvl(FUNC_NR_SALDO_BHE50,0), nvl(FUNC_NR_SALDO_BHE100,0), DT_RESCISAO
+        ,TRUNC(SYSDATE)
+    from funcionario
+  ;
+
+  insert into dim_projeto (
+  sk_cliente,
+  cd_projeto,
+  ds_projeto,
+  dt_inicio_prev,
+  dt_inicio_real,
+  dt_fim_real, ST_PROJETO, TP_COBRANCA,
+  dt_ult_atlz
+  )
+  select dc.sk_cliente
+        ,p.cd_projeto, p.ds_projeto, p.DT_FIM_PREVISTO, p.DT_INICIO_REAL, p.DT_FIM_REAL, p.ST_PROJETO, p.TP_COBRANCA
+        ,TRUNC(SYSDATE)
+    from projeto p, clifor c, dim_cliente dc
+   where p.cd_clifor = c.cd_clifor
+     and c.cd_clifor = dc.cd_cliente
+  ;
+
+  insert into dim_vertical (
+  nm_vertical,
+  dt_ult_atlz)
+  select LINHA_SERVICO, TRUNC(SYSDATE)
+    from LINHA_SERVICO
+  ;
+
+  commit;
+
+  p_carga_dim_tempo_dia;
+  --p_carga_dim_tempo_mes;
+
+  --update dim_tempo_mes set dc_semestre = nr_semestre || 'o Semestre' where dc_semestre is null;
+  --update dim_tempo_dia set dc_semestre = nr_semestre || 'o Semestre' where dc_semestre is null;
+
+  --update dim_tempo_mes set dc_mes = lpad(to_char(nr_mes),2,'0') || '-' ||
+  --                         decode(nr_mes, 1, 'Jan', 2, 'Fev', 3, 'Mar', 4, 'Abr', 5, 'Mai', 6, 'Jun', 7, 'Jul', 8, 'Ago', 9, 'Set', 10, 'Out', 11, 'Nov', 12, 'Dez', nr_mes)
+  -- where dc_mes is null;
+  --update dim_tempo_dia set dc_mes = lpad(to_char(nr_mes),2,'0') || '-' ||
+  --                         decode(nr_mes, 1, 'Jan', 2, 'Fev', 3, 'Mar', 4, 'Abr', 5, 'Mai', 6, 'Jun', 7, 'Jul', 8, 'Ago', 9, 'Set', 10, 'Out', 11, 'Nov', 12, 'Dez', nr_mes)
+  -- where dc_mes is null;
+
+  commit;
+  ----------------------------------------------------------------------------------------------------------------
+
+  execute immediate 'ANALYZE TABLE dim_cliente compute statistics for table for all indexes for all indexed columns';
+  execute immediate 'ANALYZE TABLE dim_filial compute statistics for table for all indexes for all indexed columns';
+  execute immediate 'ANALYZE TABLE dim_funcionario compute statistics for table for all indexes for all indexed columns';
+  execute immediate 'ANALYZE TABLE dim_projeto compute statistics for table for all indexes for all indexed columns';
+  execute immediate 'ANALYZE TABLE dim_tempo_dia compute statistics for table for all indexes for all indexed columns';
+  execute immediate 'ANALYZE TABLE dim_vertical compute statistics for table for all indexes for all indexed columns';
+
+  ----------------------------------------------------------------------------------------------------------------
+  ---------------------------------------------------------------------------------------------------------------------------------
+  --Carga da fato de horas por funcionario e projeto (detalhada):
+/*
+create table FAT_HR_FUNC_PROJ (
+  SK_PROJETO            NUMBER(7) not null,
+  SK_CLIENTE            NUMBER(7) not null,
+  SK_FILIAL             NUMBER(3) not null,
+  SK_TEMPO_DIA          NUMBER(5) not null,
+  SK_FUNCIONARIO        NUMBER(7) not null,
+  SK_VERTICAL           NUMBER(3) not null,
+  DT_ULT_ATLZ           DATE not null,
+  QT_HR_CO              NUMBER,
+  QT_HR_NC              NUMBER,
+  QT_HR_EXTRAS_CO       NUMBER,
+  QT_HR_EXTRAS_NC       NUMBER,
+  QT_HR_DESALOCACAO     NUMBER,  Horas não cobráveis em projetos para a Triscal que não sejam Auto-Estudo nem Férias nem Treinamento 
+  QT_HR_TREINAMENTO_AUTOESTUDO NUMBER,  Horas não cobráveis em projetos para a Triscal de Treinamento 
+  QT_HR_FERIAS          NUMBER,
+  QT_HR_OUTROS_NC       NUMBER,
+  QT_HR_NORMAIS         NUMBER,  Alocar ao projeto 0, cliente 0, vertical 0 
+  QT_HR_AUSENCIA_BHE    NUMBER,  Alocar ao projeto 0, cliente 0, vertical 0 
+  QT_HR_AUSENCIA_ABN    NUMBER   Alocar ao projeto 0, cliente 0, vertical 0 
+*/
+
+  --Inserindo as Horas relacionadas a projetos
+  MERGE INTO FAT_HR_FUNC_PROJ FATO USING
+  (
+  SELECT (SELECT DC.SK_CLIENTE FROM DIM_CLIENTE DC WHERE DC.CD_CLIENTE = Q1.CD_CLIFOR) SK_CLIENTE
+        ,(SELECT DE.SK_FILIAL FROM DIM_FILIAL DE WHERE DE.CD_FILIAL = Q1.CD_EMPRESA) SK_FILIAL
+        ,(SELECT DF.SK_FUNCIONARIO FROM DIM_FUNCIONARIO DF WHERE DF.CD_FUNCIONARIO = Q1.CD_FUNCIONARIO) SK_FUNCIONARIO
+        ,(SELECT DP.SK_PROJETO FROM DIM_PROJETO DP WHERE DP.CD_PROJETO = Q1.CD_PROJETO) SK_PROJETO
+        ,(SELECT DT.SK_TEMPO_DIA FROM DIM_TEMPO_DIA DT WHERE DT.NR_ANO = Q1.LOPE_NR_ANO AND DT.NR_MES_2_POSICOES = Q1.LOPE_NR_MES AND DT.NR_DIA = Q1.LOG_NR_DIA) SK_TEMPO_DIA
+        ,(SELECT DV.SK_VERTICAL FROM DIM_VERTICAL DV WHERE DV.NM_VERTICAL = Q1.LINHA_SERVICO) SK_VERTICAL
+        ,QT_HR_CO
+        ,QT_HR_NC
+		,QT_HR_EXTRAS_CO
+		,QT_HR_EXTRAS_NC
+		,QT_HR_DESALOCACAO
+		,QT_HR_TREINAMENTO_AUTOESTUDO
+		,QT_HR_FERIAS
+		,QT_HR_OUTROS_NC
+    FROM (SELECT T.LOPE_NR_ANO, T.LOPE_NR_MES, T.LOG_NR_DIA, /*CASE WHEN NVL(P.CD_EMPRESA, F.CD_EMPRESA)=6 THEN F.CD_EMPRESA ELSE NVL(P.CD_EMPRESA, F.CD_EMPRESA) END CD_EMPRESA,*/
+                 F.CD_EMPRESA, P.LINHA_SERVICO, P.CD_PROJETO, C.CD_CLIFOR, F.CD_FUNCIONARIO
+                ,SUM((NVL(T.HORAS_NR_COEXTRA, 0) + NVL(T.HORAS_NR_CO, 0))) AS QT_HR_CO
+                ,SUM((NVL(T.HORAS_NR_NCEXTRA, 0) + NVL(T.HORAS_NR_NC, 0))) AS QT_HR_NC
+                ,SUM( CASE WHEN (((NVL(T.HORAS_NR_COEXTRA, 0) + NVL(T.HORAS_NR_CO, 0)) - D.LOG_NR_HNORMAL) <= 0) 
+                           THEN 0 ELSE ((NVL(T.HORAS_NR_COEXTRA, 0) + NVL(T.HORAS_NR_CO, 0)) - D.LOG_NR_HNORMAL) END) AS QT_HR_EXTRAS_CO
+                ,SUM( CASE WHEN (((NVL(T.HORAS_NR_NCEXTRA, 0) + NVL(T.HORAS_NR_NC, 0)) - D.LOG_NR_HNORMAL) <= 0) 
+                           THEN 0 ELSE ((NVL(T.HORAS_NR_NCEXTRA, 0) + NVL(T.HORAS_NR_NC, 0)) - D.LOG_NR_HNORMAL) END) AS QT_HR_EXTRAS_NC
+                ,SUM( CASE WHEN P.CD_CLIFOR = 1468 
+                            AND UPPER(P.DS_PROJETO) NOT LIKE '%AUTOESTUDO%'
+                            AND UPPER(P.DS_PROJETO) NOT LIKE '%AUTO-ESTUDO%'
+                            AND UPPER(P.DS_PROJETO) NOT LIKE '%FÉRIA%'
+                            AND UPPER(P.DS_PROJETO) NOT LIKE '%FERIA%'
+                            AND UPPER(P.DS_PROJETO) NOT LIKE '%TREINAMENTO%'
+                		       THEN (NVL(T.HORAS_NR_NCEXTRA, 0) + NVL(T.HORAS_NR_NC, 0))
+                           ELSE 0
+                       END ) AS QT_HR_DESALOCACAO
+                ,SUM( CASE WHEN P.CD_CLIFOR = 1468 
+                            AND (UPPER(P.DS_PROJETO) LIKE '%AUTOESTUDO%' 
+							                OR UPPER(P.DS_PROJETO) LIKE '%AUTO-ESTUDO%' 
+							                OR UPPER(P.DS_PROJETO) LIKE '%TREINAMENTO%')
+                		       THEN (NVL(T.HORAS_NR_NCEXTRA, 0) + NVL(T.HORAS_NR_NC, 0))
+                           ELSE 0
+                       END ) AS QT_HR_TREINAMENTO_AUTOESTUDO
+                ,SUM( CASE WHEN P.CD_CLIFOR = 1468 
+                            AND (UPPER(P.DS_PROJETO) LIKE '%FERIA%' 
+							                OR UPPER(P.DS_PROJETO) LIKE '%FÉRIA%')
+                		       THEN (NVL(T.HORAS_NR_NCEXTRA, 0) + NVL(T.HORAS_NR_NC, 0))
+                           ELSE 0
+                       END ) AS QT_HR_FERIAS
+                ,SUM( CASE WHEN NOT (P.CD_CLIFOR = 1468
+                                 AND UPPER(DS_PROJETO) NOT LIKE '%AUTOESTUDO%'
+                                 AND UPPER(DS_PROJETO) NOT LIKE '%AUTO-ESTUDO%'
+                                 AND UPPER(DS_PROJETO) NOT LIKE '%FÉRIA%'
+                                 AND UPPER(DS_PROJETO) NOT LIKE '%FERIA%'
+                                 AND UPPER(DS_PROJETO) NOT LIKE '%TREINAMENTO%')
+                            AND NOT (P.CD_CLIFOR = 1468
+                                 AND (UPPER(DS_PROJETO) LIKE '%AUTOESTUDO%' 
+								                   OR UPPER(DS_PROJETO) LIKE '%AUTO-ESTUDO%' 
+								                   OR UPPER(DS_PROJETO) LIKE '%TREINAMENTO%'))
+                            AND NOT (P.CD_CLIFOR = 1468
+                                 AND (UPPER(DS_PROJETO) LIKE '%FERIA%' 
+								                   OR UPPER(DS_PROJETO) LIKE '%FÉRIA%'))
+                		       THEN (NVL(T.HORAS_NR_NCEXTRA, 0) + NVL(T.HORAS_NR_NC, 0))
+                           ELSE 0
+                       END ) AS QT_HR_OUTROS_NC
+            FROM TIMESHEET_DIA_TAREFA T, TIMESHEET_DIA D, FUNCIONARIO F, PROJETO P, CLIFOR C
+           WHERE D.LOPE_NR_ANO = T.LOPE_NR_ANO
+             AND D.LOPE_NR_MES = T.LOPE_NR_MES
+             AND D.LOG_NR_DIA = T.LOG_NR_DIA
+             AND D.FUNC_CD_FUNC = T.FUNC_CD_FUNC
+		     AND T.FUNC_CD_FUNC = F.CD_FUNCIONARIO 
+             AND T.CD_PROJETO = P.CD_PROJETO
+             AND P.CD_CLIFOR = C.CD_CLIFOR
+             AND T.LOPE_NR_ANO >= 2014
+        GROUP BY  T.LOPE_NR_ANO, T.LOPE_NR_MES, T.LOG_NR_DIA, F.CD_EMPRESA, P.LINHA_SERVICO, P.CD_PROJETO, C.CD_CLIFOR, F.CD_FUNCIONARIO) Q1
+  ) Q
+    ON (FATO.SK_PROJETO = Q.SK_PROJETO
+    AND FATO.SK_CLIENTE = Q.SK_CLIENTE
+    AND FATO.SK_FILIAL = Q.SK_FILIAL
+    AND FATO.SK_TEMPO_DIA = Q.SK_TEMPO_DIA
+    AND FATO.SK_FUNCIONARIO = Q.SK_FUNCIONARIO
+    AND FATO.SK_VERTICAL = Q.SK_VERTICAL)
+    WHEN NOT MATCHED 
+    THEN INSERT(SK_PROJETO,
+                SK_CLIENTE,
+                SK_FILIAL,
+                SK_TEMPO_DIA,
+                SK_FUNCIONARIO,
+                SK_VERTICAL,
+                DT_ULT_ATLZ,
+                QT_HR_CO,
+                QT_HR_NC,
+                QT_HR_EXTRAS_CO,
+                QT_HR_EXTRAS_NC,
+                QT_HR_DESALOCACAO,
+                QT_HR_TREINAMENTO_AUTOESTUDO,
+                QT_HR_FERIAS,
+                QT_HR_OUTROS_NC,
+                QT_HR_NORMAIS,
+                QT_HR_AUSENCIA_BHE,
+                QT_HR_AUSENCIA_ABN)
+         VALUES(Q.SK_PROJETO,
+                Q.SK_CLIENTE,
+                Q.SK_FILIAL,
+                Q.SK_TEMPO_DIA,
+                Q.SK_FUNCIONARIO,
+                Q.SK_VERTICAL,
+                SYSDATE,
+                Q.QT_HR_CO,
+                Q.QT_HR_NC,
+                Q.QT_HR_EXTRAS_CO,
+                Q.QT_HR_EXTRAS_NC,
+                Q.QT_HR_DESALOCACAO,
+                Q.QT_HR_TREINAMENTO_AUTOESTUDO,
+                Q.QT_HR_FERIAS,
+                Q.QT_HR_OUTROS_NC,
+                0,
+                0,
+                0)  
+    WHEN MATCHED
+  	THEN UPDATE SET DT_ULT_ATLZ = SYSDATE
+                   ,QT_HR_CO = Q.QT_HR_CO
+                   ,QT_HR_NC = Q.QT_HR_NC
+                   ,QT_HR_EXTRAS_CO = Q.QT_HR_EXTRAS_CO
+                   ,QT_HR_EXTRAS_NC = Q.QT_HR_EXTRAS_NC
+                   ,QT_HR_DESALOCACAO = Q.QT_HR_DESALOCACAO
+                   ,QT_HR_TREINAMENTO_AUTOESTUDO = Q.QT_HR_TREINAMENTO_AUTOESTUDO
+                   ,QT_HR_FERIAS = Q.QT_HR_FERIAS
+                   ,QT_HR_OUTROS_NC = Q.QT_HR_OUTROS_NC
+	;
+
+  --Inserindo as Horas que não estão relacionadas a projetos (ausência e horas normais do dia)
+  MERGE INTO FAT_HR_FUNC_PROJ FATO USING
+  (
+  SELECT 0 SK_CLIENTE
+        ,(SELECT DE.SK_FILIAL FROM DIM_FILIAL DE WHERE DE.CD_FILIAL = Q1.CD_EMPRESA) SK_FILIAL
+        ,(SELECT DF.SK_FUNCIONARIO FROM DIM_FUNCIONARIO DF WHERE DF.CD_FUNCIONARIO = Q1.CD_FUNCIONARIO) SK_FUNCIONARIO
+        ,0 SK_PROJETO
+        ,(SELECT DT.SK_TEMPO_DIA FROM DIM_TEMPO_DIA DT WHERE DT.NR_ANO = Q1.LOPE_NR_ANO AND DT.NR_MES_2_POSICOES = Q1.LOPE_NR_MES AND DT.NR_DIA = Q1.LOG_NR_DIA) SK_TEMPO_DIA
+        ,0 SK_VERTICAL
+        ,QT_HR_NORMAIS
+        ,QT_HR_AUSENCIA_BHE
+        ,QT_HR_AUSENCIA_ABN
+    FROM (SELECT D.LOPE_NR_ANO, D.LOPE_NR_MES, D.LOG_NR_DIA, F.CD_EMPRESA, F.CD_FUNCIONARIO
+                ,SUM(NVL(D.LOG_NR_HNORMAL, 0)) AS QT_HR_NORMAIS
+                ,SUM(NVL(D.LOG_QN_AUSBHE, 0)) AS QT_HR_AUSENCIA_BHE
+                ,SUM(NVL(D.LOG_QN_AUSABN, 0)) AS QT_HR_AUSENCIA_ABN
+            FROM TIMESHEET_DIA D, FUNCIONARIO F
+           WHERE D.FUNC_CD_FUNC = F.CD_FUNCIONARIO 
+             AND D.LOPE_NR_ANO >= 2014
+        GROUP BY  D.LOPE_NR_ANO, D.LOPE_NR_MES, D.LOG_NR_DIA, F.CD_EMPRESA, F.CD_FUNCIONARIO) Q1
+  ) Q
+    ON (FATO.SK_PROJETO = Q.SK_PROJETO
+    AND FATO.SK_CLIENTE = Q.SK_CLIENTE
+    AND FATO.SK_FILIAL = Q.SK_FILIAL
+    AND FATO.SK_TEMPO_DIA = Q.SK_TEMPO_DIA
+    AND FATO.SK_FUNCIONARIO = Q.SK_FUNCIONARIO
+    AND FATO.SK_VERTICAL = Q.SK_VERTICAL)
+    WHEN NOT MATCHED 
+    THEN INSERT(SK_PROJETO,
+                SK_CLIENTE,
+                SK_FILIAL,
+                SK_TEMPO_DIA,
+                SK_FUNCIONARIO,
+                SK_VERTICAL,
+                DT_ULT_ATLZ,
+                QT_HR_CO,
+                QT_HR_NC,
+                QT_HR_EXTRAS_CO,
+                QT_HR_EXTRAS_NC,
+                QT_HR_DESALOCACAO,
+                QT_HR_TREINAMENTO_AUTOESTUDO,
+                QT_HR_FERIAS,
+                QT_HR_OUTROS_NC,
+                QT_HR_NORMAIS,
+                QT_HR_AUSENCIA_BHE,
+                QT_HR_AUSENCIA_ABN)
+         VALUES(Q.SK_PROJETO,
+                Q.SK_CLIENTE,
+                Q.SK_FILIAL,
+                Q.SK_TEMPO_DIA,
+                Q.SK_FUNCIONARIO,
+                Q.SK_VERTICAL,
+                SYSDATE,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                Q.QT_HR_NORMAIS,
+                Q.QT_HR_AUSENCIA_BHE,
+                Q.QT_HR_AUSENCIA_ABN)  
+    WHEN MATCHED
+  	THEN UPDATE SET DT_ULT_ATLZ = SYSDATE
+                   ,QT_HR_NORMAIS = Q.QT_HR_NORMAIS
+                   ,QT_HR_AUSENCIA_BHE = Q.QT_HR_AUSENCIA_BHE
+                   ,QT_HR_AUSENCIA_ABN = Q.QT_HR_AUSENCIA_ABN
+	;
+	
+  commit;
+
+  ---------------------------------------------------------------------------------------------------------------------------------
+  /*update FAT_HR_FUNC_PROJ
+     set  qt_horas_cobradas = nvl(qt_horas_cobradas,0),
+          qt_horas_nao_cobradas = nvl(qt_horas_nao_cobradas,0),
+          qt_horas_extras_bhe = nvl(qt_horas_extras_bhe,0),
+          qt_horas_extras_pgto = nvl(qt_horas_extras_pgto,0),
+          qt_horas_ausencia_bhe = nvl(qt_horas_ausencia_bhe,0),
+          qt_horas_ausencia_pgt = nvl(qt_horas_ausencia_pgt,0),
+          qt_horas_ausencia_abn = nvl(qt_horas_ausencia_abn,0),
+          qt_horas_normais = nvl(qt_horas_normais,0);*/
+
+  commit;
+
+  execute immediate 'ANALYZE TABLE FAT_HR_FUNC_PROJ compute statistics for table for all indexes for all indexed columns';
+
+
+  --Carga da fato de dias uteis e horas uteis por ano-mes e filial (ATENÇÃO: só carregar para o dia primeiro !):
+/*
+create table FAT_HR_UTEIS_MES_FILI
+(
+  SK_FILIAL             NUMBER(3) not null,
+  SK_TEMPO_DIA          NUMBER(5) not null,  ***Atenção: só preencher para o dia 1, pois os dias úteis são por ano-mês e filial*** 
+  DT_ULT_ATLZ           DATE not null,
+  QT_DI_UTEIS_MES       NUMBER not null, 
+  QT_HR_UTEIS_MES       NUMBER not null 
+)
+*/
+
+  MERGE INTO FAT_HR_UTEIS_MES_FILI FATO USING
+  (
+    select F.SK_FILIAL
+          ,T.SK_TEMPO_DIA
+          ,FNC_CALC_DIAS_UTEIS_MES(T.NR_ANO, T.NR_MES_2_POSICOES, F.CD_FILIAL) QT_DI_UTEIS_MES
+          ,FNC_CALC_HORAS_NORMAIS_MES(T.NR_ANO, T.NR_MES_2_POSICOES, F.CD_FILIAL) QT_HR_UTEIS_MES
+     from DIM_FILIAL F, DIM_TEMPO_DIA T
+    where T.NR_DIA = 1
+      and T.NR_ANO >= 2014
+ order by T.nr_data, F.nm_filial
+  ) Q
+    ON (FATO.SK_FILIAL = Q.SK_FILIAL
+    AND FATO.SK_TEMPO_DIA = Q.SK_TEMPO_DIA)
+    WHEN NOT MATCHED 
+    THEN INSERT(SK_FILIAL,
+                SK_TEMPO_DIA,
+                DT_ULT_ATLZ,
+                QT_DI_UTEIS_MES,
+                QT_HR_UTEIS_MES)
+         VALUES(Q.SK_FILIAL,
+                Q.SK_TEMPO_DIA,
+                SYSDATE,
+                Q.QT_DI_UTEIS_MES,
+                Q.QT_HR_UTEIS_MES)  
+    WHEN MATCHED
+  	THEN UPDATE SET DT_ULT_ATLZ = SYSDATE
+                   ,QT_DI_UTEIS_MES = Q.QT_DI_UTEIS_MES
+                   ,QT_HR_UTEIS_MES = Q.QT_HR_UTEIS_MES
+	;
+	
+  commit;
+
+  execute immediate 'ANALYZE TABLE FAT_HR_UTEIS_MES_FILI compute statistics for table for all indexes for all indexed columns';
+
+  ---------------------------------------------------------------------------------------------------------------------------------
+
+  select count(*) into contador from dim_cliente;
+  dbms_output.put_line('dim_cliente: ' || contador);
+
+  select count(*) into contador from dim_filial;
+  dbms_output.put_line('dim_filial: ' || contador);
+
+  select count(*) into contador from dim_funcionario;
+  dbms_output.put_line('dim_funcionario: ' || contador);
+
+  select count(*) into contador from dim_projeto;
+  dbms_output.put_line('dim_projeto: ' || contador);
+
+  select count(*) into contador from dim_tempo_dia;
+  dbms_output.put_line('dim_tempo_dia: ' || contador);
+
+  select count(*) into contador from dim_vertical;
+  dbms_output.put_line('dim_vertical: ' || contador);
+
+  select count(*) into contador from FAT_HR_FUNC_PROJ;
+  dbms_output.put_line('fat_hr_func_proj: ' || contador);
+
+  select count(*) into contador from FAT_HR_UTEIS_MES_FILI;
+  dbms_output.put_line('FAT_HR_UTEIS_MES_FILI: ' || contador);
+
+end;
+ 
+
+/
+--------------------------------------------------------
+--  DDL for Procedure P_CARGA_DIM_TEMPO_DIA
+--------------------------------------------------------
+set define off;
+
+  CREATE OR REPLACE EDITIONABLE PROCEDURE "TIMESHEET"."P_CARGA_DIM_TEMPO_DIA" is
+     cursor c is
+     select distinct lope_nr_ano from timesheet_dia
+     union
+     select to_number(to_char(sysdate,'YYYY')) + 1 from dual;
+     r c%rowtype;
+  begin
+    open c;
+    loop
+      fetch c into r; exit when c%notfound;
+
+      insert into dim_tempo_dia (nr_data
+                                ,nm_dia_semana
+                                --,ic_feriado
+                                --,nm_feriado
+                                ,nr_ano
+                                ,nr_mes
+                                ,nr_dia
+                                ,nr_trimestre
+                                ,nr_semestre
+                                ,dt_ult_atlz
+                                ,DC_SEMESTRE
+                                ,DC_MES
+                                ,NR_ANO_MES
+                                ,ANO_MES_DIA
+                                ,TX_ANO_MES
+                                ,TX_ANO
+                                ,TX_TRIMESTRE
+                                ,TX_ANO_MES_DIA
+                                ,NR_MES_2_POSICOES
+                                )
+      select v.*
+        from (
+              select nr_data
+                    ,decode(to_char(nr_data,'d'),1,'DOMINGO'
+                                                ,2,'SEGUNDA'
+                                                ,3,'TERCA'
+                                                ,4,'QUARTA'
+                                                ,5,'QUINTA'
+                                                ,6,'SEXTA'
+                                                ,7,'SABADO') NM_DIA_SEMANA
+                    --,case when f.feri_nr_dia is not null then 'S' else 'N' end IC_FERIADO
+                    --,f.feri_nm_feriado nm_feriado
+                    ,nr_ano
+                    ,to_number(to_char(NR_ANO) || to_char(NR_MES)) nr_mes
+                    ,nr_dia
+                    ,to_number(to_char(NR_ANO) || to_char(
+                     case when nr_mes >= 1 and nr_mes <= 3   then 1
+                          when nr_mes >= 4 and nr_mes <= 6   then 2
+                          when nr_mes >= 7 and nr_mes <= 9   then 3
+                          when nr_mes >= 10 and nr_mes <= 12 then 4
+                     end)) NU_TRIMESTRE
+                    ,to_number(to_char(NR_ANO) || to_char(
+                     case when nr_mes >= 1 and nr_mes <= 6   then 1
+                          when nr_mes >= 7 and nr_mes <= 12  then 2
+                     end)) NU_SEMESTRE
+                     ,TRUNC(SYSDATE)
+                     ,to_char(NR_ANO) || ' HY' || to_char(
+                      case when nr_mes >= 1 and nr_mes <= 6   then 1
+                          when nr_mes >= 7 and nr_mes <= 12  then 2
+                      end) DC_SEMESTRE
+                     ,to_char(NR_ANO) || ' ' || lpad(to_char(nr_mes),2,'0') || '-' ||
+                           decode(nr_mes, 1, 'Jan', 2, 'Fev', 3, 'Mar', 4, 'Abr', 5, 'Mai', 6, 'Jun', 7, 'Jul', 8, 'Ago', 9, 'Set', 10, 'Out', 11, 'Nov', 12, 'Dez', nr_mes) DC_MES
+                     ,to_number(to_char(NR_ANO) || to_char(NR_MES) ) NR_ANO_MES
+                     ,to_number(to_char(NR_ANO) || to_char(NR_MES) || to_char(NR_DIA)) ANO_MES_DIA
+                     ,lpad(to_char(NR_MES),2,'0') || ' (' || decode(nr_mes, 1, 'Jan', 2, 'Fev', 3, 'Mar', 4, 'Abr', 5, 'Mai', 6, 'Jun', 7, 'Jul', 8, 'Ago', 9, 'Set', 10, 'Out', 11, 'Nov', 12, 'Dez', nr_mes) || ')'   TX_ANO_MES
+                     ,to_char(NR_ANO) TX_ANO
+                     ,to_char(NR_ANO) ||  ' Q' || to_char(
+                     case when nr_mes >= 1 and nr_mes <= 3   then 1
+                          when nr_mes >= 4 and nr_mes <= 6   then 2
+                          when nr_mes >= 7 and nr_mes <= 9   then 3
+                          when nr_mes >= 10 and nr_mes <= 12 then 4
+                     end)  TX_TRIMESTRE
+                     ,lpad(to_char(NR_DIA),2,'0') || ' (' || decode(nr_mes, 1, 'Jan', 2, 'Fev', 3, 'Mar', 4, 'Abr', 5, 'Mai', 6, 'Jun', 7, 'Jul', 8, 'Ago', 9, 'Set', 10, 'Out', 11, 'Nov', 12, 'Dez', nr_mes) || ')'   TX_ANO_MES_DIA
+                     ,NR_MES NR_MES_2_POSICOES
+                from (select nr_dia
+                            ,nr_mes
+                            ,to_number(to_char(last_day(to_date(nr_mes,'mm')),'dd')) ult_dia
+                            ,nr_ano
+                            ,to_date(nr_dia || '-' || nr_mes || '-' || nr_ano,'dd-mm-yyyy') nr_data
+                        from (select level nr_dia
+                                    ,row_number() over(partition by level order by 1) nr_mes
+                                    ,to_char(to_date(r.lope_nr_ano,'yyyy'),'yyyy') nr_ano --- aqui
+                                from (select level lv
+                                        from dual
+                                      connect by level <= 12)
+                             connect by level <= 31
+                                 and lv = 12
+                               order by level)
+                       where nr_dia <= to_number(to_char(last_day(to_date(lpad(to_char(nr_mes||nr_ano),6,'0'),'mmyyyy')),'dd'))
+                     ) m
+                      --,feriado                                                                                        f
+               --where m.nr_dia = f.feri_nr_dia(+)
+               --  and m.nr_mes = f.feri_nr_mes(+)
+               --  and m.nr_ano = f.feri_nr_ano(+)
+               order by 1,2,3
+             ) v
+          where not exists(select 1 from dim_tempo_dia d where d.NR_ANO = v.NR_ANO and d.NR_MES = v.NR_MES and d.NR_DIA = v.NR_DIA);
+
+    end loop;
+    close c;
+
+    update dim_tempo_dia set dc_mes = substr(dc_mes, 1, 7) || ' (' || substr(dc_mes, 9, 3) || ')';
+
+    commit;
+end;
+ 
+
+/
+--------------------------------------------------------
+--  DDL for Procedure P_CARREGA_FATURAMENTO
+--------------------------------------------------------
+set define off;
+
+  CREATE OR REPLACE EDITIONABLE PROCEDURE "TIMESHEET"."P_CARREGA_FATURAMENTO" (p_dt_emissao          varchar2, 
+                                                  p_nr_nf               number, 
+                                                  p_clifor              varchar2, 
+                                                  p_projeto             varchar2, 
+                                                  p_linha_servico       varchar2, 
+                                                  p_tipo_servico        varchar2, 
+                                                  p_plataforma_vendor   varchar2, 
+                                                  p_tipo_contrato       varchar2, 
+                                                  p_empresa             varchar2, 
+                                                  p_valor               number, 
+                                                  p_referente           varchar2,
+                                                  p_data_transferencia  varchar2,
+                                                  p_nm_arq_planilha     VARCHAR2,
+                                                  p_NM_ABA_PLANILHA     VARCHAR2,
+                                                  p_NR_LINHA_PLANILHA   NUMBER,
+                                                  p_NM_USUARIO_WINDOWS  VARCHAR2,
+                                                  p_TECNOLOGIA          VARCHAR2,
+                                                  p_BLOCO_DE_NF         VARCHAR2,
+                                                  p_DT_VENCIMENTO       VARCHAR2,
+                                                  p_VL_LIQUIDO          NUMBER,
+                                                  p_DT_PAGAMENTO        VARCHAR2 /*default NULL*/
+                                                  ,p_controle varchar2
+                                                  ,p_recorrente varchar2
+                                                  ,p_hhfechado varchar2
+                                                 ) IS
+  v_cd_clifor              number; 
+  v_cd_projeto             number; 
+  v_cd_empresa             number; 
+begin
+  begin
+     select cd_clifor into v_cd_clifor
+       from clifor
+      where nvl(tip_clifor,'C') = 'C'
+        AND NVL(st_clifor,'C01') <> 'C03' /*Inativo*/
+        and nvl(replace(nm_fantasia,'0',null), nm_razaosocial) = p_clifor;
+  exception
+     when TOO_MANY_ROWS then
+        raise_application_error(-20001, 'Mais de um cliente cadastrado com o nome: ' || p_clifor);
+     when NO_DATA_FOUND then
+        --raise_application_error(-20001, 'Cliente não cadastrado com o nome: ' || p_clifor);
+        begin
+           select cd_clifor into v_cd_clifor
+             from clifor
+            where nvl(tip_clifor,'C') = 'C'
+              AND NVL(st_clifor,'C01') = 'C03' /*Inativo*/
+              and nvl(replace(nm_fantasia,'0',null), nm_razaosocial) = p_clifor;
+        exception
+           when TOO_MANY_ROWS then
+              raise_application_error(-20001, 'Mais de um cliente cadastrado com o nome: ' || p_clifor);
+           when NO_DATA_FOUND then
+              raise_application_error(-20001, 'Cliente não cadastrado com o nome: ' || p_clifor);
+        end;
+  end;
+
+  begin
+     select cd_projeto into v_cd_projeto
+       from projeto
+      where in_interno = 'N'
+        and st_projeto = 'A' /*Aberto*/
+        and DS_PROJETO = p_projeto;
+  exception
+     when TOO_MANY_ROWS then
+        raise_application_error(-20001, 'Mais de um projeto cadastrado com o nome: ' || p_projeto);
+     when NO_DATA_FOUND then
+        --raise_application_error(-20001, 'Projeto não cadastrado com o nome: ' || p_projeto);
+        begin
+           select cd_projeto into v_cd_projeto
+             from projeto
+            where in_interno = 'N'
+              and st_projeto = 'E' /*Encerrado*/
+              and DS_PROJETO = p_projeto;
+        exception
+           when TOO_MANY_ROWS then
+              raise_application_error(-20001, 'Mais de um projeto cadastrado com o nome: ' || p_projeto);
+           when NO_DATA_FOUND then
+              raise_application_error(-20001, 'Projeto não cadastrado com o nome: ' || p_projeto);
+        end;
+  end;
+
+  begin
+     select cd_empresa into v_cd_empresa
+       from empresa
+      where /*nm_empresa like 'COMMIT%'
+        and*/ replace(nm_empresa,'COMMIT ',null) = p_empresa;
+  exception
+     when TOO_MANY_ROWS then
+        raise_application_error(-20001, 'Mais de uma filial cadastrada com o nome: ' || p_empresa);
+     when NO_DATA_FOUND then
+        raise_application_error(-20001, 'Filial não cadastrada com o nome: ' || p_empresa);
+  end;
+
+  delete from faturamento
+   where nr_nf = p_nr_nf
+     --and cd_clifor = v_cd_clifor
+     --and cd_projeto = v_cd_projeto
+     --and linha_servico = p_linha_servico
+     --and tipo_servico  = p_tipo_servico
+     --and plataforma_vendor = p_plataforma_vendor
+     --and tipo_contrato = p_tipo_contrato
+     --and cd_empresa = v_cd_empresa
+     and BLOCO_DE_NF = p_BLOCO_DE_NF 
+     and DT_TRANSFERENCIA <> to_date(p_data_transferencia,'dd/mm/yyyy hh24:mi:ss');
+
+  insert into faturamento (dt_emissao, nr_nf, cd_clifor, cd_projeto, linha_servico, tipo_servico, plataforma_vendor, 
+                                      tipo_contrato, cd_empresa, valor, referente, DT_TRANSFERENCIA, 
+                                      NM_ARQ_PLANILHA, NM_ABA_PLANILHA, NR_LINHA_PLANILHA, NM_USUARIO_WINDOWS, TECNOLOGIA, BLOCO_DE_NF,
+                                      DT_VENCIMENTO, VL_LIQUIDO, DT_PAGAMENTO, controle ,recorrente ,hhfechado)
+                              values (to_date(p_dt_emissao,'dd/mm/yyyy'), p_nr_nf, v_cd_clifor, v_cd_projeto, p_linha_servico, p_tipo_servico, p_plataforma_vendor, 
+                                      p_tipo_contrato, v_cd_empresa, p_valor, p_referente, to_date(p_data_transferencia,'dd/mm/yyyy hh24:mi:ss'), 
+                                      p_NM_ARQ_PLANILHA, p_NM_ABA_PLANILHA, p_NR_LINHA_PLANILHA, p_NM_USUARIO_WINDOWS, p_TECNOLOGIA, p_BLOCO_DE_NF,
+                                      to_date(p_DT_VENCIMENTO,'dd/mm/yyyy'), p_VL_LIQUIDO, to_date(p_DT_PAGAMENTO,'dd/mm/yyyy'), p_controle ,p_recorrente ,p_hhfechado);
+  --commit Não fazer commit aqui
+exception
+  when others then
+    p_debug('Erro na procedure P_CARREGA_FATURAMENTO. NF: ' || p_nr_nf || ',Cli: ' || v_cd_clifor || ',Projeto: ' || v_cd_projeto || 
+            ',Emp: ' || v_cd_empresa || ',sqlerrm: ' || sqlerrm);
+    raise_application_error(-20001, 'Erro na procedure P_CARREGA_FATURAMENTO. NF: ' || p_nr_nf || ',Cli: ' || v_cd_clifor || ',Projeto: ' || v_cd_projeto || 
+            ',Emp: ' || v_cd_empresa || ',sqlerrm: ' || sqlerrm);
+end;
+ 
+
+/
+--------------------------------------------------------
+--  DDL for Procedure P_CARREGA_PLAN_PROJETOS_FASE
+--------------------------------------------------------
+set define off;
+
+  CREATE OR REPLACE EDITIONABLE PROCEDURE "TIMESHEET"."P_CARREGA_PLAN_PROJETOS_FASE" (
+                                                 pProjeto varchar2     
+												,pDS_FASE varchar2
+												,pST_FASEPROJ varchar2
+												,pNR_HORASPREVISTA number
+												,pNR_HORASREAL number
+												,pTipo_Faturamento_Fase varchar2
+												,pData_Inicio_Realizado_Taxa varchar2
+												,pData_Fim_Realizado_Taxa varchar2
+												,pData_Ultimo_Faturamento varchar2
+												,pValor_Mensal_Limite number
+												,pPerc_Conclusao_Fase number
+												,pValor_a_Faturar_Fase number
+												,pFase_Ja_Faturada varchar2
+												,pValor_a_Faturar_Mensal number
+                                            ) IS
+/* Christiano Chamma em 23/07/2013
+   Esta procedure carrega as informações de fases de projeto a partir da planilha de projetos para o banco de dados.
+   A maioria das informações carregadas pela planilha não estão no sistema administrativo (Oracle Forms) nem Log (Java).
+*/
+  v_cd_projeto             number; 
+  v_cd_fase                number;
+begin
+  select cd_projeto into v_cd_projeto
+    from projeto
+   where in_interno = 'N'
+     and DS_PROJETO = pProjeto;
+
+  select cd_fase into v_cd_fase
+    from faseprojeto
+   where CD_PROJETO = v_cd_projeto
+     and DS_FASE = pDS_FASE;
+
+  update faseprojeto
+     set ST_FASEPROJ = pST_FASEPROJ
+		,NR_HORASPREVISTA = pNR_HORASPREVISTA
+		,NR_HORASREAL = pNR_HORASREAL
+		,Tipo_Faturamento_Fase = pTipo_Faturamento_Fase
+		,DATA_INICIO_REALIZADO_FASE = to_date(pData_Inicio_Realizado_Taxa,'DD/MM/YYYY')
+		,DATA_FIM_REALIZADO_FASE = to_date(pData_Fim_Realizado_Taxa,'DD/MM/YYYY')
+		,Data_Ultimo_Faturamento = to_date(pData_Ultimo_Faturamento,'DD/MM/YYYY')
+		,Valor_Mensal_Limite = pValor_Mensal_Limite
+		,Perc_Conclusao_Fase = pPerc_Conclusao_Fase
+		,Valor_a_Faturar_Fase = pValor_a_Faturar_Fase
+		,Fase_Ja_Faturada = pFase_Ja_Faturada
+		,Valor_a_Faturar_Mensal = pValor_a_Faturar_Mensal
+		,DT_ULT_ALT = SYSDATE 
+   where cd_projeto = v_cd_projeto
+     and cd_fase = v_cd_fase;
+
+  --commit Não fazer commit aqui
+exception
+  when others then
+    p_debug('Erro na procedure P_CARREGA_PLAN_PROJETOS_FASE: ' || sqlerrm);
+    raise_application_error(-20001, 'Erro na procedure P_CARREGA_PLAN_PROJETOS_FASE: ' || sqlerrm);
+end;
+ 
+
+/
+--------------------------------------------------------
+--  DDL for Procedure P_CARREGA_PLAN_PROJETOS_FATRLZ
+--------------------------------------------------------
+set define off;
+
+  CREATE OR REPLACE EDITIONABLE PROCEDURE "TIMESHEET"."P_CARREGA_PLAN_PROJETOS_FATRLZ" (
+                                                 pProjeto varchar2     
+												,pData_Faturado varchar2 default null
+												,pValor_Faturado number default null
+												,pRelativo_a_Ano_Mes_AAAAMM varchar2 default null
+												,pRelativo_a_Fase varchar2 default null
+												,pObs_Comentarios varchar2 default null
+												) IS
+/* Christiano Chamma em 23/07/2013
+   Esta procedure carrega as informações de faturamentos de projeto já realizados a partir da planilha de projetos para o banco de dados.
+   A maioria das informações carregadas pela planilha não estão no sistema administrativo (Oracle Forms) nem Log (Java).
+*/
+  v_cd_projeto             number; 
+begin
+  select cd_projeto into v_cd_projeto
+    from projeto
+   where in_interno = 'N'
+     and DS_PROJETO = pProjeto;
+
+  if pData_Faturado is null then
+    delete from FATURAMENTO_RLZD_PROJETO 
+     where CD_PROJETO = v_cd_projeto;  
+  else	 
+    insert into FATURAMENTO_RLZD_PROJETO (CD_PROJETO 
+													,Data_Faturado 
+													,Valor_Faturado 
+													,Relativo_a_Ano_Mes_AAAAMM 
+													,Relativo_a_Fase 
+													,Obs_Comentarios 
+													,DT_ULT_ALT
+													)
+										   VALUES (v_cd_projeto 
+													,to_date(pData_Faturado,'DD/MM/YYYY')
+													,pValor_Faturado 
+													,pRelativo_a_Ano_Mes_AAAAMM 
+													,pRelativo_a_Fase 
+													,pObs_Comentarios 
+													,SYSDATE
+													);
+
+  end if;
+  --commit Não fazer commit aqui
+exception
+  when others then
+    p_debug('Erro na procedure P_CARREGA_PLAN_PROJETOS_FATRLZ: ' || sqlerrm);
+    raise_application_error(-20001, 'Erro na procedure P_CARREGA_PLAN_PROJETOS_FATRLZ: ' || sqlerrm);
+end;
+ 
+
+/
+--------------------------------------------------------
+--  DDL for Procedure P_CARREGA_PLAN_PROJETOS_PROJ
+--------------------------------------------------------
+set define off;
+
+  CREATE OR REPLACE EDITIONABLE PROCEDURE "TIMESHEET"."P_CARREGA_PLAN_PROJETOS_PROJ" (
+                                                 pProjeto varchar2     
+												,pDT_INICIO_PREV varchar2
+												,pDT_FIM_PREVISTO varchar2
+												,pDT_INICIO_REAL varchar2
+												,pVL_CUSTO_PREV number
+												,pVL_CUSTO_REAL number
+												,pTP_COBRANCA varchar2
+												,pST_PROJETO varchar2
+												,pDT_FIM_REAL varchar2
+												,pTipo_servico varchar2
+												,pPlataforma_vendor varchar2
+												,pTecnologia varchar2
+												,pTipo_contrato varchar2
+                                            ) IS
+/* Christiano Chamma em 23/07/2013
+   Esta procedure carrega as informações de projeto a partir da planilha de projetos para o banco de dados.
+   A maioria das informações carregadas pela planilha não estão no sistema administrativo (Oracle Forms) nem Log (Java).
+*/
+  v_cd_projeto             number; 
+begin
+/*p_debug('P_CARREGA_PLAN_PROJETOS_PROJ: ' || 
+                        pProjeto || ',' ||     
+												pDT_INICIO_PREV  || ',' ||
+												pDT_FIM_PREVISTO  || ',' ||
+												pDT_INICIO_REAL  || ',' ||
+												pVL_CUSTO_PREV  || ',' ||
+												pVL_CUSTO_REAL  || ',' ||
+												pTP_COBRANCA  || ',' ||
+												pST_PROJETO  || ',' ||
+												pDT_FIM_REAL  || ',' ||
+												pTipo_servico  || ',' ||
+												pPlataforma_vendor  || ',' ||
+												pTecnologia  || ',' ||
+												pTipo_contrato  || ',' ||
+                        '.'
+       );
+*/
+  select cd_projeto into v_cd_projeto
+    from projeto
+   where in_interno = 'N'
+     and DS_PROJETO = pProjeto;
+
+  update projeto
+     set DT_INICIO_PREV = TO_DATE(pDT_INICIO_PREV,'DD/MM/YYYY')
+		,DT_FIM_PREVISTO = TO_DATE(pDT_FIM_PREVISTO,'DD/MM/YYYY')
+		,DT_INICIO_REAL = TO_DATE(pDT_INICIO_REAL,'DD/MM/YYYY')
+		,VL_CUSTO_PREV = pVL_CUSTO_PREV
+		,VL_CUSTO_REAL = pVL_CUSTO_REAL
+		,TP_COBRANCA = pTP_COBRANCA
+		,ST_PROJETO = pST_PROJETO
+		,DT_FIM_REAL = TO_DATE(pDT_FIM_REAL,'DD/MM/YYYY')
+		,Tipo_servico = pTipo_servico
+		,Plataforma_vendor = pPlataforma_vendor
+		,Tecnologia = pTecnologia
+		,Tipo_contrato = pTipo_contrato
+   where cd_projeto = v_cd_projeto;
+
+  --commit Não fazer commit aqui
+exception
+  when others then
+    p_debug('Erro na procedure P_CARREGA_PLAN_PROJETOS_PROJ: ' || sqlerrm);
+    raise_application_error(-20001, 'Erro na procedure P_CARREGA_PLAN_PROJETOS_PROJ: ' || sqlerrm);
+end;
+ 
+
+/
+--------------------------------------------------------
+--  DDL for Procedure P_CARREGA_PLAN_PROJETOS_REC
+--------------------------------------------------------
+set define off;
+
+  CREATE OR REPLACE EDITIONABLE PROCEDURE "TIMESHEET"."P_CARREGA_PLAN_PROJETOS_REC" (
+                                                 pProjeto varchar2     
+												,pDS_FASE varchar2
+												,pRecurso varchar2
+												,pTaxa number
+												,pHORAS_PREVISTAS number
+                                            ) IS
+/* Christiano Chamma em 23/07/2013
+   Esta procedure carrega as informações de recursos de fase de projeto a partir da planilha de projetos para o banco de dados.
+   A maioria das informações carregadas pela planilha não estão no sistema administrativo (Oracle Forms) nem Log (Java).
+*/
+  v_cd_projeto             number; 
+  v_cd_fase                number;
+  v_FUNC_CD_FUNC           number;
+begin
+  select cd_projeto into v_cd_projeto
+    from projeto
+   where in_interno = 'N'
+     and DS_PROJETO = pProjeto;
+
+  select cd_fase into v_cd_fase
+    from faseprojeto
+   where CD_PROJETO = v_cd_projeto
+     and DS_FASE = pDS_FASE;
+
+  select pf.FUNC_CD_FUNC into v_FUNC_CD_FUNC
+    from proj_func pf, funcionario f
+   where pf.PROJ_CD_PROJETO = v_cd_projeto
+     and pf.CD_FASE = v_cd_fase
+	 and pf.FUNC_CD_FUNC = f.CD_FUNCIONARIO
+	 and f.NM_FUNCIONARIO = pRecurso;
+
+  update proj_func 
+     set Taxa = pTaxa
+		,HORAS_PREVISTAS = pHORAS_PREVISTAS
+		,DT_ULT_ALT = SYSDATE 
+   where proj_cd_projeto = v_cd_projeto
+     and cd_fase = v_cd_fase
+	 and func_cd_func = v_func_cd_func;
+
+  --commit Não fazer commit aqui
+exception
+  when others then
+    p_debug('Erro na procedure P_CARREGA_PLAN_PROJETOS_REC: ' || sqlerrm);
+    raise_application_error(-20001, 'Erro na procedure P_CARREGA_PLAN_PROJETOS_REC: ' || sqlerrm);
+end;
+ 
+
+/
+--------------------------------------------------------
+--  DDL for Procedure P_DEBUG
+--------------------------------------------------------
+set define off;
+
+  CREATE OR REPLACE EDITIONABLE PROCEDURE "TIMESHEET"."P_DEBUG" (P_TEXTO IN VARCHAR2) IS
+  PRAGMA AUTONOMOUS_TRANSACTION;
+BEGIN
+  INSERT INTO DEBUG (SEQ , Data, texto) values (seq_debug.nextvaL, SYSTIMESTAMP, P_TEXTO);
+  commit;
+
+END;
+
+ 
+ 
+
+/
+--------------------------------------------------------
+--  DDL for Procedure P_LOGS_PENDENTES
+--------------------------------------------------------
+set define off;
+
+  CREATE OR REPLACE EDITIONABLE PROCEDURE "TIMESHEET"."P_LOGS_PENDENTES" AS 
+
+  ano_atual number(4);
+  mes_atual number(4);
+  dia_atual number(4);
+  ano number(4);
+  mes number(4);
+  dia number(4);
+  quinzena number(2);
+  squinzena varchar(50);
+  sQuinzenaFim varchar(50);
+  smes varchar(50);
+  primeiro boolean;
+  ImprimiuAlgum boolean;
+  pendente boolean;
+  NM_FUNCIONARIO funcionario.NM_FUNCIONARIO%type;
+  APROVADOR funcionario.NM_FUNCIONARIO%type;
+  DT_ADMISSAO varchar2(100);
+  sPeriodo varchar(50);
+  sNomePeriodo varchar(50);
+  Status varchar(255);
+  LOPE_STT_LOG varchar(50);
+
+  CURSOR CF IS
+    SELECT FUNC.CD_FUNCIONARIO CD_FUNCIONARIO, FUNC.NM_FUNCIONARIO NM_FUNCIONARIO, 
+            E.NM_EMPRESA NM_EMPRESA, FUNC.CDG_USUR CDG_USUR, FUNC.DT_ADMISSAO, TO_CHAR(FUNC.DT_ADMISSAO,'YYYY') ANO_ADMISSAO, 
+            TO_CHAR(FUNC.DT_ADMISSAO,'MM') MES_ADMISSAO, TO_CHAR(FUNC.DT_ADMISSAO,'DD') DIA_ADMISSAO 
+            ,(SELECT F2.NM_FUNCIONARIO FROM FUNCIONARIO F2 WHERE F2.CD_FUNCIONARIO = FUNC.FUNC_CD_FUNC_APROVADOR) APROVADOR
+     FROM FUNCIONARIO FUNC, EMPRESA E, COM_ACES_USUARIO U 
+     WHERE FUNC.CD_EMPRESA = E.CD_EMPRESA 
+       AND U.CDG_USUR = FUNC.CDG_USUR 
+       AND FUNC.IN_SETOR NOT IN ('A','S') 
+       AND U.STATUS = 'L' 
+       AND func.dt_rescisao is null 
+     ORDER BY 9, FUNC.NM_FUNCIONARIO;
+
+  RF CF%rowtype;
+
+BEGIN
+
+   SELECT TO_CHAR(SYSDATE, 'YYYY') ANO, TO_CHAR(SYSDATE, 'MM') MES, TO_CHAR(SYSDATE, 'DD') DIA 
+     INTO ano_atual, mes_atual, dia_atual FROM DUAL;
+
+   ano := ano_atual;
+   mes := mes_atual;
+   dia := dia_atual;
+
+   quinzena := 0;
+   if (dia > 15) 
+   then quinzena := 2;
+   else quinzena := 1;
+   end if;
+
+   squinzena := ano;
+   smes := mes;
+   if( length(smes) < 2) then smes := '0' || smes; end if;
+   squinzena := squinzena || smes || quinzena;
+
+   while (squinzena <> '2014072') loop
+      quinzena := quinzena - 1; 
+      if(quinzena=0) then
+         quinzena := 2;
+         mes := mes - 1;
+      end if;
+      if(mes=0) then
+         mes := 12;
+         ano := ano - 1;
+      end if;
+      squinzena := ano;
+      smes := mes;
+      if( length(smes) < 2) then smes := '0' || smes; end if;
+      squinzena := squinzena || smes || quinzena;
+   end loop;
+
+  primeiro := true;
+  ImprimiuAlgum := false;
+  NM_FUNCIONARIO := '';
+  APROVADOR := '';
+  DT_ADMISSAO := '';
+  
+  open CF;
+  FETCH CF into RF;
+  while(CF%FOUND) loop
+  
+    NM_FUNCIONARIO := RF.NM_FUNCIONARIO;
+    APROVADOR := RF.APROVADOR;
+    DT_ADMISSAO := TO_CHAR(RF.DT_ADMISSAO, 'DD/MM/YYYY');
+  
+    --Devo ler os periodos e status dos logs do funcionario a partir de sua data de admissao
+    sQuinzenaFim := '';
+    if(RF.DIA_ADMISSAO > 15) then
+      sQuinzenaFim := RF.ANO_ADMISSAO || RF.MES_ADMISSAO || '2';
+    else
+      sQuinzenaFim := RF.ANO_ADMISSAO || RF.MES_ADMISSAO || '1';
+	  end if;
+
+    --Ajusta a quinzena fim pois o novo log soh entrou no ar em Agosto de 2014
+    --if(Integer.parseInt(sQuinzenaFim) < 2013011)
+    if(to_number(sQuinzenaFim) < 2014081) then sQuinzenaFim := '2014081'; end if;
+      
+    ano := ano_atual;
+    mes := mes_atual;
+    dia := dia_atual;
+    quinzena := 0;
+    if(dia > 15) then quinzena := 1; 
+    else  
+      quinzena := 2; 
+      mes := mes_atual - 1;
+      if(mes = 0) then
+        mes := 12;
+        ano := ano_atual - 1;
+      end if;
+    end if;
+    squinzena := ano;
+    smes := mes;
+    if( length(smes) < 2) then smes := '0' || smes; end if;
+    squinzena := squinzena || smes || quinzena;
+
+    primeiro := true;
+    while(to_number(squinzena) >= to_number(sQuinzenaFim)) loop
+      sPeriodo := ano || ';' || to_number(smes) || ';' || quinzena || ';' || '0' || ';' || quinzena || ';' || 'Periodo'; 
+      sNomePeriodo := 'Periodo' || ' ' || quinzena || ' - ' || smes || '/' || ano;
+      --Devo ler se esse periodo estah pendente
+
+      BEGIN
+		  pendente := true;
+		  Status := '';
+
+		  SELECT NVL(MIN(CASE WHEN D.ST_TIMESHEET_DIA = 'R' THEN 'A' ELSE D.ST_TIMESHEET_DIA END),'X') LOPE_STT_LOG /* A=Aberto, F=Fechado, P=Aprovado, R=Rejeitado */ 
+		    INTO LOPE_STT_LOG 
+			FROM LOG_PERIODO P, TIMESHEET_DIA D 
+			WHERE P.FUNC_CD_FUNC = RF.CD_FUNCIONARIO     
+			  AND P.LOPE_NR_ANO = ano        
+			  AND P.LOPE_NR_MES = to_number(smes)     
+			  AND P.PERI_CD_PERIODO = quinzena  
+		   and D.FUNC_CD_FUNC = P.FUNC_CD_FUNC 
+		   and D.LOPE_NR_ANO = P.LOPE_NR_ANO 
+		   and D.LOPE_NR_MES = P.LOPE_NR_MES 
+		   and CASE WHEN D.LOG_NR_DIA <= 15 THEN 1 ELSE 2 END = P.PERI_CD_PERIODO;
+
+			if(LOPE_STT_LOG = 'A') then
+			  pendente := true;
+			  Status := 'Aberto';
+			end if;
+			if(LOPE_STT_LOG = 'F') then
+			  pendente := true;
+			  Status := 'Aprovação pendente';
+			end if;
+			if(LOPE_STT_LOG = 'P') then
+			  pendente := false;
+			  Status := '';
+			end if;
+			if(LOPE_STT_LOG = 'X') then
+			  pendente := true;
+			  Status := 'Inexistente';
+			end if;
+      EXCEPTION
+	    WHEN NO_DATA_FOUND THEN
+			pendente := true;
+			Status := 'Inexistente';
+	    END;
+	  
+      if(pendente) then
+        if(primeiro) then
+          primeiro := false;
+          ImprimiuAlgum := true;
+          --out.print("<TR class=\"txtPreto\" BGCOLOR=\""+bgcolor[index_bgCol]+"\">");
+          dbms_output.put_line('------------------------------------------------------------------------------------------');
+          dbms_output.put_line('Aprovador: ' || APROVADOR || ', Funcionario: ' || NM_FUNCIONARIO || ', Data Admissao: ' || DT_ADMISSAO);
+          if(Status = 'Inexistente') then
+            dbms_output.put_line('   ' || sNomePeriodo || ': ' || Status);
+          else
+            dbms_output.put_line('   ' || sNomePeriodo || ': ' || Status);
+		      end if;
+        else
+          if(Status = 'Inexistente') then
+            dbms_output.put_line('   ' || sNomePeriodo || ': ' || Status);
+          else
+            dbms_output.put_line('   ' || sNomePeriodo || ': ' || Status);
+          end if;
+        end if;
+      end if;
+
+      quinzena := quinzena - 1;
+      if(quinzena=0) then
+         quinzena := 2;
+         mes := mes - 1;
+      end if;
+      if(mes=0) then
+         mes := 12;
+         ano := ano - 1;
+      end if;
+      squinzena := ano;
+      smes := mes;
+      if( length(smes) < 2) then smes := '0' || smes; end if;
+      squinzena := squinzena || smes || quinzena;
+    end loop; --fim while periodos
+
+     FETCH CF into RF;
+   end loop;
+   CLOSE CF;
+
+   --Testa se imprimiu algum
+   if(not ImprimiuAlgum) then dbms_output.put_line('Não há Logs Pendentes'); end if;
+
+END P_LOGS_PENDENTES;
+ 
+
+/
+--------------------------------------------------------
+--  DDL for Procedure P_OTRS_INTERFACE_LOG
+--------------------------------------------------------
+set define off;
+
+  CREATE OR REPLACE EDITIONABLE PROCEDURE "TIMESHEET"."P_OTRS_INTERFACE_LOG" (p_mostra_debug_s_n in char, p_modo_verificacao_pk_s_n in char, p_dt_inicial_busca_otrs in date, p_filtra_usuario in varchar2) as
+  /* Christiano Chamma em 18/11/2013
+     Essa procedure realiza a interface de horas do OTRS para o Log.
+     Veja também os triggers na tabela HORAS_DIA que não permitem a alteração de horas em projetos controlados pelo OTRS. 
+  */
+
+  V_DEBUG CHAR(1) := 'S'; --S ou N
+
+  CURSOR C_OTRS is
+  SELECT Login, trunc(DataFinal) DataFinal, sum(TempoAtendimento) TempoAtendimento, CodProjeto/*, Ticket_number*/
+    FROM OTRS_STAGE 
+--where login <> 'priscilam' 
+   group by login, trunc(DataFinal), codprojeto
+   order by login, trunc(DataFinal), codprojeto/*, Ticket_number*/; 
+  
+  R_OTRS             C_OTRS%ROWTYPE;
+
+  CURSOR C_OTRS_OBS is
+  SELECT TICKET_NUMBER || '-' || to_char(DATAFINAL, 'DD/MM/YYYY HH24:MI:SS') TICKET_NUMBER 
+    FROM OTRS_STAGE 
+   WHERE LOGIN = R_OTRS.LOGIN 
+     AND trunc(DATAFINAL) = trunc(R_OTRS.DATAFINAL)
+     AND CODPROJETO = R_OTRS.CODPROJETO;
+   
+  V_SQLERRM          VARCHAR2(4000);
+  V_DIA              NUMBER(2);
+  V_MES              NUMBER(2);
+  V_ANO              NUMBER(4);
+  V_PERI_CD_PERIODO  NUMBER(1);
+  V_FUNC_CD_FUNC     FUNCIONARIO.CD_FUNCIONARIO%TYPE;
+  V_DT_RESCISAO      FUNCIONARIO.DT_RESCISAO%TYPE;
+  V_LOPE_STT_LOG     LOG_PERIODO.LOPE_STT_LOG%TYPE;
+  V_OBS              HORAS_DIA.HORAS_TX_OBS%TYPE;
+  V_OBS_AUX          HORAS_DIA.HORAS_TX_OBS%TYPE;
+  V_TRECHO           VARCHAR2(1000);
+  V_CONTADOR         NUMBER;
+begin
+  IF p_dt_inicial_busca_otrs is null then
+    raise_application_error(-20001, 'Parametro p_dt_inicial_busca_otrs é obrigatório.');
+  end if;
+  IF nvl(p_mostra_debug_s_n,'X') not in ('S','N') then
+    raise_application_error(-20001, 'Parametro p_mostra_debug_s_n deve ser S ou N.');
+  end if;
+  IF nvl(p_modo_verificacao_pk_s_n,'X') not in ('S','N') then
+    raise_application_error(-20001, 'Parametro p_modo_verificacao_pk_s_n deve ser S ou N.');
+  end if;
+
+  V_DEBUG := upper(p_mostra_debug_s_n);
+  V_TRECHO := 'P_OTRS_INTERFACE_LOG Inicio'; if v_debug = 'S' then dbms_output.put_line(V_TRECHO); end if;
+  
+  execute immediate 'TRUNCATE TABLE OTRS_STAGE';
+  
+  V_TRECHO := 'P_OTRS_INTERFACE_LOG apos truncate'; if v_debug = 'S' then dbms_output.put_line(V_TRECHO); end if;
+
+  delete from OTRS_STAGE;
+  
+  V_TRECHO := 'P_OTRS_INTERFACE_LOG antes insert OTRS_STAGE'; if v_debug = 'S' then dbms_output.put_line(V_TRECHO); end if;
+
+  insert into OTRS_STAGE
+  select  u."login" Login, 
+          --DATE_FORMAT(a.DataFinal, '%d/%m/%Y') DataAtendimentoFim, 
+          a."DataFinal" DataFinal,
+          sum(nvl(ta."time_unit",0)) TempoAtendimento, 
+          c."cod_projeto" CodProjeto,
+          t."tn" Ticket_number 
+          --c."customer_id" ClienteId,
+          --ta."id" id_time_accounting
+     from "time_accounting"@OTRS ta
+     join "article"@OTRS a on (a."id" = ta."article_id")
+     join "ticket"@OTRS t on (ta."ticket_id" = t."id" )
+     join "users"@OTRS u on (ta."create_by" = u."id")
+     join "contrato"@OTRS c on (c."customer_id" = t."customer_id") 
+     --and u."login"  = 'efsousa'
+     --and ta."time_unit" > 20
+     --and (a.DataFinal >= STR_TO_DATE(:dataini,'%d/%m/%Y') AND a.DataFinal < ADDDATE(STR_TO_DATE(:datafim,'%d/%m/%Y'),1))
+     and a."DataFinal" is not null
+     and c."cod_projeto" is not null
+--and u."login" = 'akloss' --
+and u."login" = nvl(p_filtra_usuario, u."login")
+and a."DataFinal" >= p_dt_inicial_busca_otrs --to_date('01/11/2013','dd/mm/yyyy') --
+      group by t."tn", u."login", a."DataFinal", c."cod_projeto"
+      order by u."login", a."DataFinal", c."cod_projeto", t."tn";
+
+  V_TRECHO := 'P_OTRS_INTERFACE_LOG antes delete OTRS_PROJETOS'; if v_debug = 'S' then dbms_output.put_line(V_TRECHO); end if;
+
+  if upper(p_modo_verificacao_pk_s_n) = 'N' then
+     delete from OTRS_PROJETOS;
+  
+     V_TRECHO := 'P_OTRS_INTERFACE_LOG antes insert OTRS_PROJETOS'; if v_debug = 'S' then dbms_output.put_line(V_TRECHO); end if;
+
+     --A tabela OTRS_PROJETOS é utilizada em um trigger na tabela HORAS_DIA para não permitir alteração, inclusão ou exclusão de horas que tenham sido provenientes do OTRS
+     insert into OTRS_PROJETOS 
+     select "cod_projeto" CodProjeto
+       from "contrato"@OTRS
+      where "cod_projeto" is not null
+        and "cod_projeto" not in (433, 561, 655);
+  end if;
+  
+  commit;       
+
+     V_TRECHO := 'P_OTRS_INTERFACE_LOG antes delete HORAS_DIA'; if v_debug = 'S' then dbms_output.put_line(V_TRECHO); end if;
+
+  --Apaga todas as horas previamente carregadas a partir do OTRS dos Logs em aberto. Só apaga se o funcionário estiver ativo.
+  delete from HORAS_DIA h 
+   where USUR_CD_USUR = 'OTRS' 
+     and exists (select 1 from LOG_PERIODO p, FUNCIONARIO f 
+                 where p.FUNC_CD_FUNC = h.FUNC_CD_FUNC and p.LOPE_NR_ANO = h.LOPE_NR_ANO and p.LOPE_NR_MES = h.LOPE_NR_MES and p.PERI_CD_PERIODO = h.PERI_CD_PERIODO 
+                   and p.LOPE_STT_LOG = 'A' /*Aberto*/
+                   and p.FUNC_CD_FUNC = f.CD_FUNCIONARIO
+                   and f.DT_RESCISAO IS NULL
+                   and f.CDG_USUR = UPPER(REPLACE(nvl(p_filtra_usuario, f.CDG_USUR), 'gcomenale', 'GMENDES'))
+                );
+  
+  V_TRECHO := 'P_OTRS_INTERFACE_LOG antes cursor OTRS'; if v_debug = 'S' then dbms_output.put_line(V_TRECHO); end if;
+
+  open C_OTRS;
+  loop
+    V_TRECHO := 'P_OTRS_INTERFACE_LOG antes fetch OTRS'; if v_debug = 'S' then dbms_output.put_line(V_TRECHO); end if;
+    fetch C_OTRS into R_OTRS;
+    exit when C_OTRS%NOTFOUND;
+
+    V_TRECHO := 'P_OTRS_INTERFACE_LOG apos fetch OTRS, Login=' || R_OTRS.Login || ', DataFinal=' || R_OTRS.DataFinal || ', CodProjeto=' || R_OTRS.CodProjeto || ', TempoAtendimento=' || R_OTRS.TempoAtendimento || '.'; 
+    if v_debug = 'S' then dbms_output.put_line(V_TRECHO); end if;
+    
+    --Converte o dia do OTRS (dia real) para o Período do Log:
+    -- se o dia está antre 26 de dezembro a 10 de janeiro de 2013 é referente ao período de 2 de dezembro de 2012
+    -- se o dia está antre 11 de janeiro a 25 de janeiro de 2013 é referente ao período de 1 de janeiro de 2013
+    -- se o dia está antre 26 de janeiro a 10 de fevereiro de 2013 é referente ao período de 2 de janeiro de 2013
+    -- se o dia está antre 11 de fevereiro a 25 de fevereiro de 2013 é referente ao período de 1 de fevereiro de 2013
+    -- se o dia está antre 26 de fevereiro a 10 de março de 2013 é referente ao período de 2 de fevereiro de 2013
+    -- se o dia está antre 11 de março a 25 de março de 2013 é referente ao período de 1 de março de 2013
+    -- se o dia está antre 26 de março a 10 de abril de 2013 é referente ao período de 2 de março de 2013
+    -- se o dia está antre 11 de abril a 25 de abril de 2013 é referente ao período de 1 de abril de 2013
+    V_DIA := to_number(to_char(R_OTRS.DataFinal, 'DD'));
+    V_MES := to_number(to_char(R_OTRS.DataFinal, 'MM'));
+    V_ANO := to_number(to_char(R_OTRS.DataFinal, 'YYYY'));
+
+    V_TRECHO := 'P_OTRS_INTERFACE_LOG V_DIA=' || V_DIA || ', V_MES=' || V_MES || ', V_ANO=' || V_ANO || '.'; if v_debug = 'S' then dbms_output.put_line(V_TRECHO); end if;
+
+    if(V_DIA >= 11) AND (V_DIA <= 25) then
+      V_PERI_CD_PERIODO := 1;
+    end if;
+
+    if(V_DIA >= 26) AND (V_DIA <= 31) then
+      V_PERI_CD_PERIODO := 2;
+    end if;
+
+    if(V_DIA >= 1) AND (V_DIA <= 10) then
+      V_PERI_CD_PERIODO := 2;
+      V_MES := V_MES - 1;
+      if(V_MES = 0) THEN 
+        V_ANO := V_ANO - 1;
+        V_MES := 12; 
+      end if;
+    end if;
+
+    V_TRECHO := 'P_OTRS_INTERFACE_LOG V_DIA=' || V_DIA || ', V_MES=' || V_MES || ', V_ANO=' || V_ANO || ', PERIODO=' || V_PERI_CD_PERIODO || '.'; if v_debug = 'S' then dbms_output.put_line(V_TRECHO); end if;
+
+    --Obtém o funcionário do Log de acordo com o Login do OTRS:
+    SELECT CD_FUNCIONARIO, DT_RESCISAO 
+      INTO V_FUNC_CD_FUNC, V_DT_RESCISAO
+      FROM FUNCIONARIO
+     WHERE CDG_USUR = UPPER(REPLACE(R_OTRS.LOGIN, 'gcomenale', 'GMENDES'));
+     --WHERE CDG_USUR = UPPER(REPLACE(REPLACE(R_OTRS.LOGIN, 'gcomenale', 'GMENDES'), 'akloss', 'CCHAMMA'));
+
+    V_TRECHO := 'P_OTRS_INTERFACE_LOG apos select funcionario. V_FUNC_CD_FUNC=' || V_FUNC_CD_FUNC || ', V_DT_RESCISAO=' || V_DT_RESCISAO || '.'; if v_debug = 'S' then dbms_output.put_line(V_TRECHO); end if;
+
+    --Se o funcionário não foi desligado então processa, caso contrário não faz nada 
+    IF V_DT_RESCISAO IS NULL THEN
+      --Verifica se existe log aberto para o período:
+      BEGIN
+        SELECT LOPE_STT_LOG
+          INTO V_LOPE_STT_LOG
+          FROM LOG_PERIODO 
+         WHERE FUNC_CD_FUNC = V_FUNC_CD_FUNC 
+           AND LOPE_NR_ANO = V_ANO
+           AND LOPE_NR_MES = V_MES
+           AND PERI_CD_PERIODO = V_PERI_CD_PERIODO;
+        V_TRECHO := 'P_OTRS_INTERFACE_LOG achou Log. V_LOPE_STT_LOG=' || V_LOPE_STT_LOG || '.'; if v_debug = 'S' then dbms_output.put_line(V_TRECHO); end if;
+      EXCEPTION
+        WHEN NO_DATA_FOUND THEN
+          V_LOPE_STT_LOG := 'X';
+          V_TRECHO := 'P_OTRS_INTERFACE_LOG não achou Log. V_LOPE_STT_LOG=' || V_LOPE_STT_LOG || '.'; if v_debug = 'S' then dbms_output.put_line(V_TRECHO); end if;
+      END;
+
+      IF V_LOPE_STT_LOG = 'X' THEN
+        --Caso o Log não exista para o período devo criá-lo:
+        INSERT INTO LOG_PERIODO(FUNC_CD_FUNC,   LOPE_NR_ANO,   LOPE_NR_MES,   PERI_CD_PERIODO,   LOPE_STT_LOG, DTA_ULT_ALT, USUR_CD_USUR)
+                        VALUES (V_FUNC_CD_FUNC, V_ANO,         V_MES,         V_PERI_CD_PERIODO, 'A',          SYSDATE,     'OTRS');
+        V_TRECHO := 'P_OTRS_INTERFACE_LOG inseriu LOG_PERIODO'; if v_debug = 'S' then dbms_output.put_line(V_TRECHO); end if;
+        V_LOPE_STT_LOG := 'A';
+      END IF;
+    
+      --Se o log está em aberto ou se ele acabou de ser criado pela interface devo processar as horas
+      IF V_LOPE_STT_LOG = 'A' THEN
+
+        V_TRECHO := 'P_OTRS_INTERFACE_LOG buscando OBS'; if v_debug = 'S' then dbms_output.put_line(V_TRECHO); end if;
+        V_OBS := NULL;
+        OPEN C_OTRS_OBS;
+        LOOP
+          FETCH C_OTRS_OBS INTO V_OBS_AUX;
+          EXIT WHEN C_OTRS_OBS%NOTFOUND;
+      
+          IF V_OBS IS NULL THEN
+            V_OBS := V_OBS_AUX;
+          ELSE
+            V_OBS := V_OBS || ', ' || V_OBS_AUX;
+          END IF;
+      
+        END LOOP;
+        CLOSE C_OTRS_OBS;
+        --V_TRECHO := 'P_OTRS_INTERFACE_LOG apos busca OBS=' || V_OBS; if v_debug = 'S' then dbms_output.put_line(V_TRECHO); end if;
+        V_TRECHO := 'P_OTRS_INTERFACE_LOG apos busca OBS.'; if v_debug = 'S' then dbms_output.put_line(V_TRECHO); end if;
+    
+        select count(*) into V_CONTADOR from HORAS_DIA
+         where FUNC_CD_FUNC = V_FUNC_CD_FUNC
+           and PROJ_CD_PROJETO = R_OTRS.CodProjeto
+           and LOPE_NR_ANO = V_ANO
+           and PERI_CD_PERIODO = V_PERI_CD_PERIODO
+           and LOG_NR_DIA = V_DIA
+           and LOPE_NR_MES = V_MES;
+
+        if V_CONTADOR > 0 then
+          V_TRECHO := 'P_OTRS_INTERFACE_LOG apos select HORAS_DIA ja existe vai atualizar'; if v_debug = 'S' then dbms_output.put_line(V_TRECHO); end if;
+          --se já existirem horas isso é devido provavelmente ao mês de Novembro pois só bloqueamos o lançamento manual
+          --de horas no Log para projetos do OTRS em meados de Novembro de 2013.
+          if upper(p_modo_verificacao_pk_s_n) = 'S' then
+             dbms_output.put_line('Lançamento já existe ! FUNC_CD_FUNC=' || V_FUNC_CD_FUNC || ', PROJ_CD_PROJETO=' || R_OTRS.CodProjeto
+                                 || ', LOPE_NR_ANO=' || V_ANO || ', PERI_CD_PERIODO=' || V_PERI_CD_PERIODO || ', MES=' || V_MES
+                                 || ', DIA=' || V_DIA);
+          end if;
+
+          UPDATE HORAS_DIA set HORAS_NR_CO = R_OTRS.TempoAtendimento
+                              ,HORAS_TX_OBS = V_OBS
+                              ,DTA_ULT_ALT = TRUNC(SYSDATE)
+                              ,USUR_CD_USUR = 'OTRS'
+           where FUNC_CD_FUNC = V_FUNC_CD_FUNC
+             and PROJ_CD_PROJETO = R_OTRS.CodProjeto
+             and LOPE_NR_ANO = V_ANO
+             and PERI_CD_PERIODO = V_PERI_CD_PERIODO
+             and LOG_NR_DIA = V_DIA
+             and LOPE_NR_MES = V_MES;
+
+        else
+          V_TRECHO := 'P_OTRS_INTERFACE_LOG apos select HORAS_DIA nao existe vai inserir'; if v_debug = 'S' then dbms_output.put_line(V_TRECHO); end if;
+          INSERT INTO HORAS_DIA (FUNC_CD_FUNC,   LOPE_NR_ANO,   LOPE_NR_MES,   PERI_CD_PERIODO,   PROJ_CD_PROJETO,   LOG_NR_DIA, HORAS_NR_NC, HORAS_NR_CO
+                               , HORAS_TX_OBS, DTA_ULT_ALT,     USUR_CD_USUR)
+                         VALUES (V_FUNC_CD_FUNC, V_ANO,         V_MES,         V_PERI_CD_PERIODO, R_OTRS.CodProjeto, V_DIA,      NULL,        R_OTRS.TempoAtendimento
+                               , V_OBS,         TRUNC(SYSDATE),  'OTRS');
+        end if;
+
+        V_TRECHO := 'P_OTRS_INTERFACE_LOG apos insert ou update HORAS_DIA'; if v_debug = 'S' then dbms_output.put_line(V_TRECHO); end if;
+      else
+
+        V_TRECHO := 'Log fechado/aprovado !!!! V_LOPE_STT_LOG: ' || V_LOPE_STT_LOG || ', V_FUNC_CD_FUNC=' || V_FUNC_CD_FUNC || 
+                    ', V_MES=' || V_MES || ', V_PERI_CD_PERIODO=' || V_PERI_CD_PERIODO || ', V_ANO=' || V_ANO
+        ; dbms_output.put_line(V_TRECHO);
+      END IF; /*IF V_LOPE_STT_LOG = 'A' THEN*/
+    else
+        V_TRECHO := 'Data de rescisao !!!!! V_FUNC_CD_FUNC=' || V_FUNC_CD_FUNC; dbms_output.put_line(V_TRECHO);
+    END IF; /*IF V_DT_RESCISAO IS NULL THEN*/
+
+  end loop;
+  close C_OTRS;
+
+  V_TRECHO := 'P_OTRS_INTERFACE_LOG antes commit'; if v_debug = 'S' then dbms_output.put_line(V_TRECHO); end if;
+  if upper(p_modo_verificacao_pk_s_n) = 'N' then
+    commit;
+  else
+    rollback;
+  end if;
+  V_TRECHO := 'P_OTRS_INTERFACE_LOG fim'; dbms_output.put_line(V_TRECHO);
+
+exception 
+  when others then
+    V_SQLERRM := SQLERRM;
+    rollback;
+    raise_application_error(-20001, 'Erro em P_OTRS_INTERFACE_LOG: ' || V_SQLERRM);
+end;
+ 
+ 
+
+/
+--------------------------------------------------------
+--  DDL for Procedure P_OTRS_INTERFACE_LOG_NEW
+--------------------------------------------------------
+set define off;
+
+  CREATE OR REPLACE EDITIONABLE PROCEDURE "TIMESHEET"."P_OTRS_INTERFACE_LOG_NEW" (p_mostra_debug_s_n in char
+                                 , p_modo_verificacao_pk_s_n in char
+								 , p_dt_inicial_busca_otrs in date
+								 , p_dt_final_busca_otrs in date
+								 , p_filtra_usuario in varchar2) as
+  /* Christiano Chamma em 18/11/2013
+     Essa procedure realiza a interface de horas do OTRS para o Log.
+  */
+
+  V_DEBUG CHAR(1) := 'S'; --S ou N
+
+  CURSOR C_OTRS is
+  SELECT Login, DataInicial, DataFinal, TempoAtendimento, CodProjeto/*, Ticket_number*/
+    FROM OTRS_STAGE_NEW 
+--where login <> 'priscilam' 
+   --group by login, trunc(DataFinal), codprojeto
+   order by login, DataInicial, DataFinal, codprojeto/*, Ticket_number*/; 
+  
+  R_OTRS             C_OTRS%ROWTYPE;
+
+  CURSOR C_OTRS_OBS is
+  SELECT TICKET_NUMBER || ':' || to_char(DATAINICIAL, 'HH24:MI:SS') || '-' || to_char(DATAFINAL, 'HH24:MI:SS') TICKET_NUMBER 
+    FROM OTRS_STAGE_NEW 
+   WHERE LOGIN = R_OTRS.LOGIN 
+     AND DATAINICIAL = R_OTRS.DATAINICIAL
+     AND DATAFINAL = R_OTRS.DATAFINAL
+     AND CODPROJETO = R_OTRS.CODPROJETO;
+   
+  V_SQLERRM          VARCHAR2(4000);
+  V_DIA              NUMBER(2);
+  V_MES              NUMBER(2);
+  V_ANO              NUMBER(4);
+  V_PERI_CD_PERIODO  NUMBER(1);
+  V_FUNC_CD_FUNC     FUNCIONARIO.CD_FUNCIONARIO%TYPE;
+  V_DT_RESCISAO      FUNCIONARIO.DT_RESCISAO%TYPE;
+  V_LOPE_STT_LOG     LOG_PERIODO.LOPE_STT_LOG%TYPE;
+  V_OBS              TIMESHEET_DIA_TAREFA.HORAS_TX_OBS%TYPE;
+  V_OBS_AUX          TIMESHEET_DIA_TAREFA.HORAS_TX_OBS%TYPE;
+  V_TRECHO           VARCHAR2(1000);
+  V_CONTADOR         NUMBER;
+  V_INIDIA           NUMBER(2);
+  V_FIMDIA           NUMBER(2);
+  V_SDIA             VARCHAR2(2);
+  V_SMES             VARCHAR2(2);
+  V_SINIDIA          VARCHAR2(2);
+  V_SEQ_PROJETO_FASE PROJETO_FASE.SEQ_PROJETO_FASE%type;
+  V_SEQ_PROJETO_TAREFA PROJETO_TAREFA.SEQ_PROJETO_TAREFA%type;
+  V_ST_TIMESHEET_DIA  TIMESHEET_DIA.ST_TIMESHEET_DIA%type;
+  V_LOG_NR_HNORMAL           TIMESHEET_DIA.LOG_NR_HNORMAL%type;
+
+  V_HORAS_NR_CO_JA_LANCADAS  TIMESHEET_DIA_TAREFA.HORAS_NR_CO%type;
+
+  V_HR_CO_JA_EXISTE_TAREFA         TIMESHEET_DIA_TAREFA.HORAS_NR_CO%type;
+  V_HR_NC_JA_EXISTE_TAREFA         TIMESHEET_DIA_TAREFA.HORAS_NR_NC%type;
+  V_HR_COEXTRA_JA_EXISTE_TAREFA    TIMESHEET_DIA_TAREFA.HORAS_NR_COEXTRA%type;
+  V_HR_NCEXTRA_JA_EXISTE_TAREFA    TIMESHEET_DIA_TAREFA.HORAS_NR_NCEXTRA%type;
+
+  V_HR_CO_JA_EXISTE_OUTRAS         TIMESHEET_DIA_TAREFA.HORAS_NR_CO%type;
+  V_HR_NC_JA_EXISTE_OUTRAS         TIMESHEET_DIA_TAREFA.HORAS_NR_NC%type;
+  V_HR_COEXTRA_JA_EXISTE_OUTRAS    TIMESHEET_DIA_TAREFA.HORAS_NR_COEXTRA%type;
+  V_HR_NCEXTRA_JA_EXISTE_OUTRAS    TIMESHEET_DIA_TAREFA.HORAS_NR_NCEXTRA%type;
+
+  --V_HORAS_NR_CO_MAX          TIMESHEET_DIA_TAREFA.HORAS_NR_CO%type;
+  V_HORAS_NR_CO_LANCAR       TIMESHEET_DIA_TAREFA.HORAS_NR_CO%type;
+  V_HORAS_NR_COEXTRA_LANCAR  TIMESHEET_DIA_TAREFA.HORAS_NR_CO%type;
+
+  v_HORAS_JORNADA            number;
+  v_HORA_INICIO              JORNADA_TRABALHO.HORA_INICIO%type;
+  v_HORA_FIM                 JORNADA_TRABALHO.HORA_FIM%type;
+  v_DT_INICIO_JORNADA        DATE;
+  v_DT_FIM_JORNADA           DATE;
+  v_sHORA                    VARCHAR2(2);
+  v_sSEPARADOR_DECIMAL       VARCHAR2(1);
+  v_sMINUTOS                 VARCHAR2(2);
+  
+  v_dt_inicial_busca_otrs    date := p_dt_inicial_busca_otrs;
+  v_dt_final_busca_otrs      date := nvl(p_dt_final_busca_otrs, trunc(sysdate));
+
+  v_dt_carga                 date := SYSDATE;
+  v_ACEITA_HORAS_CO_S_N      VARCHAR2(1);  
+  v_nm_funcionario           funcionario.nm_funcionario%type;
+  v_ds_projeto               projeto.ds_projeto%type;
+  v_msg                      varchar2(4000);
+  v_ds_projeto2               projeto.ds_projeto%type;
+  
+begin
+  v_msg := ' ';
+  V_TRECHO := ' ';
+  IF p_dt_inicial_busca_otrs is null then
+    raise_application_error(-20001, 'Parametro p_dt_inicial_busca_otrs é obrigatório.');
+  end if;
+  if v_dt_inicial_busca_otrs < to_date('01/08/2014','DD/MM/YYYY') then
+    v_dt_inicial_busca_otrs := to_date('01/08/2014','DD/MM/YYYY');
+  end if;
+  
+  IF nvl(p_mostra_debug_s_n,'X') not in ('S','N') then
+    raise_application_error(-20001, 'Parametro p_mostra_debug_s_n deve ser S ou N.');
+  end if;
+  IF nvl(p_modo_verificacao_pk_s_n,'X') not in ('S','N') then
+    raise_application_error(-20001, 'Parametro p_modo_verificacao_pk_s_n deve ser S ou N.');
+  end if;
+
+  V_DEBUG := upper(p_mostra_debug_s_n);
+  V_TRECHO := 'P_OTRS_INTERFACE_LOG Inicio'; if v_debug = 'S' then dbms_output.put_line(V_TRECHO); end if;
+  
+  execute immediate 'TRUNCATE TABLE OTRS_STAGE_NEW';
+  
+  V_TRECHO := 'P_OTRS_INTERFACE_LOG apos truncate'; if v_debug = 'S' then dbms_output.put_line(V_TRECHO); end if;
+
+  delete from OTRS_STAGE_NEW;
+  
+  V_TRECHO := 'P_OTRS_INTERFACE_LOG antes insert OTRS_STAGE_NEW'; if v_debug = 'S' then dbms_output.put_line(V_TRECHO); end if;
+
+  insert into OTRS_STAGE_NEW
+  select  u."login" Login, 
+          --DATE_FORMAT(a.DataFinal, '%d/%m/%Y') DataAtendimentoFim, 
+          a."DataInicial" DataInicial,
+          a."DataFinal" DataFinal,
+          --sum(nvl(ta."time_unit",0)) TempoAtendimento, 
+		  round((a."DataFinal" - a."DataInicial") * 24,1) TempoAtendimento,
+          c."cod_projeto" CodProjeto,
+          t."tn" Ticket_number 
+          --c."customer_id" ClienteId,
+          --ta."id" id_time_accounting
+     from "time_accounting"@OTRS ta
+     join "article"@OTRS a on (a."id" = ta."article_id")
+     join "ticket"@OTRS t on (ta."ticket_id" = t."id" )
+     join "users"@OTRS u on (ta."create_by" = u."id")
+     join "contrato"@OTRS c on (c."customer_id" = t."customer_id") 
+     --and u."login"  = 'efsousa'
+     --and ta."time_unit" > 20
+     --and (a.DataFinal >= STR_TO_DATE(:dataini,'%d/%m/%Y') AND a.DataFinal < ADDDATE(STR_TO_DATE(:datafim,'%d/%m/%Y'),1))
+     and a."DataInicial" is not null
+     and a."DataFinal" is not null
+     and c."cod_projeto" is not null
+--and u."login" = 'akloss' --
+and u."login" = nvl(p_filtra_usuario, u."login")
+and a."DataFinal" >= v_dt_inicial_busca_otrs --to_date('01/11/2013','dd/mm/yyyy') --
+and a."DataFinal" <= v_dt_final_busca_otrs 
+      --group by t."tn", u."login", a."DataFinal", c."cod_projeto"
+      order by u."login", a."DataInicial", a."DataFinal", c."cod_projeto", t."tn";
+
+  V_TRECHO := 'P_OTRS_INTERFACE_LOG antes delete OTRS_PROJETOS'; if v_debug = 'S' then dbms_output.put_line(V_TRECHO); end if;
+
+  if upper(p_modo_verificacao_pk_s_n) = 'N' then
+
+     delete from OTRS_PROJETOS;
+  
+     V_TRECHO := 'P_OTRS_INTERFACE_LOG antes insert OTRS_PROJETOS'; if v_debug = 'S' then dbms_output.put_line(V_TRECHO); end if;
+
+     insert into OTRS_PROJETOS 
+     select "cod_projeto" CodProjeto
+       from "contrato"@OTRS
+      where "cod_projeto" is not null;
+      
+     update projeto_tarefa t
+        set IN_TAREFA_EXTERNA = 'S' 
+      where cd_projeto in (select codprojeto from OTRS_PROJETOS) 
+        and IN_TAREFA_EXTERNA = 'N'
+        and not exists (select 1 from projeto_tarefa t2 where t2.cd_projeto = t.cd_projeto and t2.IN_TAREFA_EXTERNA = 'S');
+ 
+  end if;
+  
+  commit;       
+
+     V_TRECHO := 'P_OTRS_INTERFACE_LOG antes delete TIMESHEET_DIA_TAREFA'; if v_debug = 'S' then dbms_output.put_line(V_TRECHO); end if;
+
+  --Apaga todas as horas previamente carregadas a partir do OTRS dos Logs em aberto. Só apaga se o funcionário estiver ativo.
+  delete from TIMESHEET_DIA_TAREFA h 
+   where USUR_CD_USUR = 'OTRS' 
+     and TO_DATE(h.LOPE_NR_ANO||TO_CHAR(h.LOPE_NR_MES,'09')||TO_CHAR(h.LOG_NR_DIA,'09'),'RRRRMMDD') BETWEEN v_dt_inicial_busca_otrs AND v_dt_final_busca_otrs 
+     and exists (select 1 from FUNCIONARIO f, TIMESHEET_DIA d 
+                 where d.FUNC_CD_FUNC = h.FUNC_CD_FUNC 
+                   and d.LOPE_NR_ANO = h.LOPE_NR_ANO and d.LOPE_NR_MES = h.LOPE_NR_MES and d.LOG_NR_DIA = h.LOG_NR_DIA 
+                   and d.ST_TIMESHEET_DIA IN ('A','R') /*Aberto ou Rejeitado*/
+                   and d.FUNC_CD_FUNC = f.CD_FUNCIONARIO
+                   and f.DT_RESCISAO IS NULL
+                   and f.CDG_USUR = UPPER(REPLACE(REPLACE(nvl(p_filtra_usuario, f.CDG_USUR), 'gcomenale', 'GMENDES'), 'kyogi', 'KYYOGI'))
+                );
+  
+  V_TRECHO := 'P_OTRS_INTERFACE_LOG antes cursor OTRS'; if v_debug = 'S' then dbms_output.put_line(V_TRECHO); end if;
+
+  open C_OTRS;
+  loop
+    V_TRECHO := 'P_OTRS_INTERFACE_LOG antes fetch OTRS'; if v_debug = 'S' then dbms_output.put_line(V_TRECHO); end if;
+    fetch C_OTRS into R_OTRS;
+    exit when C_OTRS%NOTFOUND;
+
+    V_TRECHO := 'P_OTRS_INTERFACE_LOG apos fetch OTRS, Login=' || R_OTRS.Login || ', DataInicial=' || R_OTRS.DataInicial || ', DataFinal=' || R_OTRS.DataFinal || ', CodProjeto=' || R_OTRS.CodProjeto || ', TempoAtendimento=' || R_OTRS.TempoAtendimento || '.'; 
+    if v_debug = 'S' then dbms_output.put_line(V_TRECHO); end if;
+    v_msg := V_TRECHO;
+
+    
+    --Converte o dia do OTRS (dia real) para o Período do Log:
+    -- se o dia está antre 26 de dezembro a 10 de janeiro de 2013 é referente ao período de 2 de dezembro de 2012
+    -- se o dia está antre 11 de janeiro a 25 de janeiro de 2013 é referente ao período de 1 de janeiro de 2013
+    -- se o dia está antre 26 de janeiro a 10 de fevereiro de 2013 é referente ao período de 2 de janeiro de 2013
+    -- se o dia está antre 11 de fevereiro a 25 de fevereiro de 2013 é referente ao período de 1 de fevereiro de 2013
+    -- se o dia está antre 26 de fevereiro a 10 de março de 2013 é referente ao período de 2 de fevereiro de 2013
+    -- se o dia está antre 11 de março a 25 de março de 2013 é referente ao período de 1 de março de 2013
+    -- se o dia está antre 26 de março a 10 de abril de 2013 é referente ao período de 2 de março de 2013
+    -- se o dia está antre 11 de abril a 25 de abril de 2013 é referente ao período de 1 de abril de 2013
+    --V_DIA := to_number(to_char(R_OTRS.DataFinal, 'DD'));
+    --V_MES := to_number(to_char(R_OTRS.DataFinal, 'MM'));
+    --V_ANO := to_number(to_char(R_OTRS.DataFinal, 'YYYY'));
+    V_DIA := to_number(to_char(R_OTRS.DataInicial, 'DD'));
+    V_MES := to_number(to_char(R_OTRS.DataInicial, 'MM'));
+    V_ANO := to_number(to_char(R_OTRS.DataInicial, 'YYYY'));
+
+    V_TRECHO := 'P_OTRS_INTERFACE_LOG V_DIA=' || V_DIA || ', V_MES=' || V_MES || ', V_ANO=' || V_ANO || '.'; if v_debug = 'S' then dbms_output.put_line(V_TRECHO); end if;
+
+    --if(V_DIA >= 11) AND (V_DIA <= 25) then
+    --  V_PERI_CD_PERIODO := 1;
+    --end if;
+
+    --if(V_DIA >= 26) AND (V_DIA <= 31) then
+    --  V_PERI_CD_PERIODO := 2;
+    --end if;
+
+    --if(V_DIA >= 1) AND (V_DIA <= 10) then
+    --  V_PERI_CD_PERIODO := 2;
+    --  V_MES := V_MES - 1;
+    --  if(V_MES = 0) THEN 
+    --    V_ANO := V_ANO - 1;
+    --    V_MES := 12; 
+    --  end if;
+    --end if;
+
+    if(V_DIA <= 15)  then
+      V_PERI_CD_PERIODO := 1;
+      V_INIDIA := 1;
+      V_FIMDIA := 15;
+      V_SINIDIA := '01';
+    else
+      V_PERI_CD_PERIODO := 2;
+      V_INIDIA := 16;
+      V_FIMDIA := 31; --não precisa ser exato, é apenas para fazer o menor ou igual
+      V_SINIDIA := '16';
+    end if;
+    
+    if(V_DIA < 10) then
+      V_SDIA := '0' || V_DIA;
+    else
+      V_SDIA := V_DIA;
+    end if;
+
+    if(V_MES < 10) then
+      V_SMES := '0' || V_MES;
+    else
+      V_SMES := V_MES;
+    end if;
+    
+    V_TRECHO := 'P_OTRS_INTERFACE_LOG V_DIA=' || V_DIA || ', V_MES=' || V_MES || ', V_ANO=' || V_ANO || ', PERIODO=' || V_PERI_CD_PERIODO || '.'; if v_debug = 'S' then dbms_output.put_line(V_TRECHO); end if;
+
+    --Obtém o funcionário do Log de acordo com o Login do OTRS:
+    BEGIN
+      SELECT CD_FUNCIONARIO, DT_RESCISAO, NM_FUNCIONARIO 
+        INTO V_FUNC_CD_FUNC, V_DT_RESCISAO, v_nm_funcionario 
+        FROM FUNCIONARIO
+       WHERE CDG_USUR = UPPER(REPLACE(REPLACE(R_OTRS.LOGIN, 'gcomenale', 'GMENDES'), 'kyogi', 'KYYOGI'));
+       --WHERE CDG_USUR = UPPER(REPLACE(REPLACE(R_OTRS.LOGIN, 'gcomenale', 'GMENDES'), 'akloss', 'CCHAMMA'));
+
+      V_TRECHO := 'P_OTRS_INTERFACE_LOG apos select funcionario. V_FUNC_CD_FUNC=' || V_FUNC_CD_FUNC || ', V_DT_RESCISAO=' || V_DT_RESCISAO || '.'; if v_debug = 'S' then dbms_output.put_line(V_TRECHO); end if;
+      v_msg := v_msg || ', funcionario=' || v_nm_funcionario;
+
+    EXCEPTION
+    WHEN OTHERS THEN
+       RAISE_APPLICATION_ERROR(-20010, 'Erro ao buscar o FUNCIONARIO na procedure P_OTRS_INTERFACE_LOG_NEW  (' || TO_CHAR(SQLCODE) || '). CDG_USUR=' || 
+                                  R_OTRS.LOGIN || '.') ;
+    END;
+    
+    --Se o funcionário não foi desligado então processa, caso contrário não faz nada 
+    IF V_DT_RESCISAO IS NULL THEN
+
+	  --Busca a Jornada de Trabalho
+	  BEGIN
+		
+	      SELECT (HORA_FIM - HORA_INICIO) - 1, HORA_INICIO, HORA_FIM
+		      INTO v_HORAS_JORNADA, v_HORA_INICIO, v_HORA_FIM
+		      FROM JORNADA_TRABALHO
+		     WHERE CD_FUNCIONARIO = V_FUNC_CD_FUNC
+		       and TO_DATE(V_ANO||TO_CHAR(V_MES,'09')||TO_CHAR(V_DIA,'09'),'RRRRMMDD') between DT_INICIO_VIGENCIA and DT_FIM_VIGENCIA;	  
+
+        V_TRECHO := 'P_OTRS_INTERFACE_LOG apos select jornada. v_HORAS_JORNADA=' || v_HORAS_JORNADA || ', v_HORA_INICIO=' || v_HORA_INICIO || ', v_HORA_FIM=' || v_HORA_FIM|| '.'; if v_debug = 'S' then dbms_output.put_line(V_TRECHO); end if;
+			 
+	  EXCEPTION
+		    WHEN NO_DATA_FOUND THEN
+          RAISE_APPLICATION_ERROR(-20010, 'Erro ao buscar a JORNADA de TRABALHO na procedure P_OTRS_INTERFACE_LOG_NEW  (' || TO_CHAR(SQLCODE) || '). V_FUNC_CD_FUNC=' || 
+                                  V_FUNC_CD_FUNC || ',V_ANO/VMES/VDIA=' || V_ANO || '/' || V_MES || '/' || V_DIA || '.') ;
+		    WHEN TOO_MANY_ROWS THEN
+          RAISE_APPLICATION_ERROR(-20010, 'Erro ao buscar a JORNADA de TRABALHO na procedure P_OTRS_INTERFACE_LOG_NEW  (' || TO_CHAR(SQLCODE) || '). V_FUNC_CD_FUNC=' || 
+                                  V_FUNC_CD_FUNC || ',V_ANO/VMES/VDIA=' || V_ANO || '/' || V_MES || '/' || V_DIA || '.') ;
+	  END;
+
+
+	  --Verifica se existe log aberto para o período:
+      BEGIN
+        SELECT LOPE_STT_LOG
+          INTO V_LOPE_STT_LOG
+          FROM LOG_PERIODO 
+         WHERE FUNC_CD_FUNC = V_FUNC_CD_FUNC 
+           AND LOPE_NR_ANO = V_ANO
+           AND LOPE_NR_MES = V_MES
+           AND PERI_CD_PERIODO = V_PERI_CD_PERIODO;
+        V_TRECHO := 'P_OTRS_INTERFACE_LOG achou Log. V_LOPE_STT_LOG=' || V_LOPE_STT_LOG || '.'; if v_debug = 'S' then dbms_output.put_line(V_TRECHO); end if;
+      EXCEPTION
+        WHEN NO_DATA_FOUND THEN
+          V_LOPE_STT_LOG := 'X';
+          V_TRECHO := 'P_OTRS_INTERFACE_LOG não achou Log. V_LOPE_STT_LOG=' || V_LOPE_STT_LOG || '.'; if v_debug = 'S' then dbms_output.put_line(V_TRECHO); end if;
+      END;
+
+      IF V_LOPE_STT_LOG = 'X' THEN
+        --Caso o Log não exista para o período devo criá-lo:
+        INSERT INTO LOG_PERIODO(FUNC_CD_FUNC,   LOPE_NR_ANO,   LOPE_NR_MES,   PERI_CD_PERIODO,   LOPE_STT_LOG, DTA_ULT_ALT, USUR_CD_USUR)
+                        VALUES (V_FUNC_CD_FUNC, V_ANO,         V_MES,         V_PERI_CD_PERIODO, 'A',          SYSDATE,     'OTRS');
+        V_TRECHO := 'P_OTRS_INTERFACE_LOG inseriu LOG_PERIODO'; if v_debug = 'S' then dbms_output.put_line(V_TRECHO); end if;
+        V_LOPE_STT_LOG := 'A';
+      END IF;
+
+      begin
+        V_ST_TIMESHEET_DIA := 'X';
+
+        select d.ST_TIMESHEET_DIA, nvl(d.LOG_NR_HNORMAL,0) 
+              ,(select nvl(sum(nvl(HORAS_NR_CO,0)+nvl(HORAS_NR_NC,0)),0) 
+                  from TIMESHEET_DIA_TAREFA t
+                 where t.FUNC_CD_FUNC = V_FUNC_CD_FUNC
+                   and t.LOPE_NR_ANO = V_ANO
+                   --and t.PERI_CD_PERIODO = V_PERI_CD_PERIODO
+                   and t.LOG_NR_DIA = V_DIA
+                   and t.LOPE_NR_MES = V_MES
+               )
+          into V_ST_TIMESHEET_DIA, V_LOG_NR_HNORMAL, V_HORAS_NR_CO_JA_LANCADAS 
+          from TIMESHEET_DIA d
+         where d.FUNC_CD_FUNC = V_FUNC_CD_FUNC
+           and d.LOPE_NR_ANO = V_ANO
+           --and d.PERI_CD_PERIODO = V_PERI_CD_PERIODO
+           and d.LOG_NR_DIA = V_DIA
+           and D.LOPE_NR_MES = V_MES;
+
+        V_TRECHO := 'P_OTRS_INTERFACE_LOG apos busca horas ja lancadas, V_HORAS_NR_CO_JA_LANCADAS=' || V_HORAS_NR_CO_JA_LANCADAS; if v_debug = 'S' then dbms_output.put_line(V_TRECHO); end if;
+           
+      exception
+        when NO_DATA_FOUND then
+          V_TRECHO := 'P_OTRS_INTERFACE_LOG não encontrou o dia em TIMESHEET_DIA'; if v_debug = 'S' then dbms_output.put_line(V_TRECHO); end if;
+          raise_application_error(-20001, 'Não encontrou o dia em TIMESHEET_DIA.');
+      end;
+
+      V_TRECHO := 'P_OTRS_INTERFACE_LOG apos busca status'; if v_debug = 'S' then dbms_output.put_line(V_TRECHO); end if;
+
+      --Se o log está em aberto ou se ele acabou de ser criado pela interface devo processar as horas
+      IF V_LOPE_STT_LOG = 'A' AND V_ST_TIMESHEET_DIA IN ('A','R') /*Aberto ou Rejeitado*/ THEN
+
+        V_TRECHO := 'P_OTRS_INTERFACE_LOG buscando OBS'; if v_debug = 'S' then dbms_output.put_line(V_TRECHO); end if;
+        V_OBS := NULL;
+        OPEN C_OTRS_OBS;
+        LOOP
+          FETCH C_OTRS_OBS INTO V_OBS_AUX;
+          EXIT WHEN C_OTRS_OBS%NOTFOUND;
+      
+          IF V_OBS IS NULL THEN
+            V_OBS := V_OBS_AUX;
+          ELSE
+            V_OBS := V_OBS || ', ' || V_OBS_AUX;
+          END IF;
+      
+        END LOOP;
+        CLOSE C_OTRS_OBS;
+        --V_TRECHO := 'P_OTRS_INTERFACE_LOG apos busca OBS=' || V_OBS; if v_debug = 'S' then dbms_output.put_line(V_TRECHO); end if;
+        V_TRECHO := 'P_OTRS_INTERFACE_LOG apos busca OBS.'; if v_debug = 'S' then dbms_output.put_line(V_TRECHO); end if;
+
+        begin
+          select ds_projeto into v_ds_projeto
+            from projeto
+           where cd_projeto = R_OTRS.CodProjeto;
+           
+        exception
+          when others then
+            V_TRECHO := 'P_OTRS_INTERFACE_LOG nenhum projeto encontrado: ' || R_OTRS.CodProjeto; if v_debug = 'S' then dbms_output.put_line(V_TRECHO); end if;
+            raise_application_error(-20001, 'P_OTRS_INTERFACE_LOG nenhum projeto encontrado: ' || R_OTRS.CodProjeto);
+        end;
+
+        --Devo buscar a tarefa para lançar as horas:
+        begin
+        
+          SELECT fase.SEQ_PROJETO_FASE
+                ,tare.SEQ_PROJETO_TAREFA
+                ,proj.DS_PROJETO
+           INTO V_SEQ_PROJETO_FASE
+               ,V_SEQ_PROJETO_TAREFA
+               ,v_ds_projeto2
+           FROM PROJETO PROJ, PROJETO_FASE FASE, PROJETO_TAREFA TARE  
+           WHERE PROJ.CD_PROJETO = FASE.CD_PROJETO 
+             AND PROJ.CD_PROJETO = TARE.CD_PROJETO AND FASE.CD_PROJETO = TARE.CD_PROJETO AND FASE.SEQ_PROJETO_FASE = TARE.SEQ_PROJETO_FASE 
+             AND ( (FASE.ST_FASEPROJ = 'A'  
+                     AND ((PROJ.IN_INTERNO = 'S') OR (PROJ.IN_INTERNO = 'N' AND TO_NUMBER(TO_CHAR(FASE.DT_INICIO_REAL,'RRRRMMDD')) <= to_number(V_ano||v_smes||v_fimDia)))  
+                   )  
+                   OR  
+                   (FASE.ST_FASEPROJ = 'E'  
+                     AND TO_NUMBER(TO_CHAR(FASE.DT_INICIO_REAL,'RRRRMMDD')) <= to_number(V_ano||v_smes||v_fimDia)  
+                     AND TO_NUMBER(TO_CHAR(FASE.DT_FIM_REAL,'RRRRMMDD')) >= to_number(V_ano||v_smes||v_siniDia)  
+                   )  
+                 )  
+             AND ( (TARE.ST_TAREFA = 'A'  
+                     AND ((PROJ.IN_INTERNO = 'S') OR (PROJ.IN_INTERNO = 'N' AND TO_NUMBER(TO_CHAR(TARE.DT_INICIO_REAL,'RRRRMMDD')) <= to_number(V_ano||v_smes||v_fimDia)))  
+                   )  
+                   OR  
+                   (TARE.ST_TAREFA = 'E'  
+                     AND TO_NUMBER(TO_CHAR(TARE.DT_INICIO_REAL,'RRRRMMDD')) <= to_number(V_ano||v_smes||v_fimDia)  
+                     AND TO_NUMBER(TO_CHAR(TARE.DT_FIM_REAL,'RRRRMMDD')) >= to_number(V_ano||v_smes||v_siniDia)  
+                   )  
+                 )  
+             AND ((PROJ.IN_INTERNO = 'S') OR (PROJ.IN_INTERNO = 'N' AND EXISTS (SELECT 1  
+                   FROM PROJETO_TAREFA_FUNCIONARIO PF WHERE PF.FUNC_CD_FUNC = V_FUNC_CD_FUNC AND PF.CD_PROJETO = PROJ.CD_PROJETO  
+                    AND PF.SEQ_PROJETO_FASE = TARE.SEQ_PROJETO_FASE AND PF.SEQ_PROJETO_TAREFA = TARE.SEQ_PROJETO_TAREFA 
+            ))) 
+             AND TARE.IN_TAREFA_EXTERNA = 'S' 
+             AND PROJ.CD_PROJETO = R_OTRS.CodProjeto;        
+
+        exception
+          when TOO_MANY_ROWS then
+            V_TRECHO := 'P_OTRS_INTERFACE_LOG mais de uma tarefa encontrada, ano+mes+fimdia+inidia+func+proj=' || V_ano||'-'||v_smes||'-'||v_fimDia||'-'||v_siniDia||'-'||V_FUNC_CD_FUNC||'-'||R_OTRS.CodProjeto; if v_debug = 'S' then dbms_output.put_line(V_TRECHO); end if;
+            raise_application_error(-20001, 'P_OTRS_INTERFACE_LOG mais de uma tarefa encontrada, ano+mes+fimdia+inidia+func+proj=' || V_ano||'-'||v_smes||'-'||v_fimDia||'-'||v_siniDia||'-'||V_FUNC_CD_FUNC||'-'||R_OTRS.CodProjeto);
+          when NO_DATA_FOUND then
+            V_TRECHO := 'P_OTRS_INTERFACE_LOG nenhuma tarefa encontrada, verifique se o funcionario ' || v_nm_funcionario || ' estah alocado ao projeto ' || v_ds_projeto; 
+            if v_debug = 'S' then dbms_output.put_line(V_TRECHO); end if;
+            raise_application_error(-20001, V_TRECHO);
+        end;
+    
+        V_TRECHO := 'P_OTRS_INTERFACE_LOG apos busca tarefa'; if v_debug = 'S' then dbms_output.put_line(V_TRECHO); end if;
+        v_msg := v_msg || ',projeto=' || v_ds_projeto2;
+/*
+   São 6 possibilidades de cálculo de hora extra com base na jornada de trabalho:
+
+   Atendimento   Jornada       HoraExtra HoraNormal
+   ------------- ------------- --------- ----------
+1  08:00 a 11:00 09:00 a 18:00 1         2
+2  08:00 a 09:00 09:00 a 18:00 1         0
+3  08:00 a 19:00 09:00 a 18:00 2         9
+
+4  10:00 a 11:00 09:00 a 18:00 0         1
+5  10:00 a 19:00 09:00 a 18:00 1         8
+6  19:00 a 20:00 09:00 a 18:00 1         0
+*/
+        V_HORAS_NR_CO_LANCAR := 0;
+		V_HORAS_NR_COEXTRA_LANCAR := 0;
+		
+		select substr(value,1,1) into v_sSEPARADOR_DECIMAL from nls_session_parameters where upper(parameter) = 'NLS_NUMERIC_CHARACTERS';
+
+		if(TRUNC(v_HORA_INICIO) < 10) then
+		  v_sHORA := '0' || TRUNC(v_HORA_INICIO);
+		else
+		  v_sHORA := TRUNC(v_HORA_INICIO);
+		end if;
+        if INSTR(to_char(v_HORA_INICIO),v_sSEPARADOR_DECIMAL,1,1) > 0 then
+		  v_sMINUTOS := TO_NUMBER ('0' || v_sSEPARADOR_DECIMAL || SUBSTR (to_char(v_HORA_INICIO), INSTR (to_char(v_HORA_INICIO),v_sSEPARADOR_DECIMAL,1,1) + 1)) * 60;
+		  if(length(v_sMINUTOS) < 2) then
+		    v_sMINUTOS := '0' || v_sMINUTOS;
+		  end if;
+		else
+		  v_sMINUTOS := '00';
+		end if;
+		v_DT_INICIO_JORNADA := TO_DATE(V_ANO || V_SMES || V_SDIA || ' ' || v_sHORA || ':' || v_sMINUTOS || ':' || '00', 'YYYYMMDD HH24:MI:SS');
+
+		if(TRUNC(v_HORA_FIM) < 10) then
+		  v_sHORA := '0' || TRUNC(v_HORA_FIM);
+		else
+		  v_sHORA := TRUNC(v_HORA_FIM);
+		end if;
+        if INSTR(to_char(v_HORA_FIM),v_sSEPARADOR_DECIMAL,1,1) > 0 then
+		  v_sMINUTOS := TO_NUMBER ('0' || v_sSEPARADOR_DECIMAL || SUBSTR (to_char(v_HORA_FIM), INSTR (to_char(v_HORA_FIM),v_sSEPARADOR_DECIMAL,1,1) + 1)) * 60;
+		  if(length(v_sMINUTOS) < 2) then
+		    v_sMINUTOS := '0' || v_sMINUTOS;
+		  end if;
+		else
+		  v_sMINUTOS := '00';
+		end if;
+		v_DT_FIM_JORNADA := TO_DATE(V_ANO || V_SMES || V_SDIA || ' ' || v_sHORA || ':' || v_sMINUTOS || ':' || '00', 'YYYYMMDD HH24:MI:SS');
+
+        
+		if R_OTRS.DataInicial < v_DT_INICIO_JORNADA then
+		  if R_OTRS.DataFinal < v_DT_INICIO_JORNADA then
+		    --o atendimento ocorreu inteiramente antes do início da jornada de trabalho, portanto todas as horas são extras
+		    V_HORAS_NR_COEXTRA_LANCAR := trunc((R_OTRS.DataFinal - R_OTRS.DataInicial) * 24,2);
+          else
+		    if R_OTRS.DataFinal < v_DT_FIM_JORNADA then
+		      --o atendimento começou antes do início da jornada de trabalho e terminou antes do fim da jornada, portanto parte das horas são extras
+		      V_HORAS_NR_COEXTRA_LANCAR := trunc((v_DT_INICIO_JORNADA - R_OTRS.DataInicial) * 24,2);
+			  V_HORAS_NR_CO_LANCAR := trunc((R_OTRS.DataFinal - v_DT_INICIO_JORNADA) * 24,2);
+			else
+		      --o atendimento começou antes do início da jornada de trabalho e terminou após o fim da jornada, portanto parte das horas são extras
+		      V_HORAS_NR_COEXTRA_LANCAR := trunc(((v_DT_INICIO_JORNADA - R_OTRS.DataInicial) * 24),2) +
+			                               trunc(((R_OTRS.DataFinal - v_DT_FIM_JORNADA) * 24),2);
+			  V_HORAS_NR_CO_LANCAR := trunc((v_DT_FIM_JORNADA - v_DT_INICIO_JORNADA) * 24,2);
+			end if;
+		  end if;
+		else
+		  if R_OTRS.DataInicial > v_DT_FIM_JORNADA then
+		    --o atendimento ocorreu inteiramente após a jornada de trabalho, portanto todas as horas são extras
+		    V_HORAS_NR_COEXTRA_LANCAR := trunc((R_OTRS.DataFinal - R_OTRS.DataInicial) * 24,2);
+          else
+		    if R_OTRS.DataFinal < v_DT_FIM_JORNADA then
+		      --o atendimento começou após o início da jornada de trabalho e terminou antes do fim da jornada, portanto todas as horas são normais
+			  V_HORAS_NR_CO_LANCAR := trunc((R_OTRS.DataFinal - R_OTRS.DataInicial) * 24,2);
+			else
+		      --o atendimento começou após o início da jornada de trabalho e terminou após o fim da jornada, portanto parte das horas são extras
+		      V_HORAS_NR_COEXTRA_LANCAR := trunc((R_OTRS.DataFinal - v_DT_FIM_JORNADA) * 24,2);
+			  V_HORAS_NR_CO_LANCAR := trunc((v_DT_FIM_JORNADA - R_OTRS.DataInicial) * 24,2);
+			end if;
+		  end if;
+		end if;
+		
+        --verifica feriado
+        if V_HORAS_NR_CO_LANCAR > V_LOG_NR_HNORMAL then
+          V_HORAS_NR_COEXTRA_LANCAR := V_HORAS_NR_COEXTRA_LANCAR + (V_HORAS_NR_CO_LANCAR - V_LOG_NR_HNORMAL);
+          V_HORAS_NR_CO_LANCAR := V_LOG_NR_HNORMAL;
+        end if;
+		
+        select ACEITA_HORAS_CO_S_N into v_ACEITA_HORAS_CO_S_N 
+          from PROJETO 
+         where CD_PROJETO = R_OTRS.CodProjeto;
+
+    --Verifica as horas jah lancadas nesta tarefa
+		select COUNT(*), NVL(SUM(NVL(HORAS_NR_CO,0)),0), NVL(SUM(NVL(HORAS_NR_NC,0)),0), NVL(SUM(NVL(HORAS_NR_COEXTRA,0)),0), NVL(SUM(NVL(HORAS_NR_NCEXTRA,0)),0) 
+          into V_CONTADOR, V_HR_CO_JA_EXISTE_TAREFA, V_HR_NC_JA_EXISTE_TAREFA, V_HR_COEXTRA_JA_EXISTE_TAREFA, V_HR_NCEXTRA_JA_EXISTE_TAREFA   
+          from TIMESHEET_DIA_TAREFA t
+         where t.FUNC_CD_FUNC = V_FUNC_CD_FUNC
+           and t.CD_PROJETO = R_OTRS.CodProjeto
+           and t.SEQ_PROJETO_FASE = V_SEQ_PROJETO_FASE
+           and t.SEQ_PROJETO_TAREFA = V_SEQ_PROJETO_TAREFA
+           and t.LOPE_NR_ANO = V_ANO
+           --and PERI_CD_PERIODO = V_PERI_CD_PERIODO
+           and t.LOG_NR_DIA = V_DIA
+           and T.LOPE_NR_MES = V_MES;
+
+    --Verifica as horas jah lancadas em outras tarefas no mesmo dia
+    
+    /***************************************************************************
+    * IGNORA TAREFAS JÁ LANÇADAS - MUDANÇA SOLICITADA PELA CLÁUDIA EM 12/2015
+    * INICIO DAS ALTERAÇÕES
+    ****************************************************************************
+		select NVL(SUM(NVL(HORAS_NR_CO,0)),0), NVL(SUM(NVL(HORAS_NR_NC,0)),0), NVL(SUM(NVL(HORAS_NR_COEXTRA,0)),0), NVL(SUM(NVL(HORAS_NR_NCEXTRA,0)),0) 
+          into V_HR_CO_JA_EXISTE_OUTRAS, V_HR_NC_JA_EXISTE_OUTRAS, V_HR_COEXTRA_JA_EXISTE_OUTRAS, V_HR_NCEXTRA_JA_EXISTE_OUTRAS   
+          from TIMESHEET_DIA_TAREFA t
+         where T.FUNC_CD_FUNC = V_FUNC_CD_FUNC
+           and TO_CHAR(T.CD_PROJETO) || '@' || TO_CHAR(T.SEQ_PROJETO_FASE) || '@' || TO_CHAR(T.SEQ_PROJETO_TAREFA) <> 
+               TO_CHAR(R_OTRS.CODPROJETO) || '@' || TO_CHAR(V_SEQ_PROJETO_FASE) || '@' || TO_CHAR(V_SEQ_PROJETO_TAREFA)
+           and t.LOPE_NR_ANO = V_ANO
+           --and PERI_CD_PERIODO = V_PERI_CD_PERIODO
+           and t.LOG_NR_DIA = V_DIA
+           and t.LOPE_NR_MES = V_MES;
+    ***************************************************************************/
+    V_HR_CO_JA_EXISTE_OUTRAS:=0;
+    V_HR_NC_JA_EXISTE_OUTRAS:=0;
+    V_HR_COEXTRA_JA_EXISTE_OUTRAS:=0;
+    V_HR_NCEXTRA_JA_EXISTE_OUTRAS:=0;
+    /***************************************************************************
+    * IGNORA TAREFAS JÁ LANÇADAS - MUDANÇA SOLICITADA PELA CLÁUDIA EM 12/2015
+    * FINAL DAS ALTERAÇÕES
+    ***************************************************************************/
+    
+
+    V_TRECHO := 'P_OTRS_INTERFACE_LOG adicionar horas normais=' || V_HORAS_NR_CO_LANCAR || ',extras=' || V_HORAS_NR_COEXTRA_LANCAR; if V_DEBUG = 'S' then DBMS_OUTPUT.PUT_LINE(V_TRECHO); end if;
+    V_TRECHO := 'P_OTRS_INTERFACE_LOG ja existe na tarefa CO=' || V_HR_CO_JA_EXISTE_TAREFA || ',NC=' || V_HR_NC_JA_EXISTE_TAREFA; if V_DEBUG = 'S' then DBMS_OUTPUT.PUT_LINE(V_TRECHO); end if;
+    V_TRECHO := 'P_OTRS_INTERFACE_LOG ja existe em outras tarefas CO=' || V_HR_CO_JA_EXISTE_OUTRAS || ',NC=' || V_HR_NC_JA_EXISTE_OUTRAS; if v_debug = 'S' then dbms_output.put_line(V_TRECHO); end if;
+
+    if (V_HORAS_NR_CO_LANCAR + V_HR_CO_JA_EXISTE_TAREFA + V_HR_CO_JA_EXISTE_OUTRAS + V_HR_NC_JA_EXISTE_TAREFA + V_HR_NC_JA_EXISTE_OUTRAS) 
+       > V_LOG_NR_HNORMAL then
+      V_HORAS_NR_COEXTRA_LANCAR := V_HORAS_NR_COEXTRA_LANCAR + 
+                                   ((V_HORAS_NR_CO_LANCAR + V_HR_CO_JA_EXISTE_TAREFA + V_HR_CO_JA_EXISTE_OUTRAS + V_HR_NC_JA_EXISTE_TAREFA + V_HR_NC_JA_EXISTE_OUTRAS) 
+                                    - V_LOG_NR_HNORMAL);
+      --V_HORAS_NR_CO_LANCAR := V_LOG_NR_HNORMAL;
+      V_HORAS_NR_CO_LANCAR := V_HORAS_NR_CO_LANCAR - 
+                              ((V_HORAS_NR_CO_LANCAR + V_HR_CO_JA_EXISTE_TAREFA + V_HR_CO_JA_EXISTE_OUTRAS + V_HR_NC_JA_EXISTE_TAREFA + V_HR_NC_JA_EXISTE_OUTRAS) 
+                               - V_LOG_NR_HNORMAL);
+      if V_HORAS_NR_CO_LANCAR < 0 then
+        V_HORAS_NR_CO_LANCAR := 0;
+      end if;
+    end if;
+
+    V_TRECHO := 'P_OTRS_INTERFACE_LOG vai adicionar horas normais=' || V_HORAS_NR_CO_LANCAR || ',extras=' || V_HORAS_NR_COEXTRA_LANCAR; if V_DEBUG = 'S' then DBMS_OUTPUT.PUT_LINE(V_TRECHO); end if;
+
+        if V_CONTADOR > 0 then
+          V_TRECHO := 'P_OTRS_INTERFACE_LOG apos select TIMESHEET_DIA_TAREFA ja existe vai atualizar'; if v_debug = 'S' then dbms_output.put_line(V_TRECHO); end if;
+          --se já existirem horas isso é devido provavelmente ao mês de Novembro pois só bloqueamos o lançamento manual
+          --de horas no Log para projetos do OTRS em meados de Novembro de 2013.
+          if upper(p_modo_verificacao_pk_s_n) = 'S' then
+             dbms_output.put_line('Lançamento já existe ! FUNC_CD_FUNC=' || V_FUNC_CD_FUNC || ', PROJ_CD_PROJETO=' || R_OTRS.CodProjeto
+                                 || ', LOPE_NR_ANO=' || V_ANO || ', PERI_CD_PERIODO=' || V_PERI_CD_PERIODO || ', MES=' || V_MES
+                                 || ', DIA=' || V_DIA);
+          end if;
+
+          --calcula as horas normais e extras
+          --V_HORAS_NR_CO_JA_LANCADAS := V_HORAS_NR_CO_JA_LANCADAS - V_HORAS_NR_CO_JA_EXISTE;
+          --V_HORAS_NR_CO_MAX := V_LOG_NR_HNORMAL - V_HORAS_NR_CO_JA_LANCADAS;
+          --IF V_HORAS_NR_CO_MAX < 0 THEN
+          --  V_HORAS_NR_CO_MAX := 0;
+          --END IF;
+          --IF R_OTRS.TempoAtendimento <= V_HORAS_NR_CO_MAX THEN
+          --  V_HORAS_NR_CO_LANCAR       := R_OTRS.TempoAtendimento;
+          --  V_HORAS_NR_COEXTRA_LANCAR  := 0;
+          --ELSE
+          --  V_HORAS_NR_CO_LANCAR       := V_HORAS_NR_CO_MAX;
+          --  V_HORAS_NR_COEXTRA_LANCAR  := R_OTRS.TempoAtendimento - V_HORAS_NR_CO_MAX;
+          --END IF;
+
+          if v_ACEITA_HORAS_CO_S_N = 'S' then
+            UPDATE TIMESHEET_DIA_TAREFA set HORAS_NR_CO = NVL(HORAS_NR_CO,0) + NVL(V_HORAS_NR_CO_LANCAR,0)
+                                           ,HORAS_NR_COEXTRA = NVL(HORAS_NR_COEXTRA,0) + NVL(V_HORAS_NR_COEXTRA_LANCAR,0)
+                                           ,HORAS_TX_OBS = SUBSTR(HORAS_TX_OBS || ' ' || V_OBS,1,1000)
+                                           ,DT_ULT_ALT = v_dt_carga
+                                           ,USUR_CD_USUR = 'OTRS'
+             where FUNC_CD_FUNC = V_FUNC_CD_FUNC
+               and CD_PROJETO = R_OTRS.CodProjeto
+               and SEQ_PROJETO_FASE = V_SEQ_PROJETO_FASE
+               and SEQ_PROJETO_TAREFA = V_SEQ_PROJETO_TAREFA
+               and LOPE_NR_ANO = V_ANO
+               --and PERI_CD_PERIODO = V_PERI_CD_PERIODO
+               and LOG_NR_DIA = V_DIA
+               and LOPE_NR_MES = V_MES;
+          else
+            UPDATE TIMESHEET_DIA_TAREFA set HORAS_NR_NC = NVL(HORAS_NR_NC,0) + NVL(V_HORAS_NR_CO_LANCAR,0)
+                                           ,HORAS_NR_NCEXTRA = NVL(HORAS_NR_NCEXTRA,0) + NVL(V_HORAS_NR_COEXTRA_LANCAR,0)
+                                           ,HORAS_TX_OBS = SUBSTR(HORAS_TX_OBS || ' ' || V_OBS,1,1000)
+                                           ,DT_ULT_ALT = v_dt_carga
+                                           ,USUR_CD_USUR = 'OTRS'
+             where FUNC_CD_FUNC = V_FUNC_CD_FUNC
+               and CD_PROJETO = R_OTRS.CodProjeto
+               and SEQ_PROJETO_FASE = V_SEQ_PROJETO_FASE
+               and SEQ_PROJETO_TAREFA = V_SEQ_PROJETO_TAREFA
+               and LOPE_NR_ANO = V_ANO
+               --and PERI_CD_PERIODO = V_PERI_CD_PERIODO
+               and LOG_NR_DIA = V_DIA
+               and LOPE_NR_MES = V_MES;
+          end if;
+
+        else
+          V_TRECHO := 'P_OTRS_INTERFACE_LOG apos select TIMESHEET_DIA_TAREFA nao existe vai inserir'; if v_debug = 'S' then dbms_output.put_line(V_TRECHO); end if;
+
+          --calcula as horas normais e extras
+          --V_HORAS_NR_CO_MAX := V_LOG_NR_HNORMAL - V_HORAS_NR_CO_JA_LANCADAS;
+          --IF V_HORAS_NR_CO_MAX < 0 THEN
+          --  V_HORAS_NR_CO_MAX := 0;
+          --END IF;
+          --IF R_OTRS.TempoAtendimento <= V_HORAS_NR_CO_MAX THEN
+          --  V_HORAS_NR_CO_LANCAR       := R_OTRS.TempoAtendimento;
+          --  V_HORAS_NR_COEXTRA_LANCAR  := 0;
+          --ELSE
+          --  V_HORAS_NR_CO_LANCAR       := V_HORAS_NR_CO_MAX;
+          --  V_HORAS_NR_COEXTRA_LANCAR  := R_OTRS.TempoAtendimento - V_HORAS_NR_CO_MAX;
+          --END IF;
+
+          if v_ACEITA_HORAS_CO_S_N = 'S' then
+            INSERT INTO TIMESHEET_DIA_TAREFA (FUNC_CD_FUNC, LOPE_NR_ANO, LOPE_NR_MES, CD_PROJETO, SEQ_PROJETO_FASE, SEQ_PROJETO_TAREFA, 
+                                              LOG_NR_DIA, HORAS_NR_CO, HORAS_TX_OBS, DT_ULT_ALT, USUR_CD_USUR, HORAS_NR_COEXTRA)
+                                      VALUES (V_FUNC_CD_FUNC, V_ANO, V_MES, R_OTRS.CodProjeto, V_SEQ_PROJETO_FASE, V_SEQ_PROJETO_TAREFA, 
+                                              V_DIA, V_HORAS_NR_CO_LANCAR, SUBSTR(V_OBS,1,1000), v_dt_carga, 'OTRS', V_HORAS_NR_COEXTRA_LANCAR);
+          else
+            INSERT INTO TIMESHEET_DIA_TAREFA (FUNC_CD_FUNC, LOPE_NR_ANO, LOPE_NR_MES, CD_PROJETO, SEQ_PROJETO_FASE, SEQ_PROJETO_TAREFA, 
+                                              LOG_NR_DIA, HORAS_NR_NC, HORAS_TX_OBS, DT_ULT_ALT, USUR_CD_USUR, HORAS_NR_NCEXTRA)
+                                      VALUES (V_FUNC_CD_FUNC, V_ANO, V_MES, R_OTRS.CodProjeto, V_SEQ_PROJETO_FASE, V_SEQ_PROJETO_TAREFA, 
+                                              V_DIA, V_HORAS_NR_CO_LANCAR, SUBSTR(V_OBS,1,1000), v_dt_carga, 'OTRS', V_HORAS_NR_COEXTRA_LANCAR);
+          end if;
+        end if;
+
+        V_TRECHO := 'P_OTRS_INTERFACE_LOG apos insert ou update TIMESHEET_DIA_TAREFA'; if v_debug = 'S' then dbms_output.put_line(V_TRECHO); end if;
+      else
+
+        V_TRECHO := 'Log fechado/aprovado !!!! V_LOPE_STT_LOG: ' || V_LOPE_STT_LOG || 
+                    ', V_ST_TIMESHEET_DIA=' || V_ST_TIMESHEET_DIA || 
+                    ', V_FUNC_CD_FUNC=' || V_FUNC_CD_FUNC || 
+                    ', V_MES=' || V_MES || ', V_PERI_CD_PERIODO=' || V_PERI_CD_PERIODO || ', V_ANO=' || V_ANO
+        ; if v_debug = 'S' then dbms_output.put_line(V_TRECHO); end if;
+      END IF; /*IF V_LOPE_STT_LOG = 'A' AND V_ST_TIMESHEET_DIA IN ('A','R') THEN*/
+    else
+        V_TRECHO := 'Data de rescisao !!!!! V_FUNC_CD_FUNC=' || V_FUNC_CD_FUNC; dbms_output.put_line(V_TRECHO);
+    END IF; /*IF V_DT_RESCISAO IS NULL THEN*/
+
+  end loop;
+  close C_OTRS;
+
+  V_TRECHO := 'P_OTRS_INTERFACE_LOG antes commit'; if v_debug = 'S' then dbms_output.put_line(V_TRECHO); end if;
+  if upper(p_modo_verificacao_pk_s_n) = 'N' then
+    commit;
+  else
+    rollback;
+  end if;
+  V_TRECHO := 'P_OTRS_INTERFACE_LOG fim'; dbms_output.put_line(V_TRECHO);
+
+exception 
+  when others then
+    V_SQLERRM := SQLERRM;
+    rollback;
+    raise_application_error(-20001, 'Erro em P_OTRS_INTERFACE_LOG: ' || v_msg || ' - ' || V_SQLERRM);
+end;
+
+/
+--------------------------------------------------------
+--  DDL for Procedure P_OTRS_INTERFACE_LOG2
+--------------------------------------------------------
+set define off;
+
+  CREATE OR REPLACE EDITIONABLE PROCEDURE "TIMESHEET"."P_OTRS_INTERFACE_LOG2" (p_mostra_debug_s_n in char, p_modo_verificacao_pk_s_n in char, p_dt_inicial_busca_otrs in date, p_filtra_usuario in varchar2, p_dt_final_busca_otrs in date) as
+  /* Christiano Chamma em 18/11/2013
+     Essa procedure realiza a interface de horas do OTRS para o Log.
+     Veja também os triggers na tabela HORAS_DIA que não permitem a alteração de horas em projetos controlados pelo OTRS. 
+  */
+
+  V_DEBUG CHAR(1) := 'S'; --S ou N
+
+  CURSOR C_OTRS is
+  SELECT Login, trunc(DataFinal) DataFinal, sum(TempoAtendimento) TempoAtendimento, CodProjeto/*, Ticket_number*/
+    FROM OTRS_STAGE 
+--where login <> 'priscilam' 
+   group by login, trunc(DataFinal), codprojeto
+   order by login, trunc(DataFinal), codprojeto/*, Ticket_number*/; 
+  
+  R_OTRS             C_OTRS%ROWTYPE;
+
+  CURSOR C_OTRS_OBS is
+  SELECT TICKET_NUMBER || '-' || to_char(DATAFINAL, 'DD/MM/YYYY HH24:MI:SS') TICKET_NUMBER 
+    FROM OTRS_STAGE 
+   WHERE LOGIN = R_OTRS.LOGIN 
+     AND trunc(DATAFINAL) = trunc(R_OTRS.DATAFINAL)
+     AND CODPROJETO = R_OTRS.CODPROJETO;
+   
+  V_SQLERRM          VARCHAR2(4000);
+  V_DIA              NUMBER(2);
+  V_MES              NUMBER(2);
+  V_ANO              NUMBER(4);
+  V_PERI_CD_PERIODO  NUMBER(1);
+  V_FUNC_CD_FUNC     FUNCIONARIO.CD_FUNCIONARIO%TYPE;
+  V_DT_RESCISAO      FUNCIONARIO.DT_RESCISAO%TYPE;
+  V_LOPE_STT_LOG     LOG_PERIODO.LOPE_STT_LOG%TYPE;
+  V_OBS              HORAS_DIA.HORAS_TX_OBS%TYPE;
+  V_OBS_AUX          HORAS_DIA.HORAS_TX_OBS%TYPE;
+  V_TRECHO           VARCHAR2(1000);
+  V_CONTADOR         NUMBER;
+begin
+  IF p_dt_inicial_busca_otrs is null then
+    raise_application_error(-20001, 'Parametro p_dt_inicial_busca_otrs é obrigatório.');
+  end if;
+  IF nvl(p_mostra_debug_s_n,'X') not in ('S','N') then
+    raise_application_error(-20001, 'Parametro p_mostra_debug_s_n deve ser S ou N.');
+  end if;
+  IF nvl(p_modo_verificacao_pk_s_n,'X') not in ('S','N') then
+    raise_application_error(-20001, 'Parametro p_modo_verificacao_pk_s_n deve ser S ou N.');
+  end if;
+  IF p_dt_final_busca_otrs is null then
+    raise_application_error(-20001, 'Parametro p_dt_final_busca_otrs é obrigatório.');
+  end if;
+
+  V_DEBUG := upper(p_mostra_debug_s_n);
+  V_TRECHO := 'P_OTRS_INTERFACE_LOG Inicio'; if v_debug = 'S' then dbms_output.put_line(V_TRECHO); end if;
+  
+  execute immediate 'TRUNCATE TABLE OTRS_STAGE';
+  
+  V_TRECHO := 'P_OTRS_INTERFACE_LOG apos truncate'; if v_debug = 'S' then dbms_output.put_line(V_TRECHO); end if;
+
+  delete from OTRS_STAGE;
+  
+  V_TRECHO := 'P_OTRS_INTERFACE_LOG antes insert OTRS_STAGE'; if v_debug = 'S' then dbms_output.put_line(V_TRECHO); end if;
+
+  insert into OTRS_STAGE
+  select  u."login" Login, 
+          --DATE_FORMAT(a.DataFinal, '%d/%m/%Y') DataAtendimentoFim, 
+          a."DataFinal" DataFinal,
+          sum(nvl(ta."time_unit",0)) TempoAtendimento, 
+          c."cod_projeto" CodProjeto,
+          t."tn" Ticket_number 
+          --c."customer_id" ClienteId,
+          --ta."id" id_time_accounting
+     from "time_accounting"@OTRS ta
+     join "article"@OTRS a on (a."id" = ta."article_id")
+     join "ticket"@OTRS t on (ta."ticket_id" = t."id" )
+     join "users"@OTRS u on (ta."create_by" = u."id")
+     join "contrato"@OTRS c on (c."customer_id" = t."customer_id") 
+     --and u."login"  = 'efsousa'
+     --and ta."time_unit" > 20
+     --and (a.DataFinal >= STR_TO_DATE(:dataini,'%d/%m/%Y') AND a.DataFinal < ADDDATE(STR_TO_DATE(:datafim,'%d/%m/%Y'),1))
+     and a."DataFinal" is not null
+     and c."cod_projeto" is not null
+--and u."login" = 'akloss' --
+and u."login" = nvl(p_filtra_usuario, u."login")
+and a."DataFinal" >= p_dt_inicial_busca_otrs --to_date('01/11/2013','dd/mm/yyyy') --
+and a."DataFinal" <= p_dt_final_busca_otrs --to_date('01/11/2013','dd/mm/yyyy') --
+      group by t."tn", u."login", a."DataFinal", c."cod_projeto"
+      order by u."login", a."DataFinal", c."cod_projeto", t."tn";
+
+  V_TRECHO := 'P_OTRS_INTERFACE_LOG antes delete OTRS_PROJETOS'; if v_debug = 'S' then dbms_output.put_line(V_TRECHO); end if;
+
+  if upper(p_modo_verificacao_pk_s_n) = 'N' then
+     delete from OTRS_PROJETOS;
+  
+     V_TRECHO := 'P_OTRS_INTERFACE_LOG antes insert OTRS_PROJETOS'; if v_debug = 'S' then dbms_output.put_line(V_TRECHO); end if;
+
+     --A tabela OTRS_PROJETOS é utilizada em um trigger na tabela HORAS_DIA para não permitir alteração, inclusão ou exclusão de horas que tenham sido provenientes do OTRS
+     insert into OTRS_PROJETOS 
+     select "cod_projeto" CodProjeto
+       from "contrato"@OTRS
+      where "cod_projeto" is not null
+        and "cod_projeto" not in (433, 561, 655);
+  end if;
+  
+  commit;       
+
+     V_TRECHO := 'P_OTRS_INTERFACE_LOG antes delete HORAS_DIA'; if v_debug = 'S' then dbms_output.put_line(V_TRECHO); end if;
+
+  --Apaga todas as horas previamente carregadas a partir do OTRS dos Logs em aberto. Só apaga se o funcionário estiver ativo.
+  delete from HORAS_DIA h 
+   where USUR_CD_USUR = 'OTRS' 
+     and exists (select 1 from LOG_PERIODO p, FUNCIONARIO f 
+                 where p.FUNC_CD_FUNC = h.FUNC_CD_FUNC and p.LOPE_NR_ANO = h.LOPE_NR_ANO and p.LOPE_NR_MES = h.LOPE_NR_MES and p.PERI_CD_PERIODO = h.PERI_CD_PERIODO 
+                   and p.LOPE_STT_LOG = 'A' /*Aberto*/
+                   and p.FUNC_CD_FUNC = f.CD_FUNCIONARIO
+                   and f.DT_RESCISAO IS NULL
+                   and f.CDG_USUR = UPPER(REPLACE(nvl(p_filtra_usuario, f.CDG_USUR), 'gcomenale', 'GMENDES'))
+                );
+  
+  V_TRECHO := 'P_OTRS_INTERFACE_LOG antes cursor OTRS'; if v_debug = 'S' then dbms_output.put_line(V_TRECHO); end if;
+
+  open C_OTRS;
+  loop
+    V_TRECHO := 'P_OTRS_INTERFACE_LOG antes fetch OTRS'; if v_debug = 'S' then dbms_output.put_line(V_TRECHO); end if;
+    fetch C_OTRS into R_OTRS;
+    exit when C_OTRS%NOTFOUND;
+
+    V_TRECHO := 'P_OTRS_INTERFACE_LOG apos fetch OTRS, Login=' || R_OTRS.Login || ', DataFinal=' || R_OTRS.DataFinal || ', CodProjeto=' || R_OTRS.CodProjeto || ', TempoAtendimento=' || R_OTRS.TempoAtendimento || '.'; 
+    if v_debug = 'S' then dbms_output.put_line(V_TRECHO); end if;
+    
+    --Converte o dia do OTRS (dia real) para o Período do Log:
+    -- se o dia está antre 26 de dezembro a 10 de janeiro de 2013 é referente ao período de 2 de dezembro de 2012
+    -- se o dia está antre 11 de janeiro a 25 de janeiro de 2013 é referente ao período de 1 de janeiro de 2013
+    -- se o dia está antre 26 de janeiro a 10 de fevereiro de 2013 é referente ao período de 2 de janeiro de 2013
+    -- se o dia está antre 11 de fevereiro a 25 de fevereiro de 2013 é referente ao período de 1 de fevereiro de 2013
+    -- se o dia está antre 26 de fevereiro a 10 de março de 2013 é referente ao período de 2 de fevereiro de 2013
+    -- se o dia está antre 11 de março a 25 de março de 2013 é referente ao período de 1 de março de 2013
+    -- se o dia está antre 26 de março a 10 de abril de 2013 é referente ao período de 2 de março de 2013
+    -- se o dia está antre 11 de abril a 25 de abril de 2013 é referente ao período de 1 de abril de 2013
+    V_DIA := to_number(to_char(R_OTRS.DataFinal, 'DD'));
+    V_MES := to_number(to_char(R_OTRS.DataFinal, 'MM'));
+    V_ANO := to_number(to_char(R_OTRS.DataFinal, 'YYYY'));
+
+    V_TRECHO := 'P_OTRS_INTERFACE_LOG V_DIA=' || V_DIA || ', V_MES=' || V_MES || ', V_ANO=' || V_ANO || '.'; if v_debug = 'S' then dbms_output.put_line(V_TRECHO); end if;
+
+    if(V_DIA >= 11) AND (V_DIA <= 25) then
+      V_PERI_CD_PERIODO := 1;
+    end if;
+
+    if(V_DIA >= 26) AND (V_DIA <= 31) then
+      V_PERI_CD_PERIODO := 2;
+    end if;
+
+    if(V_DIA >= 1) AND (V_DIA <= 10) then
+      V_PERI_CD_PERIODO := 2;
+      V_MES := V_MES - 1;
+      if(V_MES = 0) THEN 
+        V_ANO := V_ANO - 1;
+        V_MES := 12; 
+      end if;
+    end if;
+
+    V_TRECHO := 'P_OTRS_INTERFACE_LOG V_DIA=' || V_DIA || ', V_MES=' || V_MES || ', V_ANO=' || V_ANO || ', PERIODO=' || V_PERI_CD_PERIODO || '.'; if v_debug = 'S' then dbms_output.put_line(V_TRECHO); end if;
+
+    --Obtém o funcionário do Log de acordo com o Login do OTRS:
+    SELECT CD_FUNCIONARIO, DT_RESCISAO 
+      INTO V_FUNC_CD_FUNC, V_DT_RESCISAO
+      FROM FUNCIONARIO
+     WHERE CDG_USUR = UPPER(REPLACE(R_OTRS.LOGIN, 'gcomenale', 'GMENDES'));
+     --WHERE CDG_USUR = UPPER(REPLACE(REPLACE(R_OTRS.LOGIN, 'gcomenale', 'GMENDES'), 'akloss', 'CCHAMMA'));
+
+    V_TRECHO := 'P_OTRS_INTERFACE_LOG apos select funcionario. V_FUNC_CD_FUNC=' || V_FUNC_CD_FUNC || ', V_DT_RESCISAO=' || V_DT_RESCISAO || '.'; if v_debug = 'S' then dbms_output.put_line(V_TRECHO); end if;
+
+    --Se o funcionário não foi desligado então processa, caso contrário não faz nada 
+    IF V_DT_RESCISAO IS NULL THEN
+      --Verifica se existe log aberto para o período:
+      BEGIN
+        SELECT LOPE_STT_LOG
+          INTO V_LOPE_STT_LOG
+          FROM LOG_PERIODO 
+         WHERE FUNC_CD_FUNC = V_FUNC_CD_FUNC 
+           AND LOPE_NR_ANO = V_ANO
+           AND LOPE_NR_MES = V_MES
+           AND PERI_CD_PERIODO = V_PERI_CD_PERIODO;
+        V_TRECHO := 'P_OTRS_INTERFACE_LOG achou Log. V_LOPE_STT_LOG=' || V_LOPE_STT_LOG || '.'; if v_debug = 'S' then dbms_output.put_line(V_TRECHO); end if;
+      EXCEPTION
+        WHEN NO_DATA_FOUND THEN
+          V_LOPE_STT_LOG := 'X';
+          V_TRECHO := 'P_OTRS_INTERFACE_LOG não achou Log. V_LOPE_STT_LOG=' || V_LOPE_STT_LOG || '.'; if v_debug = 'S' then dbms_output.put_line(V_TRECHO); end if;
+      END;
+
+      IF V_LOPE_STT_LOG = 'X' THEN
+        --Caso o Log não exista para o período devo criá-lo:
+        INSERT INTO LOG_PERIODO(FUNC_CD_FUNC,   LOPE_NR_ANO,   LOPE_NR_MES,   PERI_CD_PERIODO,   LOPE_STT_LOG, DTA_ULT_ALT, USUR_CD_USUR)
+                        VALUES (V_FUNC_CD_FUNC, V_ANO,         V_MES,         V_PERI_CD_PERIODO, 'A',          SYSDATE,     'OTRS');
+        V_TRECHO := 'P_OTRS_INTERFACE_LOG inseriu LOG_PERIODO'; if v_debug = 'S' then dbms_output.put_line(V_TRECHO); end if;
+        V_LOPE_STT_LOG := 'A';
+      END IF;
+    
+      --Se o log está em aberto ou se ele acabou de ser criado pela interface devo processar as horas
+      IF V_LOPE_STT_LOG = 'A' THEN
+
+        V_TRECHO := 'P_OTRS_INTERFACE_LOG buscando OBS'; if v_debug = 'S' then dbms_output.put_line(V_TRECHO); end if;
+        V_OBS := NULL;
+        OPEN C_OTRS_OBS;
+        LOOP
+          FETCH C_OTRS_OBS INTO V_OBS_AUX;
+          EXIT WHEN C_OTRS_OBS%NOTFOUND;
+      
+          IF V_OBS IS NULL THEN
+            V_OBS := V_OBS_AUX;
+          ELSE
+            V_OBS := V_OBS || ', ' || V_OBS_AUX;
+          END IF;
+      
+        END LOOP;
+        CLOSE C_OTRS_OBS;
+        --V_TRECHO := 'P_OTRS_INTERFACE_LOG apos busca OBS=' || V_OBS; if v_debug = 'S' then dbms_output.put_line(V_TRECHO); end if;
+        V_TRECHO := 'P_OTRS_INTERFACE_LOG apos busca OBS.'; if v_debug = 'S' then dbms_output.put_line(V_TRECHO); end if;
+    
+        select count(*) into V_CONTADOR from HORAS_DIA
+         where FUNC_CD_FUNC = V_FUNC_CD_FUNC
+           and PROJ_CD_PROJETO = R_OTRS.CodProjeto
+           and LOPE_NR_ANO = V_ANO
+           and PERI_CD_PERIODO = V_PERI_CD_PERIODO
+           and LOG_NR_DIA = V_DIA
+           and LOPE_NR_MES = V_MES;
+
+        if V_CONTADOR > 0 then
+          V_TRECHO := 'P_OTRS_INTERFACE_LOG apos select HORAS_DIA ja existe vai atualizar'; if v_debug = 'S' then dbms_output.put_line(V_TRECHO); end if;
+          --se já existirem horas isso é devido provavelmente ao mês de Novembro pois só bloqueamos o lançamento manual
+          --de horas no Log para projetos do OTRS em meados de Novembro de 2013.
+          if upper(p_modo_verificacao_pk_s_n) = 'S' then
+             dbms_output.put_line('Lançamento já existe ! FUNC_CD_FUNC=' || V_FUNC_CD_FUNC || ', PROJ_CD_PROJETO=' || R_OTRS.CodProjeto
+                                 || ', LOPE_NR_ANO=' || V_ANO || ', PERI_CD_PERIODO=' || V_PERI_CD_PERIODO || ', MES=' || V_MES
+                                 || ', DIA=' || V_DIA);
+          end if;
+
+          UPDATE HORAS_DIA set HORAS_NR_CO = R_OTRS.TempoAtendimento
+                              ,HORAS_TX_OBS = V_OBS
+                              ,DTA_ULT_ALT = TRUNC(SYSDATE)
+                              ,USUR_CD_USUR = 'OTRS'
+           where FUNC_CD_FUNC = V_FUNC_CD_FUNC
+             and PROJ_CD_PROJETO = R_OTRS.CodProjeto
+             and LOPE_NR_ANO = V_ANO
+             and PERI_CD_PERIODO = V_PERI_CD_PERIODO
+             and LOG_NR_DIA = V_DIA
+             and LOPE_NR_MES = V_MES;
+
+        else
+          V_TRECHO := 'P_OTRS_INTERFACE_LOG apos select HORAS_DIA nao existe vai inserir'; if v_debug = 'S' then dbms_output.put_line(V_TRECHO); end if;
+          INSERT INTO HORAS_DIA (FUNC_CD_FUNC,   LOPE_NR_ANO,   LOPE_NR_MES,   PERI_CD_PERIODO,   PROJ_CD_PROJETO,   LOG_NR_DIA, HORAS_NR_NC, HORAS_NR_CO
+                               , HORAS_TX_OBS, DTA_ULT_ALT,     USUR_CD_USUR)
+                         VALUES (V_FUNC_CD_FUNC, V_ANO,         V_MES,         V_PERI_CD_PERIODO, R_OTRS.CodProjeto, V_DIA,      NULL,        R_OTRS.TempoAtendimento
+                               , V_OBS,         TRUNC(SYSDATE),  'OTRS');
+        end if;
+
+        V_TRECHO := 'P_OTRS_INTERFACE_LOG apos insert ou update HORAS_DIA'; if v_debug = 'S' then dbms_output.put_line(V_TRECHO); end if;
+      else
+
+        V_TRECHO := 'Log fechado/aprovado !!!! V_LOPE_STT_LOG: ' || V_LOPE_STT_LOG || ', V_FUNC_CD_FUNC=' || V_FUNC_CD_FUNC || 
+                    ', V_MES=' || V_MES || ', V_PERI_CD_PERIODO=' || V_PERI_CD_PERIODO || ', V_ANO=' || V_ANO
+        ; dbms_output.put_line(V_TRECHO);
+      END IF; /*IF V_LOPE_STT_LOG = 'A' THEN*/
+    else
+        V_TRECHO := 'Data de rescisao !!!!! V_FUNC_CD_FUNC=' || V_FUNC_CD_FUNC; dbms_output.put_line(V_TRECHO);
+    END IF; /*IF V_DT_RESCISAO IS NULL THEN*/
+
+  end loop;
+  close C_OTRS;
+
+  V_TRECHO := 'P_OTRS_INTERFACE_LOG antes commit'; if v_debug = 'S' then dbms_output.put_line(V_TRECHO); end if;
+  if upper(p_modo_verificacao_pk_s_n) = 'N' then
+    commit;
+  else
+    rollback;
+  end if;
+  V_TRECHO := 'P_OTRS_INTERFACE_LOG fim'; dbms_output.put_line(V_TRECHO);
+
+exception 
+  when others then
+    V_SQLERRM := SQLERRM;
+    rollback;
+    raise_application_error(-20001, 'Erro em P_OTRS_INTERFACE_LOG: ' || V_SQLERRM);
+end;
+ 
+ 
+
+/
+--------------------------------------------------------
+--  DDL for Procedure P_SUGAR_INTERFACE_HORAS
+--------------------------------------------------------
+set define off;
+
+  CREATE OR REPLACE EDITIONABLE PROCEDURE "TIMESHEET"."P_SUGAR_INTERFACE_HORAS" (
+ P_FUNC_CD_FUNC     NUMBER
+,P_PROJ_CD_PROJETO  NUMBER
+,P_DTHR_INI_ATENDIMENTO   DATE  
+,P_DTHR_FIM_ATENDIMENTO   DATE  
+/*,P_TEMPO_HORAS      NUMBER */
+,P_OBS              VARCHAR2
+,P_OPERACAO         CHAR /*I=Insert, U=Update, D=Delete*/
+) is
+begin
+  IF p_operacao = 'I' THEN
+    INSERT INTO SUGAR_HORAS(FUNC_CD_FUNC,PROJ_CD_PROJETO,DTHR_INI_ATENDIMENTO,DTHR_FIM_ATENDIMENTO,OBS, PROCESSADO_S_N)
+                          VALUES (P_FUNC_CD_FUNC,P_PROJ_CD_PROJETO,P_DTHR_INI_ATENDIMENTO,P_DTHR_FIM_ATENDIMENTO,P_OBS, 'N');
+  END IF;
+
+  IF p_operacao = 'U' THEN
+    UPDATE SUGAR_HORAS
+       SET DTHR_FIM_ATENDIMENTO = P_DTHR_FIM_ATENDIMENTO
+	      ,OBS = P_OBS
+     WHERE FUNC_CD_FUNC = P_FUNC_CD_FUNC
+       AND PROJ_CD_PROJETO = P_PROJ_CD_PROJETO
+       AND DTHR_INI_ATENDIMENTO = P_DTHR_INI_ATENDIMENTO
+	   AND PROCESSADO_S_N = 'N';
+
+	IF SQL%ROWCOUNT = 0 THEN
+      RAISE_APPLICATION_ERROR(-20001, 'O Registro a ser atualizado nao foi encontrado.');
+    END IF;
+  END IF;
+
+  IF p_operacao = 'D' THEN
+    DELETE FROM SUGAR_HORAS
+     WHERE FUNC_CD_FUNC = P_FUNC_CD_FUNC
+       AND PROJ_CD_PROJETO = P_PROJ_CD_PROJETO
+       AND DTHR_INI_ATENDIMENTO = P_DTHR_INI_ATENDIMENTO
+	   AND PROCESSADO_S_N = 'N';
+
+	IF SQL%ROWCOUNT = 0 THEN
+      RAISE_APPLICATION_ERROR(-20001, 'O Registro a ser excluido nao foi encontrado.');
+    END IF;
+  END IF;
+
+  commit;
+
+exception
+  when others then
+    raise_application_error(-20001, 'Erro na procedure P_SUGAR_INTERFACE_HORAS: ' || SQLERRM);
+end;
+ 
+
+/
+--------------------------------------------------------
+--  DDL for Procedure P_TESTE
+--------------------------------------------------------
+set define off;
+
+  CREATE OR REPLACE EDITIONABLE PROCEDURE "TIMESHEET"."P_TESTE" (p_entrada IN varchar) AS 
+BEGIN 
+null;
+END;
+ 
+
+/
+--------------------------------------------------------
+--  DDL for Procedure P_TESTECURSOR
+--------------------------------------------------------
+set define off;
+
+  CREATE OR REPLACE EDITIONABLE PROCEDURE "TIMESHEET"."P_TESTECURSOR" (p_entrada IN varchar, p_cursor OUT SYS_REFCURSOR) AS 
+BEGIN 
+  OPEN p_cursor FOR
+    SELECT idorigem, nome, dt_ult_alt
+	  FROM (SELECT '1' idorigem, 'Nome1' nome, '2014-12-01' dt_ult_alt from dual
+	        union all
+            SELECT '2' idorigem, 'Nome2' nome, '2015-01-01' dt_ult_alt from dual) TAB1
+    WHERE  dt_ult_alt >= p_entrada
+    ORDER BY 1;
+END;
+ 
+
+/
+--------------------------------------------------------
+--  DDL for Procedure P_ZNUNY_INTERFACE_LOG_NEW
+--------------------------------------------------------
+set define off;
+
+  CREATE OR REPLACE EDITIONABLE PROCEDURE "TIMESHEET"."P_ZNUNY_INTERFACE_LOG_NEW"                     (p_mostra_debug_s_n in char
+                                  , p_modo_verificacao_pk_s_n in char
+							  	  , p_dt_inicial_busca_otrs in date
+								  , p_dt_final_busca_otrs in date
+								  , p_filtra_usuario in varchar2) as
+  /* Christiano Chamma em 18/11/2013
+     Essa procedure realiza a interface de horas do OTRS para o Log.
+  */
+
+  V_DEBUG CHAR(1) := 'S'; --S ou N
+
+  CURSOR C_OTRS is
+  SELECT Login, DataInicial, DataFinal, TempoAtendimento, CodProjeto/*, Ticket_number*/
+    FROM OTRS_STAGE_NEW 
+--where login <> 'priscilam' 
+   --group by login, trunc(DataFinal), codprojeto
+   order by login, DataInicial, DataFinal, codprojeto/*, Ticket_number*/; 
+
+  R_OTRS             C_OTRS%ROWTYPE;
+
+  CURSOR C_OTRS_OBS is
+  SELECT TICKET_NUMBER || ':' || to_char(DATAINICIAL, 'HH24:MI:SS') || '-' || to_char(DATAFINAL, 'HH24:MI:SS') TICKET_NUMBER 
+    FROM OTRS_STAGE_NEW 
+   WHERE LOGIN = R_OTRS.LOGIN 
+     AND DATAINICIAL = R_OTRS.DATAINICIAL
+     AND DATAFINAL = R_OTRS.DATAFINAL
+     AND CODPROJETO = R_OTRS.CODPROJETO;
+
+  V_SQLERRM          VARCHAR2(4000);
+  V_DIA              NUMBER(2);
+  V_MES              NUMBER(2);
+  V_ANO              NUMBER(4);
+  V_PERI_CD_PERIODO  NUMBER(1);
+  V_FUNC_CD_FUNC     FUNCIONARIO.CD_FUNCIONARIO%TYPE;
+  V_DT_RESCISAO      FUNCIONARIO.DT_RESCISAO%TYPE;
+  V_LOPE_STT_LOG     LOG_PERIODO.LOPE_STT_LOG%TYPE;
+  V_OBS              TIMESHEET_DIA_TAREFA.HORAS_TX_OBS%TYPE;
+  V_OBS_AUX          TIMESHEET_DIA_TAREFA.HORAS_TX_OBS%TYPE;
+  V_TRECHO           VARCHAR2(1000);
+  V_CONTADOR         NUMBER;
+  V_INIDIA           NUMBER(2);
+  V_FIMDIA           NUMBER(2);
+  V_SDIA             VARCHAR2(2);
+  V_SMES             VARCHAR2(2);
+  V_SINIDIA          VARCHAR2(2);
+  V_SEQ_PROJETO_FASE PROJETO_FASE.SEQ_PROJETO_FASE%type;
+  V_SEQ_PROJETO_TAREFA PROJETO_TAREFA.SEQ_PROJETO_TAREFA%type;
+  V_ST_TIMESHEET_DIA  TIMESHEET_DIA.ST_TIMESHEET_DIA%type;
+  V_LOG_NR_HNORMAL           TIMESHEET_DIA.LOG_NR_HNORMAL%type;
+
+  V_HORAS_NR_CO_JA_LANCADAS  TIMESHEET_DIA_TAREFA.HORAS_NR_CO%type;
+
+  V_HR_CO_JA_EXISTE_TAREFA         TIMESHEET_DIA_TAREFA.HORAS_NR_CO%type;
+  V_HR_NC_JA_EXISTE_TAREFA         TIMESHEET_DIA_TAREFA.HORAS_NR_NC%type;
+  V_HR_COEXTRA_JA_EXISTE_TAREFA    TIMESHEET_DIA_TAREFA.HORAS_NR_COEXTRA%type;
+  V_HR_NCEXTRA_JA_EXISTE_TAREFA    TIMESHEET_DIA_TAREFA.HORAS_NR_NCEXTRA%type;
+
+  V_HR_CO_JA_EXISTE_OUTRAS         TIMESHEET_DIA_TAREFA.HORAS_NR_CO%type;
+  V_HR_NC_JA_EXISTE_OUTRAS         TIMESHEET_DIA_TAREFA.HORAS_NR_NC%type;
+  V_HR_COEXTRA_JA_EXISTE_OUTRAS    TIMESHEET_DIA_TAREFA.HORAS_NR_COEXTRA%type;
+  V_HR_NCEXTRA_JA_EXISTE_OUTRAS    TIMESHEET_DIA_TAREFA.HORAS_NR_NCEXTRA%type;
+
+  --V_HORAS_NR_CO_MAX          TIMESHEET_DIA_TAREFA.HORAS_NR_CO%type;
+  V_HORAS_NR_CO_LANCAR       TIMESHEET_DIA_TAREFA.HORAS_NR_CO%type;
+  V_HORAS_NR_COEXTRA_LANCAR  TIMESHEET_DIA_TAREFA.HORAS_NR_CO%type;
+
+  v_HORAS_JORNADA            number;
+  v_HORA_INICIO              JORNADA_TRABALHO.HORA_INICIO%type;
+  v_HORA_FIM                 JORNADA_TRABALHO.HORA_FIM%type;
+  v_DT_INICIO_JORNADA        DATE;
+  v_DT_FIM_JORNADA           DATE;
+  v_sHORA                    VARCHAR2(2);
+  v_sSEPARADOR_DECIMAL       VARCHAR2(1);
+  v_sMINUTOS                 VARCHAR2(2);
+
+  v_dt_inicial_busca_otrs    date := p_dt_inicial_busca_otrs;
+  v_dt_final_busca_otrs      date := nvl(p_dt_final_busca_otrs, trunc(sysdate));
+
+  v_dt_carga                 date := SYSDATE;
+  v_ACEITA_HORAS_CO_S_N      VARCHAR2(1);  
+  v_nm_funcionario           funcionario.nm_funcionario%type;
+  v_ds_projeto               projeto.ds_projeto%type;
+  v_msg                      varchar2(4000);
+  v_ds_projeto2               projeto.ds_projeto%type;
+
+begin
+  v_msg := ' ';
+  V_TRECHO := ' ';
+  IF p_dt_inicial_busca_otrs is null then
+    raise_application_error(-20001, 'Parametro p_dt_inicial_busca_otrs é obrigatório.');
+  end if;
+  if v_dt_inicial_busca_otrs < to_date('01/08/2014','DD/MM/YYYY') then
+    v_dt_inicial_busca_otrs := to_date('01/08/2014','DD/MM/YYYY');
+  end if;
+
+  IF nvl(p_mostra_debug_s_n,'X') not in ('S','N') then
+    raise_application_error(-20001, 'Parametro p_mostra_debug_s_n deve ser S ou N.');
+  end if;
+  IF nvl(p_modo_verificacao_pk_s_n,'X') not in ('S','N') then
+    raise_application_error(-20001, 'Parametro p_modo_verificacao_pk_s_n deve ser S ou N.');
+  end if;
+
+  V_DEBUG := upper(p_mostra_debug_s_n);
+  V_TRECHO := 'P_OTRS_INTERFACE_LOG Inicio'; if v_debug = 'S' then dbms_output.put_line(V_TRECHO); end if;
+
+  execute immediate 'TRUNCATE TABLE OTRS_STAGE_NEW';
+
+  V_TRECHO := 'P_OTRS_INTERFACE_LOG apos truncate'; if v_debug = 'S' then dbms_output.put_line(V_TRECHO); end if;
+
+  delete from OTRS_STAGE_NEW;
+
+  V_TRECHO := 'P_OTRS_INTERFACE_LOG antes insert OTRS_STAGE_NEW'; if v_debug = 'S' then dbms_output.put_line(V_TRECHO); end if;
+
+
+
+  insert into OTRS_STAGE_NEW
+     select  u."login" Login, 
+             am."data_inicial" DataInicial,
+             am."data_final" DataFinal,
+             round((am."data_final" - am."data_inicial") * 24,1)  TempoAtendimento,
+             cc."cod_projeto" CodProjeto,
+             t."tn" Ticket_number 
+         from "time_accounting" @ZNUNY  ta
+         join "article"@ZNUNY a on (a."id" = ta."article_id")
+         join "article_data_mime"@ZNUNY am on (am."article_id" = a."id")
+         join "ticket"@ZNUNY t on (ta."ticket_id" = t."id" )
+         join "users"@ZNUNY u on (ta."create_by" = u."id")
+         join "ticket_state"@ZNUNY ts on (ts."id" = t."ticket_state_id") 
+         join "customer_company"@ZNUNY cc on (cc."customer_id" = t."customer_id") 
+         where ts."name" not in ('removed','rejected','merged')
+               and u."login" = nvl(p_filtra_usuario, u."login")
+               and am."data_inicial" >= v_dt_inicial_busca_otrs --to_date('01/11/2013','dd/mm/yyyy') --
+               and am."data_final" <= v_dt_final_busca_otrs 
+               and cc."cod_projeto" is not null 
+          order by u."login", am."data_inicial", am."data_final", cc."cod_projeto", t."tn";
+
+  V_TRECHO := 'P_OTRS_INTERFACE_LOG antes delete OTRS_PROJETOS'; if v_debug = 'S' then dbms_output.put_line(V_TRECHO); end if;
+
+  if upper(p_modo_verificacao_pk_s_n) = 'N' then
+
+     delete from OTRS_PROJETOS;
+
+     V_TRECHO := 'P_OTRS_INTERFACE_LOG antes insert OTRS_PROJETOS'; if v_debug = 'S' then dbms_output.put_line(V_TRECHO); end if;
+
+     insert into OTRS_PROJETOS 
+     select "cod_projeto" CodProjeto
+       from "customer_company"@ZNUNY
+      where "cod_projeto" is not null;
+
+     update projeto_tarefa t
+        set IN_TAREFA_EXTERNA = 'S' 
+      where cd_projeto in (select codprojeto from OTRS_PROJETOS) 
+        and IN_TAREFA_EXTERNA = 'N'
+        and not exists (select 1 from projeto_tarefa t2 where t2.cd_projeto = t.cd_projeto and t2.IN_TAREFA_EXTERNA = 'S');
+
+  end if;
+
+  commit;       
+
+     V_TRECHO := 'P_OTRS_INTERFACE_LOG antes delete TIMESHEET_DIA_TAREFA'; if v_debug = 'S' then dbms_output.put_line(V_TRECHO); end if;
+
+  --Apaga todas as horas previamente carregadas a partir do OTRS dos Logs em aberto. Só apaga se o funcionário estiver ativo.
+  delete from TIMESHEET_DIA_TAREFA h 
+   where USUR_CD_USUR = 'OTRS' 
+     and TO_DATE(h.LOPE_NR_ANO||TO_CHAR(h.LOPE_NR_MES,'09')||TO_CHAR(h.LOG_NR_DIA,'09'),'RRRRMMDD') BETWEEN v_dt_inicial_busca_otrs AND v_dt_final_busca_otrs 
+     and exists (select 1 from FUNCIONARIO f, TIMESHEET_DIA d 
+                 where d.FUNC_CD_FUNC = h.FUNC_CD_FUNC 
+                   and d.LOPE_NR_ANO = h.LOPE_NR_ANO and d.LOPE_NR_MES = h.LOPE_NR_MES and d.LOG_NR_DIA = h.LOG_NR_DIA 
+                   and d.ST_TIMESHEET_DIA IN ('A','R') /*Aberto ou Rejeitado*/
+                   and d.FUNC_CD_FUNC = f.CD_FUNCIONARIO
+                   and f.DT_RESCISAO IS NULL
+                   and f.CDG_USUR = UPPER(REPLACE(REPLACE(nvl(p_filtra_usuario, f.CDG_USUR), 'gcomenale', 'GMENDES'), 'kyogi', 'KYYOGI'))
+                );
+
+  V_TRECHO := 'P_OTRS_INTERFACE_LOG antes cursor OTRS'; if v_debug = 'S' then dbms_output.put_line(V_TRECHO); end if;
+
+  open C_OTRS;
+  loop
+    V_TRECHO := 'P_OTRS_INTERFACE_LOG antes fetch OTRS'; if v_debug = 'S' then dbms_output.put_line(V_TRECHO); end if;
+    fetch C_OTRS into R_OTRS;
+    exit when C_OTRS%NOTFOUND;
+
+    V_TRECHO := 'P_OTRS_INTERFACE_LOG apos fetch OTRS, Login=' || R_OTRS.Login || ', DataInicial=' || R_OTRS.DataInicial || ', DataFinal=' || R_OTRS.DataFinal || ', CodProjeto=' || R_OTRS.CodProjeto || ', TempoAtendimento=' || R_OTRS.TempoAtendimento || '.'; 
+    if v_debug = 'S' then dbms_output.put_line(V_TRECHO); end if;
+    v_msg := V_TRECHO;
+
+
+    --Converte o dia do OTRS (dia real) para o Período do Log:
+    -- se o dia está antre 26 de dezembro a 10 de janeiro de 2013 é referente ao período de 2 de dezembro de 2012
+    -- se o dia está antre 11 de janeiro a 25 de janeiro de 2013 é referente ao período de 1 de janeiro de 2013
+    -- se o dia está antre 26 de janeiro a 10 de fevereiro de 2013 é referente ao período de 2 de janeiro de 2013
+    -- se o dia está antre 11 de fevereiro a 25 de fevereiro de 2013 é referente ao período de 1 de fevereiro de 2013
+    -- se o dia está antre 26 de fevereiro a 10 de março de 2013 é referente ao período de 2 de fevereiro de 2013
+    -- se o dia está antre 11 de março a 25 de março de 2013 é referente ao período de 1 de março de 2013
+    -- se o dia está antre 26 de março a 10 de abril de 2013 é referente ao período de 2 de março de 2013
+    -- se o dia está antre 11 de abril a 25 de abril de 2013 é referente ao período de 1 de abril de 2013
+    --V_DIA := to_number(to_char(R_OTRS.DataFinal, 'DD'));
+    --V_MES := to_number(to_char(R_OTRS.DataFinal, 'MM'));
+    --V_ANO := to_number(to_char(R_OTRS.DataFinal, 'YYYY'));
+    V_DIA := to_number(to_char(R_OTRS.DataInicial, 'DD'));
+    V_MES := to_number(to_char(R_OTRS.DataInicial, 'MM'));
+    V_ANO := to_number(to_char(R_OTRS.DataInicial, 'YYYY'));
+
+    V_TRECHO := 'P_OTRS_INTERFACE_LOG V_DIA=' || V_DIA || ', V_MES=' || V_MES || ', V_ANO=' || V_ANO || '.'; if v_debug = 'S' then dbms_output.put_line(V_TRECHO); end if;
+
+    --if(V_DIA >= 11) AND (V_DIA <= 25) then
+    --  V_PERI_CD_PERIODO := 1;
+    --end if;
+
+    --if(V_DIA >= 26) AND (V_DIA <= 31) then
+    --  V_PERI_CD_PERIODO := 2;
+    --end if;
+
+    --if(V_DIA >= 1) AND (V_DIA <= 10) then
+    --  V_PERI_CD_PERIODO := 2;
+    --  V_MES := V_MES - 1;
+    --  if(V_MES = 0) THEN 
+    --    V_ANO := V_ANO - 1;
+    --    V_MES := 12; 
+    --  end if;
+    --end if;
+
+    if(V_DIA <= 15)  then
+      V_PERI_CD_PERIODO := 1;
+      V_INIDIA := 1;
+      V_FIMDIA := 15;
+      V_SINIDIA := '01';
+    else
+      V_PERI_CD_PERIODO := 2;
+      V_INIDIA := 16;
+      V_FIMDIA := 31; --não precisa ser exato, é apenas para fazer o menor ou igual
+      V_SINIDIA := '16';
+    end if;
+
+    if(V_DIA < 10) then
+      V_SDIA := '0' || V_DIA;
+    else
+      V_SDIA := V_DIA;
+    end if;
+
+    if(V_MES < 10) then
+      V_SMES := '0' || V_MES;
+    else
+      V_SMES := V_MES;
+    end if;
+
+    V_TRECHO := 'P_OTRS_INTERFACE_LOG V_DIA=' || V_DIA || ', V_MES=' || V_MES || ', V_ANO=' || V_ANO || ', PERIODO=' || V_PERI_CD_PERIODO || '.'; if v_debug = 'S' then dbms_output.put_line(V_TRECHO); end if;
+
+    --Obtém o funcionário do Log de acordo com o Login do OTRS:
+    BEGIN
+      SELECT CD_FUNCIONARIO, DT_RESCISAO, NM_FUNCIONARIO 
+        INTO V_FUNC_CD_FUNC, V_DT_RESCISAO, v_nm_funcionario 
+        FROM FUNCIONARIO
+       WHERE CDG_USUR = UPPER(REPLACE(REPLACE(R_OTRS.LOGIN, 'gcomenale', 'GMENDES'), 'kyogi', 'KYYOGI'));
+       --WHERE CDG_USUR = UPPER(REPLACE(REPLACE(R_OTRS.LOGIN, 'gcomenale', 'GMENDES'), 'akloss', 'CCHAMMA'));
+
+      V_TRECHO := 'P_OTRS_INTERFACE_LOG apos select funcionario. V_FUNC_CD_FUNC=' || V_FUNC_CD_FUNC || ', V_DT_RESCISAO=' || V_DT_RESCISAO || '.'; if v_debug = 'S' then dbms_output.put_line(V_TRECHO); end if;
+      v_msg := v_msg || ', funcionario=' || v_nm_funcionario;
+
+    EXCEPTION
+    WHEN OTHERS THEN
+       RAISE_APPLICATION_ERROR(-20010, 'Erro ao buscar o FUNCIONARIO na procedure P_OTRS_INTERFACE_LOG_NEW  (' || TO_CHAR(SQLCODE) || '). CDG_USUR=' || 
+                                  R_OTRS.LOGIN || '.') ;
+    END;
+
+    --Se o funcionário não foi desligado então processa, caso contrário não faz nada 
+    IF V_DT_RESCISAO IS NULL THEN
+
+	  --Busca a Jornada de Trabalho
+	  BEGIN
+
+	      SELECT (HORA_FIM - HORA_INICIO) - 1, HORA_INICIO, HORA_FIM
+		      INTO v_HORAS_JORNADA, v_HORA_INICIO, v_HORA_FIM
+		      FROM JORNADA_TRABALHO
+		     WHERE CD_FUNCIONARIO = V_FUNC_CD_FUNC
+		       and TO_DATE(V_ANO||TO_CHAR(V_MES,'09')||TO_CHAR(V_DIA,'09'),'RRRRMMDD') between DT_INICIO_VIGENCIA and DT_FIM_VIGENCIA;	  
+
+        V_TRECHO := 'P_OTRS_INTERFACE_LOG apos select jornada. v_HORAS_JORNADA=' || v_HORAS_JORNADA || ', v_HORA_INICIO=' || v_HORA_INICIO || ', v_HORA_FIM=' || v_HORA_FIM|| '.'; if v_debug = 'S' then dbms_output.put_line(V_TRECHO); end if;
+
+	  EXCEPTION
+		    WHEN NO_DATA_FOUND THEN
+          RAISE_APPLICATION_ERROR(-20010, 'Erro ao buscar a JORNADA de TRABALHO na procedure P_OTRS_INTERFACE_LOG_NEW  (' || TO_CHAR(SQLCODE) || '). V_FUNC_CD_FUNC=' || 
+                                  V_FUNC_CD_FUNC || ',V_ANO/VMES/VDIA=' || V_ANO || '/' || V_MES || '/' || V_DIA || '.') ;
+		    WHEN TOO_MANY_ROWS THEN
+          RAISE_APPLICATION_ERROR(-20010, 'Erro ao buscar a JORNADA de TRABALHO na procedure P_OTRS_INTERFACE_LOG_NEW  (' || TO_CHAR(SQLCODE) || '). V_FUNC_CD_FUNC=' || 
+                                  V_FUNC_CD_FUNC || ',V_ANO/VMES/VDIA=' || V_ANO || '/' || V_MES || '/' || V_DIA || '.') ;
+	  END;
+
+
+	  --Verifica se existe log aberto para o período:
+      BEGIN
+        SELECT LOPE_STT_LOG
+          INTO V_LOPE_STT_LOG
+          FROM LOG_PERIODO 
+         WHERE FUNC_CD_FUNC = V_FUNC_CD_FUNC 
+           AND LOPE_NR_ANO = V_ANO
+           AND LOPE_NR_MES = V_MES
+           AND PERI_CD_PERIODO = V_PERI_CD_PERIODO;
+        V_TRECHO := 'P_OTRS_INTERFACE_LOG achou Log. V_LOPE_STT_LOG=' || V_LOPE_STT_LOG || '.'; if v_debug = 'S' then dbms_output.put_line(V_TRECHO); end if;
+      EXCEPTION
+        WHEN NO_DATA_FOUND THEN
+          V_LOPE_STT_LOG := 'X';
+          V_TRECHO := 'P_OTRS_INTERFACE_LOG não achou Log. V_LOPE_STT_LOG=' || V_LOPE_STT_LOG || '.'; if v_debug = 'S' then dbms_output.put_line(V_TRECHO); end if;
+      END;
+
+      IF V_LOPE_STT_LOG = 'X' THEN
+        --Caso o Log não exista para o período devo criá-lo:
+        INSERT INTO LOG_PERIODO(FUNC_CD_FUNC,   LOPE_NR_ANO,   LOPE_NR_MES,   PERI_CD_PERIODO,   LOPE_STT_LOG, DTA_ULT_ALT, USUR_CD_USUR)
+                        VALUES (V_FUNC_CD_FUNC, V_ANO,         V_MES,         V_PERI_CD_PERIODO, 'A',          SYSDATE,     'OTRS');
+        V_TRECHO := 'P_OTRS_INTERFACE_LOG inseriu LOG_PERIODO'; if v_debug = 'S' then dbms_output.put_line(V_TRECHO); end if;
+        V_LOPE_STT_LOG := 'A';
+      END IF;
+
+      begin
+        V_ST_TIMESHEET_DIA := 'X';
+
+        select d.ST_TIMESHEET_DIA, nvl(d.LOG_NR_HNORMAL,0) 
+              ,(select nvl(sum(nvl(HORAS_NR_CO,0)+nvl(HORAS_NR_NC,0)),0) 
+                  from TIMESHEET_DIA_TAREFA t
+                 where t.FUNC_CD_FUNC = V_FUNC_CD_FUNC
+                   and t.LOPE_NR_ANO = V_ANO
+                   --and t.PERI_CD_PERIODO = V_PERI_CD_PERIODO
+                   and t.LOG_NR_DIA = V_DIA
+                   and t.LOPE_NR_MES = V_MES
+               )
+          into V_ST_TIMESHEET_DIA, V_LOG_NR_HNORMAL, V_HORAS_NR_CO_JA_LANCADAS 
+          from TIMESHEET_DIA d
+         where d.FUNC_CD_FUNC = V_FUNC_CD_FUNC
+           and d.LOPE_NR_ANO = V_ANO
+           --and d.PERI_CD_PERIODO = V_PERI_CD_PERIODO
+           and d.LOG_NR_DIA = V_DIA
+           and D.LOPE_NR_MES = V_MES;
+
+        V_TRECHO := 'P_OTRS_INTERFACE_LOG apos busca horas ja lancadas, V_HORAS_NR_CO_JA_LANCADAS=' || V_HORAS_NR_CO_JA_LANCADAS; if v_debug = 'S' then dbms_output.put_line(V_TRECHO); end if;
+
+      exception
+        when NO_DATA_FOUND then
+          V_TRECHO := 'P_OTRS_INTERFACE_LOG não encontrou o dia em TIMESHEET_DIA'; if v_debug = 'S' then dbms_output.put_line(V_TRECHO); end if;
+          raise_application_error(-20001, 'Não encontrou o dia em TIMESHEET_DIA.');
+      end;
+
+      V_TRECHO := 'P_OTRS_INTERFACE_LOG apos busca status'; if v_debug = 'S' then dbms_output.put_line(V_TRECHO); end if;
+
+      --Se o log está em aberto ou se ele acabou de ser criado pela interface devo processar as horas
+      IF V_LOPE_STT_LOG = 'A' AND V_ST_TIMESHEET_DIA IN ('A','R') /*Aberto ou Rejeitado*/ THEN
+
+        V_TRECHO := 'P_OTRS_INTERFACE_LOG buscando OBS'; if v_debug = 'S' then dbms_output.put_line(V_TRECHO); end if;
+        V_OBS := NULL;
+        OPEN C_OTRS_OBS;
+        LOOP
+          FETCH C_OTRS_OBS INTO V_OBS_AUX;
+          EXIT WHEN C_OTRS_OBS%NOTFOUND;
+
+          IF V_OBS IS NULL THEN
+            V_OBS := V_OBS_AUX;
+          ELSE
+            V_OBS := V_OBS || ', ' || V_OBS_AUX;
+          END IF;
+
+        END LOOP;
+        CLOSE C_OTRS_OBS;
+        --V_TRECHO := 'P_OTRS_INTERFACE_LOG apos busca OBS=' || V_OBS; if v_debug = 'S' then dbms_output.put_line(V_TRECHO); end if;
+        V_TRECHO := 'P_OTRS_INTERFACE_LOG apos busca OBS.'; if v_debug = 'S' then dbms_output.put_line(V_TRECHO); end if;
+
+        begin
+          select ds_projeto into v_ds_projeto
+            from projeto
+           where cd_projeto = R_OTRS.CodProjeto;
+
+        exception
+          when others then
+            V_TRECHO := 'P_OTRS_INTERFACE_LOG nenhum projeto encontrado: ' || R_OTRS.CodProjeto; if v_debug = 'S' then dbms_output.put_line(V_TRECHO); end if;
+            raise_application_error(-20001, 'P_OTRS_INTERFACE_LOG nenhum projeto encontrado: ' || R_OTRS.CodProjeto);
+        end;
+
+        --Devo buscar a tarefa para lançar as horas:
+        begin
+
+          SELECT fase.SEQ_PROJETO_FASE
+                ,tare.SEQ_PROJETO_TAREFA
+                ,proj.DS_PROJETO
+           INTO V_SEQ_PROJETO_FASE
+               ,V_SEQ_PROJETO_TAREFA
+               ,v_ds_projeto2
+           FROM PROJETO PROJ, PROJETO_FASE FASE, PROJETO_TAREFA TARE  
+           WHERE PROJ.CD_PROJETO = FASE.CD_PROJETO 
+             AND PROJ.CD_PROJETO = TARE.CD_PROJETO AND FASE.CD_PROJETO = TARE.CD_PROJETO AND FASE.SEQ_PROJETO_FASE = TARE.SEQ_PROJETO_FASE 
+             AND ( (FASE.ST_FASEPROJ = 'A'  
+                     AND ((PROJ.IN_INTERNO = 'S') OR (PROJ.IN_INTERNO = 'N' AND TO_NUMBER(TO_CHAR(FASE.DT_INICIO_REAL,'RRRRMMDD')) <= to_number(V_ano||v_smes||v_fimDia)))  
+                   )  
+                   OR  
+                   (FASE.ST_FASEPROJ = 'E'  
+                     AND TO_NUMBER(TO_CHAR(FASE.DT_INICIO_REAL,'RRRRMMDD')) <= to_number(V_ano||v_smes||v_fimDia)  
+                     AND TO_NUMBER(TO_CHAR(FASE.DT_FIM_REAL,'RRRRMMDD')) >= to_number(V_ano||v_smes||v_siniDia)  
+                   )  
+                 )  
+             AND ( (TARE.ST_TAREFA = 'A'  
+                     AND ((PROJ.IN_INTERNO = 'S') OR (PROJ.IN_INTERNO = 'N' AND TO_NUMBER(TO_CHAR(TARE.DT_INICIO_REAL,'RRRRMMDD')) <= to_number(V_ano||v_smes||v_fimDia)))  
+                   )  
+                   OR  
+                   (TARE.ST_TAREFA = 'E'  
+                     AND TO_NUMBER(TO_CHAR(TARE.DT_INICIO_REAL,'RRRRMMDD')) <= to_number(V_ano||v_smes||v_fimDia)  
+                     AND TO_NUMBER(TO_CHAR(TARE.DT_FIM_REAL,'RRRRMMDD')) >= to_number(V_ano||v_smes||v_siniDia)  
+                   )  
+                 )  
+             AND ((PROJ.IN_INTERNO = 'S') OR (PROJ.IN_INTERNO = 'N' AND EXISTS (SELECT 1  
+                   FROM PROJETO_TAREFA_FUNCIONARIO PF WHERE PF.FUNC_CD_FUNC = V_FUNC_CD_FUNC AND PF.CD_PROJETO = PROJ.CD_PROJETO  
+                    AND PF.SEQ_PROJETO_FASE = TARE.SEQ_PROJETO_FASE AND PF.SEQ_PROJETO_TAREFA = TARE.SEQ_PROJETO_TAREFA 
+            ))) 
+             AND TARE.IN_TAREFA_EXTERNA = 'S' 
+             AND PROJ.CD_PROJETO = R_OTRS.CodProjeto;        
+
+        exception
+          when TOO_MANY_ROWS then
+            V_TRECHO := 'P_OTRS_INTERFACE_LOG mais de uma tarefa encontrada, ano+mes+fimdia+inidia+func+proj=' || V_ano||'-'||v_smes||'-'||v_fimDia||'-'||v_siniDia||'-'||V_FUNC_CD_FUNC||'-'||R_OTRS.CodProjeto; if v_debug = 'S' then dbms_output.put_line(V_TRECHO); end if;
+            raise_application_error(-20001, 'P_OTRS_INTERFACE_LOG mais de uma tarefa encontrada, ano+mes+fimdia+inidia+func+proj=' || V_ano||'-'||v_smes||'-'||v_fimDia||'-'||v_siniDia||'-'||V_FUNC_CD_FUNC||'-'||R_OTRS.CodProjeto);
+          when NO_DATA_FOUND then
+            V_TRECHO := 'P_OTRS_INTERFACE_LOG nenhuma tarefa encontrada, verifique se o funcionario ' || v_nm_funcionario || ' estah alocado ao projeto ' || v_ds_projeto; 
+            if v_debug = 'S' then dbms_output.put_line(V_TRECHO); end if;
+            raise_application_error(-20001, V_TRECHO);
+        end;
+
+        V_TRECHO := 'P_OTRS_INTERFACE_LOG apos busca tarefa'; if v_debug = 'S' then dbms_output.put_line(V_TRECHO); end if;
+        v_msg := v_msg || ',projeto=' || v_ds_projeto2;
+/*
+   São 6 possibilidades de cálculo de hora extra com base na jornada de trabalho:
+
+   Atendimento   Jornada       HoraExtra HoraNormal
+   ------------- ------------- --------- ----------
+1  08:00 a 11:00 09:00 a 18:00 1         2
+2  08:00 a 09:00 09:00 a 18:00 1         0
+3  08:00 a 19:00 09:00 a 18:00 2         9
+
+4  10:00 a 11:00 09:00 a 18:00 0         1
+5  10:00 a 19:00 09:00 a 18:00 1         8
+6  19:00 a 20:00 09:00 a 18:00 1         0
+*/
+        V_HORAS_NR_CO_LANCAR := 0;
+		V_HORAS_NR_COEXTRA_LANCAR := 0;
+
+		select substr(value,1,1) into v_sSEPARADOR_DECIMAL from nls_session_parameters where upper(parameter) = 'NLS_NUMERIC_CHARACTERS';
+
+		if(TRUNC(v_HORA_INICIO) < 10) then
+		  v_sHORA := '0' || TRUNC(v_HORA_INICIO);
+		else
+		  v_sHORA := TRUNC(v_HORA_INICIO);
+		end if;
+        if INSTR(to_char(v_HORA_INICIO),v_sSEPARADOR_DECIMAL,1,1) > 0 then
+		  v_sMINUTOS := TO_NUMBER ('0' || v_sSEPARADOR_DECIMAL || SUBSTR (to_char(v_HORA_INICIO), INSTR (to_char(v_HORA_INICIO),v_sSEPARADOR_DECIMAL,1,1) + 1)) * 60;
+		  if(length(v_sMINUTOS) < 2) then
+		    v_sMINUTOS := '0' || v_sMINUTOS;
+		  end if;
+		else
+		  v_sMINUTOS := '00';
+		end if;
+		v_DT_INICIO_JORNADA := TO_DATE(V_ANO || V_SMES || V_SDIA || ' ' || v_sHORA || ':' || v_sMINUTOS || ':' || '00', 'YYYYMMDD HH24:MI:SS');
+
+		if(TRUNC(v_HORA_FIM) < 10) then
+		  v_sHORA := '0' || TRUNC(v_HORA_FIM);
+		else
+		  v_sHORA := TRUNC(v_HORA_FIM);
+		end if;
+        if INSTR(to_char(v_HORA_FIM),v_sSEPARADOR_DECIMAL,1,1) > 0 then
+		  v_sMINUTOS := TO_NUMBER ('0' || v_sSEPARADOR_DECIMAL || SUBSTR (to_char(v_HORA_FIM), INSTR (to_char(v_HORA_FIM),v_sSEPARADOR_DECIMAL,1,1) + 1)) * 60;
+		  if(length(v_sMINUTOS) < 2) then
+		    v_sMINUTOS := '0' || v_sMINUTOS;
+		  end if;
+		else
+		  v_sMINUTOS := '00';
+		end if;
+		v_DT_FIM_JORNADA := TO_DATE(V_ANO || V_SMES || V_SDIA || ' ' || v_sHORA || ':' || v_sMINUTOS || ':' || '00', 'YYYYMMDD HH24:MI:SS');
+
+
+		if R_OTRS.DataInicial < v_DT_INICIO_JORNADA then
+		  if R_OTRS.DataFinal < v_DT_INICIO_JORNADA then
+		    --o atendimento ocorreu inteiramente antes do início da jornada de trabalho, portanto todas as horas são extras
+		    V_HORAS_NR_COEXTRA_LANCAR := trunc((R_OTRS.DataFinal - R_OTRS.DataInicial) * 24,2);
+          else
+		    if R_OTRS.DataFinal < v_DT_FIM_JORNADA then
+		      --o atendimento começou antes do início da jornada de trabalho e terminou antes do fim da jornada, portanto parte das horas são extras
+		      V_HORAS_NR_COEXTRA_LANCAR := trunc((v_DT_INICIO_JORNADA - R_OTRS.DataInicial) * 24,2);
+			  V_HORAS_NR_CO_LANCAR := trunc((R_OTRS.DataFinal - v_DT_INICIO_JORNADA) * 24,2);
+			else
+		      --o atendimento começou antes do início da jornada de trabalho e terminou após o fim da jornada, portanto parte das horas são extras
+		      V_HORAS_NR_COEXTRA_LANCAR := trunc(((v_DT_INICIO_JORNADA - R_OTRS.DataInicial) * 24),2) +
+			                               trunc(((R_OTRS.DataFinal - v_DT_FIM_JORNADA) * 24),2);
+			  V_HORAS_NR_CO_LANCAR := trunc((v_DT_FIM_JORNADA - v_DT_INICIO_JORNADA) * 24,2);
+			end if;
+		  end if;
+		else
+		  if R_OTRS.DataInicial > v_DT_FIM_JORNADA then
+		    --o atendimento ocorreu inteiramente após a jornada de trabalho, portanto todas as horas são extras
+		    V_HORAS_NR_COEXTRA_LANCAR := trunc((R_OTRS.DataFinal - R_OTRS.DataInicial) * 24,2);
+          else
+		    if R_OTRS.DataFinal < v_DT_FIM_JORNADA then
+		      --o atendimento começou após o início da jornada de trabalho e terminou antes do fim da jornada, portanto todas as horas são normais
+			  V_HORAS_NR_CO_LANCAR := trunc((R_OTRS.DataFinal - R_OTRS.DataInicial) * 24,2);
+			else
+		      --o atendimento começou após o início da jornada de trabalho e terminou após o fim da jornada, portanto parte das horas são extras
+		      V_HORAS_NR_COEXTRA_LANCAR := trunc((R_OTRS.DataFinal - v_DT_FIM_JORNADA) * 24,2);
+			  V_HORAS_NR_CO_LANCAR := trunc((v_DT_FIM_JORNADA - R_OTRS.DataInicial) * 24,2);
+			end if;
+		  end if;
+		end if;
+
+        --verifica feriado
+        if V_HORAS_NR_CO_LANCAR > V_LOG_NR_HNORMAL then
+          V_HORAS_NR_COEXTRA_LANCAR := V_HORAS_NR_COEXTRA_LANCAR + (V_HORAS_NR_CO_LANCAR - V_LOG_NR_HNORMAL);
+          V_HORAS_NR_CO_LANCAR := V_LOG_NR_HNORMAL;
+        end if;
+
+        select ACEITA_HORAS_CO_S_N into v_ACEITA_HORAS_CO_S_N 
+          from PROJETO 
+         where CD_PROJETO = R_OTRS.CodProjeto;
+
+    --Verifica as horas jah lancadas nesta tarefa
+		select COUNT(*), NVL(SUM(NVL(HORAS_NR_CO,0)),0), NVL(SUM(NVL(HORAS_NR_NC,0)),0), NVL(SUM(NVL(HORAS_NR_COEXTRA,0)),0), NVL(SUM(NVL(HORAS_NR_NCEXTRA,0)),0) 
+          into V_CONTADOR, V_HR_CO_JA_EXISTE_TAREFA, V_HR_NC_JA_EXISTE_TAREFA, V_HR_COEXTRA_JA_EXISTE_TAREFA, V_HR_NCEXTRA_JA_EXISTE_TAREFA   
+          from TIMESHEET_DIA_TAREFA t
+         where t.FUNC_CD_FUNC = V_FUNC_CD_FUNC
+           and t.CD_PROJETO = R_OTRS.CodProjeto
+           and t.SEQ_PROJETO_FASE = V_SEQ_PROJETO_FASE
+           and t.SEQ_PROJETO_TAREFA = V_SEQ_PROJETO_TAREFA
+           and t.LOPE_NR_ANO = V_ANO
+           --and PERI_CD_PERIODO = V_PERI_CD_PERIODO
+           and t.LOG_NR_DIA = V_DIA
+           and T.LOPE_NR_MES = V_MES;
+
+    --Verifica as horas jah lancadas em outras tarefas no mesmo dia
+
+    /***************************************************************************
+    * IGNORA TAREFAS JÁ LANÇADAS - MUDANÇA SOLICITADA PELA CLÁUDIA EM 12/2015
+    * INICIO DAS ALTERAÇÕES
+    ****************************************************************************
+		select NVL(SUM(NVL(HORAS_NR_CO,0)),0), NVL(SUM(NVL(HORAS_NR_NC,0)),0), NVL(SUM(NVL(HORAS_NR_COEXTRA,0)),0), NVL(SUM(NVL(HORAS_NR_NCEXTRA,0)),0) 
+          into V_HR_CO_JA_EXISTE_OUTRAS, V_HR_NC_JA_EXISTE_OUTRAS, V_HR_COEXTRA_JA_EXISTE_OUTRAS, V_HR_NCEXTRA_JA_EXISTE_OUTRAS   
+          from TIMESHEET_DIA_TAREFA t
+         where T.FUNC_CD_FUNC = V_FUNC_CD_FUNC
+           and TO_CHAR(T.CD_PROJETO) || '@' || TO_CHAR(T.SEQ_PROJETO_FASE) || '@' || TO_CHAR(T.SEQ_PROJETO_TAREFA) <> 
+               TO_CHAR(R_OTRS.CODPROJETO) || '@' || TO_CHAR(V_SEQ_PROJETO_FASE) || '@' || TO_CHAR(V_SEQ_PROJETO_TAREFA)
+           and t.LOPE_NR_ANO = V_ANO
+           --and PERI_CD_PERIODO = V_PERI_CD_PERIODO
+           and t.LOG_NR_DIA = V_DIA
+           and t.LOPE_NR_MES = V_MES;
+    ***************************************************************************/
+    V_HR_CO_JA_EXISTE_OUTRAS:=0;
+    V_HR_NC_JA_EXISTE_OUTRAS:=0;
+    V_HR_COEXTRA_JA_EXISTE_OUTRAS:=0;
+    V_HR_NCEXTRA_JA_EXISTE_OUTRAS:=0;
+    /***************************************************************************
+    * IGNORA TAREFAS JÁ LANÇADAS - MUDANÇA SOLICITADA PELA CLÁUDIA EM 12/2015
+    * FINAL DAS ALTERAÇÕES
+    ***************************************************************************/
+
+
+    V_TRECHO := 'P_OTRS_INTERFACE_LOG adicionar horas normais=' || V_HORAS_NR_CO_LANCAR || ',extras=' || V_HORAS_NR_COEXTRA_LANCAR; if V_DEBUG = 'S' then DBMS_OUTPUT.PUT_LINE(V_TRECHO); end if;
+    V_TRECHO := 'P_OTRS_INTERFACE_LOG ja existe na tarefa CO=' || V_HR_CO_JA_EXISTE_TAREFA || ',NC=' || V_HR_NC_JA_EXISTE_TAREFA; if V_DEBUG = 'S' then DBMS_OUTPUT.PUT_LINE(V_TRECHO); end if;
+    V_TRECHO := 'P_OTRS_INTERFACE_LOG ja existe em outras tarefas CO=' || V_HR_CO_JA_EXISTE_OUTRAS || ',NC=' || V_HR_NC_JA_EXISTE_OUTRAS; if v_debug = 'S' then dbms_output.put_line(V_TRECHO); end if;
+
+    if (V_HORAS_NR_CO_LANCAR + V_HR_CO_JA_EXISTE_TAREFA + V_HR_CO_JA_EXISTE_OUTRAS + V_HR_NC_JA_EXISTE_TAREFA + V_HR_NC_JA_EXISTE_OUTRAS) 
+       > V_LOG_NR_HNORMAL then
+      V_HORAS_NR_COEXTRA_LANCAR := V_HORAS_NR_COEXTRA_LANCAR + 
+                                   ((V_HORAS_NR_CO_LANCAR + V_HR_CO_JA_EXISTE_TAREFA + V_HR_CO_JA_EXISTE_OUTRAS + V_HR_NC_JA_EXISTE_TAREFA + V_HR_NC_JA_EXISTE_OUTRAS) 
+                                    - V_LOG_NR_HNORMAL);
+      --V_HORAS_NR_CO_LANCAR := V_LOG_NR_HNORMAL;
+      V_HORAS_NR_CO_LANCAR := V_HORAS_NR_CO_LANCAR - 
+                              ((V_HORAS_NR_CO_LANCAR + V_HR_CO_JA_EXISTE_TAREFA + V_HR_CO_JA_EXISTE_OUTRAS + V_HR_NC_JA_EXISTE_TAREFA + V_HR_NC_JA_EXISTE_OUTRAS) 
+                               - V_LOG_NR_HNORMAL);
+      if V_HORAS_NR_CO_LANCAR < 0 then
+        V_HORAS_NR_CO_LANCAR := 0;
+      end if;
+    end if;
+
+    V_TRECHO := 'P_OTRS_INTERFACE_LOG vai adicionar horas normais=' || V_HORAS_NR_CO_LANCAR || ',extras=' || V_HORAS_NR_COEXTRA_LANCAR; if V_DEBUG = 'S' then DBMS_OUTPUT.PUT_LINE(V_TRECHO); end if;
+
+        if V_CONTADOR > 0 then
+          V_TRECHO := 'P_OTRS_INTERFACE_LOG apos select TIMESHEET_DIA_TAREFA ja existe vai atualizar'; if v_debug = 'S' then dbms_output.put_line(V_TRECHO); end if;
+          --se já existirem horas isso é devido provavelmente ao mês de Novembro pois só bloqueamos o lançamento manual
+          --de horas no Log para projetos do OTRS em meados de Novembro de 2013.
+          if upper(p_modo_verificacao_pk_s_n) = 'S' then
+             dbms_output.put_line('Lançamento já existe ! FUNC_CD_FUNC=' || V_FUNC_CD_FUNC || ', PROJ_CD_PROJETO=' || R_OTRS.CodProjeto
+                                 || ', LOPE_NR_ANO=' || V_ANO || ', PERI_CD_PERIODO=' || V_PERI_CD_PERIODO || ', MES=' || V_MES
+                                 || ', DIA=' || V_DIA);
+          end if;
+
+          --calcula as horas normais e extras
+          --V_HORAS_NR_CO_JA_LANCADAS := V_HORAS_NR_CO_JA_LANCADAS - V_HORAS_NR_CO_JA_EXISTE;
+          --V_HORAS_NR_CO_MAX := V_LOG_NR_HNORMAL - V_HORAS_NR_CO_JA_LANCADAS;
+          --IF V_HORAS_NR_CO_MAX < 0 THEN
+          --  V_HORAS_NR_CO_MAX := 0;
+          --END IF;
+          --IF R_OTRS.TempoAtendimento <= V_HORAS_NR_CO_MAX THEN
+          --  V_HORAS_NR_CO_LANCAR       := R_OTRS.TempoAtendimento;
+          --  V_HORAS_NR_COEXTRA_LANCAR  := 0;
+          --ELSE
+          --  V_HORAS_NR_CO_LANCAR       := V_HORAS_NR_CO_MAX;
+          --  V_HORAS_NR_COEXTRA_LANCAR  := R_OTRS.TempoAtendimento - V_HORAS_NR_CO_MAX;
+          --END IF;
+
+          if v_ACEITA_HORAS_CO_S_N = 'S' then
+            UPDATE TIMESHEET_DIA_TAREFA set HORAS_NR_CO = NVL(HORAS_NR_CO,0) + NVL(V_HORAS_NR_CO_LANCAR,0)
+                                           ,HORAS_NR_COEXTRA = NVL(HORAS_NR_COEXTRA,0) + NVL(V_HORAS_NR_COEXTRA_LANCAR,0)
+                                           ,HORAS_TX_OBS = SUBSTR(HORAS_TX_OBS || ' ' || V_OBS,1,1000)
+                                           ,DT_ULT_ALT = v_dt_carga
+                                           ,USUR_CD_USUR = 'OTRS'
+             where FUNC_CD_FUNC = V_FUNC_CD_FUNC
+               and CD_PROJETO = R_OTRS.CodProjeto
+               and SEQ_PROJETO_FASE = V_SEQ_PROJETO_FASE
+               and SEQ_PROJETO_TAREFA = V_SEQ_PROJETO_TAREFA
+               and LOPE_NR_ANO = V_ANO
+               --and PERI_CD_PERIODO = V_PERI_CD_PERIODO
+               and LOG_NR_DIA = V_DIA
+               and LOPE_NR_MES = V_MES;
+          else
+            UPDATE TIMESHEET_DIA_TAREFA set HORAS_NR_NC = NVL(HORAS_NR_NC,0) + NVL(V_HORAS_NR_CO_LANCAR,0)
+                                           ,HORAS_NR_NCEXTRA = NVL(HORAS_NR_NCEXTRA,0) + NVL(V_HORAS_NR_COEXTRA_LANCAR,0)
+                                           ,HORAS_TX_OBS = SUBSTR(HORAS_TX_OBS || ' ' || V_OBS,1,1000)
+                                           ,DT_ULT_ALT = v_dt_carga
+                                           ,USUR_CD_USUR = 'OTRS'
+             where FUNC_CD_FUNC = V_FUNC_CD_FUNC
+               and CD_PROJETO = R_OTRS.CodProjeto
+               and SEQ_PROJETO_FASE = V_SEQ_PROJETO_FASE
+               and SEQ_PROJETO_TAREFA = V_SEQ_PROJETO_TAREFA
+               and LOPE_NR_ANO = V_ANO
+               --and PERI_CD_PERIODO = V_PERI_CD_PERIODO
+               and LOG_NR_DIA = V_DIA
+               and LOPE_NR_MES = V_MES;
+          end if;
+
+        else
+          V_TRECHO := 'P_OTRS_INTERFACE_LOG apos select TIMESHEET_DIA_TAREFA nao existe vai inserir'; if v_debug = 'S' then dbms_output.put_line(V_TRECHO); end if;
+
+          --calcula as horas normais e extras
+          --V_HORAS_NR_CO_MAX := V_LOG_NR_HNORMAL - V_HORAS_NR_CO_JA_LANCADAS;
+          --IF V_HORAS_NR_CO_MAX < 0 THEN
+          --  V_HORAS_NR_CO_MAX := 0;
+          --END IF;
+          --IF R_OTRS.TempoAtendimento <= V_HORAS_NR_CO_MAX THEN
+          --  V_HORAS_NR_CO_LANCAR       := R_OTRS.TempoAtendimento;
+          --  V_HORAS_NR_COEXTRA_LANCAR  := 0;
+          --ELSE
+          --  V_HORAS_NR_CO_LANCAR       := V_HORAS_NR_CO_MAX;
+          --  V_HORAS_NR_COEXTRA_LANCAR  := R_OTRS.TempoAtendimento - V_HORAS_NR_CO_MAX;
+          --END IF;
+
+          if v_ACEITA_HORAS_CO_S_N = 'S' then
+            INSERT INTO TIMESHEET_DIA_TAREFA (FUNC_CD_FUNC, LOPE_NR_ANO, LOPE_NR_MES, CD_PROJETO, SEQ_PROJETO_FASE, SEQ_PROJETO_TAREFA, 
+                                              LOG_NR_DIA, HORAS_NR_CO, HORAS_TX_OBS, DT_ULT_ALT, USUR_CD_USUR, HORAS_NR_COEXTRA)
+                                      VALUES (V_FUNC_CD_FUNC, V_ANO, V_MES, R_OTRS.CodProjeto, V_SEQ_PROJETO_FASE, V_SEQ_PROJETO_TAREFA, 
+                                              V_DIA, V_HORAS_NR_CO_LANCAR, SUBSTR(V_OBS,1,1000), v_dt_carga, 'OTRS', V_HORAS_NR_COEXTRA_LANCAR);
+          else
+            INSERT INTO TIMESHEET_DIA_TAREFA (FUNC_CD_FUNC, LOPE_NR_ANO, LOPE_NR_MES, CD_PROJETO, SEQ_PROJETO_FASE, SEQ_PROJETO_TAREFA, 
+                                              LOG_NR_DIA, HORAS_NR_NC, HORAS_TX_OBS, DT_ULT_ALT, USUR_CD_USUR, HORAS_NR_NCEXTRA)
+                                      VALUES (V_FUNC_CD_FUNC, V_ANO, V_MES, R_OTRS.CodProjeto, V_SEQ_PROJETO_FASE, V_SEQ_PROJETO_TAREFA, 
+                                              V_DIA, V_HORAS_NR_CO_LANCAR, SUBSTR(V_OBS,1,1000), v_dt_carga, 'OTRS', V_HORAS_NR_COEXTRA_LANCAR);
+          end if;
+        end if;
+
+        V_TRECHO := 'P_OTRS_INTERFACE_LOG apos insert ou update TIMESHEET_DIA_TAREFA'; if v_debug = 'S' then dbms_output.put_line(V_TRECHO); end if;
+      else
+
+        V_TRECHO := 'Log fechado/aprovado !!!! V_LOPE_STT_LOG: ' || V_LOPE_STT_LOG || 
+                    ', V_ST_TIMESHEET_DIA=' || V_ST_TIMESHEET_DIA || 
+                    ', V_FUNC_CD_FUNC=' || V_FUNC_CD_FUNC || 
+                    ', V_MES=' || V_MES || ', V_PERI_CD_PERIODO=' || V_PERI_CD_PERIODO || ', V_ANO=' || V_ANO
+        ; if v_debug = 'S' then dbms_output.put_line(V_TRECHO); end if;
+      END IF; /*IF V_LOPE_STT_LOG = 'A' AND V_ST_TIMESHEET_DIA IN ('A','R') THEN*/
+    else
+        V_TRECHO := 'Data de rescisao !!!!! V_FUNC_CD_FUNC=' || V_FUNC_CD_FUNC; dbms_output.put_line(V_TRECHO);
+    END IF; /*IF V_DT_RESCISAO IS NULL THEN*/
+
+  end loop;
+  close C_OTRS;
+
+  V_TRECHO := 'P_OTRS_INTERFACE_LOG antes commit'; if v_debug = 'S' then dbms_output.put_line(V_TRECHO); end if;
+  if upper(p_modo_verificacao_pk_s_n) = 'N' then
+    commit;
+  else
+    rollback;
+  end if;
+  V_TRECHO := 'P_OTRS_INTERFACE_LOG fim'; dbms_output.put_line(V_TRECHO);
+
+exception 
+  when others then
+    V_SQLERRM := SQLERRM;
+    rollback;
+    raise_application_error(-20001, 'Erro em P_OTRS_INTERFACE_LOG: ' || v_msg || ' - ' || V_SQLERRM);
+end;
+
+/
+--------------------------------------------------------
+--  DDL for Procedure SP_EMAIL_LOGS_ABERTOS
+--------------------------------------------------------
+set define off;
+
+  CREATE OR REPLACE EDITIONABLE PROCEDURE "TIMESHEET"."SP_EMAIL_LOGS_ABERTOS" (PCD_FUNCIONARIO NUMBER DEFAULT NULL, PFORCEEXEC VARCHAR2 DEFAULT 'N', PDONTCLOSE VARCHAR2 DEFAULT 'N') AS
+
+/* Entre o dia 5 e o dia 15 enviar o email todo dia, copiar o aprovador 
+   em XX dias seu log será encerrado automaticamente e lançado como bhe
+   para reabri-lo será necessário enviar email para o gestor contendo a justificativa
+   será agendada uma sessão com o gestor para reabertura, preenchimento e fechamento do log.
+   Dia 16: executa a rotina fechando os logs e enviando email de fechamento.
+
+https://oracle-base.com/articles/10g/utl_mail-send-email-from-the-oracle-database   
+
+drop table T_EMAILS;
+drop table T_EMAILS_HIST;
+
+create table TIMESHEET.T_EMAILS(DT_INCLUSAO DATE, DTHR_INCLUSAO DATE, MAILTO VARCHAR2(255) not null, MAILFROM VARCHAR2(255) NOT NULL
+,NM_FUNCIONARIO VARCHAR2(255) not null, ASSUNTO VARCHAR2(1000) NOT NULL, TX_EMAIL1 VARCHAR2(4000) NOT NULL, TX_EMAIL2 VARCHAR2(4000), TX_EMAIL3 VARCHAR2(4000), TX_EMAIL4 VARCHAR2(4000), PRIMARY KEY(DT_INCLUSAO, NM_FUNCIONARIO) );
+
+create table TIMESHEET.T_EMAILS_HIST(DT_INCLUSAO DATE, DTHR_INCLUSAO DATE, MAILTO VARCHAR2(255) not null, MAILFROM VARCHAR2(255) NOT NULL
+,NM_FUNCIONARIO VARCHAR2(255) not null, ASSUNTO VARCHAR2(1000) NOT NULL, TX_EMAIL1 VARCHAR2(4000) NOT NULL, TX_EMAIL2 VARCHAR2(4000), TX_EMAIL3 VARCHAR2(4000), TX_EMAIL4 VARCHAR2(4000));
+
+INSERT INTO TIMESHEET.T_EMAILS VALUES (TRUNC(SYSDATE-1), SYSDATE-1, 'cchamma@triscal.com.br', 'sistemalog@triscal.com.br', 'Chris', 'TESTE1', 'TX1<BR>.', 'TX1', null, null);
+INSERT INTO TIMESHEET.T_EMAILS VALUES (TRUNC(SYSDATE), SYSDATE, 'cchamma@triscal.com.br', 'sistemalog@triscal.com.br', 'Chris', 'TESTE2', 'TX2<BR>.', 'TX22', null, null);
+INSERT INTO TIMESHEET.T_EMAILS VALUES (TRUNC(SYSDATE+1), SYSDATE+1, 'cchamma@triscal.com.br', 'sistemalog@triscal.com.br', 'Chris', 'TESTE3', 'TX3<BR>.', 'TX33', null, null);
+INSERT INTO TIMESHEET.T_EMAILS VALUES (TRUNC(SYSDATE+2), SYSDATE+2, 'cchamma@triscal.com.br', 'sistemalog@triscal.com.br', 'Chris', 'TESTE4', 'TX4BR>.', 'TX44', null, null);
+INSERT INTO TIMESHEET.T_EMAILS VALUES (TRUNC(SYSDATE+3), SYSDATE+3, 'cchamma@triscal.com.br', 'sistemalog@triscal.com.br', 'Chris', 'TESTE5', 'TX5<BR>.', 'TX55', null, null);
+INSERT INTO TIMESHEET.T_EMAILS VALUES (TRUNC(SYSDATE+4), SYSDATE+4, 'cchamma@triscal.com.br', 'sistemalog@triscal.com.br', 'Chris', 'TESTE6', 'TX6<BR>.', 'TX66', null, null);
+COMMIT;
+
+SELECT DT_INCLUSAO, DTHR_INCLUSAO, MAILTO, MAILFROM, NM_FUNCIONARIO, ASSUNTO, TX_EMAIL1, TX_EMAIL2, TX_EMAIL3, TX_EMAIL4 FROM TIMESHEET.T_EMAILS WHERE DT_INCLUSAO = TRUNC(SYSDATE)
+
+CREATE VIEW TIMESHEET.V_EMAILS AS
+SELECT DT_INCLUSAO, DTHR_INCLUSAO, MAILTO, MAILFROM, NM_FUNCIONARIO, ASSUNTO, TX_EMAIL1, TX_EMAIL2, TX_EMAIL3, TX_EMAIL4 FROM TIMESHEET.T_EMAILS WHERE DT_INCLUSAO = TRUNC(SYSDATE)
+order by NM_FUNCIONARIO;
+
+delete from T_EMAILS;
+set serveroutput on size 1000000
+exec SP_EMAIL_LOGS_ABERTOS (47, 'S', 'S');
+
+*/
+
+cursor C_FUNCIONARIOS IS
+SELECT FUNC.IN_SETOR, FUNC.CD_FUNCIONARIO 
+      ,TO_CHAR(SYSDATE, 'YYYY') ANO, TO_CHAR(SYSDATE, 'MM') MES, TO_CHAR(SYSDATE, 'DD') DIA 
+      ,FUNC.DT_ADMISSAO, TO_CHAR(FUNC.DT_ADMISSAO,'YYYY') ANO_ADMISSAO 
+      ,TO_CHAR(FUNC.DT_ADMISSAO,'MM') MES_ADMISSAO, TO_CHAR(FUNC.DT_ADMISSAO,'DD') DIA_ADMISSAO 
+	  ,FUNC.CDG_USUR
+	  ,FUNC.NM_FUNCIONARIO
+	  ,FUNC.DS_EMAIL
+  FROM  FUNCIONARIO FUNC , COM_ACES_USUARIO U
+ WHERE FUNC.DT_RESCISAO IS NULL
+   AND FUNC.IN_SETOR NOT IN ('A','S')
+   AND U.CDG_USUR = FUNC.CDG_USUR
+   AND U.STATUS = 'L'
+   AND FUNC.DT_ADMISSAO < SYSDATE 
+   AND FUNC.CD_FUNCIONARIO = NVL(PCD_FUNCIONARIO, FUNC.CD_FUNCIONARIO)
+ORDER BY FUNC.NM_FUNCIONARIO;
+
+R_FUNCIONARIOS    C_FUNCIONARIOS%ROWTYPE;
+
+DIA_ATUAL         NUMBER(2) := TO_NUMBER(TO_CHAR(SYSDATE, 'DD'));
+
+sQuinzenaFim      VARCHAR2(20) := '';
+ano               NUMBER(4);
+mes               NUMBER(4);
+dia               NUMBER(4);
+quinzena          NUMBER(4);
+quinzena_fim      NUMBER(4);
+squinzena         VARCHAR2(20);
+smes              VARCHAR2(20);
+primeiro          VARCHAR2(1) := 'S';
+sPeriodo          VARCHAR2(50);
+sNomePeriodo      VARCHAR2(50);
+v_LOPE_STT_LOG    VARCHAR2(1);
+pendente          VARCHAR2(1) := 'S';
+Status            VARCHAR2(30);
+v_dias_deadline   NUMBER(2);
+ano_atual         NUMBER(4);
+mes_atual         NUMBER(2);
+ano_admissao      VARCHAR2(10);
+mes_admissao      VARCHAR2(10);
+dia_admissao      NUMBER(2);
+nano_admissao     NUMBER(4);
+nmes_admissao     NUMBER(2);
+smes_atual        VARCHAR2(10);
+sQuinzena_atual   VARCHAR2(30);
+vdebug            VARCHAR2(255);
+
+cabec_email       VARCHAR2(4000);
+assunto_email     VARCHAR2(255);
+texto_email       VARCHAR2(32000);
+v_erro            VARCHAR2(4000);
+	  
+BEGIN
+  vdebug := 'Inicio SP_EMAIL_LOGS_ABERTOS, PCD_FUNCIONARIO=' || PCD_FUNCIONARIO || ',PFORCEEXEC=' || PFORCEEXEC || ',DIA=' || DIA_ATUAL;
+
+  DELETE FROM T_EMAILS;
+  COMMIT;
+  
+  dbms_output.put_line(vdebug );
+  P_DEBUG(vdebug);
+
+  DIA_ATUAL  := TO_NUMBER(TO_CHAR(SYSDATE, 'DD'));
+
+  IF (DIA_ATUAL < 5 OR DIA_ATUAL > 16) AND NVL(PFORCEEXEC,'N') = 'N' THEN
+    raise_application_error(-20002, 'naoehdia_exception');
+  END IF;
+  
+  v_dias_deadline := 16 - DIA_ATUAL;
+
+  OPEN C_FUNCIONARIOS;
+  LOOP
+	FETCH C_FUNCIONARIOS INTO R_FUNCIONARIOS;
+	EXIT WHEN C_FUNCIONARIOS%NOTFOUND;
+
+    vdebug := '010';
+	
+	cabec_email := '';
+	assunto_email := '';
+	texto_email := '';
+	
+    ano_atual := to_number(R_FUNCIONARIOS.ANO);
+    mes_atual := to_number(R_FUNCIONARIOS.MES);
+    dia_atual := to_number(R_FUNCIONARIOS.DIA);
+    ano_admissao := R_FUNCIONARIOS.ANO_ADMISSAO;
+    mes_admissao := R_FUNCIONARIOS.MES_ADMISSAO;
+    dia_admissao := to_number(R_FUNCIONARIOS.DIA_ADMISSAO);
+    smes_atual := to_char(mes_atual);
+    if( length(smes_atual) < 2) then smes_atual := '0' || smes_atual; end if;
+    sQuinzena_atual := '';
+    if(dia_atual > 15) then
+      sQuinzena_atual := to_char(ano_atual) || smes_atual || '2';
+    else
+      sQuinzena_atual := to_char(ano_atual) || smes_atual || '1';
+	end if;
+    --na verdade tenho que considerar a quinzena 1 pois o mês atual não entra na verificação:
+    sQuinzena_atual := to_char(ano_atual) || smes_atual || '1';
+    --dbms_output.put_line('sQuinzena_atual=' || sQuinzena_atual);
+    vdebug := '020';
+	
+    --//Devo ler os periodos e status dos logs do funcionario a partir de sua data de admissao
+    sQuinzenaFim := '';
+    if(dia_admissao > 15) then
+	  quinzena_fim := 2;
+      sQuinzenaFim := ano_admissao || mes_admissao || '2';
+    else
+	  quinzena_fim := 1;
+      sQuinzenaFim := ano_admissao || mes_admissao || '1';
+    end if;
+
+    if(dia_admissao = 1 OR dia_admissao = 16) then
+      --vamos ter a quinzena de admissão completa
+      null;
+	else
+      --se não temos a quinzena de admissão completa então só começa o processo a partir da próxima quinzena
+      quinzena_fim := quinzena_fim + 1;
+	  nmes_admissao := to_number(mes_admissao);
+	  nano_admissao := to_number(ano_admissao);
+      if(quinzena_fim = 3) then
+         quinzena_fim := 1;
+         nmes_admissao := nmes_admissao + 1;
+      end if;
+      if(nmes_admissao = 13) then
+         nmes_admissao := 1;
+         nano_admissao := nano_admissao + 1;
+      end if;
+      mes_admissao := to_char(nmes_admissao);
+      if( length(mes_admissao) < 2) then mes_admissao := '0' || mes_admissao; end if;
+      sQuinzenaFim := to_char(nano_admissao) || mes_admissao || to_char(quinzena_fim);
+	end if;
+	  
+    --//Ajusta a quinzena fim pois o novo log soh entrou no ar em 2014
+    if(to_number(sQuinzenaFim) < 2014081) then
+      sQuinzenaFim := '2014081';
+	end if;
+    --//Ajusta a quinzena fim, na verdade só vamos verificar de 2023 em diante
+    if(to_number(sQuinzenaFim) < 2023011) then
+      sQuinzenaFim := '2023011';
+	end if;
+
+    vdebug := '030';
+
+    ano := ano_atual;
+    mes := mes_atual;
+    dia := dia_atual;
+    quinzena := 0;
+    if(dia > 15) then quinzena := 2; else quinzena := 1; end if;
+	--na verdade tenho que começar da quinzena 1 pois o mês atual não entra na verificação:
+	quinzena := 1;
+    vdebug := '040';
+
+    squinzena := TO_CHAR(ano);
+    smes := TO_CHAR(mes);
+    if( length(smes) < 2) then smes := '0' || smes; end if;
+    squinzena := squinzena || smes || quinzena;
+    --dbms_output.put_line('squinzena=' || squinzena);
+
+    primeiro := 'S';
+    vdebug := '050';
+	
+    while( to_number(squinzena) >= to_number(sQuinzenaFim)) LOOP
+	
+      vdebug := '060';
+	  if (quinzena=1) then
+        sPeriodo := to_char(ano) || ';' || to_number(smes) || ';' || to_char(quinzena) || ';' || '15' || ';' || to_char(quinzena) || ';' || 'Periodo';
+	  else
+        sPeriodo := to_char(ano) || ';' || to_number(smes) || ';' || to_char(quinzena) || ';' || 
+		            TO_CHAR(LAST_DAY(TO_DATE(to_char(ano) || smes || '01', 'YYYYMMDD')) - 15) || ';' || to_char(quinzena) || ';' || 'Periodo';
+		--calculaQtdDias(quinzena, ano, to_number(smes) ) 
+	  end if;
+	  
+      sNomePeriodo := 'Periodo' || ' ' || to_char(quinzena) || ' - ' || smes || '/' || to_char(ano);
+      vdebug := '070';
+	  
+      --//Devo ler se esse periodo estah pendente
+      --//Se eh o ano e mês atuais entao não faço nada pois a verificação é apenas para períodos passados
+      if(substr(sQuinzena_atual,1,6) = substr(squinzena,1,6)) then
+	    null;
+      else
+
+	    BEGIN
+			SELECT NVL(MIN(CASE WHEN D.ST_TIMESHEET_DIA = 'R' THEN 'A' ELSE D.ST_TIMESHEET_DIA END),'X') LOPE_STT_LOG /* A=Aberto, F=Fechado, P=Aprovado, R=Rejeitado, X=Inexistente */
+			  INTO v_LOPE_STT_LOG
+			  FROM LOG_PERIODO P, TIMESHEET_DIA D 
+			 WHERE P.FUNC_CD_FUNC = R_FUNCIONARIOS.CD_FUNCIONARIO     
+			   AND P.LOPE_NR_ANO =  ano        
+			   AND P.LOPE_NR_MES =  to_number(smes)     
+			   AND P.PERI_CD_PERIODO = quinzena  
+			   and D.FUNC_CD_FUNC = P.FUNC_CD_FUNC 
+			   and D.LOPE_NR_ANO = P.LOPE_NR_ANO 
+			   and D.LOPE_NR_MES = P.LOPE_NR_MES 
+			   and CASE WHEN D.LOG_NR_DIA <= 15 THEN 1 ELSE 2 END = P.PERI_CD_PERIODO;
+		EXCEPTION
+		  WHEN NO_DATA_FOUND THEN
+		    v_LOPE_STT_LOG := 'X';
+		END;
+      vdebug := '080';
+	  
+      pendente := 'S';
+      Status := '';
+      if(v_LOPE_STT_LOG = 'A') then
+        pendente := 'S';
+        Status := 'Aberto';
+      end if;
+      if(v_LOPE_STT_LOG = 'F') then
+        pendente := 'N';
+        Status := '';
+      end if;
+      if(v_LOPE_STT_LOG = 'P') then
+        pendente := 'N';
+        Status := '';
+      end if;
+      if(v_LOPE_STT_LOG = 'X') then
+        pendente := 'S';
+        Status := 'Inexistente';
+      end if;
+
+      vdebug := '090';
+
+      if(pendente = 'S') then
+        if(primeiro = 'S') then
+          primeiro := 'N'; 
+		  IF DIA_ATUAL = 16 OR NVL(PFORCEEXEC,'N') = 'S' THEN
+  		    texto_email := '<BR>';
+            cabec_email := 'Prezado(a) ' || R_FUNCIONARIOS.NM_FUNCIONARIO || ', conforme os emails de aviso nos dias anteriores, os Timesheets que estavam em aberto nos períodos abaixo foram automaticamente fechados e as horas faltantes lançadas como horas de ausência no banco de horas (BHE). ' || '<BR>' || 
+                         'Caso necessário, para reabri-los, será preciso enviar um email para o seu gestor contendo a justificativa do não preenchimento e então deverá ser agendada uma sessão com o mesmo para reabertura, preenchimento e novo fechamento do Timesheet.' || '<BR>';
+			assunto_email := 'Sistema Log - Fechamento automático de Timesheet';
+
+		  ELSE 
+  		    texto_email := '<BR>';
+			cabec_email := 'Prezado(a) ' || R_FUNCIONARIOS.NM_FUNCIONARIO || ', existem Timesheets em aberto ou inexistentes nos períodos abaixo. ' || '<BR>' || 
+		                 'O preenchimento do Timesheet é fundamental para a gestão da empresa, de projetos e hora extra.' || '<BR>' || 
+		                 'Portanto, em ' || to_char(v_dias_deadline) || ' dia(s) seu Timesheet será encerrado automaticamente e os dias não preenchidos serão lançados como horas de ausência no banco de horas (BHE). ' || '<BR>' || 
+                         'Caso isto ocorra, para reabri-lo será necessário enviar um email para o seu gestor contendo a justificativa do não preenchimento e então deverá ser agendada uma sessão com o mesmo para reabertura, preenchimento e fechamento do Timesheet.' || '<BR>' ||
+						 'Contamos com você!' || '<BR>';
+			assunto_email := 'Sistema Log - Aviso de Timesheet em Aberto';
+		  END IF;
+        end if; --// if(primeiro)
+    vdebug := '100';
+		
+        texto_email := texto_email || '....' || sNomePeriodo || '<BR>';
+		
+		IF NVL(PDONTCLOSE,'N') = 'N' THEN 
+		   SP_FECHA_TIMESHEET_AUTOMATICO(R_FUNCIONARIOS.CD_FUNCIONARIO, squinzena, NVL(PFORCEEXEC,'N'));
+		END IF;
+		
+    vdebug := '110';
+		
+      end if; --pendente
+      end if; --if(sQuinzena_atual = squinzena) then
+
+      quinzena := quinzena - 1;
+      if(quinzena = 0) then
+         quinzena := 2;
+         mes := mes - 1;
+      end if;
+      if(mes = 0) then
+         mes := 12;
+         ano := ano -1;
+      end if;
+      squinzena := to_char(ano);
+      smes := to_char(mes);
+      if( length(smes) < 2) then smes := '0' || smes; end if;
+      squinzena := squinzena || smes || to_char(quinzena);
+    vdebug := '120';
+	  
+    END LOOP; --while( to_number(squinzena) >= to_number(sQuinzenaFim))
+
+	if (length(texto_email) > 1) then
+	
+	  --Obter o aprovador para coloca-lo em copia no email e obter o email do funcionario aonde?????????
+	  --ENVIAR EMAIL ------------------------------------------------------------------------
+	  DBMS_OUTPUT.PUT_LINE('Func ' || R_FUNCIONARIOS.NM_FUNCIONARIO || ' com email de logs abertos: ' || texto_email);
+      P_DEBUG(substr('Func ' || R_FUNCIONARIOS.NM_FUNCIONARIO || ' com email de logs abertos: ' || texto_email,1,3500));
+
+	  INSERT INTO T_EMAILS(DT_INCLUSAO, DTHR_INCLUSAO, MAILTO, MAILFROM, NM_FUNCIONARIO, ASSUNTO, TX_EMAIL1, TX_EMAIL2, TX_EMAIL3, TX_EMAIL4)
+      VALUES (TRUNC(SYSDATE), SYSDATE, R_FUNCIONARIOS.DS_EMAIL, 'sistemalog@triscal.com.br', R_FUNCIONARIOS.NM_FUNCIONARIO
+	          ,assunto_email, cabec_email, SUBSTR(texto_email, 1, 4000), SUBSTR(texto_email, 4001, 4000), SUBSTR(texto_email, 8002, 4000));
+	  
+	  ---------------------------------------------------------------------------------------
+	  
+	  cabec_email := '';
+   	  assunto_email := '';
+	  texto_email := '';
+	else
+	  DBMS_OUTPUT.PUT_LINE('Func ' || R_FUNCIONARIOS.NM_FUNCIONARIO || ' sem email de logs abertos.');
+      P_DEBUG('Func ' || R_FUNCIONARIOS.NM_FUNCIONARIO || ' sem email de logs abertos.');
+	end if;
+	
+	commit;
+	
+  END LOOP;
+  CLOSE C_FUNCIONARIOS;
+    vdebug := '130';
+  DBMS_OUTPUT.PUT_LINE('Fim SP_EMAIL_LOGS_ABERTOS.');
+  P_DEBUG('Fim SP_EMAIL_LOGS_ABERTOS.');
+
+exception 
+  --when naoehdia_exception then
+  --  null;
+  when others then
+    if sqlcode = -20002 then
+      null;
+    else
+	  v_erro := SQLERRM;
+	  rollback;
+      raise_application_error(-20001, 'Erro em procedure TIMESHEET.SP_EMAIL_LOGS_ABERTOS: ' || vdebug || ' ' || v_erro);
+    end if;
+END;
+
+/
+--------------------------------------------------------
+--  DDL for Procedure SP_FECHA_TIMESHEET_AUTOMATICO
+--------------------------------------------------------
+set define off;
+
+  CREATE OR REPLACE EDITIONABLE PROCEDURE "TIMESHEET"."SP_FECHA_TIMESHEET_AUTOMATICO" (PCD_FUNCIONARIO NUMBER, PQUINZENA VARCHAR2, PFORCEEXEC VARCHAR2 DEFAULT 'N') AS
+
+/* Entre o dia 5 e o dia 15 enviar o email todo dia, copiar o aprovador 
+   em XX dias seu log será encerrado automaticamente e lançado como bhe
+   para reabri-lo será necessário enviar email para o gestor contendo a justificativa
+   será agendada uma sessão com o gestor para reabertura, preenchimento e fechamento do log.
+   Dia 16: executa a rotina fechando os logs e enviando email de fechamento.
+*/
+
+cursor C_DIAS IS
+SELECT LOG_NR_DIA, nvl(d.LOG_NR_HNORMAL,0) LOG_NR_HNORMAL, ST_TIMESHEET_DIA, LOPE_NR_ANO, LOPE_NR_MES
+      ,nvl(d.LOG_QN_AUSBHE,0) LOG_QN_AUSBHE, nvl(d.LOG_QN_AUSABN,0) LOG_QN_AUSABN 
+  FROM  TIMESHEET.TIMESHEET_DIA d
+ WHERE  FUNC_CD_FUNC = PCD_FUNCIONARIO
+   AND LOPE_NR_ANO = TO_NUMBER(SUBSTR(PQUINZENA,1,4)) --2023051
+   AND LOPE_NR_MES = TO_NUMBER(SUBSTR(PQUINZENA,5,2))
+   AND CASE WHEN D.LOG_NR_DIA <= 15 THEN 1 ELSE 2 END = TO_NUMBER(SUBSTR(PQUINZENA,7,1))
+   AND ST_TIMESHEET_DIA IN ('A','R')
+ORDER BY LOG_NR_DIA;
+
+R_DIAS            C_DIAS%ROWTYPE;
+
+DIA_ATUAL         NUMBER(2) := TO_NUMBER(TO_CHAR(SYSDATE, 'DD'));
+
+v_existe_log      NUMBER(1) := 0;
+
+v_SUM_HORAS_TAREFAS  NUMBER(4) := 0;
+v_SUM_HORASN_TAREFAS NUMBER(4) := 0;
+v_HORAS_AUSBHE       NUMBER(4) := 0;
+
+v_erro            VARCHAR2(4000);
+vdebug            VARCHAR2(4000);
+	  
+BEGIN
+  vdebug := 'Inicio SP_FECHA_TIMESHEET_AUTOMATICO, PCD_FUNCIONARIO=' || PCD_FUNCIONARIO || ',PQUINZENA=' || PQUINZENA || ',PFORCEEXEC=' || PFORCEEXEC;
+  dbms_output.put_line(vdebug);
+  P_DEBUG(vdebug);
+  IF DIA_ATUAL <> 16 AND PFORCEEXEC = 'N' THEN
+    raise_application_error(-20002, 'naoehdia_exception');
+  END IF;
+
+  vdebug := '002';
+  
+  SELECT count(*)
+    INTO v_existe_log
+    FROM LOG_PERIODO P
+   WHERE P.FUNC_CD_FUNC = PCD_FUNCIONARIO     
+	 AND P.LOPE_NR_ANO =  TO_NUMBER(SUBSTR(PQUINZENA,1,4)) --2023051        
+	 AND P.LOPE_NR_MES =  TO_NUMBER(SUBSTR(PQUINZENA,5,2))     
+	 AND P.PERI_CD_PERIODO = TO_NUMBER(SUBSTR(PQUINZENA,7,1));
+
+  vdebug := '003';
+	 
+  IF v_existe_log = 0 THEN
+     vdebug := '004';
+     INSERT INTO LOG_PERIODO(FUNC_CD_FUNC,    LOPE_NR_ANO,                      LOPE_NR_MES,                      
+	                         PERI_CD_PERIODO,                  LOPE_STT_LOG, DTA_ULT_ALT, USUR_CD_USUR)
+                      VALUES(PCD_FUNCIONARIO, TO_NUMBER(SUBSTR(PQUINZENA,1,4)), TO_NUMBER(SUBSTR(PQUINZENA,5,2)), 
+					         TO_NUMBER(SUBSTR(PQUINZENA,7,1)), 'A',          SYSDATE, 'AUTO');
+  END IF;
+
+  vdebug := '005';
+  
+  OPEN C_DIAS;
+  LOOP
+	FETCH C_DIAS INTO R_DIAS;
+	EXIT WHEN C_DIAS%NOTFOUND;
+
+    vdebug := '010';
+	
+    SELECT NVL(SUM(NVL(HORAS_NR_CO,0)),0) + NVL(SUM(NVL(HORAS_NR_NC,0)),0) +
+		   NVL(SUM(NVL(HORAS_NR_COEXTRA,0)),0) + NVL(SUM(NVL(HORAS_NR_NCEXTRA,0)),0)  
+		  ,NVL(SUM(NVL(HORAS_NR_CO,0)),0) + NVL(SUM(NVL(HORAS_NR_NC,0)),0)
+	  INTO v_SUM_HORAS_TAREFAS, v_SUM_HORASN_TAREFAS
+      FROM TIMESHEET.TIMESHEET_DIA_TAREFA D
+     WHERE D.FUNC_CD_FUNC = PCD_FUNCIONARIO
+       AND D.LOPE_NR_ANO = TO_NUMBER(SUBSTR(PQUINZENA,1,4)) --2023051
+       AND D.LOPE_NR_MES = TO_NUMBER(SUBSTR(PQUINZENA,5,2))
+	   AND D.LOG_NR_DIA = R_DIAS.LOG_NR_DIA;
+
+    vdebug := '020';
+	   
+     IF (nvl(v_SUM_HORAS_TAREFAS,0) + R_DIAS.LOG_QN_AUSBHE + R_DIAS.LOG_QN_AUSABN) > 24 then
+	   dbms_output.put_line('Dia não pôde ser fechado automaticamente (>24h). PCD_FUNCIONARIO=' || PCD_FUNCIONARIO || ', PQUINZENA= ' || PQUINZENA || ', DIA=' || TO_CHAR(R_DIAS.LOG_NR_DIA));
+       P_DEBUG('Dia não pôde ser fechado automaticamente (>24h). PCD_FUNCIONARIO=' || PCD_FUNCIONARIO || ', PQUINZENA= ' || PQUINZENA || ', DIA=' || TO_CHAR(R_DIAS.LOG_NR_DIA));
+	 ELSE
+	   if( (nvl(v_SUM_HORASN_TAREFAS,0)) > R_DIAS.LOG_NR_HNORMAL) then
+	     dbms_output.put_line('Dia não pôde ser fechado automaticamente (>Horas Normais). PCD_FUNCIONARIO=' || PCD_FUNCIONARIO || ', PQUINZENA= ' || PQUINZENA || ', DIA=' || TO_CHAR(R_DIAS.LOG_NR_DIA));
+         P_DEBUG('Dia não pôde ser fechado automaticamente (>Horas Normais). PCD_FUNCIONARIO=' || PCD_FUNCIONARIO || ', PQUINZENA= ' || PQUINZENA || ', DIA=' || TO_CHAR(R_DIAS.LOG_NR_DIA));
+	   ELSE
+	     if( (nvl(v_SUM_HORAS_TAREFAS,0) >= R_DIAS.LOG_NR_HNORMAL) AND ((R_DIAS.LOG_QN_AUSBHE + R_DIAS.LOG_QN_AUSABN) > 0)) then
+	       dbms_output.put_line('Dia não pôde ser fechado automaticamente (>Horas mais Ausencia). PCD_FUNCIONARIO=' || PCD_FUNCIONARIO || ', PQUINZENA= ' || PQUINZENA || ', DIA=' || TO_CHAR(R_DIAS.LOG_NR_DIA));
+           P_DEBUG('Dia não pôde ser fechado automaticamente (>Horas mais Ausencia). PCD_FUNCIONARIO=' || PCD_FUNCIONARIO || ', PQUINZENA= ' || PQUINZENA || ', DIA=' || TO_CHAR(R_DIAS.LOG_NR_DIA));
+ 	     ELSE
+		 
+           vdebug := '050';
+           v_HORAS_AUSBHE := R_DIAS.LOG_NR_HNORMAL - (v_SUM_HORAS_TAREFAS + R_DIAS.LOG_QN_AUSBHE + R_DIAS.LOG_QN_AUSABN);
+           IF v_HORAS_AUSBHE < 0 THEN 
+		     v_HORAS_AUSBHE := 0;
+		   END IF;
+           vdebug := '060';
+		   
+		   UPDATE TIMESHEET_DIA SET LOG_QN_AUSBHE = v_HORAS_AUSBHE + NVL(LOG_QN_AUSBHE,0)
+		                           ,DT_ULT_ALT = SYSDATE
+								   ,USUR_CD_USUR = 'AUTO'
+								   ,ST_TIMESHEET_DIA = 'F'
+		    WHERE FUNC_CD_FUNC = PCD_FUNCIONARIO
+              AND LOPE_NR_ANO = R_DIAS.LOPE_NR_ANO
+              AND LOPE_NR_MES = R_DIAS.LOPE_NR_MES
+			  AND LOG_NR_DIA = R_DIAS.LOG_NR_DIA
+			  AND ST_TIMESHEET_DIA IN ('A','R');
+
+           vdebug := '070';
+	       --dbms_output.put_line('Dia fechado automaticamente. PCD_FUNCIONARIO=' || PCD_FUNCIONARIO || ', PQUINZENA= ' || PQUINZENA || ', DIA=' || TO_CHAR(R_DIAS.LOG_NR_DIA));
+			  
+	     END IF;
+	   END IF;
+	 END IF;
+     vdebug := '080';
+	
+  END LOOP;
+  CLOSE C_DIAS;
+  vdebug := '130';
+  
+  commit;
+  
+  DBMS_OUTPUT.PUT_LINE('Fim SP_FECHA_TIMESHEET_AUTOMATICO.');
+  P_DEBUG('Fim SP_FECHA_TIMESHEET_AUTOMATICO.');
+
+exception 
+  --when naoehdia_exception then
+  --  null;
+  when others then
+    if sqlcode = -20002 then
+      null;
+    else
+	  v_erro := SQLERRM;
+	  rollback;
+      raise_application_error(-20001, 'Erro em procedure TIMESHEET.SP_FECHA_TIMESHEET_AUTOMATICO, PCD_FUNCIONARIO=' || PCD_FUNCIONARIO || ', PQUINZENA= ' || PQUINZENA || ': ' || vdebug || ' ' || v_erro);
+    end if;
+END;
+
+/
+--------------------------------------------------------
+--  DDL for Procedure TESTE_LOGICAPPS
+--------------------------------------------------------
+set define off;
+
+  CREATE OR REPLACE EDITIONABLE PROCEDURE "TIMESHEET"."TESTE_LOGICAPPS" AS
+BEGIN
+DELETE FROM TIMESHEET.T_EMAILS;
+
+INSERT INTO TIMESHEET.T_EMAILS VALUES (TRUNC(SYSDATE-1), SYSDATE-1, 'cchamma@triscal.com.br', 'sistemalog@triscal.com.br', 'Chris', 'TESTE1', 'TX1<BR>.', 'TX1', null, null);
+--INSERT INTO TIMESHEET.T_EMAILS VALUES (TRUNC(SYSDATE), SYSDATE, 'cchamma@triscal.com.br', 'sistemalog@triscal.com.br', 'Chris', 'TESTE2', 'TX2<BR>.', 'TX22', null, null);
+--INSERT INTO TIMESHEET.T_EMAILS VALUES (TRUNC(SYSDATE), SYSDATE, 'cchamma@triscal.com.br', 'sistemalog@triscal.com.br', 'Chris22', 'TESTE22', 'TX22<BR>.', 'TX222', null, null);
+INSERT INTO TIMESHEET.T_EMAILS VALUES (TRUNC(SYSDATE+1), SYSDATE+1, 'cchamma@triscal.com.br', 'sistemalog@triscal.com.br', 'Chris', 'TESTE3', 'TX3<BR>.', 'TX33', null, null);
+INSERT INTO TIMESHEET.T_EMAILS VALUES (TRUNC(SYSDATE+2), SYSDATE+2, 'cchamma@triscal.com.br', 'sistemalog@triscal.com.br', 'Chris', 'TESTE4', 'TX4BR>.', 'TX44', null, null);
+INSERT INTO TIMESHEET.T_EMAILS VALUES (TRUNC(SYSDATE+3), SYSDATE+3, 'cchamma@triscal.com.br', 'sistemalog@triscal.com.br', 'Chris', 'TESTE5', 'TX5<BR>.', 'TX55', null, null);
+INSERT INTO TIMESHEET.T_EMAILS VALUES (TRUNC(SYSDATE+4), SYSDATE+4, 'cchamma@triscal.com.br', 'sistemalog@triscal.com.br', 'Chris', 'TESTE6', 'TX6<BR>.', 'TX66', null, null);
+
+COMMIT;
+
+END;
+
+/
+--------------------------------------------------------
+--  DDL for Package Body DSSP3
+--------------------------------------------------------
+
+  CREATE OR REPLACE EDITIONABLE PACKAGE BODY "TIMESHEET"."DSSP3" AS 
+
+V_ENTRADA DEPT.DEPTNO%TYPE;
+--CURSOR GET_COL return dept%rowtype IS SELECT DEPTNO, DNAME, LOC FROM DEPT WHERE DEPTNO >= V_ENTRADA; 
+CURSOR GET_COL5 return DeptRecTyp IS SELECT (DEPTNO / DIVISOR) DEPTNO, DNAME, LOC FROM DEPT WHERE DEPTNO >= V_ENTRADA ORDER BY DEPTNO; 
+--CURSOR GET_COL5 return dept%rowtype IS SELECT DEPTNO, DNAME, LOC FROM DEPT WHERE DEPTNO >= V_ENTRADA; 
+
+PROCEDURE DSSP3 (DEPTNO_ARG OUT DEPT.DEPTNO%TYPE, 
+                 DNAME_ARG OUT DEPT.DNAME%TYPE, 
+                 LOC_ARG OUT DEPT.LOC%TYPE) IS 
+BEGIN 
+  IF NOT GET_COL5%ISOPEN THEN 
+    V_ENTRADA := 0;
+    OPEN GET_COL5; 
+  END IF; 
+  FETCH GET_COL5 INTO DEPTNO_ARG,DNAME_ARG,LOC_ARG; 
+  IF GET_COL5%NOTFOUND THEN 
+    CLOSE GET_COL5; 
+    RAISE_APPLICATION_ERROR(-20001, 'EOD FOUND'); 
+  END IF; 
+END; 
+
+PROCEDURE DSSP4 (P_ENTRADA IN DEPT.DEPTNO%TYPE,
+                 DEPTNO_ARG OUT DEPT.DEPTNO%TYPE, 
+                 DNAME_ARG OUT DEPT.DNAME%TYPE, 
+                 LOC_ARG OUT DEPT.LOC%TYPE) IS 
+BEGIN 
+  IF NOT GET_COL5%ISOPEN THEN 
+    V_ENTRADA := P_ENTRADA;
+    OPEN GET_COL5; 
+  END IF; 
+  FETCH GET_COL5 INTO DEPTNO_ARG,DNAME_ARG,LOC_ARG; 
+  IF GET_COL5%NOTFOUND THEN 
+    CLOSE GET_COL5; 
+    RAISE_APPLICATION_ERROR(-20001, 'EOD FOUND'); 
+  END IF; 
+END; 
+
+PROCEDURE DSSP5 (P_ENTRADA IN DEPT.DEPTNO%TYPE,
+                 DEPTNO_ARG OUT DEPT.DEPTNO%TYPE, 
+                 DNAME_ARG OUT DEPT.DNAME%TYPE, 
+                 LOC_ARG OUT DEPT.LOC%TYPE) IS 
+BEGIN 
+  IF NOT GET_COL5%ISOPEN THEN 
+    V_ENTRADA := P_ENTRADA;
+    OPEN GET_COL5; 
+  END IF; 
+  FETCH GET_COL5 INTO DEPTNO_ARG,DNAME_ARG,LOC_ARG; 
+  IF GET_COL5%NOTFOUND THEN 
+    CLOSE GET_COL5; 
+    RAISE_APPLICATION_ERROR(-20001, 'EOD FOUND'); 
+  END IF; 
+
+EXCEPTION
+  WHEN OTHERS THEN 
+    RAISE_APPLICATION_ERROR(-20002, 'Erro em DSSP5: ' || SQLERRM); 
+END; 
+
+END;
+
+/
+--------------------------------------------------------
+--  DDL for Package Body PCK_TESTE_CURSOR
+--------------------------------------------------------
+
+  CREATE OR REPLACE EDITIONABLE PACKAGE BODY "TIMESHEET"."PCK_TESTE_CURSOR" AS
+  CURSOR GET_COL IS 
+  SELECT idorigem, nome, dt_ult_alt
+  FROM (SELECT '1' idorigem, 'Nome1' nome, '2014-12-01' dt_ult_alt from dual
+        union all
+          SELECT '2' idorigem, 'Nome2' nome, '2015-01-01' dt_ult_alt from dual) TAB1;
+  
+  PROCEDURE P_TESTE_CURSOR (p_entrada in varchar, idorigem out varchar, nome out varchar, dt_ult_alt out varchar) IS 
+  BEGIN
+    IF NOT GET_COL%ISOPEN THEN
+      OPEN GET_COL;
+    END IF;
+    FETCH GET_COL INTO idorigem,nome,dt_ult_alt;
+    IF GET_COL%NOTFOUND THEN
+      CLOSE GET_COL;
+      RAISE_APPLICATION_ERROR(-20001,'EOD FOUND');
+    END IF;
+  END;
+END;
+
+/
+--------------------------------------------------------
+--  DDL for Package Body PKG_SUGAR_INTERFACE_LOG
+--------------------------------------------------------
+
+  CREATE OR REPLACE EDITIONABLE PACKAGE BODY "TIMESHEET"."PKG_SUGAR_INTERFACE_LOG" AS
+
+  TYPE T_TIMESHEET_INPUT IS RECORD (
+    DT_INICIO DATE, 
+    DT_FINAL DATE, 
+    TAREFAS T_TIMESHEET_TAREFAS
+  );
+
+  TIMESHEET_NAMESPACE CONSTANT VARCHAR2(60):='xmlns="http://timesheet.triscal.com.br/sugarServices/types"';
+  CONST_CD_USUR CONSTANT VARCHAR2(5) := 'SUGAR';
+  
+  CURSOR C_STAGE_GROUPED IS
+    SELECT CD_PROJETO, FUNC_CD_FUNC, TRUNC(DT_LOG,'DDD') DT_LOG, SUM(HORAS_NR) HORAS_NR
+    FROM SUGAR_STAGE
+    GROUP BY CD_PROJETO, FUNC_CD_FUNC, TRUNC(DT_LOG,'DDD');
+    
+  
+  FUNCTION F_CARREGA_TAREFA_USUARIO(P_DT_CARGA IN DATE, P_STAGE_GROUPED IN C_STAGE_GROUPED%ROWTYPE, P_LOG_HANDLER IN OUT T_LOG_HANDLER) RETURN T_ERROS_TAREFAS IS
+    
+    V_DIA NUMBER(2);
+    V_MES NUMBER(2);
+    V_ANO NUMBER(4);
+    V_PERI_CD_PERIODO NUMBER(1);
+    V_OBS TIMESHEET_DIA_TAREFA.HORAS_TX_OBS%TYPE;
+    
+    V_MES_ATUAL NUMBER(2);
+    V_ANO_ATUAL NUMBER(4);
+    V_PERI_CD_PERIODO_ATUAL NUMBER(1);
+    V_LOPE_STT_LOG_ATUAL LOG_PERIODO.LOPE_STT_LOG%TYPE;
+    
+    V_ST_TIMESHEET_DIA TIMESHEET_DIA.ST_TIMESHEET_DIA%TYPE;
+    V_LOG_NR_HNORMAL TIMESHEET_DIA.LOG_NR_HNORMAL%TYPE;
+    V_HORAS_NR_CO_JA_LANCADAS TIMESHEET_DIA_TAREFA.HORAS_NR_CO%TYPE;
+    
+    V_CHECK_PROJETO NUMBER;
+    V_CHECK_FUNCIONARIO NUMBER;
+    V_PERI_INI NUMBER(8);
+    V_PERI_FIM NUMBER(8);
+    
+    V_SEQ_PROJETO_FASE PROJETO_FASE.SEQ_PROJETO_FASE%TYPE;
+    V_SEQ_PROJETO_TAREFA PROJETO_TAREFA.SEQ_PROJETO_TAREFA%TYPE;
+    V_ACEITA_HORAS_CO_S_N VARCHAR2(1);
+    
+    V_HR_CO_ATUAL TIMESHEET_DIA_TAREFA.HORAS_NR_CO%TYPE;
+    V_HR_NC_ATUAL TIMESHEET_DIA_TAREFA.HORAS_NR_NC%TYPE;
+    V_HR_COEXTRA_ATUAL TIMESHEET_DIA_TAREFA.HORAS_NR_COEXTRA%TYPE;
+    V_HR_NCEXTRA_ATUAL TIMESHEET_DIA_TAREFA.HORAS_NR_NCEXTRA%TYPE;
+    
+    V_HR TIMESHEET_DIA_TAREFA.HORAS_NR_CO%TYPE;
+    V_HR_EXTRA TIMESHEET_DIA_TAREFA.HORAS_NR_COEXTRA%TYPE;
+    V_HORAS_DISPONIVEIS NUMBER(5,2);
+    V_ERROS_TAREFAS T_ERROS_TAREFAS:=T_ERROS_TAREFAS();
+    
+    CURSOR C_STAGE (P_CD_PROJETO SUGAR_STAGE.CD_PROJETO%TYPE, P_FUNC_CD_FUNC SUGAR_STAGE.FUNC_CD_FUNC%TYPE, P_DT_LOG SUGAR_STAGE.DT_LOG%TYPE) IS
+      SELECT CD_SUGAR, HORAS_NR
+      FROM SUGAR_STAGE
+      WHERE CD_PROJETO = P_CD_PROJETO
+        AND FUNC_CD_FUNC = P_FUNC_CD_FUNC
+        AND TRUNC(DT_LOG,'DDD') = TRUNC(P_DT_LOG, 'DDD');
+  BEGIN
+    V_DIA := TO_NUMBER(TO_CHAR(P_STAGE_GROUPED.DT_LOG,'DD'));
+    V_MES := TO_NUMBER(TO_CHAR(P_STAGE_GROUPED.DT_LOG,'MM'));
+    V_ANO := TO_NUMBER(TO_CHAR(P_STAGE_GROUPED.DT_LOG,'RRRR'));
+    
+    IF V_DIA <= 15 THEN
+      V_PERI_CD_PERIODO := 1;
+    ELSE
+      V_PERI_CD_PERIODO := 2;
+    END IF;    
+    P_LOG_HANDLER.LOG_IT(T_LOG_HANDLER.LOG_LEVEL_FINE(), '[F_CARREGA_TAREFA_USUARIO] CD_PROJETO=' || P_STAGE_GROUPED.CD_PROJETO || '; FUNC_CD_FUNC=' || P_STAGE_GROUPED.FUNC_CD_FUNC || '; V_DIA=' || V_DIA || '; V_MES=' || V_MES || '; V_ANO=' || V_ANO || '; V_PERI_CD_PERIODO=' || V_PERI_CD_PERIODO );
+    
+   /****************************************************************************
+    *  PROCESSA O LOG_PERIODO PARA OBTER O PERÍODO ATUAL E CRIAR OS PERÍODOS   *
+    *  INTERMEDIÁRIOS, CASO SEJA NECESSÁRIO                                    *
+    ****************************************************************************/
+    
+    -- OBTÉM O PERÍODO MAIS PRÓXIMO DO PERÍODO ALVO
+    BEGIN
+      SELECT LOPE_NR_ANO, LOPE_NR_MES, PERI_CD_PERIODO, LOPE_STT_LOG
+      INTO  V_ANO_ATUAL, V_MES_ATUAL, V_PERI_CD_PERIODO_ATUAL, V_LOPE_STT_LOG_ATUAL
+      FROM (
+        SELECT LOPE_NR_ANO, LOPE_NR_MES, PERI_CD_PERIODO, LOPE_STT_LOG
+        FROM LOG_PERIODO 
+        WHERE FUNC_CD_FUNC = P_STAGE_GROUPED.FUNC_CD_FUNC
+          AND LOPE_NR_ANO || TO_CHAR(LOPE_NR_MES,'00') || PERI_CD_PERIODO <= V_ANO || TO_CHAR(V_MES,'00') || V_PERI_CD_PERIODO
+          --AND LOPE_NR_ANO <= V_ANO
+          --AND LOPE_NR_MES <= V_MES
+          --AND PERI_CD_PERIODO <= V_PERI_CD_PERIODO
+        ORDER BY LOPE_NR_ANO DESC, LOPE_NR_MES DESC, PERI_CD_PERIODO DESC )
+      WHERE ROWNUM = 1;
+    EXCEPTION
+      WHEN NO_DATA_FOUND THEN 
+        P_LOG_HANDLER.LOG_IT(T_LOG_HANDLER.LOG_LEVEL_WARNING(), '[F_CARREGA_TAREFA_USUARIO] NÃO EXISTEM LOGS PARA O FUNCIONÁRIO FUNC_CD_FUNC=' || P_STAGE_GROUPED.FUNC_CD_FUNC);
+        
+        SELECT COUNT(1) 
+        INTO V_CHECK_FUNCIONARIO 
+        FROM FUNCIONARIO 
+        WHERE CD_FUNCIONARIO = P_STAGE_GROUPED.FUNC_CD_FUNC
+          AND DT_RESCISAO IS NULL;
+        -- NÃO TEM LOGS? VOU VERIFICAR SE O USUÁRIO EXISTE E SE ESTÁ ATIVO
+        IF V_CHECK_FUNCIONARIO < 1 THEN
+          RAISE_APPLICATION_ERROR(-20016, 'O funcionário ID=' || P_STAGE_GROUPED.FUNC_CD_FUNC || ' não existe ou teve seu contrato rescindido.');
+        END IF;
+        
+        IF V_PERI_CD_PERIODO = 2 THEN
+          V_PERI_CD_PERIODO_ATUAL := 1;
+          V_MES_ATUAL := V_MES;
+          V_ANO_ATUAL := V_ANO;
+        ELSE
+          V_PERI_CD_PERIODO_ATUAL := 2;
+          IF V_MES = 1 THEN
+            V_MES_ATUAL := 12;
+            V_ANO_ATUAL := V_ANO - 1;
+          ELSE
+            V_MES_ATUAL := V_MES - 1;
+            V_ANO_ATUAL := V_ANO;
+          END IF;
+        END IF;
+    END;
+    P_LOG_HANDLER.LOG_IT(T_LOG_HANDLER.LOG_LEVEL_FINE(), '[F_CARREGA_TAREFA_USUARIO] LOG BASE LOPE_NR_ANO=' || V_ANO_ATUAL || '; LOPE_NR_MES=' || V_MES_ATUAL || '; PERI_CD_PERIODO=' || V_PERI_CD_PERIODO_ATUAL);
+        
+    -- CRIA OS PERÍODOS NECESSÁRIOS
+    WHILE ((V_ANO_ATUAL * 1000) + (V_MES_ATUAL * 10) + V_PERI_CD_PERIODO_ATUAL) < ((V_ANO * 1000) + (V_MES * 10) + V_PERI_CD_PERIODO) LOOP
+      IF (V_PERI_CD_PERIODO_ATUAL = 1) THEN
+        V_PERI_CD_PERIODO_ATUAL := 2;
+      ELSE
+        V_PERI_CD_PERIODO_ATUAL := 1;
+        IF V_MES_ATUAL < 12 THEN
+          V_MES_ATUAL := V_MES_ATUAL + 1;
+        ELSE
+          V_MES_ATUAL := 1;
+          V_ANO_ATUAL := V_ANO_ATUAL + 1;
+        END IF;
+      END IF;  
+      BEGIN
+        P_LOG_HANDLER.LOG_IT(T_LOG_HANDLER.LOG_LEVEL_WARNING(), '[F_CARREGA_TAREFA_USUARIO] CRIANDO O LOG FUNC_CD_FUNC=' ||P_STAGE_GROUPED.FUNC_CD_FUNC || '; LOPE_NR_ANO=' || V_ANO_ATUAL || '; LOPE_NR_MES=' || V_MES_ATUAL || '; PERI_CD_PERIODO=' || V_PERI_CD_PERIODO_ATUAL);
+        SAVEPOINT CRIA_LOG_PERIODO;
+        INSERT INTO LOG_PERIODO
+          (FUNC_CD_FUNC, 
+           LOPE_NR_ANO, 
+           LOPE_NR_MES, 
+           PERI_CD_PERIODO, 
+           LOPE_STT_LOG, 
+           DTA_ULT_ALT, 
+           USUR_CD_USUR)
+        VALUES 
+          (P_STAGE_GROUPED.FUNC_CD_FUNC, 
+           V_ANO_ATUAL,
+           V_MES_ATUAL,
+           V_PERI_CD_PERIODO_ATUAL,
+           'A',
+           SYSDATE,
+           CONST_CD_USUR);
+        V_LOPE_STT_LOG_ATUAL := 'A';
+      EXCEPTION
+        WHEN OTHERS THEN
+          ROLLBACK TO CRIA_LOG_PERIODO;
+          RAISE_APPLICATION_ERROR(-20015, 'Ocorreu um erro criando o LOG_PERIODO. SQLCODE=' || SQLCODE || '; MENSAGEM=' || SQLERRM);
+      END;    
+    END LOOP;
+    
+   /****************************************************************************
+    *  PROCESSA O TIMESHEET_DIA PARA OBTER OS DADOS DO DIA ATUAL               *
+    ****************************************************************************/
+    BEGIN
+      SELECT 
+        D.ST_TIMESHEET_DIA, 
+        NVL(D.LOG_NR_HNORMAL,0),
+        (SELECT NVL(SUM(NVL(HORAS_NR_CO,0) + NVL(HORAS_NR_NC,0)),0)
+         FROM TIMESHEET_DIA_TAREFA T
+         WHERE T.FUNC_CD_FUNC = P_STAGE_GROUPED.FUNC_CD_FUNC
+           AND T.LOPE_NR_ANO = V_ANO
+           AND T.LOG_NR_DIA = V_DIA
+           AND T.LOPE_NR_MES = V_MES
+        )
+      INTO V_ST_TIMESHEET_DIA, V_LOG_NR_HNORMAL, V_HORAS_NR_CO_JA_LANCADAS 
+      FROM TIMESHEET_DIA D
+      WHERE D.FUNC_CD_FUNC = P_STAGE_GROUPED.FUNC_CD_FUNC
+        AND D.LOPE_NR_ANO = V_ANO
+        AND D.LOG_NR_DIA = V_DIA
+        AND D.LOPE_NR_MES = V_MES;
+        
+    EXCEPTION
+      WHEN NO_DATA_FOUND THEN
+        RAISE_APPLICATION_ERROR(-20011, 'Não encontrou o dia em TIMESHEET_DIA.');
+    END;
+         
+      
+    --Se o log está em aberto ou se ele acabou de ser criado pela interface devo processar as horas
+    IF V_LOPE_STT_LOG_ATUAL = 'A' AND V_ST_TIMESHEET_DIA IN ('A','R') THEN /*Aberto ou Rejeitado*/ 
+    
+      BEGIN
+        SELECT ACEITA_HORAS_CO_S_N INTO V_ACEITA_HORAS_CO_S_N
+        FROM PROJETO
+        WHERE CD_PROJETO = P_STAGE_GROUPED.CD_PROJETO;
+    
+      EXCEPTION
+        WHEN NO_DATA_FOUND THEN
+          RAISE_APPLICATION_ERROR(-20012, 'Projeto código="' || P_STAGE_GROUPED.CD_PROJETO || '" não encontrado');
+      END;
+    
+      -- prepara a observação
+      V_OBS := NULL;
+      FOR V_TAREFA IN C_STAGE(P_STAGE_GROUPED.CD_PROJETO, P_STAGE_GROUPED.FUNC_CD_FUNC, P_STAGE_GROUPED.DT_LOG) LOOP
+        IF V_OBS IS NOT NULL THEN
+          V_OBS := V_OBS || ', ';
+        END IF;
+        V_OBS := V_OBS || 'SUGAR_GUID={' || V_TAREFA.CD_SUGAR || '} -> ' || TRIM(TO_CHAR(V_TAREFA.HORAS_NR,'990.00')) || 'hs';
+      END LOOP;
+      P_LOG_HANDLER.LOG_IT(T_LOG_HANDLER.LOG_LEVEL_FINE(), '[F_CARREGA_TAREFA_USUARIO] OBS=' ||V_OBS);
+
+      --Devo buscar a tarefa para lançar as horas:
+      BEGIN
+        V_PERI_INI := ((V_ANO * 10000)+(V_MES * 100)+(V_PERI_CD_PERIODO * 15)-14);
+        V_PERI_FIM := ((V_ANO * 10000)+(V_MES * 100)+(V_PERI_CD_PERIODO * 15)+(TRUNC(V_PERI_CD_PERIODO/2)));
+        P_LOG_HANDLER.LOG_IT(T_LOG_HANDLER.LOG_LEVEL_FINEST(), '[F_CARREGA_TAREFA_USUARIO] V_PERI_INI=' || V_PERI_INI || '; V_PERI_FIM=' || V_PERI_FIM);
+      
+        SELECT FASE.SEQ_PROJETO_FASE, TARE.SEQ_PROJETO_TAREFA
+        INTO V_SEQ_PROJETO_FASE, V_SEQ_PROJETO_TAREFA
+        FROM PROJETO PROJ, PROJETO_FASE FASE, PROJETO_TAREFA TARE  
+        WHERE PROJ.CD_PROJETO = FASE.CD_PROJETO 
+          AND PROJ.CD_PROJETO = TARE.CD_PROJETO 
+          AND FASE.CD_PROJETO = TARE.CD_PROJETO 
+          AND FASE.SEQ_PROJETO_FASE = TARE.SEQ_PROJETO_FASE 
+          AND ((FASE.ST_FASEPROJ = 'A' AND ((PROJ.IN_INTERNO = 'S') OR (PROJ.IN_INTERNO = 'N' AND TO_NUMBER(TO_CHAR(FASE.DT_INICIO_REAL,'RRRRMMDD')) <= V_PERI_FIM )))--TO_NUMBER(V_ANO||V_SMES||V_FIMDIA))))
+               OR (FASE.ST_FASEPROJ = 'E'  
+                  AND TO_NUMBER(TO_CHAR(FASE.DT_INICIO_REAL,'RRRRMMDD')) <= V_PERI_FIM  
+                  AND TO_NUMBER(TO_CHAR(FASE.DT_FIM_REAL,'RRRRMMDD')) >= V_PERI_INI)  
+              )  
+          AND ((TARE.ST_TAREFA = 'A' AND ((PROJ.IN_INTERNO = 'S') OR (PROJ.IN_INTERNO = 'N' AND TO_NUMBER(TO_CHAR(TARE.DT_INICIO_REAL,'RRRRMMDD')) <= V_PERI_FIM )))--TO_NUMBER(V_ANO||V_SMES||V_FIMDIA))))  
+               OR (TARE.ST_TAREFA = 'E'  
+                  AND TO_NUMBER(TO_CHAR(TARE.DT_INICIO_REAL,'RRRRMMDD')) <= V_PERI_FIM  
+                  AND TO_NUMBER(TO_CHAR(TARE.DT_FIM_REAL,'RRRRMMDD')) >= V_PERI_INI)  
+              )  
+          AND ((PROJ.IN_INTERNO = 'S') OR (PROJ.IN_INTERNO = 'N' 
+                AND EXISTS (
+                  SELECT 1  
+                  FROM PROJETO_TAREFA_FUNCIONARIO PF 
+                  WHERE PF.FUNC_CD_FUNC = P_STAGE_GROUPED.FUNC_CD_FUNC 
+                    AND PF.CD_PROJETO = PROJ.CD_PROJETO  
+                    AND PF.SEQ_PROJETO_FASE = TARE.SEQ_PROJETO_FASE 
+                    AND PF.SEQ_PROJETO_TAREFA = TARE.SEQ_PROJETO_TAREFA))) 
+          AND TARE.IN_TAREFA_EXTERNA = 'S' 
+          AND PROJ.CD_PROJETO = P_STAGE_GROUPED.CD_PROJETO;        
+
+      EXCEPTION
+        WHEN TOO_MANY_ROWS THEN
+          RAISE_APPLICATION_ERROR(-20013, 'Mais de uma tarefa encontrada');
+        WHEN NO_DATA_FOUND THEN
+          RAISE_APPLICATION_ERROR(-20014, 'Nenhuma tarefa encontrada. Verifique se o funcionário ID="' || P_STAGE_GROUPED.FUNC_CD_FUNC || '" está alocado no projeto ID="' || P_STAGE_GROUPED.CD_PROJETO || '".');
+      END;
+    
+      /*
+      --Verifica as horas jah lancadas em outras tarefas no mesmo dia
+      SELECT NVL(SUM(NVL(HORAS_NR_CO,0)),0), NVL(SUM(NVL(HORAS_NR_NC,0)),0), NVL(SUM(NVL(HORAS_NR_COEXTRA,0)),0), NVL(SUM(NVL(HORAS_NR_NCEXTRA,0)),0) 
+      INTO V_HR_CO_ATUAL, V_HR_NC_ATUAL, V_HR_COEXTRA_ATUAL, V_HR_NCEXTRA_ATUAL
+      FROM TIMESHEET_DIA_TAREFA T
+      WHERE T.FUNC_CD_FUNC = V_STAGE_GROUPED.FUNC_CD_FUNC
+        AND T.CD_PROJETO <> V_STAGE_GROUPED.CD_PROJETO
+        AND T.LOPE_NR_ANO = V_ANO
+        AND T.LOG_NR_DIA = V_DIA
+        AND T.LOPE_NR_MES = V_MES;
+      */
+      
+      V_HORAS_DISPONIVEIS :=  V_LOG_NR_HNORMAL - V_HORAS_NR_CO_JA_LANCADAS;
+      IF V_HORAS_DISPONIVEIS > P_STAGE_GROUPED.HORAS_NR THEN
+        V_HR := P_STAGE_GROUPED.HORAS_NR;
+        V_HR_EXTRA := 0;
+      ELSE
+        V_HR := V_HORAS_DISPONIVEIS;
+        V_HR_EXTRA := P_STAGE_GROUPED.HORAS_NR - V_HR;        
+      END IF;
+      P_LOG_HANDLER.LOG_IT(T_LOG_HANDLER.LOG_LEVEL_FINEST(), '[F_CARREGA_TAREFA_USUARIO] V_LOG_NR_HNORMAL=' || V_LOG_NR_HNORMAL || '; V_HORAS_NR_CO_JA_LANCADAS=' || V_HORAS_NR_CO_JA_LANCADAS || '; V_HORAS_DISPONIVEIS=' || V_HORAS_DISPONIVEIS || '; P_STAGE_GROUPED.HORAS_NR=' || P_STAGE_GROUPED.HORAS_NR || '; V_HR=' || V_HR || '; V_HR_EXTRA=' || V_HR_EXTRA || '; V_ACEITA_HORAS_CO_S_N=' || V_ACEITA_HORAS_CO_S_N);
+		
+      BEGIN
+        SAVEPOINT SALVA_DIA_TAREFA;
+        IF V_ACEITA_HORAS_CO_S_N = 'S' THEN
+          INSERT INTO TIMESHEET_DIA_TAREFA 
+           (FUNC_CD_FUNC, 
+            LOPE_NR_ANO, 
+            LOPE_NR_MES, 
+            CD_PROJETO, 
+            SEQ_PROJETO_FASE, 
+            SEQ_PROJETO_TAREFA, 
+            LOG_NR_DIA, 
+            HORAS_NR_CO, 
+            HORAS_TX_OBS, 
+            DT_ULT_ALT, 
+            USUR_CD_USUR, 
+            HORAS_NR_COEXTRA)
+          VALUES
+           (P_STAGE_GROUPED.FUNC_CD_FUNC, 
+            V_ANO, 
+            V_MES, 
+            P_STAGE_GROUPED.CD_PROJETO, 
+            V_SEQ_PROJETO_FASE, 
+            V_SEQ_PROJETO_TAREFA, 
+            V_DIA, 
+            V_HR, 
+            SUBSTR(V_OBS,1,1000), 
+            P_DT_CARGA,
+            CONST_CD_USUR, 
+            V_HR_EXTRA);
+            
+            P_LOG_HANDLER.LOG_IT(T_LOG_HANDLER.LOG_LEVEL_FINEST(), '[F_CARREGA_TAREFA_USUARIO] HORAS COBRÁVEIS INSERIDAS');		
+        ELSE
+          INSERT INTO TIMESHEET_DIA_TAREFA 
+           (FUNC_CD_FUNC, 
+            LOPE_NR_ANO, 
+            LOPE_NR_MES, 
+            CD_PROJETO, 
+            SEQ_PROJETO_FASE, 
+            SEQ_PROJETO_TAREFA, 
+            LOG_NR_DIA, 
+            HORAS_NR_NC, 
+            HORAS_TX_OBS, 
+            DT_ULT_ALT, 
+            USUR_CD_USUR, 
+            HORAS_NR_NCEXTRA)
+          VALUES 
+           (P_STAGE_GROUPED.FUNC_CD_FUNC, 
+            V_ANO, 
+            V_MES, 
+            P_STAGE_GROUPED.CD_PROJETO, 
+            V_SEQ_PROJETO_FASE, 
+            V_SEQ_PROJETO_TAREFA, 
+            V_DIA, 
+            V_HR, 
+            SUBSTR(V_OBS,1,1000), 
+            P_DT_CARGA,
+            CONST_CD_USUR, 
+            V_HR_EXTRA);
+            P_LOG_HANDLER.LOG_IT(T_LOG_HANDLER.LOG_LEVEL_FINEST(), '[F_CARREGA_TAREFA_USUARIO] HORAS NÃO COBRÁVEIS INSERIDAS');
+        END IF;
+      EXCEPTION
+        WHEN OTHERS THEN
+          ROLLBACK TO SALVA_DIA_TAREFA;
+          RAISE_APPLICATION_ERROR(-20017, 'Ocorreu um erro salvando a tarefa. SQLCODE=' || SQLCODE || '; MENSAGEM=' || SQLERRM);
+      END;
+    ELSE
+      RAISE_APPLICATION_ERROR(-20018, 'O log para a data desejada não está com um dos status suportados. O log atual deve estar aberto ou rejeitado, mas o status atual é: LOPE_STT_LOG_ATUAL=' || V_LOPE_STT_LOG_ATUAL || '; ST_TIMESHEET_DIA=' || V_ST_TIMESHEET_DIA);
+    END IF; 
+    RETURN V_ERROS_TAREFAS;
+  EXCEPTION
+    WHEN OTHERS THEN
+     P_LOG_HANDLER.LOG_IT(T_LOG_HANDLER.LOG_LEVEL_ERROR(),'[F_CARREGA_TAREFA_USUARIO] SQLERRM=' || SQLERRM);
+      FOR V_TAREFA IN C_STAGE(P_STAGE_GROUPED.CD_PROJETO, P_STAGE_GROUPED.FUNC_CD_FUNC, P_STAGE_GROUPED.DT_LOG) LOOP
+        V_ERROS_TAREFAS.EXTEND();
+        V_ERROS_TAREFAS(V_ERROS_TAREFAS.COUNT).CD_PROJETO:=P_STAGE_GROUPED.CD_PROJETO;
+        V_ERROS_TAREFAS(V_ERROS_TAREFAS.COUNT).CD_SUGAR:=V_TAREFA.CD_SUGAR;
+        V_ERROS_TAREFAS(V_ERROS_TAREFAS.COUNT).FUNC_CD_FUNC:=P_STAGE_GROUPED.FUNC_CD_FUNC;
+        V_ERROS_TAREFAS(V_ERROS_TAREFAS.COUNT).DT_LOG:=P_STAGE_GROUPED.DT_LOG;
+        V_ERROS_TAREFAS(V_ERROS_TAREFAS.COUNT).CD_ERRO:=SQLCODE;
+        V_ERROS_TAREFAS(V_ERROS_TAREFAS.COUNT).MENSAGEM:=SUBSTR(SQLERRM,1,1000);
+      END LOOP;
+      RETURN V_ERROS_TAREFAS;
+  END;
+
+  FUNCTION F_CARREGA_TAREFAS(P_DT_INICIO IN DATE, P_DT_FINAL IN DATE, P_TAREFAS IN T_TIMESHEET_TAREFAS, P_LOG_HANDLER IN OUT T_LOG_HANDLER) RETURN T_TIMESHEET_ERROS_CARGA AS
+    V_DT_INICIO DATE := P_DT_INICIO;
+    V_DT_FINAL DATE := NVL(P_DT_FINAL,SYSDATE);
+    V_DT_CARGA DATE := SYSDATE;
+        
+    V_ERROS_CARGA T_TIMESHEET_ERROS_CARGA;
+    V_ERROS_TAREFA T_ERROS_TAREFAS;
+  BEGIN
+    /***************************************************************************
+    * VALIDAÇÃO INICIAL                                                        *
+    ***************************************************************************/     
+    IF P_LOG_HANDLER IS NULL THEN
+      P_LOG_HANDLER:=NEW T_LOG_HANDLER(T_LOG_HANDLER.LOG_LEVEL_NONE());
+      P_LOG_HANDLER.LOG_IT(T_LOG_HANDLER.LOG_LEVEL_ERROR(), '[F_CARREGA_TAREFAS] PROCESSO INICIADO, HANDLER='||P_LOG_HANDLER.HANDLER_ID);
+    ELSE
+      P_LOG_HANDLER:=P_LOG_HANDLER;
+    END IF;    
+    IF V_DT_INICIO IS NULL THEN
+      RAISE_APPLICATION_ERROR(-20001, 'Parâmetro P_DT_INICIO é obrigatório.');
+    END IF;
+      P_LOG_HANDLER.LOG_IT(T_LOG_HANDLER.LOG_LEVEL_FINE(), '[F_CARREGA_TAREFAS] DT_INICIO='||TO_CHAR(V_DT_INICIO,'DD/MM/RRRR HH24:MI:SS')||'; DT_FINAL='||TO_CHAR(V_DT_FINAL,'DD/MM/RRRR HH24:MI:SS'));
+    IF V_DT_INICIO < TO_DATE('01/08/2014','DD/MM/YYYY') THEN
+      P_LOG_HANDLER.LOG_IT(T_LOG_HANDLER.LOG_LEVEL_WARNING(), '[F_CARREGA_TAREFAS] DT_INICIO MUITO ANTIGA. FOI ALTERADA PARA '||TO_CHAR(V_DT_INICIO,'DD/MM/RRRR HH24:MI:SS'));
+      V_DT_INICIO := TO_DATE('01/08/2014','DD/MM/YYYY');
+    END IF;
+    IF V_DT_FINAL < V_DT_INICIO THEN
+      RAISE_APPLICATION_ERROR(-20002, 'Parâmetro P_DT_INICIO deve ser anterior ao parâmetro P_DT_FINAL.');
+    END IF;   
+    P_LOG_HANDLER.LOG_IT(T_LOG_HANDLER.LOG_LEVEL_ERROR(), '[F_CARREGA_TAREFAS] QTD TAREFAS='||P_TAREFAS.COUNT);
+    IF P_TAREFAS.COUNT < 1 THEN
+      RAISE_APPLICATION_ERROR(-20004, 'Parâmetro P_TAREFAS deve possuir pelo menos uma entrada.');
+    END IF;
+    
+    /***************************************************************************
+     * CARREGA TABELA DE STAGE                                                 *
+     ***************************************************************************/
+    FOR V_TAREFA IN P_TAREFAS.FIRST .. P_TAREFAS.LAST LOOP
+      P_LOG_HANDLER.LOG_IT(T_LOG_HANDLER.LOG_LEVEL_FINEST(), '[F_CARREGA_TAREFAS] INSERINDO... -> CD_PROJETO=' || P_TAREFAS(V_TAREFA).CD_PROJETO || '; CD_SUGAR=' || P_TAREFAS(V_TAREFA).CD_SUGAR || '; FUNC_CD_FUNC=' || P_TAREFAS(V_TAREFA).FUNC_CD_FUNC || '; DT_LOG=' || P_TAREFAS(V_TAREFA).DT_LOG || '; HORAS_NR=' || P_TAREFAS(V_TAREFA).HORAS_NR);
+      INSERT INTO SUGAR_STAGE VALUES (
+        P_TAREFAS(V_TAREFA).CD_PROJETO, 
+        P_TAREFAS(V_TAREFA).CD_SUGAR, 
+        P_TAREFAS(V_TAREFA).FUNC_CD_FUNC, 
+        P_TAREFAS(V_TAREFA).DT_LOG, 
+        P_TAREFAS(V_TAREFA).HORAS_NR);
+    END LOOP;
+     
+     
+    /***************************************************************************
+     * VERIFICA PROJETOS DO SUGAR EXTERNOS                                     *
+     ***************************************************************************/
+    UPDATE PROJETO_TAREFA SET IN_TAREFA_EXTERNA = 'S' 
+      WHERE CD_PROJETO IN (SELECT DISTINCT CD_PROJETO FROM SUGAR_STAGE)
+        AND IN_TAREFA_EXTERNA = 'N';
+     
+    /***************************************************************************
+     * APAGA TODAS AS HORAS PREVIAMENTE CARREGADAS A PARTIR DO SUGAR DOS LOGS  *
+     * EM ABERTO. SÓ APAGA SE O FUNCIONÁRIO ESTIVER ATIVO.                     *
+     ***************************************************************************/
+    DELETE FROM TIMESHEET_DIA_TAREFA H 
+      WHERE USUR_CD_USUR = CONST_CD_USUR
+        AND TO_DATE(H.LOPE_NR_ANO||TO_CHAR(H.LOPE_NR_MES,'09')||TO_CHAR(H.LOG_NR_DIA,'09'),'RRRRMMDD') BETWEEN V_DT_INICIO AND V_DT_FINAL 
+        AND EXISTS (
+          SELECT 1 FROM FUNCIONARIO F, TIMESHEET_DIA D 
+            WHERE D.FUNC_CD_FUNC = H.FUNC_CD_FUNC 
+              AND D.LOPE_NR_ANO = H.LOPE_NR_ANO AND D.LOPE_NR_MES = H.LOPE_NR_MES AND D.LOG_NR_DIA = H.LOG_NR_DIA 
+              AND D.ST_TIMESHEET_DIA IN ('A','R') /*Aberto ou Rejeitado*/
+              AND D.FUNC_CD_FUNC = F.CD_FUNCIONARIO
+              AND F.DT_RESCISAO IS NULL
+        );
+ 
+    V_ERROS_CARGA.ERROS_TAREFAS:=T_ERROS_TAREFAS();
+    FOR VAL IN C_STAGE_GROUPED LOOP    
+      P_LOG_HANDLER.LOG_IT(T_LOG_HANDLER.LOG_LEVEL_FINEST(), '[F_CARREGA_TAREFAS] PROCESSANDO... -> CD_PROJETO=' || VAL.CD_PROJETO || '; FUNC_CD_FUNC=' || VAL.FUNC_CD_FUNC || '; DT_LOG=' || VAL.DT_LOG || '; HORAS_NR=' || VAL.HORAS_NR);
+      V_ERROS_TAREFA := F_CARREGA_TAREFA_USUARIO(V_DT_CARGA, VAL, P_LOG_HANDLER);
+      IF V_ERROS_TAREFA IS NOT NULL AND V_ERROS_TAREFA.COUNT > 0 THEN
+        FOR V_IDX IN V_ERROS_TAREFA.FIRST .. V_ERROS_TAREFA.LAST LOOP
+          V_ERROS_CARGA.ERROS_TAREFAS.EXTEND();
+          V_ERROS_CARGA.ERROS_TAREFAS(V_ERROS_CARGA.ERROS_TAREFAS.COUNT):=V_ERROS_TAREFA(V_IDX);
+        END LOOP;
+      END IF;
+    END LOOP;
+    COMMIT;       
+    RETURN V_ERROS_CARGA;
+  EXCEPTION
+    WHEN OTHERS THEN
+      P_LOG_HANDLER.LOG_IT(T_LOG_HANDLER.LOG_LEVEL_ERROR(), '[F_CARREGA_TAREFAS] SQLERRM=' || SQLERRM);
+      V_ERROS_CARGA.ERRO_GERAL.CD_ERRO := SQLCODE;
+      V_ERROS_CARGA.ERRO_GERAL.MENSAGEM := SUBSTR(SQLERRM,1,1000);
+      ROLLBACK;
+      RETURN V_ERROS_CARGA;
+  END F_CARREGA_TAREFAS;
+  
+  
+  FUNCTION PARSE_ELMT_TO_NUMBER(VL_ELMT IN CLOB) RETURN NUMBER IS
+  BEGIN
+    RETURN TO_NUMBER(VL_ELMT);
+  END PARSE_ELMT_TO_NUMBER;
+  
+  
+  FUNCTION PARSE_ELMT_TO_DATE(VL_ELMT IN CLOB) RETURN DATE IS
+    V_DATE DATE;
+  BEGIN
+    DBMS_OUTPUT.PUT_LINE('[PARSE_ELMT_TO_DATE] DATA=' || VL_ELMT);
+    IF LENGTH(VL_ELMT)>10 THEN
+      DBMS_OUTPUT.PUT_LINE('[PARSE_ELMT_TO_DATE] APLICANDO MÁSCARA=RRRR-MM-DD"T"HH24:MI:SS');
+      V_DATE:=TO_DATE(SUBSTR(VL_ELMT,1,19),'RRRR-MM-DD"T"HH24:MI:SS');
+    ELSE
+      DBMS_OUTPUT.PUT_LINE('[PARSE_ELMT_TO_DATE] APLICANDO MÁSCARA=RRRR-MM-DD');
+      V_DATE:=TO_DATE(SUBSTR(VL_ELMT,1,19),'RRRR-MM-DD');
+    END IF;
+    DBMS_OUTPUT.PUT_LINE('[PARSE_ELMT_TO_DATE] DATA RESULTANTE=' || TO_CHAR(V_DATE,'DD/MM/RRRR HH24:MI:SS'));
+    RETURN V_DATE;
+  END PARSE_ELMT_TO_DATE;
+ 
+  
+  FUNCTION XML_TO_TAREFA (XML IN XMLTYPE) RETURN T_TIMESHEET_TAREFA_DIA IS
+    MENSAGEM T_TIMESHEET_TAREFA_DIA;
+    V_DT_LOG VARCHAR2(19);
+  BEGIN
+      DBMS_OUTPUT.PUT_LINE('CD_PROJETO->' || MENSAGEM.CD_PROJETO);
+      DBMS_OUTPUT.PUT_LINE('CD_SUGAR->' || MENSAGEM.CD_SUGAR);
+      DBMS_OUTPUT.PUT_LINE('FUNC_CD_FUNC->' || MENSAGEM.FUNC_CD_FUNC);
+      DBMS_OUTPUT.PUT_LINE('DT_LOG->' || MENSAGEM.DT_LOG);
+      DBMS_OUTPUT.PUT_LINE('HORAS_NR->' || MENSAGEM.HORAS_NR);
+      DBMS_OUTPUT.PUT_LINE('->' || XML.GETCLOBVAL());
+    SELECT
+      TRIM(REPLACE(REPLACE(EXTRACTVALUE(XML,'/task/@project',TIMESHEET_NAMESPACE),CHR(13),' '),CHR(10),' ')),
+      TRIM(REPLACE(REPLACE(EXTRACTVALUE(XML,'/task/@task',TIMESHEET_NAMESPACE),CHR(13),' '),CHR(10),' ')),
+      TRIM(REPLACE(REPLACE(EXTRACTVALUE(XML,'/task/@employee',TIMESHEET_NAMESPACE),CHR(13),' '),CHR(10),' ')),
+      TRIM(REPLACE(REPLACE(EXTRACTVALUE(XML,'/task/@date',TIMESHEET_NAMESPACE),CHR(13),' '),CHR(10),' ')),
+      TRIM(REPLACE(REPLACE(EXTRACTVALUE(XML,'/task/@taskHours',TIMESHEET_NAMESPACE),CHR(13),' '),CHR(10),' '))
+    INTO
+      MENSAGEM.CD_PROJETO, --PROJECT
+      MENSAGEM.CD_SUGAR, --TASK
+      MENSAGEM.FUNC_CD_FUNC, --EMPLOYEE
+      V_DT_LOG, --DATE
+      MENSAGEM.HORAS_NR --TASK_HOURS
+    FROM DUAL;
+    MENSAGEM.DT_LOG := PARSE_ELMT_TO_DATE(V_DT_LOG);
+    
+      DBMS_OUTPUT.PUT_LINE('CD_PROJETO->' || MENSAGEM.CD_PROJETO);
+      DBMS_OUTPUT.PUT_LINE('CD_SUGAR->' || MENSAGEM.CD_SUGAR);
+      DBMS_OUTPUT.PUT_LINE('FUNC_CD_FUNC->' || MENSAGEM.FUNC_CD_FUNC);
+      DBMS_OUTPUT.PUT_LINE('DT_LOG->' || MENSAGEM.DT_LOG);
+      DBMS_OUTPUT.PUT_LINE('HORAS_NR->' || MENSAGEM.HORAS_NR);
+    
+    RETURN MENSAGEM;
+  END XML_TO_TAREFA;   
+  
+  FUNCTION XML_TO_TAREFAS(XML IN XMLTYPE) RETURN T_TIMESHEET_TAREFAS IS
+    MENSAGEM T_TIMESHEET_TAREFAS;
+    CURSOR C_ELMT IS SELECT 
+        VALUE(T_XML) ELMT_XML
+      FROM TABLE(XMLSEQUENCE(EXTRACT(XML,'/*',TIMESHEET_NAMESPACE))) T_XML;
+  BEGIN 
+    MENSAGEM := T_TIMESHEET_TAREFAS();
+    FOR VAL IN C_ELMT LOOP
+      --ICM_DB_UTIL.LOG_IT(ICM_DB_UTIL.LOG_LEVEL_FINEST,'[XML_TO_CHAVE_SIST] NOVO ELEMENTO...');
+      MENSAGEM.EXTEND();
+      MENSAGEM(MENSAGEM.LAST):=XML_TO_TAREFA(VAL.ELMT_XML);
+      --ICM_DB_UTIL.LOG_IT(ICM_DB_UTIL.LOG_LEVEL_FINEST,'[XML_TO_CHAVE_SIST] FIM DO NOVO ELEMENTO.');
+    END LOOP;
+    
+    RETURN MENSAGEM;
+  END XML_TO_TAREFAS;
+  
+  FUNCTION XML_TO_INPUT (XML IN XMLTYPE) RETURN T_TIMESHEET_INPUT IS
+    MENSAGEM T_TIMESHEET_INPUT;
+    V_XML_TAREFAS XMLTYPE;
+    V_DT_INICIO VARCHAR2(19);
+    V_DT_FINAL VARCHAR2(19);
+  BEGIN
+    SELECT
+      SUBSTR(TRIM(REPLACE(REPLACE(EXTRACTVALUE(XML,'/InputTasks/@endDate',TIMESHEET_NAMESPACE),CHR(13),' '),CHR(10),' ')),1,19),
+      SUBSTR(TRIM(REPLACE(REPLACE(EXTRACTVALUE(XML,'/InputTasks/@startDate',TIMESHEET_NAMESPACE),CHR(13),' '),CHR(10),' ')),1,19),
+      EXTRACT(XML,'/InputTasks/*',TIMESHEET_NAMESPACE)
+    INTO
+      V_DT_FINAL,
+      V_DT_INICIO,
+      V_XML_TAREFAS
+    FROM DUAL;
+    MENSAGEM.DT_FINAL := PARSE_ELMT_TO_DATE(V_DT_FINAL);
+    MENSAGEM.DT_INICIO := PARSE_ELMT_TO_DATE(V_DT_INICIO);
+    MENSAGEM.TAREFAS:=XML_TO_TAREFAS(V_XML_TAREFAS);
+    
+    RETURN MENSAGEM;
+  END XML_TO_INPUT;
+  
+  FUNCTION F_ERROS_TO_XMLTYPE(P_ERROS_CARGA IN T_TIMESHEET_ERROS_CARGA, P_LOG_HANDLER IN OUT T_LOG_HANDLER) RETURN XMLTYPE AS    
+    MENSAGEM CLOB;
+  BEGIN
+    P_LOG_HANDLER.LOG_IT(T_LOG_HANDLER.LOG_LEVEL_FINEST(),'[F_ERROS_TO_XMLTYPE] INICIANDO...');
+    
+    MENSAGEM := '<?xml version="1.0" encoding="windows-1252" ?>' || CHR(10)
+             || '<OutputErrors xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ' 
+             || TIMESHEET_NAMESPACE || '>' || CHR(10);
+             
+    IF P_ERROS_CARGA.ERRO_GERAL.CD_ERRO IS NOT NULL THEN
+      MENSAGEM := MENSAGEM 
+               || '<generalError errorCode="' || P_ERROS_CARGA.ERRO_GERAL.CD_ERRO || '">' || CHR(10)
+               || P_ERROS_CARGA.ERRO_GERAL.MENSAGEM  || CHR(10)
+               || '</generalError>'  || CHR(10);
+    END IF;
+    IF P_ERROS_CARGA.ERROS_TAREFAS IS NOT NULL AND P_ERROS_CARGA.ERROS_TAREFAS.COUNT > 0 THEN
+      MENSAGEM := MENSAGEM 
+               || '<tasksErrors>' || CHR(10);
+      FOR V_IDX IN P_ERROS_CARGA.ERROS_TAREFAS.FIRST .. P_ERROS_CARGA.ERROS_TAREFAS.LAST LOOP
+        MENSAGEM := MENSAGEM 
+                 || '<taskError project="' || P_ERROS_CARGA.ERROS_TAREFAS(V_IDX).CD_PROJETO 
+                 || '" task="' || P_ERROS_CARGA.ERROS_TAREFAS(V_IDX).CD_SUGAR 
+                 || '" employee="' || P_ERROS_CARGA.ERROS_TAREFAS(V_IDX).FUNC_CD_FUNC 
+                 || '" date="' || TO_CHAR(P_ERROS_CARGA.ERROS_TAREFAS(V_IDX).DT_LOG, 'RRRR-MM-DD')
+                 || '" errorCode="' || P_ERROS_CARGA.ERROS_TAREFAS(V_IDX).CD_ERRO 
+                 || '">' || CHR(10)
+                 || P_ERROS_CARGA.ERROS_TAREFAS(V_IDX).MENSAGEM || CHR(10)
+                 || '</taskError>' || CHR(10);        
+      END LOOP;
+      MENSAGEM := MENSAGEM || '</tasksErrors>'  || CHR(10);    
+    END IF;
+    
+    MENSAGEM := MENSAGEM || '</OutputErrors>';
+    
+    P_LOG_HANDLER.LOG_IT(T_LOG_HANDLER.LOG_LEVEL_FINEST(),'[F_ERROS_TO_XMLTYPE] XML='||MENSAGEM);
+    P_LOG_HANDLER.LOG_IT(T_LOG_HANDLER.LOG_LEVEL_FINEST(),'[F_ERROS_TO_XMLTYPE] OK...');
+    RETURN XMLTYPE(MENSAGEM);
+  END F_ERROS_TO_XMLTYPE;
+  
+  FUNCTION F_CARREGA_TAREFAS_XML(P_TAREFAS IN XMLTYPE) RETURN XMLTYPE IS
+    V_LOG_HANDLER T_LOG_HANDLER;
+    V_INPUT T_TIMESHEET_INPUT;
+    V_OUTPUT T_TIMESHEET_ERROS_CARGA;
+    V_OUTPUT_XML XMLTYPE;
+  BEGIN
+    V_LOG_HANDLER:=NEW T_LOG_HANDLER(T_LOG_HANDLER.LOG_LEVEL_FINEST());
+    DBMS_OUTPUT.PUT_LINE('[F_CARREGA_TAREFAS_XML] LOG_HANDLER.HANDLER_ID=' || V_LOG_HANDLER.HANDLER_ID || '; LOG_HANDLER.HANDLER_POS=' || V_LOG_HANDLER.HANDLER_POS || '; LOG_HANDLER.LOG_LEVEL=' || V_LOG_HANDLER.LOG_LEVEL);
+    V_LOG_HANDLER.LOG_IT(T_LOG_HANDLER.LOG_LEVEL_ERROR(), 'PROCESSO INICIADO, HANDLER='||V_LOG_HANDLER.HANDLER_ID);
+    V_LOG_HANDLER.LOG_IT(T_LOG_HANDLER.LOG_LEVEL_FINEST(), 'INPUT='||SUBSTR(P_TAREFAS.GETCLOBVAL(),1,4000));
+    V_INPUT := XML_TO_INPUT(P_TAREFAS);
+    DBMS_OUTPUT.PUT_LINE('DT_INICIO=' || V_INPUT.DT_INICIO);
+    DBMS_OUTPUT.PUT_LINE('DT_FINAL=' || V_INPUT.DT_FINAL);
+    DBMS_OUTPUT.PUT_LINE('QTD TAREFAS=' || V_INPUT.TAREFAS.COUNT);
+    V_OUTPUT:=F_CARREGA_TAREFAS(V_INPUT.DT_INICIO, V_INPUT.DT_FINAL, V_INPUT.TAREFAS, V_LOG_HANDLER);
+    --RETURN XMLTYPE('<RESPONSE>OK</RESPONSE>');    
+    V_OUTPUT_XML:=F_ERROS_TO_XMLTYPE(V_OUTPUT, V_LOG_HANDLER);
+    V_LOG_HANDLER.LOG_IT(T_LOG_HANDLER.LOG_LEVEL_FINEST(), 'OUTPUT='||SUBSTR(V_OUTPUT_XML.GETCLOBVAL(),1,4000));
+    RETURN V_OUTPUT_XML;
+  END;
+
+END PKG_SUGAR_INTERFACE_LOG;
+
+/
+--------------------------------------------------------
+--  DDL for Package DSSP3
+--------------------------------------------------------
+
+  CREATE OR REPLACE EDITIONABLE PACKAGE "TIMESHEET"."DSSP3" AS 
+TYPE DeptRecTyp IS RECORD (deptno NUMBER(10),
+                           dname  VARCHAR2(14),
+                           loc    VARCHAR2(13));
+--cursor GET_COL return dept%rowtype; 
+cursor GET_COL5 return DeptRecTyp; 
+
+procedure dssp3(DEPTNO_ARG OUT DEPT.DEPTNO%TYPE, 
+                DNAME_ARG OUT DEPT.DNAME%TYPE, 
+                LOC_ARG OUT DEPT.LOC%TYPE); 
+procedure dssp4(P_ENTRADA IN DEPT.DEPTNO%TYPE,
+                DEPTNO_ARG OUT DEPT.DEPTNO%TYPE, 
+                DNAME_ARG OUT DEPT.DNAME%TYPE, 
+                LOC_ARG OUT DEPT.LOC%TYPE); 
+procedure dssp5(P_ENTRADA IN DEPT.DEPTNO%TYPE,
+                DEPTNO_ARG OUT DEPT.DEPTNO%TYPE, 
+                DNAME_ARG OUT DEPT.DNAME%TYPE, 
+                LOC_ARG OUT DEPT.LOC%TYPE); 
+
+END; 
+ 
+
+/
+--------------------------------------------------------
+--  DDL for Package PCK_TESTE_CURSOR
+--------------------------------------------------------
+
+  CREATE OR REPLACE EDITIONABLE PACKAGE "TIMESHEET"."PCK_TESTE_CURSOR" AS
+  PROCEDURE P_TESTE_CURSOR(p_entrada in varchar, idorigem out varchar, nome out varchar, dt_ult_alt out varchar);
+END;
+ 
+
+/
+--------------------------------------------------------
+--  DDL for Package PKG_HORAS_DIA
+--------------------------------------------------------
+
+  CREATE OR REPLACE EDITIONABLE PACKAGE "TIMESHEET"."PKG_HORAS_DIA" AS
+ TYPE t_FUNC_CD_FUNC    IS TABLE  OF  HORAS_DIA.FUNC_CD_FUNC%TYPE 
+      INDEX BY BINARY_INTEGER;
+ TYPE t_LOPE_NR_ANO     IS TABLE  OF  HORAS_DIA.LOPE_NR_ANO%TYPE 
+      INDEX BY BINARY_INTEGER;
+ TYPE t_LOPE_NR_MES     IS TABLE  OF  HORAS_DIA.LOPE_NR_MES%TYPE 
+      INDEX BY BINARY_INTEGER;
+ TYPE t_LOG_NR_DIA      IS TABLE  OF  HORAS_DIA.LOG_NR_DIA%TYPE 
+      INDEX BY BINARY_INTEGER;
+ TYPE t_PERI_CD_PERIODO IS TABLE  OF  HORAS_DIA.PERI_CD_PERIODO%TYPE 
+      INDEX BY BINARY_INTEGER;
+ TYPE t_PROJ_CD_PROJETO IS TABLE  OF  HORAS_DIA.PROJ_CD_PROJETO%TYPE 
+      INDEX BY BINARY_INTEGER;
+
+/* =================== Alexandre 04/07/2002 ===============================
+    Variaveis para controle de delec?o na tabela HORAS_DIA, sendo setadas
+    na Trigger(TG_HORAS_DIA_ROW) e sendo validadas e zeradas na 
+    Trigger(TG_HORAS_DIA).
+   ======================================================================== */
+                     
+ v_FUNC_CD_FUNC      t_FUNC_CD_FUNC;
+ v_LOPE_NR_ANO       t_LOPE_NR_ANO;
+ v_LOPE_NR_MES       t_LOPE_NR_MES;
+ v_LOG_NR_DIA        t_LOG_NR_DIA;
+ v_PERI_CD_PERIODO   t_PERI_CD_PERIODO;
+ v_PROJ_CD_PROJETO   t_PROJ_CD_PROJETO;
+
+ v_NumRow   BINARY_INTEGER := 0;
+
+END  PKG_HORAS_DIA;
+
+ 
+ 
+
+/
+--------------------------------------------------------
+--  DDL for Package PKG_LOG_DIA
+--------------------------------------------------------
+
+  CREATE OR REPLACE EDITIONABLE PACKAGE "TIMESHEET"."PKG_LOG_DIA" AS
+ TYPE t_FUNC_CD_FUNC    IS TABLE  OF  LOG_DIA.FUNC_CD_FUNC%TYPE 
+      INDEX BY BINARY_INTEGER;
+ TYPE t_LOPE_NR_ANO     IS TABLE  OF  LOG_DIA.LOPE_NR_ANO%TYPE 
+      INDEX BY BINARY_INTEGER;
+ TYPE t_LOPE_NR_MES     IS TABLE  OF  LOG_DIA.LOPE_NR_MES%TYPE 
+      INDEX BY BINARY_INTEGER;
+ TYPE t_LOG_NR_DIA      IS TABLE  OF  LOG_DIA.LOG_NR_DIA%TYPE 
+      INDEX BY BINARY_INTEGER;
+ TYPE t_PERI_CD_PERIODO IS TABLE  OF  LOG_DIA.PERI_CD_PERIODO%TYPE 
+      INDEX BY BINARY_INTEGER;
+
+/* =================== Alexandre 04/07/2002 ===============================
+    Variaveis para controle de delec?o na tabela LOG_DIA, sendo setadas
+    na Trigger(TG_LOG_DIA_ROW) e sendo validadas e zeradas na 
+    Trigger(TG_LOG_DIA).
+   ======================================================================== */
+                     
+ v_FUNC_CD_FUNC      t_FUNC_CD_FUNC;
+ v_LOPE_NR_ANO       t_LOPE_NR_ANO;
+ v_LOPE_NR_MES       t_LOPE_NR_MES;
+ v_LOG_NR_DIA        t_LOG_NR_DIA;
+ v_PERI_CD_PERIODO   t_PERI_CD_PERIODO;
+
+ v_NumRow   BINARY_INTEGER := 0;
+
+END  PKG_LOG_DIA;
+
+ 
+ 
+
+/
+--------------------------------------------------------
+--  DDL for Package PKG_SUGAR_INTERFACE_LOG
+--------------------------------------------------------
+
+  CREATE OR REPLACE EDITIONABLE PACKAGE "TIMESHEET"."PKG_SUGAR_INTERFACE_LOG" AS 
+
+  TYPE T_TIMESHEET_TAREFA_DIA IS RECORD(
+    CD_PROJETO TIMESHEET_DIA_TAREFA.CD_PROJETO%TYPE, --PROJECT
+    CD_SUGAR VARCHAR2(36), --TASK
+    FUNC_CD_FUNC TIMESHEET_DIA_TAREFA.FUNC_CD_FUNC%TYPE, --EMPLOYEE
+    DT_LOG DATE, --DATE
+    HORAS_NR NUMBER(5,2) --TASK_HOURS
+  );
+  
+  TYPE T_ERRO_GERAL IS RECORD(
+    CD_ERRO INTEGER,
+    MENSAGEM VARCHAR2(1000)
+  );
+  
+  TYPE T_ERRO_TAREFA IS RECORD(
+    CD_PROJETO TIMESHEET_DIA_TAREFA.CD_PROJETO%TYPE, --PROJECT
+    CD_SUGAR VARCHAR2(36), --TASK
+    FUNC_CD_FUNC TIMESHEET_DIA_TAREFA.FUNC_CD_FUNC%TYPE, --EMPLOYEE
+    DT_LOG DATE, --DATE
+    CD_ERRO INTEGER,
+    MENSAGEM VARCHAR2(1000)
+  );
+  
+  TYPE T_ERROS_TAREFAS IS TABLE OF T_ERRO_TAREFA;
+  
+  TYPE T_TIMESHEET_ERROS_CARGA IS RECORD(
+    ERRO_GERAL T_ERRO_GERAL,
+    ERROS_TAREFAS T_ERROS_TAREFAS
+  );
+  
+  --TYPE T_TIMESHEET_TAREFAS IS TABLE OF T_TIMESHEET_TAREFA_DIA INDEX BY BINARY_INTEGER;
+  TYPE T_TIMESHEET_TAREFAS IS TABLE OF T_TIMESHEET_TAREFA_DIA;
+  
+  FUNCTION F_CARREGA_TAREFAS(P_DT_INICIO IN DATE, P_DT_FINAL IN DATE, P_TAREFAS IN T_TIMESHEET_TAREFAS, P_LOG_HANDLER IN OUT T_LOG_HANDLER) RETURN T_TIMESHEET_ERROS_CARGA; 
+  
+  FUNCTION F_CARREGA_TAREFAS_XML(P_TAREFAS IN XMLTYPE) RETURN XMLTYPE; 
+
+END PKG_SUGAR_INTERFACE_LOG;
+ 
+
+/
+--------------------------------------------------------
+--  DDL for Function CALCULADIAFIMPERIODO
+--------------------------------------------------------
+
+  CREATE OR REPLACE EDITIONABLE FUNCTION "TIMESHEET"."CALCULADIAFIMPERIODO" (p_ano in number, p_mes in number, p_periodo in number) return number IS
+   v_INIDIA         NUMBER(3);
+   v_FIMDIA         NUMBER(3);
+begin
+	if(p_ano > 2052) THEN
+	  RAISE_APPLICATION_ERROR(-20001, 'O sistema não suporta ano maior do que 2052.');
+	end if;
+
+	if (p_periodo = 1) then
+	   v_INIDIA := 1;
+	   v_FIMDIA := 15;
+	else
+       v_INIDIA := 16;	
+	   if( (p_mes=1) OR (p_mes=3) OR (p_mes=5) OR (p_mes=7) OR 
+		   (p_mes=8) OR (p_mes=10) OR (p_mes=12) ) then
+		 --//meses de 31 dias
+		  v_FIMDIA := 31;
+	   elsif (p_mes=2) then
+		  if( (p_ano=1996) OR (p_ano=2000) OR (p_ano=2004) OR (p_ano=2008) OR (p_ano=2012) OR 
+			  (p_ano=2016) OR (p_ano=2020) OR (p_ano=2024) OR (p_ano=2028) OR (p_ano=2032) OR 
+			  (p_ano=2036) OR (p_ano=2040) OR (p_ano=2044) OR (p_ano=2048) OR (p_ano=2052) 
+			 ) then
+			 --//meses de 29 dias
+			 v_FIMDIA := 29;
+		  else
+			--//meses de 28 dias
+			v_FIMDIA := 28;
+		  end if;
+	   else
+		 --//meses de 30 dias
+		 v_FIMDIA := 30;
+	   end if;
+	end if;
+    return(v_FIMDIA);
+end;
+ 
+
+/
+--------------------------------------------------------
+--  DDL for Function CALCULAQTDDIAS
+--------------------------------------------------------
+
+  CREATE OR REPLACE EDITIONABLE FUNCTION "TIMESHEET"."CALCULAQTDDIAS" (p_ano in number, p_mes in number, p_periodo in number) return number IS
+   v_INIDIA         NUMBER(3);
+   v_FIMDIA         NUMBER(3);
+   v_QTDDIAS        NUMBER(3);
+begin
+	if(p_ano > 2052) THEN
+	  RAISE_APPLICATION_ERROR(-20001, 'O sistema não suporta ano maior do que 2052.');
+	end if;
+
+	if (p_periodo = 1) then
+	   v_INIDIA := 1;
+	   v_FIMDIA := 15;
+	   v_QTDDIAS := 15;
+	else
+       v_INIDIA := 16;	
+	   if( (p_mes=1) OR (p_mes=3) OR (p_mes=5) OR (p_mes=7) OR 
+		   (p_mes=8) OR (p_mes=10) OR (p_mes=12) ) then
+		 --//meses de 31 dias
+		  v_FIMDIA := 31;
+	      v_QTDDIAS := 16;
+	   elsif (p_mes=2) then
+		  if( (p_ano=1996) OR (p_ano=2000) OR (p_ano=2004) OR (p_ano=2008) OR (p_ano=2012) OR 
+			  (p_ano=2016) OR (p_ano=2020) OR (p_ano=2024) OR (p_ano=2028) OR (p_ano=2032) OR 
+			  (p_ano=2036) OR (p_ano=2040) OR (p_ano=2044) OR (p_ano=2048) OR (p_ano=2052) 
+			 ) then
+			 --//meses de 29 dias
+			 v_FIMDIA := 29;
+	         v_QTDDIAS := 14;
+		  else
+			--//meses de 28 dias
+			v_FIMDIA := 28;
+	        v_QTDDIAS := 13;
+		  end if;
+	   else
+		 --//meses de 30 dias
+		 v_FIMDIA := 30;
+	     v_QTDDIAS := 15;
+	   end if;
+	end if;
+    return(v_QTDDIAS);
+end;
+ 
+
+/
+--------------------------------------------------------
+--  DDL for Function FNC_CALC_DIAS_UTEIS_MES
+--------------------------------------------------------
+
+  CREATE OR REPLACE EDITIONABLE FUNCTION "TIMESHEET"."FNC_CALC_DIAS_UTEIS_MES" (P_NR_ANO NUMBER, P_NR_MES NUMBER, P_CD_EMPRESA NUMBER) RETURN NUMBER IS
+   v_SEMANA         NUMBER(1);
+   v_INIDIA         NUMBER(3);
+   v_FIMDIA         NUMBER(3);
+   I                NUMBER(3);
+   v_HORAS          TIMESHEET_DIA.LOG_NR_HNORMAL%TYPE;
+   v_dias_uteis     NUMBER(2) := 0;
+BEGIN
+--FUNC_CD_FUNC
+--LOPE_NR_ANO
+--LOPE_NR_MES
+--PERI_CD_PERIODO
+--LOPE_STT_LOG
+--DTA_ULT_ALT
+--USUR_CD_USUR
+	if(P_NR_ANO > 2052) THEN
+	  RAISE_APPLICATION_ERROR(-20001, 'O sistema n¿o suporta ano maior do que 2052.');
+	end if;
+
+  v_INIDIA := 1;
+  v_FIMDIA := TO_NUMBER( TO_CHAR( LAST_DAY( TO_DATE(P_NR_ANO||TO_CHAR(P_NR_MES,'09')||TO_CHAR(1,'09'),'RRRRMMDD') ) , 'DD'));
+
+	FOR I IN v_INIDIA..v_FIMDIA LOOP
+
+		SELECT TO_NUMBER(TO_CHAR(TO_DATE(P_NR_ANO||TO_CHAR(P_NR_MES,'09')||TO_CHAR(I,'09'),'RRRRMMDD'),'D'))
+			INTO v_SEMANA FROM DUAL;
+			
+  	v_HORAS := 0;
+
+		-- Sabado e Domingo
+		IF( (v_SEMANA = 1) OR (v_SEMANA = 7) ) THEN
+			v_HORAS := 0;
+		ELSE
+
+			-- Verifica se existe feriado para o dia a ser inserido
+      --  NF Nacional Fixo      LF Local Fixo     NN Nacional Não Fixo    LN Local Não Fixo
+      SELECT --NVL(MIN(FERI_NR_HORAS_A_TRABALHAR),8) INTO v_HORAS 
+			       case when count(*) = 0 then 8 else NVL(MIN(FERI_NR_HORAS_A_TRABALHAR),0) end 
+        INTO v_HORAS
+			  FROM FERIADO
+			 WHERE FERI_STT_INATIVO = 'N'
+			   AND FERI_NR_DIA = I
+			   AND FERI_NR_MES = P_NR_MES
+			   AND ( (FERI_TP_FERIADO = 'LN'
+					 AND FERI_NR_ANO = P_NR_ANO
+					 AND FILIAL_CD_FILIAL = P_CD_EMPRESA)
+				 OR (FERI_TP_FERIADO = 'NN'
+					 AND FERI_NR_ANO = P_NR_ANO)
+         OR (FERI_TP_FERIADO = 'LF'
+					 AND FILIAL_CD_FILIAL = P_CD_EMPRESA)
+				 OR (FERI_TP_FERIADO IN ('NF')) );
+		END IF;
+
+	
+    IF v_HORAS > 0 THEN 
+      v_dias_uteis := v_dias_uteis + 1;
+    END IF;
+
+	END LOOP;
+
+  RETURN v_dias_uteis;
+	   
+END;
+ 
+
+/
+--------------------------------------------------------
+--  DDL for Function FNC_CALC_HORAS_NORMAIS_MES
+--------------------------------------------------------
+
+  CREATE OR REPLACE EDITIONABLE FUNCTION "TIMESHEET"."FNC_CALC_HORAS_NORMAIS_MES" (P_NR_ANO NUMBER, P_NR_MES NUMBER, P_CD_EMPRESA NUMBER) RETURN NUMBER IS
+   v_SEMANA         NUMBER(1);
+   v_INIDIA         NUMBER(3);
+   v_FIMDIA         NUMBER(3);
+   I                NUMBER(3);
+   v_HORAS          TIMESHEET_DIA.LOG_NR_HNORMAL%TYPE;
+   v_TOTAL_HORAS    TIMESHEET_DIA.LOG_NR_HNORMAL%TYPE := 0;
+BEGIN
+--FUNC_CD_FUNC
+--LOPE_NR_ANO
+--LOPE_NR_MES
+--PERI_CD_PERIODO
+--LOPE_STT_LOG
+--DTA_ULT_ALT
+--USUR_CD_USUR
+	if(P_NR_ANO > 2052) THEN
+	  RAISE_APPLICATION_ERROR(-20001, 'O sistema n¿o suporta ano maior do que 2052.');
+	end if;
+
+  v_INIDIA := 1;
+  v_FIMDIA := TO_NUMBER( TO_CHAR( LAST_DAY( TO_DATE(P_NR_ANO||TO_CHAR(P_NR_MES,'09')||TO_CHAR(1,'09'),'RRRRMMDD') ) , 'DD'));
+
+	FOR I IN v_INIDIA..v_FIMDIA LOOP
+
+		SELECT TO_NUMBER(TO_CHAR(TO_DATE(P_NR_ANO||TO_CHAR(P_NR_MES,'09')||TO_CHAR(I,'09'),'RRRRMMDD'),'D'))
+			INTO v_SEMANA FROM DUAL;
+			
+		-- Sabado e Domingo
+		IF( (v_SEMANA = 1) OR (v_SEMANA = 7) ) THEN
+			v_HORAS := 0;
+		ELSE
+			v_HORAS := 8;
+
+			-- Verifica se existe feriado para o dia a ser inserido
+      SELECT --NVL(MIN(FERI_NR_HORAS_A_TRABALHAR),8) INTO v_HORAS 
+			       case when count(*) = 0 then v_HORAS else NVL(MIN(FERI_NR_HORAS_A_TRABALHAR),0) end INTO v_HORAS
+			  FROM FERIADO
+			 WHERE FERI_STT_INATIVO = 'N'
+			   AND FERI_NR_DIA = I
+			   AND FERI_NR_MES = P_NR_MES
+			   AND ( (FERI_TP_FERIADO = 'LN'
+					 AND FERI_NR_ANO = P_NR_ANO
+					 AND FILIAL_CD_FILIAL = P_CD_EMPRESA)
+				 OR (FERI_TP_FERIADO = 'NN'
+					 AND FERI_NR_ANO = P_NR_ANO)
+         OR (FERI_TP_FERIADO = 'LF'
+					 AND FILIAL_CD_FILIAL = P_CD_EMPRESA)
+				 OR (FERI_TP_FERIADO IN ('NF')) );
+		END IF;
+		v_TOTAL_HORAS := v_TOTAL_HORAS + v_HORAS;
+	END LOOP;
+  
+	return v_TOTAL_HORAS;   
+
+END;
+ 
+
+/
+--------------------------------------------------------
+--  DDL for Function FNC_CALC_TOT_HORAS_NORMAIS_MES
+--------------------------------------------------------
+
+  CREATE OR REPLACE EDITIONABLE FUNCTION "TIMESHEET"."FNC_CALC_TOT_HORAS_NORMAIS_MES" (P_NR_ANO NUMBER, P_NR_MES NUMBER, P_CD_EMPRESA NUMBER) RETURN NUMBER IS
+   v_SEMANA         NUMBER(1);
+   v_INIDIA         NUMBER(3);
+   v_FIMDIA         NUMBER(3);
+   I                NUMBER(3);
+   v_HORAS          TIMESHEET_DIA.LOG_NR_HNORMAL%TYPE;
+   v_TOTAL_HORAS    NUMBER := 0;
+   v_DT_LOOP        DATE;
+
+   CURSOR C_FUNC IS
+   select CD_FUNCIONARIO, DT_ADMISSAO, DT_RESCISAO, NM_FUNCIONARIO 
+     from funcionario
+    where CD_EMPRESA = P_CD_EMPRESA
+      and IN_SETOR = 'D';
+
+   R_FUNC C_FUNC%ROWTYPE;
+
+BEGIN
+--FUNC_CD_FUNC
+--LOPE_NR_ANO
+--LOPE_NR_MES
+--PERI_CD_PERIODO
+--LOPE_STT_LOG
+--DTA_ULT_ALT
+--USUR_CD_USUR
+	if(P_NR_ANO > 2052) THEN
+	  RAISE_APPLICATION_ERROR(-20001, 'O sistema n¿o suporta ano maior do que 2052.');
+	end if;
+
+  v_INIDIA := 1;
+  v_FIMDIA := TO_NUMBER( TO_CHAR( LAST_DAY( TO_DATE(P_NR_ANO||TO_CHAR(P_NR_MES,'09')||TO_CHAR(1,'09'),'RRRRMMDD') ) , 'DD'));
+
+  OPEN C_FUNC;
+  LOOP
+    FETCH C_FUNC INTO R_FUNC;
+    EXIT WHEN C_FUNC%NOTFOUND;
+
+    FOR I IN v_INIDIA..v_FIMDIA LOOP
+  
+      v_DT_LOOP := TO_DATE(P_NR_ANO||TO_CHAR(P_NR_MES,'09')||TO_CHAR(I,'09'),'RRRRMMDD');
+
+      IF v_DT_LOOP BETWEEN R_FUNC.DT_ADMISSAO AND NVL(R_FUNC.DT_RESCISAO, TO_DATE('21000101','YYYYMMDD')) THEN 
+
+        SELECT TO_NUMBER(TO_CHAR(TO_DATE(P_NR_ANO||TO_CHAR(P_NR_MES,'09')||TO_CHAR(I,'09'),'RRRRMMDD'),'D'))
+          INTO v_SEMANA FROM DUAL;
+          
+        -- Sabado e Domingo
+        IF( (v_SEMANA = 1) OR (v_SEMANA = 7) ) THEN
+          v_HORAS := 0;
+        ELSE
+    
+          BEGIN
+        
+            SELECT (HORA_FIM - HORA_INICIO) - 1
+              INTO v_HORAS 
+              FROM JORNADA_TRABALHO
+             WHERE CD_FUNCIONARIO = R_FUNC.CD_FUNCIONARIO
+               AND TO_DATE(P_NR_ANO||TO_CHAR(P_NR_MES,'09')||TO_CHAR(I,'09'),'RRRRMMDD') BETWEEN DT_INICIO_VIGENCIA AND DT_FIM_VIGENCIA;	  
+           
+          EXCEPTION
+            WHEN NO_DATA_FOUND THEN
+              RAISE_APPLICATION_ERROR(-20010, 'Erro ao buscar a JORNADA de TRABALHO na funcao FNC_CALC_TOT_HORAS_NORMAIS_MES  (' || TO_CHAR(SQLCODE) 
+ 		                          || '). Funcionario=' || R_FUNC.CD_FUNCIONARIO || ', Data=' || P_NR_ANO||TO_CHAR(P_NR_MES,'09')||TO_CHAR(I,'09') || '. Favor informar ao administrador.') ;
+            WHEN TOO_MANY_ROWS THEN
+              RAISE_APPLICATION_ERROR(-20010, 'Erro ao buscar a JORNADA de TRABALHO na funcao FNC_CALC_TOT_HORAS_NORMAIS_MES  (' || TO_CHAR(SQLCODE) 
+			                      || '). Funcionario=' || R_FUNC.CD_FUNCIONARIO || ', Data=' || P_NR_ANO||TO_CHAR(P_NR_MES,'09')||TO_CHAR(I,'09') || '. Favor informar ao administrador.') ;
+          END;
+    
+          -- Verifica se existe feriado para o dia a ser inserido
+          SELECT --NVL(MIN(FERI_NR_HORAS_A_TRABALHAR),8) INTO v_HORAS 
+                 case when count(*) = 0 then v_HORAS else NVL(MIN(FERI_NR_HORAS_A_TRABALHAR),0) end INTO v_HORAS
+            FROM FERIADO
+           WHERE FERI_STT_INATIVO = 'N'
+             AND FERI_NR_DIA = I
+             AND FERI_NR_MES = P_NR_MES
+             AND ( (FERI_TP_FERIADO = 'LN'
+               AND FERI_NR_ANO = P_NR_ANO
+               AND FILIAL_CD_FILIAL = P_CD_EMPRESA)
+             OR (FERI_TP_FERIADO = 'NN'
+               AND FERI_NR_ANO = P_NR_ANO)
+             OR (FERI_TP_FERIADO = 'LF'
+               AND FILIAL_CD_FILIAL = P_CD_EMPRESA)
+             OR (FERI_TP_FERIADO IN ('NF')) );
+        END IF;
+
+        --p_debug('Funcionario: ' || R_FUNC.NM_FUNCIONARIO || ', DIA: ' || I || ', HORAS: ' || v_HORAS);
+        v_TOTAL_HORAS := v_TOTAL_HORAS + v_HORAS;
+
+      END IF;
+    END LOOP;
+  END LOOP;
+
+  CLOSE C_FUNC;
+  
+	return v_TOTAL_HORAS;   
+
+END;
+ 
+
+/
+--------------------------------------------------------
+--  DDL for Function F_RETORNA_NUM_LOG_INES_FUNC
+--------------------------------------------------------
+
+  CREATE OR REPLACE EDITIONABLE FUNCTION "TIMESHEET"."F_RETORNA_NUM_LOG_INES_FUNC" (P_FUNC_CD_FUNC IN NUMBER,
+                                                        P_NR_ANO  IN  NUMBER,
+                                                        P_NR_MES  IN  NUMBER ) return number IS
+  Result number;
+
+ /*
+ RUDINEI BORTOLINI
+ ESTÁ FUNÇÃO RETORNA QUANTOS LOGS NÃO FORAM
+ PREENCHIDOS PARA UM FUNCIONARIO EM UM ANO MES LEVANDO-SE EN CONCIDERAÇÃO O LOG QUINZENAL
+
+   */
+
+V_RETORNO NUMBER;
+begin
+   SELECT  NVL(SUM(TOTAL_LOG_FUNC) , 0)
+      INTO V_RETORNO
+                FROM (SELECT COUNT(DISTINCT(LP.PERI_CD_PERIODO)) TOTAL_LOG_FUNC
+                        from log_dia LD, log_periodo LP
+                       where LD.FUNC_CD_FUNC = LP.FUNC_CD_FUNC
+                         AND LD.LOPE_NR_ANO = LP.LOPE_NR_ANO
+                         AND LD.LOPE_NR_MES = LP.LOPE_NR_MES
+                         AND LD.PERI_CD_PERIODO = LP.PERI_CD_PERIODO
+                         AND LD.NR_ANO_REAL = P_NR_ANO
+                         and LD.NR_MES_REAL =  P_NR_MES
+                         and LD.FUNC_CD_FUNC = P_FUNC_CD_FUNC
+                       GROUP BY LD.LOPE_NR_ANO, LD.LOPE_NR_MES);
+
+  IF V_RETORNO = 0 THEN
+     V_RETORNO := 3;
+  ELSIF  V_RETORNO = 1 THEN
+     V_RETORNO := 2;
+  ELSIF  V_RETORNO = 2 THEN
+     V_RETORNO := 1;
+  ELSIF  V_RETORNO = 3 THEN
+     V_RETORNO := 0;
+  END IF;
+
+  return(V_RETORNO);
+
+end F_RETORNA_NUM_LOG_INES_FUNC;
+
+ 
+ 
+
+/
+--------------------------------------------------------
+--  DDL for Function GET_HORAS_EXTRAS_DO_DIA
+--------------------------------------------------------
+
+  CREATE OR REPLACE EDITIONABLE FUNCTION "TIMESHEET"."GET_HORAS_EXTRAS_DO_DIA" (pFUNC_CD_FUNC TIMESHEET_DIA.FUNC_CD_FUNC%type
+                                      , pLOPE_NR_ANO TIMESHEET_DIA.LOPE_NR_ANO%type
+                                      , PLOPE_NR_MES TIMESHEET_DIA.LOPE_NR_MES%type
+                                      , PLOG_NR_DIA TIMESHEET_DIA.LOG_NR_DIA%type
+                                      , PLOG_QN_AUSBHE TIMESHEET_DIA.LOG_QN_AUSBHE%type
+                                      , PLOG_NR_HNORMAL TIMESHEET_DIA.LOG_NR_HNORMAL%type
+                                      , pST_TIMESHEET_DIA TIMESHEET_DIA.ST_TIMESHEET_DIA%type)
+return number IS
+
+  vHORAS_NR_NCEXTRA   number;
+  vHORAS_NR_COEXTRA   number;
+  vHORAS_NR_NC        number;
+  vHORAS_NR_CO        number;
+  vTP_FUNCIONARIO     funcionario.TP_FUNCIONARIO%type;
+  v_SEMANA            NUMBER(1);
+  vContFeriadoDomingo NUMBER(1) := 0;
+  vHORASEXTRAS50      NUMBER;
+  vHORASEXTRAS100     NUMBER;
+  vHORAS_TRABALHADAS  number;
+  vHORAS_AUSENCIA     number;
+  vHORAS_NORMAIS      number;
+  --vContinua           VARCHAR2(1) := 'N';
+  --vST_REQUER_APROVACAO_ADMIN VARCHAR2(1);
+begin
+    if PST_TIMESHEET_DIA <> 'P' then
+      return 0;
+    end if;
+
+    select NVL(SUM(NVL(T.HORAS_NR_NCEXTRA,0)),0), NVL(SUM(NVL(T.HORAS_NR_COEXTRA,0)),0)
+	        ,nvl(sum(nvl(t.HORAS_NR_NC,0)),0), nvl(sum(nvl(t.HORAS_NR_CO,0)),0)
+      into vHORAS_NR_NCEXTRA, vHORAS_NR_COEXTRA
+          ,VHORAS_NR_NC, VHORAS_NR_CO
+      from TIMESHEET_DIA_TAREFA t
+     where T.FUNC_CD_FUNC = PFUNC_CD_FUNC
+       and T.LOPE_NR_ANO = PLOPE_NR_ANO
+       and T.LOPE_NR_MES = PLOPE_NR_MES
+       and t.LOG_NR_DIA = pLOG_NR_DIA;
+
+    select TP_FUNCIONARIO into vTP_FUNCIONARIO /*E=Empresa, F=CLT*/
+      from FUNCIONARIO
+     where CD_FUNCIONARIO = pFUNC_CD_FUNC;    
+
+	  vHORAS_TRABALHADAS := nvl(vHORAS_NR_NCEXTRA,0) + nvl(vHORAS_NR_COEXTRA,0) + nvl(vHORAS_NR_NC,0) + nvl(vHORAS_NR_CO,0);
+	  vHORAS_AUSENCIA := nvl(pLOG_QN_AUSBHE,0);
+	  vHORAS_NORMAIS := nvl(pLOG_NR_HNORMAL,0);
+--exemplo1:
+--  1 extra
+--  4 normais
+--  3 ausencia
+--exemplo2:
+--  2 extra
+--  8 normais
+--  0 ausencia
+	 
+    if vTP_FUNCIONARIO = 'E' then
+      --Pessoa Juridica n¿o possui hora extra 100%, apenas 50%
+
+      if VHORAS_TRABALHADAS > VHORAS_NORMAIS then
+	      VHORASEXTRAS50  := (VHORAS_TRABALHADAS - VHORAS_NORMAIS) - VHORAS_AUSENCIA;
+	    else
+	      VHORASEXTRAS50  := 0 - VHORAS_AUSENCIA;
+	    end if;
+	  
+      --vHORASEXTRAS50  := (nvl(vHORAS_NR_NCEXTRA,0) + nvl(vHORAS_NR_COEXTRA,0)) - nvl(:NEW.LOG_QN_AUSBHE,0);
+      vHORASEXTRAS100 := 0;
+
+    else
+      --CLT possui hora extra 100% caso Domingo ou Feriado
+
+      SELECT TO_NUMBER(TO_CHAR(TO_DATE(pLOPE_NR_ANO||TO_CHAR(pLOPE_NR_MES,'09')||TO_CHAR(pLOG_NR_DIA,'09'),'RRRRMMDD'),'D'))
+        INTO v_SEMANA FROM DUAL;
+
+      -- Domingo 
+      IF( (v_SEMANA = 1) /*OR (v_SEMANA = 7)*/ ) THEN
+        vContFeriadoDomingo := 1;
+      ELSE
+        -- Verifica se existe feriado para o dia a ser inserido
+        SELECT count(*) into vContFeriadoDomingo 
+          FROM FERIADO
+         WHERE FERI_STT_INATIVO = 'N'
+           AND FERI_NR_DIA = pLOG_NR_DIA
+           AND FERI_NR_MES = pLOPE_NR_MES
+           AND ( (FERI_TP_FERIADO = 'LN'
+              AND FERI_NR_ANO = pLOPE_NR_ANO
+              AND FILIAL_CD_FILIAL = (SELECT CD_EMPRESA FROM FUNCIONARIO
+                                       WHERE CD_FUNCIONARIO = pFUNC_CD_FUNC))
+            OR (FERI_TP_FERIADO = 'NN'
+            AND FERI_NR_ANO = pLOPE_NR_ANO)
+             OR (FERI_TP_FERIADO = 'LF'
+               AND FILIAL_CD_FILIAL = (SELECT CD_EMPRESA FROM FUNCIONARIO
+                                       WHERE CD_FUNCIONARIO = pFUNC_CD_FUNC))
+            OR (FERI_TP_FERIADO IN ('NF')) );
+      END IF;
+
+      if vContFeriadoDomingo > 0 then
+        vHORASEXTRAS50  := 0;
+        --vHORASEXTRAS100 := (nvl(vHORAS_NR_NCEXTRA,0) + nvl(vHORAS_NR_COEXTRA,0)) - nvl(:NEW.LOG_QN_AUSBHE,0);
+        if vHORAS_TRABALHADAS > vHORAS_NORMAIS then
+	        VHORASEXTRAS100  := (VHORAS_TRABALHADAS - VHORAS_NORMAIS) - VHORAS_AUSENCIA;
+	      else
+		      --nunca vai entrar nesta op¿¿o pois est¿ em um Domingo ou Feriado, mas deixei mesmo assim
+	        VHORASEXTRAS100  := 0 - VHORAS_AUSENCIA;
+	      end if;
+		
+      else
+        --vHORASEXTRAS50  := (nvl(vHORAS_NR_NCEXTRA,0) + nvl(vHORAS_NR_COEXTRA,0)) - nvl(:NEW.LOG_QN_AUSBHE,0);
+        if vHORAS_TRABALHADAS > vHORAS_NORMAIS then
+	        VHORASEXTRAS50  := (VHORAS_TRABALHADAS - VHORAS_NORMAIS) - VHORAS_AUSENCIA;
+	      else
+	        VHORASEXTRAS50  := 0 - VHORAS_AUSENCIA;
+	      end if;
+        vHORASEXTRAS100 := 0;
+      end if;
+    end if;  
+
+--p_debug('vHORAS_NR_NCEXTRA='||nvl(vHORAS_NR_NCEXTRA,-1)||', vHORAS_NR_COEXTRA='||nvl(vHORAS_NR_COEXTRA,-1)||'.');
+--p_debug('vHORASEXTRAS50='||nvl(vHORASEXTRAS50,-1)||', vHORASEXTRAS100='||nvl(vHORASEXTRAS100,-1)||', :NEW.LOG_QN_AUSBHE='||nvl(:NEW.LOG_QN_AUSBHE,-1)||'.');
+
+    if (NVL(VHORASEXTRAS50,0) + NVL(VHORASEXTRAS100,0)) > 0 then
+      return (nvl(vHORASEXTRAS50,0) + nvl(vHORASEXTRAS100,0));
+    else
+      return 0;
+    end if;
+
+exception
+  when others then
+    RAISE_APPLICATION_ERROR(-20001, 'Erro na funcao GET_HORAS_EXTRAS_DO_DIA  (' || TO_CHAR(SQLCODE) || '). Favor informar ao administrador.') ;
+end;
+ 
+
+/
+--------------------------------------------------------
+--  DDL for Function GET_SALDO_HORAS100_DO_DIA
+--------------------------------------------------------
+
+  CREATE OR REPLACE EDITIONABLE FUNCTION "TIMESHEET"."GET_SALDO_HORAS100_DO_DIA" (pFUNC_CD_FUNC TIMESHEET_DIA.FUNC_CD_FUNC%type
+                                      , pLOPE_NR_ANO TIMESHEET_DIA.LOPE_NR_ANO%type
+                                      , PLOPE_NR_MES TIMESHEET_DIA.LOPE_NR_MES%type
+                                      , PLOG_NR_DIA TIMESHEET_DIA.LOG_NR_DIA%type
+                                      , PLOG_QN_AUSBHE TIMESHEET_DIA.LOG_QN_AUSBHE%type
+                                      , pLOG_NR_HNORMAL TIMESHEET_DIA.LOG_NR_HNORMAL%type
+                                      , PST_TIMESHEET_DIA TIMESHEET_DIA.ST_TIMESHEET_DIA%type)
+return number IS
+
+  vHORAS_NR_NCEXTRA   number;
+  vHORAS_NR_COEXTRA   number;
+  vHORAS_NR_NC        number;
+  vHORAS_NR_CO        number;
+  vTP_FUNCIONARIO     funcionario.TP_FUNCIONARIO%type;
+  v_SEMANA            NUMBER(1);
+  vContFeriadoDomingo NUMBER(1) := 0;
+  vHORASEXTRAS50      NUMBER;
+  vHORASEXTRAS100     NUMBER;
+  vHORAS_TRABALHADAS  number;
+  vHORAS_AUSENCIA     number;
+  vHORAS_NORMAIS      number;
+  --vContinua           VARCHAR2(1) := 'N';
+  --vST_REQUER_APROVACAO_ADMIN VARCHAR2(1);
+begin
+    if PST_TIMESHEET_DIA <> 'P' then
+      return 0;
+    end if;
+
+    select NVL(SUM(NVL(T.HORAS_NR_NCEXTRA,0)),0), NVL(SUM(NVL(T.HORAS_NR_COEXTRA,0)),0)
+	        ,nvl(sum(nvl(t.HORAS_NR_NC,0)),0), nvl(sum(nvl(t.HORAS_NR_CO,0)),0)
+      into vHORAS_NR_NCEXTRA, vHORAS_NR_COEXTRA
+          ,VHORAS_NR_NC, VHORAS_NR_CO
+      from TIMESHEET_DIA_TAREFA t
+     where T.FUNC_CD_FUNC = PFUNC_CD_FUNC
+       and T.LOPE_NR_ANO = PLOPE_NR_ANO
+       and T.LOPE_NR_MES = PLOPE_NR_MES
+       and t.LOG_NR_DIA = pLOG_NR_DIA;
+
+    select TP_FUNCIONARIO into vTP_FUNCIONARIO /*E=Empresa, F=CLT*/
+      from FUNCIONARIO
+     where CD_FUNCIONARIO = pFUNC_CD_FUNC;    
+
+	  vHORAS_TRABALHADAS := nvl(vHORAS_NR_NCEXTRA,0) + nvl(vHORAS_NR_COEXTRA,0) + nvl(vHORAS_NR_NC,0) + nvl(vHORAS_NR_CO,0);
+	  vHORAS_AUSENCIA := nvl(pLOG_QN_AUSBHE,0);
+	  vHORAS_NORMAIS := nvl(pLOG_NR_HNORMAL,0);
+--exemplo1:
+--  1 extra
+--  4 normais
+--  3 ausencia
+--exemplo2:
+--  2 extra
+--  8 normais
+--  0 ausencia
+	 
+    if vTP_FUNCIONARIO = 'E' then
+      --Pessoa Juridica n¿o possui hora extra 100%, apenas 50%
+
+      if VHORAS_TRABALHADAS > VHORAS_NORMAIS then
+	      VHORASEXTRAS50  := (VHORAS_TRABALHADAS - VHORAS_NORMAIS) - VHORAS_AUSENCIA;
+	    else
+	      VHORASEXTRAS50  := 0 - VHORAS_AUSENCIA;
+	    end if;
+	  
+      --vHORASEXTRAS50  := (nvl(vHORAS_NR_NCEXTRA,0) + nvl(vHORAS_NR_COEXTRA,0)) - nvl(:NEW.LOG_QN_AUSBHE,0);
+      vHORASEXTRAS100 := 0;
+
+    else
+      --CLT possui hora extra 100% caso Domingo ou Feriado
+
+      SELECT TO_NUMBER(TO_CHAR(TO_DATE(pLOPE_NR_ANO||TO_CHAR(pLOPE_NR_MES,'09')||TO_CHAR(pLOG_NR_DIA,'09'),'RRRRMMDD'),'D'))
+        INTO v_SEMANA FROM DUAL;
+
+      -- Domingo 
+      IF( (v_SEMANA = 1) /*OR (v_SEMANA = 7)*/ ) THEN
+        vContFeriadoDomingo := 1;
+      ELSE
+        -- Verifica se existe feriado para o dia a ser inserido
+        SELECT count(*) into vContFeriadoDomingo 
+          FROM FERIADO
+         WHERE FERI_STT_INATIVO = 'N'
+           AND FERI_NR_DIA = pLOG_NR_DIA
+           AND FERI_NR_MES = pLOPE_NR_MES
+           AND ( (FERI_TP_FERIADO = 'LN'
+              AND FERI_NR_ANO = pLOPE_NR_ANO
+              AND FILIAL_CD_FILIAL = (SELECT CD_EMPRESA FROM FUNCIONARIO
+                                       WHERE CD_FUNCIONARIO = pFUNC_CD_FUNC))
+            OR (FERI_TP_FERIADO = 'NN'
+            AND FERI_NR_ANO = pLOPE_NR_ANO)
+             OR (FERI_TP_FERIADO = 'LF'
+               AND FILIAL_CD_FILIAL = (SELECT CD_EMPRESA FROM FUNCIONARIO
+                                       WHERE CD_FUNCIONARIO = pFUNC_CD_FUNC))
+            OR (FERI_TP_FERIADO IN ('NF')) );
+      END IF;
+
+      if vContFeriadoDomingo > 0 then
+        vHORASEXTRAS50  := 0;
+        --vHORASEXTRAS100 := (nvl(vHORAS_NR_NCEXTRA,0) + nvl(vHORAS_NR_COEXTRA,0)) - nvl(:NEW.LOG_QN_AUSBHE,0);
+        if vHORAS_TRABALHADAS > vHORAS_NORMAIS then
+	        VHORASEXTRAS100  := (VHORAS_TRABALHADAS - VHORAS_NORMAIS) - VHORAS_AUSENCIA;
+	      else
+		      --nunca vai entrar nesta op¿¿o pois est¿ em um Domingo ou Feriado, mas deixei mesmo assim
+	        VHORASEXTRAS100  := 0 - VHORAS_AUSENCIA;
+	      end if;
+		
+      else
+        --vHORASEXTRAS50  := (nvl(vHORAS_NR_NCEXTRA,0) + nvl(vHORAS_NR_COEXTRA,0)) - nvl(:NEW.LOG_QN_AUSBHE,0);
+        if vHORAS_TRABALHADAS > vHORAS_NORMAIS then
+	        VHORASEXTRAS50  := (VHORAS_TRABALHADAS - VHORAS_NORMAIS) - VHORAS_AUSENCIA;
+	      else
+	        VHORASEXTRAS50  := 0 - VHORAS_AUSENCIA;
+	      end if;
+        vHORASEXTRAS100 := 0;
+      end if;
+    end if;  
+
+--p_debug('vHORAS_NR_NCEXTRA='||nvl(vHORAS_NR_NCEXTRA,-1)||', vHORAS_NR_COEXTRA='||nvl(vHORAS_NR_COEXTRA,-1)||'.');
+--p_debug('vHORASEXTRAS50='||nvl(vHORASEXTRAS50,-1)||', vHORASEXTRAS100='||nvl(vHORASEXTRAS100,-1)||', :NEW.LOG_QN_AUSBHE='||nvl(:NEW.LOG_QN_AUSBHE,-1)||'.');
+
+    if NVL(VHORASEXTRAS50,0) <> 0 or NVL(VHORASEXTRAS100,0) <> 0 then
+      --return NVL(VHORASEXTRAS50,0);
+      return nvl(vHORASEXTRAS100,0);
+    else
+      return 0;
+    end if;
+
+exception
+  when others then
+    RAISE_APPLICATION_ERROR(-20001, 'Erro na funcao GET_SALDO_HORAS100_DO_DIA  (' || TO_CHAR(SQLCODE) || '). Favor informar ao administrador.') ;
+end;
+ 
+
+/
+--------------------------------------------------------
+--  DDL for Function GET_SALDO_HORAS50_DO_DIA
+--------------------------------------------------------
+
+  CREATE OR REPLACE EDITIONABLE FUNCTION "TIMESHEET"."GET_SALDO_HORAS50_DO_DIA" (pFUNC_CD_FUNC TIMESHEET_DIA.FUNC_CD_FUNC%type
+                                      , pLOPE_NR_ANO TIMESHEET_DIA.LOPE_NR_ANO%type
+                                      , PLOPE_NR_MES TIMESHEET_DIA.LOPE_NR_MES%type
+                                      , PLOG_NR_DIA TIMESHEET_DIA.LOG_NR_DIA%type
+                                      , PLOG_QN_AUSBHE TIMESHEET_DIA.LOG_QN_AUSBHE%type
+                                      , PLOG_NR_HNORMAL TIMESHEET_DIA.LOG_NR_HNORMAL%type
+                                      , pST_TIMESHEET_DIA TIMESHEET_DIA.ST_TIMESHEET_DIA%type)
+return number IS
+
+  vHORAS_NR_NCEXTRA   number;
+  vHORAS_NR_COEXTRA   number;
+  vHORAS_NR_NC        number;
+  vHORAS_NR_CO        number;
+  vTP_FUNCIONARIO     funcionario.TP_FUNCIONARIO%type;
+  v_SEMANA            NUMBER(1);
+  vContFeriadoDomingo NUMBER(1) := 0;
+  vHORASEXTRAS50      NUMBER;
+  vHORASEXTRAS100     NUMBER;
+  vHORAS_TRABALHADAS  number;
+  vHORAS_AUSENCIA     number;
+  vHORAS_NORMAIS      number;
+  --vContinua           VARCHAR2(1) := 'N';
+  --vST_REQUER_APROVACAO_ADMIN VARCHAR2(1);
+begin
+    if PST_TIMESHEET_DIA <> 'P' then
+      return 0;
+    end if;
+
+    select NVL(SUM(NVL(T.HORAS_NR_NCEXTRA,0)),0), NVL(SUM(NVL(T.HORAS_NR_COEXTRA,0)),0)
+	        ,nvl(sum(nvl(t.HORAS_NR_NC,0)),0), nvl(sum(nvl(t.HORAS_NR_CO,0)),0)
+      into vHORAS_NR_NCEXTRA, vHORAS_NR_COEXTRA
+          ,VHORAS_NR_NC, VHORAS_NR_CO
+      from TIMESHEET_DIA_TAREFA t
+     where T.FUNC_CD_FUNC = PFUNC_CD_FUNC
+       and T.LOPE_NR_ANO = PLOPE_NR_ANO
+       and T.LOPE_NR_MES = PLOPE_NR_MES
+       and t.LOG_NR_DIA = pLOG_NR_DIA;
+
+    select TP_FUNCIONARIO into vTP_FUNCIONARIO /*E=Empresa, F=CLT*/
+      from FUNCIONARIO
+     where CD_FUNCIONARIO = pFUNC_CD_FUNC;    
+
+	  vHORAS_TRABALHADAS := nvl(vHORAS_NR_NCEXTRA,0) + nvl(vHORAS_NR_COEXTRA,0) + nvl(vHORAS_NR_NC,0) + nvl(vHORAS_NR_CO,0);
+	  vHORAS_AUSENCIA := nvl(pLOG_QN_AUSBHE,0);
+	  vHORAS_NORMAIS := nvl(pLOG_NR_HNORMAL,0);
+--exemplo1:
+--  1 extra
+--  4 normais
+--  3 ausencia
+--exemplo2:
+--  2 extra
+--  8 normais
+--  0 ausencia
+	 
+    if vTP_FUNCIONARIO = 'E' then
+      --Pessoa Juridica n¿o possui hora extra 100%, apenas 50%
+
+      if VHORAS_TRABALHADAS > VHORAS_NORMAIS then
+	      VHORASEXTRAS50  := (VHORAS_TRABALHADAS - VHORAS_NORMAIS) - VHORAS_AUSENCIA;
+	    else
+	      VHORASEXTRAS50  := 0 - VHORAS_AUSENCIA;
+	    end if;
+	  
+      --vHORASEXTRAS50  := (nvl(vHORAS_NR_NCEXTRA,0) + nvl(vHORAS_NR_COEXTRA,0)) - nvl(:NEW.LOG_QN_AUSBHE,0);
+      vHORASEXTRAS100 := 0;
+
+    else
+      --CLT possui hora extra 100% caso Domingo ou Feriado
+
+      SELECT TO_NUMBER(TO_CHAR(TO_DATE(pLOPE_NR_ANO||TO_CHAR(pLOPE_NR_MES,'09')||TO_CHAR(pLOG_NR_DIA,'09'),'RRRRMMDD'),'D'))
+        INTO v_SEMANA FROM DUAL;
+
+      -- Domingo 
+      IF( (v_SEMANA = 1) /*OR (v_SEMANA = 7)*/ ) THEN
+        vContFeriadoDomingo := 1;
+      ELSE
+        -- Verifica se existe feriado para o dia a ser inserido
+        SELECT count(*) into vContFeriadoDomingo 
+          FROM FERIADO
+         WHERE FERI_STT_INATIVO = 'N'
+           AND FERI_NR_DIA = pLOG_NR_DIA
+           AND FERI_NR_MES = pLOPE_NR_MES
+           AND ( (FERI_TP_FERIADO = 'LN'
+              AND FERI_NR_ANO = pLOPE_NR_ANO
+              AND FILIAL_CD_FILIAL = (SELECT CD_EMPRESA FROM FUNCIONARIO
+                                       WHERE CD_FUNCIONARIO = pFUNC_CD_FUNC))
+            OR (FERI_TP_FERIADO = 'NN'
+            AND FERI_NR_ANO = pLOPE_NR_ANO)
+             OR (FERI_TP_FERIADO = 'LF'
+               AND FILIAL_CD_FILIAL = (SELECT CD_EMPRESA FROM FUNCIONARIO
+                                       WHERE CD_FUNCIONARIO = pFUNC_CD_FUNC))
+            OR (FERI_TP_FERIADO IN ('NF')) );
+      END IF;
+
+      if vContFeriadoDomingo > 0 then
+        vHORASEXTRAS50  := 0;
+        --vHORASEXTRAS100 := (nvl(vHORAS_NR_NCEXTRA,0) + nvl(vHORAS_NR_COEXTRA,0)) - nvl(:NEW.LOG_QN_AUSBHE,0);
+        if vHORAS_TRABALHADAS > vHORAS_NORMAIS then
+	        VHORASEXTRAS100  := (VHORAS_TRABALHADAS - VHORAS_NORMAIS) - VHORAS_AUSENCIA;
+	      else
+		      --nunca vai entrar nesta op¿¿o pois est¿ em um Domingo ou Feriado, mas deixei mesmo assim
+	        VHORASEXTRAS100  := 0 - VHORAS_AUSENCIA;
+	      end if;
+		
+      else
+        --vHORASEXTRAS50  := (nvl(vHORAS_NR_NCEXTRA,0) + nvl(vHORAS_NR_COEXTRA,0)) - nvl(:NEW.LOG_QN_AUSBHE,0);
+        if vHORAS_TRABALHADAS > vHORAS_NORMAIS then
+	        VHORASEXTRAS50  := (VHORAS_TRABALHADAS - VHORAS_NORMAIS) - VHORAS_AUSENCIA;
+	      else
+	        VHORASEXTRAS50  := 0 - VHORAS_AUSENCIA;
+	      end if;
+        vHORASEXTRAS100 := 0;
+      end if;
+    end if;  
+
+--p_debug('vHORAS_NR_NCEXTRA='||nvl(vHORAS_NR_NCEXTRA,-1)||', vHORAS_NR_COEXTRA='||nvl(vHORAS_NR_COEXTRA,-1)||'.');
+--p_debug('vHORASEXTRAS50='||nvl(vHORASEXTRAS50,-1)||', vHORASEXTRAS100='||nvl(vHORASEXTRAS100,-1)||', :NEW.LOG_QN_AUSBHE='||nvl(:NEW.LOG_QN_AUSBHE,-1)||'.');
+
+    if nvl(vHORASEXTRAS50,0) <> 0 OR nvl(vHORASEXTRAS100,0) <> 0 then
+      return NVL(VHORASEXTRAS50,0);
+      --nvl(vHORASEXTRAS100,0)
+    else
+      return 0;
+    end if;
+
+exception
+  when others then
+    RAISE_APPLICATION_ERROR(-20001, 'Erro na funcao GET_SALDO_HORAS50_DO_DIA  (' || TO_CHAR(SQLCODE) || '). Favor informar ao administrador.') ;
+end;
+ 
+
+/
+--------------------------------------------------------
+--  DDL for Function LOG_CONVERTE_DATA
+--------------------------------------------------------
+
+  CREATE OR REPLACE EDITIONABLE FUNCTION "TIMESHEET"."LOG_CONVERTE_DATA" ( P_NR_ANO IN NUMBER, P_NR_MES IN NUMBER, P_NR_DIA IN NUMBER)
+RETURN DATE IS
+  VANO NUMBER := P_NR_ANO;
+BEGIN
+   IF VANO = 209 THEN VANO := 2009; END IF;
+   IF VANO < 1900 THEN
+       VANO := VANO + 2000;
+   END IF;
+
+   RETURN( TO_DATE( TO_CHAR(VANO) || LPAD(TO_CHAR(P_NR_MES), 2, '0') || LPAD(TO_CHAR(P_NR_DIA), 2, '0'), 'YYYYMMDD' ) );
+
+exception
+when others then
+p_debug(P_NR_ANO || '-' || VANO || '-' || P_NR_MES || '-' || P_NR_DIA);
+raise;
+END;
+
+ 
+ 
+
+/
+--------------------------------------------------------
+--  DDL for Function LOG_ORDERBY
+--------------------------------------------------------
+
+  CREATE OR REPLACE EDITIONABLE FUNCTION "TIMESHEET"."LOG_ORDERBY" (P_DIA IN NUMBER) RETURN NUMBER IS
+begin
+   if(P_DIA >= 11) AND (P_DIA <= 25) then
+      RETURN(P_DIA);
+   end if;
+
+   if(P_DIA >= 26) AND (P_DIA <= 31) then
+      RETURN( P_DIA - 26 );
+   end if;
+
+   if(P_DIA >= 1) AND (P_DIA <= 10) then
+      RETURN( P_DIA + 5 );
+   end if;
+
+end;
+
+ 
+ 
+
+/
+--------------------------------------------------------
+--  DDL for Function LOG_VERIFICA_HORA_DOBRADA
+--------------------------------------------------------
+
+  CREATE OR REPLACE EDITIONABLE FUNCTION "TIMESHEET"."LOG_VERIFICA_HORA_DOBRADA" ( P_NR_ANO IN NUMBER, P_NR_MES IN NUMBER, P_NR_DIA IN NUMBER,
+          P_CD_EMPRESA IN NUMBER, P_HORAS_NR_CO IN NUMBER, P_LOG_NR_HNORMAL IN NUMBER, P_CD_PROJETO IN NUMBER)
+RETURN NUMBER IS
+BEGIN
+--VERIFICAR COM SUZANE COMO E FEITO O CALCULO... ???
+   IF (P_LOG_NR_HNORMAL = 0) THEN
+      RETURN(P_HORAS_NR_CO);
+   ELSE
+      RETURN(0);
+   END IF;
+END;
+ 
+ 
+
+/
+--------------------------------------------------------
+--  DDL for Function COM_ACES_CRIPT
+--------------------------------------------------------
+
+  CREATE OR REPLACE EDITIONABLE FUNCTION "TIMESHEET"."COM_ACES_CRIPT" (p_string IN VARCHAR2)
+RETURN VARCHAR2
+IS
+  v_key_raw      RAW(8);             -- DES requer 8 bytes
+  v_in_raw       RAW(32767);
+  v_enc_raw      RAW(32767);
+  v_base64_raw   RAW(32767);
+  v_base64_vc    VARCHAR2(32767);
+  -- chave textual (8 caracteres -> 8 bytes). Substitua por sua chave segura.
+  c_key_text CONSTANT VARCHAR2(8) := 'COMMIT9I';
+BEGIN
+  IF p_string IS NULL THEN
+    RETURN NULL;
+  END IF;
+
+  -- monta key em RAW (8 bytes)
+  v_key_raw := UTL_RAW.CAST_TO_RAW(c_key_text);
+
+  -- converte entrada para RAW (usa a codificação da sessão)
+  v_in_raw := UTL_RAW.CAST_TO_RAW(p_string);
+
+  -- encripta com DES ECB PKCS#5 (compatível com obfuscation toolkit DES)
+  v_enc_raw := DBMS_CRYPTO.ENCRYPT(
+                 src => v_in_raw,
+                 typ => DBMS_CRYPTO.DES_ECB_PKCS5,
+                 key => v_key_raw
+               );
+
+  -- converte para base64 (texto legível para armazenar)
+  v_base64_raw := UTL_ENCODE.BASE64_ENCODE(v_enc_raw);
+  v_base64_vc  := UTL_RAW.CAST_TO_VARCHAR2(v_base64_raw);
+
+  RETURN v_base64_vc;
+EXCEPTION
+  WHEN OTHERS THEN
+    -- melhor registrar/propagar erro de forma clara
+    RAISE_APPLICATION_ERROR(-20001, 'COM_ACES_CRIPT error: ' || SQLERRM);
+END COM_ACES_CRIPT;
+
+/
+--------------------------------------------------------
+--  DDL for Function COM_ACES_CRIPT_B64
+--------------------------------------------------------
+
+  CREATE OR REPLACE EDITIONABLE FUNCTION "TIMESHEET"."COM_ACES_CRIPT_B64" (P_STRING IN VARCHAR2)
+RETURN VARCHAR2
+IS
+  v_entrada     VARCHAR2(32767) := P_STRING;
+  v_key         VARCHAR2(8)     := 'COMMIT9I';
+  v_encrypted   RAW(32767);
+  v_b64_raw     RAW(32767);
+  v_b64_text    VARCHAR2(32767);
+BEGIN
+  v_encrypted := DBMS_CRYPTO.ENCRYPT(
+                    src => UTL_RAW.CAST_TO_RAW(v_entrada),
+                    typ => DBMS_CRYPTO.DES_ECB_PKCS5,
+                    key => UTL_RAW.CAST_TO_RAW(v_key)
+                 );
+
+  -- converte para Base64 (UTL_ENCODE.BASE64_ENCODE recebe RAW e retorna RAW)
+  v_b64_raw  := UTL_ENCODE.BASE64_ENCODE(v_encrypted);
+  v_b64_text := UTL_RAW.CAST_TO_VARCHAR2(v_b64_raw);
+
+  RETURN RTRIM(v_b64_text);
+END COM_ACES_CRIPT_B64;
+
+/
+--------------------------------------------------------
+--  DDL for Function COM_ACES_CRIPT2
+--------------------------------------------------------
+
+  CREATE OR REPLACE EDITIONABLE FUNCTION "TIMESHEET"."COM_ACES_CRIPT2" (
+  p_string IN VARCHAR2,
+  v_key    IN VARCHAR2
+) RETURN VARCHAR2 IS
+  -- ajusta/chop/pad da chave para 16 bytes (2-key 3DES)
+  l_key_text   VARCHAR2(32) := SUBSTR(NVL(v_key, '') || 'COMMIT9I', 1, 16);
+  l_key_raw    RAW(32)     := UTL_RAW.cast_to_raw(l_key_text);
+  l_src_raw    RAW(32767)  := UTL_RAW.cast_to_raw(NVL(p_string, ''));
+  l_iv         RAW(8)      := HEXTORAW('0000000000000000'); -- IV = 0
+  l_encrypted  RAW(32767);
+  l_b64_raw    RAW(32767);
+BEGIN
+  -- Encriptar com 3DES CBC PKCS5 (usa chave de 16 bytes -> 2-key 3DES)
+  l_encrypted := DBMS_CRYPTO.ENCRYPT(
+                    src => l_src_raw,
+                    typ => DBMS_CRYPTO.DES3_CBC_PKCS5,
+                    key => l_key_raw,
+                    iv  => l_iv
+                 );
+
+  -- Converter para Base64 (retorno como VARCHAR2 legível)
+  l_b64_raw := UTL_ENCODE.BASE64_ENCODE(l_encrypted);
+
+  RETURN UTL_RAW.CAST_TO_VARCHAR2(l_b64_raw);
+EXCEPTION
+  WHEN OTHERS THEN
+    RAISE;
+END COM_ACES_CRIPT2;
+
+/
+--------------------------------------------------------
+--  DDL for Function COM_ACES_CRIPT3
+--------------------------------------------------------
+
+  CREATE OR REPLACE EDITIONABLE FUNCTION "TIMESHEET"."COM_ACES_CRIPT3" (P_STRING IN VARCHAR2)
+RETURN VARCHAR2 IS
+  l_raw        RAW(32767);
+  l_hash_raw   RAW(32);
+  l_b64_raw    RAW(32767);
+  l_result     VARCHAR2(32767);
+BEGIN
+  -- converte string para RAW (como no seu original)
+  l_raw := UTL_RAW.CAST_TO_RAW(P_STRING);
+
+  -- calcula MD5 com DBMS_CRYPTO
+  l_hash_raw := DBMS_CRYPTO.HASH(l_raw, DBMS_CRYPTO.HASH_MD5);
+
+  -- base64-encode do raw do hash
+  l_b64_raw := UTL_ENCODE.BASE64_ENCODE(l_hash_raw);
+
+  -- converte para varchar e remove CR/LF caso existam
+  l_result := UTL_RAW.CAST_TO_VARCHAR2(l_b64_raw);
+  l_result := REPLACE(REPLACE(l_result, CHR(10), ''), CHR(13), '');
+
+  RETURN l_result;
+END COM_ACES_CRIPT3;
+
+/
+--------------------------------------------------------
+--  DDL for Function COM_ACES_DESCRIPT
+--------------------------------------------------------
+
+  CREATE OR REPLACE EDITIONABLE FUNCTION "TIMESHEET"."COM_ACES_DESCRIPT" 
+ (P_STRING IN CHAR
+ )
+ RETURN VARCHAR2
+ IS
+-- PL/SQL Specification
+-- PL/SQL Specification
+V_SAIDA     CHAR(16)  ;
+ V_ENTRADA   CHAR(16)  ;
+ V_KEY       CHAR(8)  :=  'COMMIT9I'  ;
+-- PL/SQL Block
+
+-- PL/SQL Block
+BEGIN
+          V_SAIDA := P_STRING ;
+          dbms_obfuscation_toolkit.DESDecrypt(input_string => V_SAIDA,
+key_string => v_key, decrypted_string => V_ENTRADA) ;
+          V_ENTRADA := RTRIM (V_ENTRADA);
+          RETURN V_ENTRADA ;
+END;
+
+ 
+ 
+
+/
+--------------------------------------------------------
+--  DDL for Function COM_ACES_DESCRIPT2
+--------------------------------------------------------
+
+  CREATE OR REPLACE EDITIONABLE FUNCTION "TIMESHEET"."COM_ACES_DESCRIPT2" (P_STRING IN CHAR, V_KEY IN CHAR )
+ RETURN VARCHAR2 IS
+ V_SAIDA     CHAR(16)  ;
+ V_ENTRADA   CHAR(16)  ;
+ V_KEY2       CHAR(16)  := V_KEY || 'COMMIT9I'  ;
+BEGIN
+  V_SAIDA := P_STRING ;
+  dbms_obfuscation_toolkit.DESDecrypt(input_string => V_SAIDA, key_string => v_key2, decrypted_string => V_ENTRADA) ;
+  V_ENTRADA := RTRIM (V_ENTRADA);
+  RETURN V_ENTRADA ;
+END;
+ 
+
+/
+--------------------------------------------------------
+--  DDL for Function COM_ACES_GET_CD_MODULO
+--------------------------------------------------------
+
+  CREATE OR REPLACE EDITIONABLE FUNCTION "TIMESHEET"."COM_ACES_GET_CD_MODULO" 
+ (P_CDG_MENU_PAI IN COM_ACES_MENU.CDG_MENU%TYPE
+ )
+ RETURN VARCHAR2
+ IS
+V_CD_MODULO COM_ACES_MENU.CD_MODULO%TYPE;
+BEGIN
+   IF(P_CDG_MENU_PAI IS NULL) THEN RETURN(NULL); END IF;
+
+   SELECT CD_MODULO INTO V_CD_MODULO FROM COM_ACES_MENU WHERE CDG_MENU = P_CDG_MENU_PAI;
+   RETURN(V_CD_MODULO);
+EXCEPTION
+   WHEN NO_DATA_FOUND THEN RETURN(NULL);
+   WHEN OTHERS THEN
+      RAISE_APPLICATION_ERROR(-20001, 'ERRO NA FUNCAO COM_ACES_GET_CD_MODULO: ' || SQLERRM);
+END;
+
+ 
+ 
+
+/
+--------------------------------------------------------
+--  DDL for Function COM_ACES_GET_TP_MODULO
+--------------------------------------------------------
+
+  CREATE OR REPLACE EDITIONABLE FUNCTION "TIMESHEET"."COM_ACES_GET_TP_MODULO" 
+ (P_CDG_MENU_PAI IN COM_ACES_MENU.CDG_MENU%TYPE
+ )
+ RETURN VARCHAR2
+ IS
+V_TP_MODULO COM_ACES_MENU.TP_MODULO%TYPE;
+BEGIN
+   IF(P_CDG_MENU_PAI IS NULL) THEN RETURN(NULL); END IF;
+
+   SELECT TP_MODULO INTO V_TP_MODULO FROM COM_ACES_MENU WHERE CDG_MENU = P_CDG_MENU_PAI;
+   RETURN(V_TP_MODULO);
+EXCEPTION
+   WHEN NO_DATA_FOUND THEN RETURN(NULL);
+   WHEN OTHERS THEN
+      RAISE_APPLICATION_ERROR(-20001, 'ERRO NA FUNCAO COM_ACES_GET_TP_MODULO: ' || SQLERRM);
+END;
+
+ 
+ 
+
+/
+--------------------------------------------------------
+--  DDL for Function COM_ACES_VERIFICA_DEPENDENCIAS
+--------------------------------------------------------
+
+  CREATE OR REPLACE EDITIONABLE FUNCTION "TIMESHEET"."COM_ACES_VERIFICA_DEPENDENCIAS" ( P_TABELA IN VARCHAR2 ) RETURN VARCHAR2
+IS
+   V_RETORNO VARCHAR2(500) := NULL;
+
+   CURSOR C1 IS select uc1.table_name TABELA, uc1.constraint_name, uc1.R_constraint_name,
+uc2.table_name TABELAORIGEM
+                  from user_constraints uc1, user_constraints uc2
+                 where uc1.R_constraint_name = uc2.constraint_name
+                   and uc1.constraint_type = 'R'
+                   and uc2.table_name = UPPER(P_TABELA);
+BEGIN
+   FOR REG_C1 IN C1 LOOP
+      IF(V_RETORNO IS NULL) THEN V_RETORNO := REG_C1.TABELA;
+      ELSE V_RETORNO := V_RETORNO || ' , ' || REG_C1.TABELA;
+      END IF;
+   END LOOP;
+   RETURN( V_RETORNO );
+END;
+ 
+ 
+
+/
+--------------------------------------------------------
+--  DDL for Function COM_FORMATA_CNPJ
+--------------------------------------------------------
+
+  CREATE OR REPLACE EDITIONABLE FUNCTION "TIMESHEET"."COM_FORMATA_CNPJ" ( P_CNPJ NUMBER ) return char is
+V_CNPJ VARCHAR2(18);
+begin
+--68.555.473/0001-99
+   V_CNPJ := TO_CHAR(P_CNPJ);
+   V_CNPJ := LPAD(V_CNPJ, 14, '0');
+   V_CNPJ := SUBSTR(V_CNPJ,1,2) || '.' || SUBSTR(V_CNPJ,3,3) || '.' || SUBSTR(V_CNPJ,6,3) || '/' ||
+             SUBSTR(V_CNPJ,9,4) || '-' || SUBSTR(V_CNPJ,13,2);
+   RETURN(V_CNPJ);
+end;
+ 
+ 
+
+/
+--------------------------------------------------------
+--  Constraints for Table AGENCIABCO
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."AGENCIABCO" MODIFY ("CD_BANCO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."AGENCIABCO" MODIFY ("CD_AGENCIA" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."AGENCIABCO" ADD CONSTRAINT "AGENCIABCO_PK" PRIMARY KEY ("CD_BANCO", "CD_AGENCIA", "NR_DIGITO")
+  USING INDEX "TIMESHEET"."AGENCIABCO_PK"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table ALOCACAOPROJ
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."ALOCACAOPROJ" MODIFY ("CD_PROJETO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."ALOCACAOPROJ" MODIFY ("CD_FASE" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."ALOCACAOPROJ" MODIFY ("CD_FUNCIONARIO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."ALOCACAOPROJ" MODIFY ("CD_CARGO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."ALOCACAOPROJ" ADD CONSTRAINT "ALOCACAOPROJ_PK" PRIMARY KEY ("CD_PROJETO", "CD_FASE", "CD_FUNCIONARIO")
+  USING INDEX "TIMESHEET"."ALOCACAOPROJ_PK"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table AMBIENTE_CLIFOR
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."AMBIENTE_CLIFOR" MODIFY ("CD_CLIFOR" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."AMBIENTE_CLIFOR" MODIFY ("NR_AMBIENTE" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."AMBIENTE_CLIFOR" ADD CONSTRAINT "AMB_CLI_PK" PRIMARY KEY ("CD_CLIFOR", "NR_AMBIENTE")
+  USING INDEX "TIMESHEET"."AMB_CLI_PK"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table APPL_SERVER
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."APPL_SERVER" MODIFY ("CD_APPL_SERVER" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."APPL_SERVER" MODIFY ("DS_APPL_SERVER" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."APPL_SERVER" ADD CONSTRAINT "APPL_SERVE_PK" PRIMARY KEY ("CD_APPL_SERVER")
+  USING INDEX "TIMESHEET"."APPL_SERVE_PK"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table ATIVIDADE_PROJ
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."ATIVIDADE_PROJ" MODIFY ("CD_PROJETO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."ATIVIDADE_PROJ" MODIFY ("CD_FASE" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."ATIVIDADE_PROJ" MODIFY ("CD_FUNCIONARIO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."ATIVIDADE_PROJ" MODIFY ("DT_ATIVIDADE" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."ATIVIDADE_PROJ" MODIFY ("HR_ATIVIDADE" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."ATIVIDADE_PROJ" ADD CONSTRAINT "ATIVIDADE_PK" PRIMARY KEY ("CD_PROJETO", "CD_FASE", "CD_FUNCIONARIO", "DT_ATIVIDADE")
+  USING INDEX "TIMESHEET"."ATIVIDADE_PK"  ENABLE;
+  ALTER TABLE "TIMESHEET"."ATIVIDADE_PROJ" ADD CONSTRAINT "CK_HORAATIV" CHECK (HR_ATIVIDADE < 24) ENABLE;
+--------------------------------------------------------
+--  Constraints for Table BANCO
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."BANCO" MODIFY ("CD_BANCO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."BANCO" MODIFY ("NM_BANCO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."BANCO" ADD CONSTRAINT "BANCO_PK" PRIMARY KEY ("CD_BANCO")
+  USING INDEX "TIMESHEET"."BANCO_PK"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table BANCODADO
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."BANCODADO" MODIFY ("CD_BANCO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."BANCODADO" MODIFY ("DS_BANCO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."BANCODADO" ADD CONSTRAINT "BANCODADO_PK" PRIMARY KEY ("CD_BANCO")
+  USING INDEX "TIMESHEET"."BANCODADO_PK"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table CARGO
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."CARGO" MODIFY ("CD_CARGO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."CARGO" MODIFY ("DS_CARGO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."CARGO" ADD CONSTRAINT "CARGO_PK" PRIMARY KEY ("CD_CARGO")
+  USING INDEX "TIMESHEET"."CARGO_PK"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table CATEGORIA_FASE
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."CATEGORIA_FASE" MODIFY ("CD_CATEGORIA_FASE" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."CATEGORIA_FASE" MODIFY ("DS_CATEGORIA_FASE" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."CATEGORIA_FASE" MODIFY ("ST_CATEGORIA_FASE" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."CATEGORIA_FASE" MODIFY ("DT_ULT_ALT" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."CATEGORIA_FASE" MODIFY ("USUR_CD_USUR" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."CATEGORIA_FASE" ADD CONSTRAINT "CATEGORIA_FASE_PK" PRIMARY KEY ("CD_CATEGORIA_FASE")
+  USING INDEX "TIMESHEET"."CATEGORIA_FASE_PK"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table CATEGORIA_TAREFA
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."CATEGORIA_TAREFA" MODIFY ("CD_CATEGORIA_TAREFA" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."CATEGORIA_TAREFA" MODIFY ("DS_CATEGORIA_TAREFA" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."CATEGORIA_TAREFA" MODIFY ("ST_CATEGORIA_TAREFA" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."CATEGORIA_TAREFA" MODIFY ("DT_ULT_ALT" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."CATEGORIA_TAREFA" MODIFY ("USUR_CD_USUR" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."CATEGORIA_TAREFA" ADD CONSTRAINT "CATEGORIA_TAREFA_PK" PRIMARY KEY ("CD_CATEGORIA_TAREFA")
+  USING INDEX "TIMESHEET"."CATEGORIA_TAREFA_PK"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table CEP
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."CEP" MODIFY ("CD_CEP" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."CEP" MODIFY ("CD_CIDADE" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."CEP" ADD CONSTRAINT "CEP_PK" PRIMARY KEY ("CD_CEP")
+  USING INDEX "TIMESHEET"."CEP_PK"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table CIDADE
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."CIDADE" MODIFY ("CD_CIDADE" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."CIDADE" MODIFY ("DS_CIDADE" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."CIDADE" MODIFY ("SG_ESTADO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."CIDADE" ADD CONSTRAINT "CIDADE_PK" PRIMARY KEY ("CD_CIDADE")
+  USING INDEX "TIMESHEET"."CIDADE_PK"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table CLASSES
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."CLASSES" MODIFY ("CLAS_CD_CLASSE" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."CLASSES" MODIFY ("CLAS_TX_DESCRICAO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."CLASSES" MODIFY ("CLAS_IN_TIPO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."CLASSES" ADD CONSTRAINT "SYS_C001815" PRIMARY KEY ("CLAS_CD_CLASSE")
+  USING INDEX  ENABLE;
+  ALTER TABLE "TIMESHEET"."CLASSES" ADD CONSTRAINT "AVCON_2626_CLAS__000" CHECK (CLAS_IN_TIPO IN ('D', 'R')) ENABLE;
+--------------------------------------------------------
+--  Constraints for Table CLAUSULA
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."CLAUSULA" MODIFY ("CD_CONTRATO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."CLAUSULA" MODIFY ("CD_CLAUSULA" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."CLAUSULA" MODIFY ("DS_CLAUSULA" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."CLAUSULA" ADD CONSTRAINT "CLAUSULA_PK" PRIMARY KEY ("CD_CONTRATO", "CD_CLAUSULA")
+  USING INDEX "TIMESHEET"."CLAUSULA_PK"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table CLIENTES_IBM
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."CLIENTES_IBM" MODIFY ("COD_CLIENTE" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."CLIENTES_IBM" MODIFY ("NOME_CLIENTE" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."CLIENTES_IBM" ADD CONSTRAINT "AVCON_1120766213_TIPO__000" CHECK (TIPO_CLIENTE IN ('S', 'C', 'G')) ENABLE;
+  ALTER TABLE "TIMESHEET"."CLIENTES_IBM" ADD CONSTRAINT "CLI_IBM_PK" PRIMARY KEY ("COD_CLIENTE")
+  USING INDEX "TIMESHEET"."CLI_IBM_PK"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table CLIFOR
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."CLIFOR" MODIFY ("CD_CLIFOR" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."CLIFOR" MODIFY ("NM_RAZAOSOCIAL" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."CLIFOR" MODIFY ("DT_CADASTRAMENTO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."CLIFOR" MODIFY ("ST_CLIFOR" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."CLIFOR" MODIFY ("TIP_CLIFOR" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."CLIFOR" MODIFY ("CD_FILIAL_ORIGEM" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."CLIFOR" ADD CONSTRAINT "AVCON_1335_ST_CL_000" CHECK (ST_CLIFOR IN ('C01', 'C02', 'C03', 'C04')) ENABLE;
+  ALTER TABLE "TIMESHEET"."CLIFOR" ADD CONSTRAINT "TIP_CLIFOR" CHECK (TIP_CLIFOR in ('C','F')) ENABLE;
+  ALTER TABLE "TIMESHEET"."CLIFOR" ADD CONSTRAINT "ST_CLIFOR_CH" CHECK (ST_CLIFOR IN ('C01', 'C02', 'C03', 'C04')) ENABLE;
+  ALTER TABLE "TIMESHEET"."CLIFOR" ADD CONSTRAINT "AVCON_6544_ST_CL_000" CHECK (ST_CLIFOR IN ('C01', 'C02', 'C03', 'C04')) ENABLE;
+  ALTER TABLE "TIMESHEET"."CLIFOR" ADD CONSTRAINT "CLIFOR_PK" PRIMARY KEY ("CD_CLIFOR")
+  USING INDEX "TIMESHEET"."CLIFOR_PK"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table COM_ACES_APLICACAO
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."COM_ACES_APLICACAO" MODIFY ("CDG_APLICACAO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."COM_ACES_APLICACAO" MODIFY ("DESCRICAO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."COM_ACES_APLICACAO" MODIFY ("DESCRICAO_RESUMIDA" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."COM_ACES_APLICACAO" MODIFY ("EXECUTAVEL" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."COM_ACES_APLICACAO" MODIFY ("IN_BLOQUEADO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."COM_ACES_APLICACAO" MODIFY ("IN_RASTREAVEL" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."COM_ACES_APLICACAO" MODIFY ("DT_INCLUSAO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."COM_ACES_APLICACAO" MODIFY ("USUR_INCLUSAO" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table COM_ACES_ATRIBUTOS
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."COM_ACES_ATRIBUTOS" MODIFY ("CDG_MENU" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."COM_ACES_ATRIBUTOS" MODIFY ("NOME_ATRIBUTO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."COM_ACES_ATRIBUTOS" MODIFY ("DT_INCLUSAO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."COM_ACES_ATRIBUTOS" MODIFY ("USUR_INCLUSAO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."COM_ACES_ATRIBUTOS" ADD CONSTRAINT "COM_ATRIBUTOS_PK" PRIMARY KEY ("CDG_MENU", "NOME_ATRIBUTO")
+  USING INDEX "TIMESHEET"."COM_ATRIBUTOS_PK"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table COM_ACES_FAVORITOS
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."COM_ACES_FAVORITOS" MODIFY ("CDG_USUR" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."COM_ACES_FAVORITOS" MODIFY ("CDG_MENU" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."COM_ACES_FAVORITOS" ADD CONSTRAINT "COM_ACES_FAVORITOS_PK" PRIMARY KEY ("CDG_USUR", "CDG_MENU")
+  USING INDEX "TIMESHEET"."COM_ACES_FAVORITOS_PK"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table COM_ACES_HISTORICO_LOGIN
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."COM_ACES_HISTORICO_LOGIN" MODIFY ("COM_SESSAOJSP" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."COM_ACES_HISTORICO_LOGIN" MODIFY ("DTA_LOGIN" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."COM_ACES_HISTORICO_LOGIN" MODIFY ("CDG_USUR" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."COM_ACES_HISTORICO_LOGIN" MODIFY ("STT_LOGIN_LOGOUT" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."COM_ACES_HISTORICO_LOGIN" MODIFY ("CDG_GRUPO_ACESSO" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table COM_ACES_HISTORICO_TELA
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."COM_ACES_HISTORICO_TELA" MODIFY ("DTA_ACESSO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."COM_ACES_HISTORICO_TELA" MODIFY ("CDG_USUR" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."COM_ACES_HISTORICO_TELA" MODIFY ("EXECUTAVEL" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table COM_ACES_LOG_ERROS
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."COM_ACES_LOG_ERROS" MODIFY ("TPO_ERRO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."COM_ACES_LOG_ERROS" MODIFY ("NMR_ERRO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."COM_ACES_LOG_ERROS" MODIFY ("DSC_CONSTRAINT_EXCEPTION" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."COM_ACES_LOG_ERROS" MODIFY ("DTA_ERRO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."COM_ACES_LOG_ERROS" ADD CONSTRAINT "AVCON_1021406526_TPO_E_000" CHECK (TPO_ERRO IN ('1', '0')) ENABLE;
+  ALTER TABLE "TIMESHEET"."COM_ACES_LOG_ERROS" ADD CONSTRAINT "AVCON_11539_TPO_E_000" CHECK (TPO_ERRO IN ('1', '0')) ENABLE;
+--------------------------------------------------------
+--  Constraints for Table COM_ACES_MENU
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."COM_ACES_MENU" MODIFY ("CDG_MENU" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."COM_ACES_MENU" MODIFY ("DESCRICAO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."COM_ACES_MENU" MODIFY ("DESCR_RESUMIDA" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."COM_ACES_MENU" MODIFY ("DT_INICIO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."COM_ACES_MENU" MODIFY ("DT_FIM" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."COM_ACES_MENU" MODIFY ("IN_BLOQUEADO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."COM_ACES_MENU" MODIFY ("IN_RASTREAVEL" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."COM_ACES_MENU" MODIFY ("DT_INCLUSAO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."COM_ACES_MENU" MODIFY ("USUR_INCLUSAO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."COM_ACES_MENU" MODIFY ("IN_VOLTAR" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."COM_ACES_MENU" MODIFY ("IN_VISIVEL" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."COM_ACES_MENU" MODIFY ("IN_POPUP" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."COM_ACES_MENU" MODIFY ("CD_MODULO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."COM_ACES_MENU" MODIFY ("TP_MODULO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."COM_ACES_MENU" ADD CONSTRAINT "AVCON_1021406526_IN_RA_000" CHECK (IN_RASTREAVEL IN ('N', 'S')) ENABLE;
+  ALTER TABLE "TIMESHEET"."COM_ACES_MENU" ADD CONSTRAINT "AVCON_1021406526_IN_PO_000" CHECK (IN_POPUP IN ('N', 'S')) ENABLE;
+  ALTER TABLE "TIMESHEET"."COM_ACES_MENU" ADD CONSTRAINT "AVCON_1021406526_IN_VO_000" CHECK (IN_VOLTAR IN ('N', 'S')) ENABLE;
+  ALTER TABLE "TIMESHEET"."COM_ACES_MENU" ADD CONSTRAINT "AVCON_1021406526_IN_BL_000" CHECK (IN_BLOQUEADO IN ('N', 'S')) ENABLE;
+  ALTER TABLE "TIMESHEET"."COM_ACES_MENU" ADD CONSTRAINT "COM_MENU_PK" PRIMARY KEY ("CDG_MENU")
+  USING INDEX "TIMESHEET"."COM_MENU_PK"  ENABLE;
+  ALTER TABLE "TIMESHEET"."COM_ACES_MENU" ADD CONSTRAINT "AVCON_1021406526_IN_VI_000" CHECK (IN_VISIVEL IN ('N', 'S')) ENABLE;
+  ALTER TABLE "TIMESHEET"."COM_ACES_MENU" ADD CONSTRAINT "AVCON_11714_TP_MO_000" CHECK (TP_MODULO IN ('M', 'J', 'F', 'R', 'T')) ENABLE;
+  ALTER TABLE "TIMESHEET"."COM_ACES_MENU" ADD CONSTRAINT "AVCON_11714_IN_VI_000" CHECK (IN_VISIVEL IN ('S', 'N')) ENABLE;
+  ALTER TABLE "TIMESHEET"."COM_ACES_MENU" ADD CONSTRAINT "AVCON_11714_IN_RA_000" CHECK (IN_RASTREAVEL IN ('N', 'S')) ENABLE;
+  ALTER TABLE "TIMESHEET"."COM_ACES_MENU" ADD CONSTRAINT "AVCON_11714_IN_PO_000" CHECK (IN_POPUP IN ('N', 'S')) ENABLE;
+  ALTER TABLE "TIMESHEET"."COM_ACES_MENU" ADD CONSTRAINT "AVCON_11714_IN_VO_000" CHECK (IN_VOLTAR IN ('N', 'S')) ENABLE;
+--------------------------------------------------------
+--  Constraints for Table COM_ACES_MENU_BKP
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."COM_ACES_MENU_BKP" MODIFY ("CDG_MENU" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."COM_ACES_MENU_BKP" MODIFY ("DESCRICAO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."COM_ACES_MENU_BKP" MODIFY ("DESCR_RESUMIDA" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."COM_ACES_MENU_BKP" MODIFY ("DT_INICIO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."COM_ACES_MENU_BKP" MODIFY ("DT_FIM" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."COM_ACES_MENU_BKP" MODIFY ("IN_BLOQUEADO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."COM_ACES_MENU_BKP" MODIFY ("IN_RASTREAVEL" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."COM_ACES_MENU_BKP" MODIFY ("DT_INCLUSAO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."COM_ACES_MENU_BKP" MODIFY ("USUR_INCLUSAO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."COM_ACES_MENU_BKP" MODIFY ("IN_VOLTAR" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."COM_ACES_MENU_BKP" MODIFY ("IN_VISIVEL" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."COM_ACES_MENU_BKP" MODIFY ("IN_POPUP" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."COM_ACES_MENU_BKP" MODIFY ("CD_MODULO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."COM_ACES_MENU_BKP" MODIFY ("TP_MODULO" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table COM_ACES_MODULOS
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."COM_ACES_MODULOS" MODIFY ("CD_MODULO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."COM_ACES_MODULOS" MODIFY ("NM_DESCRICAO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."COM_ACES_MODULOS" ADD CONSTRAINT "MOD_PR_PK" PRIMARY KEY ("CD_MODULO")
+  USING INDEX "TIMESHEET"."MOD_PR_PK"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table COM_ACES_MSG_SISTEMA
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."COM_ACES_MSG_SISTEMA" MODIFY ("CD_MSG" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."COM_ACES_MSG_SISTEMA" MODIFY ("TP_MSG" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."COM_ACES_MSG_SISTEMA" MODIFY ("TP_SUBTIPO_MSG" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."COM_ACES_MSG_SISTEMA" MODIFY ("TX_MSG" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."COM_ACES_MSG_SISTEMA" MODIFY ("ID_CANCELAR" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."COM_ACES_MSG_SISTEMA" ADD CONSTRAINT "AVCON_20025_TP_SU_000" CHECK (TP_SUBTIPO_MSG IN ('N', 'B', 'E')) ENABLE;
+  ALTER TABLE "TIMESHEET"."COM_ACES_MSG_SISTEMA" ADD CONSTRAINT "AVCON_20025_TP_MS_000" CHECK (TP_MSG IN ('A', 'F', 'C')) ENABLE;
+  ALTER TABLE "TIMESHEET"."COM_ACES_MSG_SISTEMA" ADD CONSTRAINT "MSGSIS_PK" PRIMARY KEY ("CD_MSG")
+  USING INDEX "TIMESHEET"."MSGSIS_PK"  ENABLE;
+  ALTER TABLE "TIMESHEET"."COM_ACES_MSG_SISTEMA" ADD CONSTRAINT "AVCON_20025_TP_DE_000" CHECK (TP_DEFAULT_CONFIRM IN ('N', 'C', 'S')) ENABLE;
+--------------------------------------------------------
+--  Constraints for Table COM_ACES_PERFIL
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."COM_ACES_PERFIL" MODIFY ("CDG_PERFIL" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."COM_ACES_PERFIL" MODIFY ("DESCRICAO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."COM_ACES_PERFIL" MODIFY ("DT_INCLUSAO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."COM_ACES_PERFIL" MODIFY ("USUR_INCLUSAO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."COM_ACES_PERFIL" ADD CONSTRAINT "COM_PERFIL_PK" PRIMARY KEY ("CDG_PERFIL")
+  USING INDEX "TIMESHEET"."COM_PERFIL_PK"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table COM_ACES_PERFIL_ATRIBUTOS
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."COM_ACES_PERFIL_ATRIBUTOS" MODIFY ("CDG_PERFIL" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."COM_ACES_PERFIL_ATRIBUTOS" MODIFY ("CDG_MENU" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."COM_ACES_PERFIL_ATRIBUTOS" MODIFY ("NOME_ATRIBUTO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."COM_ACES_PERFIL_ATRIBUTOS" MODIFY ("TIPO_ACESSO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."COM_ACES_PERFIL_ATRIBUTOS" MODIFY ("DT_INCLUSAO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."COM_ACES_PERFIL_ATRIBUTOS" MODIFY ("USUR_INCLUSAO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."COM_ACES_PERFIL_ATRIBUTOS" ADD CONSTRAINT "AVCON_1021406526_TIPO__001" CHECK (TIPO_ACESSO IN ('T', 'L', 'I')) ENABLE;
+  ALTER TABLE "TIMESHEET"."COM_ACES_PERFIL_ATRIBUTOS" ADD CONSTRAINT "AVCON_11619_TIPO__000" CHECK (TIPO_ACESSO IN ('T', 'L', 'I')) ENABLE;
+  ALTER TABLE "TIMESHEET"."COM_ACES_PERFIL_ATRIBUTOS" ADD CONSTRAINT "COM_PERFIL_ATRIBUTOS_PK" PRIMARY KEY ("CDG_PERFIL", "CDG_MENU", "NOME_ATRIBUTO")
+  USING INDEX "TIMESHEET"."COM_PERFIL_ATRIBUTOS_PK"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table COM_ACES_PERFIL_MENU
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."COM_ACES_PERFIL_MENU" MODIFY ("CDG_PERFIL" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."COM_ACES_PERFIL_MENU" MODIFY ("CDG_MENU" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."COM_ACES_PERFIL_MENU" MODIFY ("TIPO_ACESSO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."COM_ACES_PERFIL_MENU" MODIFY ("DT_INICIO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."COM_ACES_PERFIL_MENU" MODIFY ("DT_FIM" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."COM_ACES_PERFIL_MENU" MODIFY ("DT_INCLUSAO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."COM_ACES_PERFIL_MENU" MODIFY ("USUR_INCLUSAO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."COM_ACES_PERFIL_MENU" ADD CONSTRAINT "AVCON_11596_TIPO__000" CHECK (TIPO_ACESSO IN ('T', 'L', 'R')) ENABLE;
+  ALTER TABLE "TIMESHEET"."COM_ACES_PERFIL_MENU" ADD CONSTRAINT "COM_PERFIL_MENU_PK" PRIMARY KEY ("CDG_PERFIL", "CDG_MENU")
+  USING INDEX "TIMESHEET"."COM_PERFIL_MENU_PK"  ENABLE;
+  ALTER TABLE "TIMESHEET"."COM_ACES_PERFIL_MENU" ADD CONSTRAINT "AVCON_1021406526_TIPO__000" CHECK (TIPO_ACESSO IN ('T', 'L', 'R')) ENABLE;
+--------------------------------------------------------
+--  Constraints for Table COM_ACES_PERFIL_MENU_BKP
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."COM_ACES_PERFIL_MENU_BKP" MODIFY ("CDG_PERFIL" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."COM_ACES_PERFIL_MENU_BKP" MODIFY ("CDG_MENU" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."COM_ACES_PERFIL_MENU_BKP" MODIFY ("TIPO_ACESSO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."COM_ACES_PERFIL_MENU_BKP" MODIFY ("DT_INICIO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."COM_ACES_PERFIL_MENU_BKP" MODIFY ("DT_FIM" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."COM_ACES_PERFIL_MENU_BKP" MODIFY ("DT_INCLUSAO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."COM_ACES_PERFIL_MENU_BKP" MODIFY ("USUR_INCLUSAO" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table COM_ACES_TRATA_ERRO
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."COM_ACES_TRATA_ERRO" MODIFY ("TPO_ERRO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."COM_ACES_TRATA_ERRO" MODIFY ("NMR_ERRO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."COM_ACES_TRATA_ERRO" MODIFY ("DSC_CONSTRAINT_EXCEPTION" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."COM_ACES_TRATA_ERRO" MODIFY ("TPO_RETORNO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."COM_ACES_TRATA_ERRO" MODIFY ("TXT_RETORNO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."COM_ACES_TRATA_ERRO" MODIFY ("IN_GERA_LOG" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."COM_ACES_TRATA_ERRO" ADD CONSTRAINT "AVCON_1021410830_TPO_E_000" CHECK (TPO_ERRO IN ('0', '1')) ENABLE;
+  ALTER TABLE "TIMESHEET"."COM_ACES_TRATA_ERRO" ADD CONSTRAINT "AVCON_11579_TPO_E_000" CHECK (TPO_ERRO IN ('1', '0')) ENABLE;
+  ALTER TABLE "TIMESHEET"."COM_ACES_TRATA_ERRO" ADD CONSTRAINT "AVCON_11579_IN_GE_000" CHECK (IN_GERA_LOG IN ('N', 'S')) ENABLE;
+  ALTER TABLE "TIMESHEET"."COM_ACES_TRATA_ERRO" ADD CONSTRAINT "AVCON_11579_TPO_R_000" CHECK (TPO_RETORNO IN ('M', 'U')) ENABLE;
+  ALTER TABLE "TIMESHEET"."COM_ACES_TRATA_ERRO" ADD CONSTRAINT "AVCON_1021410830_TPO_R_000" CHECK (TPO_RETORNO IN ('M', 'U')) ENABLE;
+  ALTER TABLE "TIMESHEET"."COM_ACES_TRATA_ERRO" ADD CONSTRAINT "TRATA_ERRO_PK" PRIMARY KEY ("TPO_ERRO", "NMR_ERRO", "DSC_CONSTRAINT_EXCEPTION")
+  USING INDEX "TIMESHEET"."TRATA_ERRO_PK"  ENABLE;
+  ALTER TABLE "TIMESHEET"."COM_ACES_TRATA_ERRO" ADD CONSTRAINT "AVCON_1021410830_IN_GE_000" CHECK (IN_GERA_LOG IN ('N', 'S')) ENABLE;
+--------------------------------------------------------
+--  Constraints for Table COM_ACES_USUARIO
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."COM_ACES_USUARIO" MODIFY ("CDG_USUR" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."COM_ACES_USUARIO" MODIFY ("NOME" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."COM_ACES_USUARIO" MODIFY ("NOME_ABREVIADO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."COM_ACES_USUARIO" MODIFY ("DT_INCLUSAO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."COM_ACES_USUARIO" MODIFY ("USUR_INCLUSAO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."COM_ACES_USUARIO" MODIFY ("STATUS" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."COM_ACES_USUARIO" MODIFY ("SENHA" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."COM_ACES_USUARIO" MODIFY ("DSC_EMAIL" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."COM_ACES_USUARIO" MODIFY ("IN_ALTEROU_SENHA" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."COM_ACES_USUARIO" ADD CONSTRAINT "AVCON_11655_STATU_000" CHECK (STATUS IN ('L', 'B', 'C')) ENABLE;
+  ALTER TABLE "TIMESHEET"."COM_ACES_USUARIO" ADD CONSTRAINT "AVCON_1023911406_STATU_000" CHECK (STATUS IN ('C', 'L', 'B')) ENABLE;
+  ALTER TABLE "TIMESHEET"."COM_ACES_USUARIO" ADD CONSTRAINT "COM_USUARIO_PK" PRIMARY KEY ("CDG_USUR")
+  USING INDEX "TIMESHEET"."COM_USUARIO_PK"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table COM_ACES_USUARIO_BKP20230214
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."COM_ACES_USUARIO_BKP20230214" MODIFY ("CDG_USUR" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."COM_ACES_USUARIO_BKP20230214" MODIFY ("NOME" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."COM_ACES_USUARIO_BKP20230214" MODIFY ("NOME_ABREVIADO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."COM_ACES_USUARIO_BKP20230214" MODIFY ("DT_INCLUSAO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."COM_ACES_USUARIO_BKP20230214" MODIFY ("USUR_INCLUSAO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."COM_ACES_USUARIO_BKP20230214" MODIFY ("STATUS" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."COM_ACES_USUARIO_BKP20230214" MODIFY ("SENHA" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."COM_ACES_USUARIO_BKP20230214" MODIFY ("DSC_EMAIL" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."COM_ACES_USUARIO_BKP20230214" MODIFY ("IN_ALTEROU_SENHA" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table COM_ACES_USUARIO_PERFIL
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."COM_ACES_USUARIO_PERFIL" MODIFY ("CDG_USUR" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."COM_ACES_USUARIO_PERFIL" MODIFY ("CDG_PERFIL" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."COM_ACES_USUARIO_PERFIL" MODIFY ("DT_INCLUSAO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."COM_ACES_USUARIO_PERFIL" MODIFY ("USUR_INCLUSAO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."COM_ACES_USUARIO_PERFIL" ADD CONSTRAINT "COM_USUARIO_PERFIL_PK" PRIMARY KEY ("CDG_USUR", "CDG_PERFIL")
+  USING INDEX "TIMESHEET"."COM_USUARIO_PERFIL_PK"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table COM_PARAM_ADMIN_GERAL
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."COM_PARAM_ADMIN_GERAL" MODIFY ("CDG_PARAM" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."COM_PARAM_ADMIN_GERAL" MODIFY ("VLR_INI_PARAM" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."COM_PARAM_ADMIN_GERAL" MODIFY ("CDG_USUR_PARAM" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."COM_PARAM_ADMIN_GERAL" MODIFY ("DTA_ULT_ALT" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."COM_PARAM_ADMIN_GERAL" ADD CONSTRAINT "ADMIN_GERA_PK" PRIMARY KEY ("CDG_PARAM")
+  USING INDEX "TIMESHEET"."ADMIN_GERA_PK"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table COM_PARAMETROS_ADMINISTRATIVOS
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."COM_PARAMETROS_ADMINISTRATIVOS" MODIFY ("CDG_PARAM" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."COM_PARAMETROS_ADMINISTRATIVOS" MODIFY ("NME_PARAM" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."COM_PARAMETROS_ADMINISTRATIVOS" MODIFY ("CDG_USUR_ADM" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."COM_PARAMETROS_ADMINISTRATIVOS" MODIFY ("DTA_ULT_ALT" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."COM_PARAMETROS_ADMINISTRATIVOS" ADD CONSTRAINT "PARAMETRO_PK" PRIMARY KEY ("CDG_PARAM")
+  USING INDEX "TIMESHEET"."PARAMETRO_PK"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table CONDPAGTO
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."CONDPAGTO" MODIFY ("CD_CONDPAGTO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."CONDPAGTO" MODIFY ("DS_CONDPAGTO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."CONDPAGTO" ADD CONSTRAINT "CONDPAGTO_PK" PRIMARY KEY ("CD_CONDPAGTO")
+  USING INDEX "TIMESHEET"."CONDPAGTO_PK"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table CONTA_BANCARIA
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."CONTA_BANCARIA" MODIFY ("CONTA_CD_CONTA" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."CONTA_BANCARIA" MODIFY ("CONTA_NR_CONTA" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."CONTA_BANCARIA" MODIFY ("CD_BANCO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."CONTA_BANCARIA" ADD CONSTRAINT "CONTA_PK" PRIMARY KEY ("CONTA_CD_CONTA")
+  USING INDEX "TIMESHEET"."CONTA_PK"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table CONTABCO
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."CONTABCO" MODIFY ("CD_BANCO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."CONTABCO" MODIFY ("CD_AGENCIA" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."CONTABCO" MODIFY ("NR_DIGITO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."CONTABCO" MODIFY ("NR_CONTABCO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."CONTABCO" MODIFY ("DG_CONTABCO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."CONTABCO" MODIFY ("TP_CONTA" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."CONTABCO" ADD CONSTRAINT "AVCON_15642_TP_CO_000" CHECK (TP_CONTA IN ('CC', 'CP', 'CI')) ENABLE;
+  ALTER TABLE "TIMESHEET"."CONTABCO" ADD CONSTRAINT "CONTABCO_PK" PRIMARY KEY ("CD_BANCO", "CD_AGENCIA", "NR_DIGITO", "NR_CONTABCO", "DG_CONTABCO")
+  USING INDEX "TIMESHEET"."CONTABCO_PK"  ENABLE;
+  ALTER TABLE "TIMESHEET"."CONTABCO" ADD CONSTRAINT "TP_CONTA_CH" CHECK (TP_CONTA IN ('CC', 'CP', 'CI')) ENABLE;
+--------------------------------------------------------
+--  Constraints for Table CONTATO
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."CONTATO" MODIFY ("CD_CLIFOR" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."CONTATO" MODIFY ("CD_CONTATO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."CONTATO" MODIFY ("NM_CONTATO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."CONTATO" MODIFY ("DT_CADASTRAMENTO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."CONTATO" MODIFY ("ST_MALADIRETA" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."CONTATO" ADD CONSTRAINT "CONTATO_PK" PRIMARY KEY ("CD_CLIFOR", "CD_CONTATO")
+  USING INDEX "TIMESHEET"."CONTATO_PK"  ENABLE;
+  ALTER TABLE "TIMESHEET"."CONTATO" ADD CONSTRAINT "AVCON_6547_ST_MA_000" CHECK (ST_MALADIRETA IN ('S', 'N')) ENABLE;
+  ALTER TABLE "TIMESHEET"."CONTATO" ADD CONSTRAINT "ST_MALADIRETA_CH" CHECK (ST_MALADIRETA IN ('S', 'N')) ENABLE;
+--------------------------------------------------------
+--  Constraints for Table CONTRATO
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."CONTRATO" MODIFY ("CD_CONTRATO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."CONTRATO" MODIFY ("DS_CONTRATO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."CONTRATO" ADD CONSTRAINT "CONTRATO_PK" PRIMARY KEY ("CD_CONTRATO")
+  USING INDEX "TIMESHEET"."CONTRATO_PK"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table COUNTRY
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."COUNTRY" MODIFY ("CD_COUTRY" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."COUNTRY" MODIFY ("DS_COUNTRY" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."COUNTRY" ADD CONSTRAINT "COUNTRY_PK" PRIMARY KEY ("CD_COUTRY")
+  USING INDEX "TIMESHEET"."COUNTRY_PK"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table CRM
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."CRM" MODIFY ("CD_CRM" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."CRM" MODIFY ("DS_CRM" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."CRM" ADD CONSTRAINT "CRM_PK" PRIMARY KEY ("CD_CRM")
+  USING INDEX "TIMESHEET"."CRM_PK"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table CRONOGRAMA_FATURAMENTO
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."CRONOGRAMA_FATURAMENTO" MODIFY ("CD_PROJETO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."CRONOGRAMA_FATURAMENTO" MODIFY ("SEQ_CRONOGRAMA_FATURAMENTO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."CRONOGRAMA_FATURAMENTO" MODIFY ("ST_CRONOGRAMA_FATURAMENTO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."CRONOGRAMA_FATURAMENTO" ADD CONSTRAINT "CRONOGRAMA_FATURAMENTO_PK" PRIMARY KEY ("CD_PROJETO", "SEQ_CRONOGRAMA_FATURAMENTO")
+  USING INDEX  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table CTRL_NAV_USUR
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."CTRL_NAV_USUR" MODIFY ("NM_SESSIONID" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."CTRL_NAV_USUR" MODIFY ("NM_LOGIN_USUARIO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."CTRL_NAV_USUR" MODIFY ("CD_MODULO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."CTRL_NAV_USUR" MODIFY ("NM_MODULO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."CTRL_NAV_USUR" MODIFY ("TP_MODULO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."CTRL_NAV_USUR" MODIFY ("DT_HR_ENTRADA" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."CTRL_NAV_USUR" ADD CONSTRAINT "AVCON_12094_TP_MO_000" CHECK (TP_MODULO IN ('F', 'R')) ENABLE;
+  ALTER TABLE "TIMESHEET"."CTRL_NAV_USUR" ADD CONSTRAINT "C_NAV_USUR_PK" PRIMARY KEY ("NM_SESSIONID", "NM_LOGIN_USUARIO", "DT_HR_ENTRADA")
+  USING INDEX "TIMESHEET"."C_NAV_USUR_PK"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table DETALHAMENTO_CLASSE
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."DETALHAMENTO_CLASSE" MODIFY ("CLAS_CD_CLASSE" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."DETALHAMENTO_CLASSE" MODIFY ("DETA_NR_SEQUENCIAL" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."DETALHAMENTO_CLASSE" MODIFY ("DETA_TX_DESCRICAO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."DETALHAMENTO_CLASSE" ADD CONSTRAINT "SYS_C001896" PRIMARY KEY ("CLAS_CD_CLASSE", "DETA_NR_SEQUENCIAL")
+  USING INDEX  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table DIM_CLIENTE
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."DIM_CLIENTE" MODIFY ("SK_CLIENTE" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."DIM_CLIENTE" MODIFY ("CD_CLIENTE" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."DIM_CLIENTE" MODIFY ("NM_RAZAOSOCIAL" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."DIM_CLIENTE" MODIFY ("DT_CADASTRAMENTO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."DIM_CLIENTE" MODIFY ("DT_ULT_ATLZ" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."DIM_CLIENTE" ADD CONSTRAINT "PK_CLIENTE" PRIMARY KEY ("SK_CLIENTE")
+  USING INDEX  ENABLE;
+  ALTER TABLE "TIMESHEET"."DIM_CLIENTE" ADD CONSTRAINT "UK_CLIENTE" UNIQUE ("CD_CLIENTE")
+  USING INDEX  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table DIM_FILIAL
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."DIM_FILIAL" MODIFY ("SK_FILIAL" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."DIM_FILIAL" MODIFY ("CD_FILIAL" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."DIM_FILIAL" MODIFY ("NM_FILIAL" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."DIM_FILIAL" MODIFY ("DT_ULT_ATLZ" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."DIM_FILIAL" ADD CONSTRAINT "PK_FILIAL" PRIMARY KEY ("SK_FILIAL")
+  USING INDEX  ENABLE;
+  ALTER TABLE "TIMESHEET"."DIM_FILIAL" ADD CONSTRAINT "UK_FILIAL" UNIQUE ("CD_FILIAL")
+  USING INDEX  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table DIM_FUNCIONARIO
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."DIM_FUNCIONARIO" MODIFY ("SK_FUNCIONARIO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."DIM_FUNCIONARIO" MODIFY ("CD_FUNCIONARIO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."DIM_FUNCIONARIO" MODIFY ("NM_FUNCIONARIO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."DIM_FUNCIONARIO" MODIFY ("DT_ADMISSAO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."DIM_FUNCIONARIO" MODIFY ("CDG_USUR" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."DIM_FUNCIONARIO" MODIFY ("NR_SALDO_BHE50" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."DIM_FUNCIONARIO" MODIFY ("NR_SALDO_BHE100" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."DIM_FUNCIONARIO" MODIFY ("DT_ULT_ATLZ" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."DIM_FUNCIONARIO" ADD CONSTRAINT "UK_FUNCIONARIO" UNIQUE ("CD_FUNCIONARIO")
+  USING INDEX  ENABLE;
+  ALTER TABLE "TIMESHEET"."DIM_FUNCIONARIO" ADD CONSTRAINT "PK_FUNCIONARIO" PRIMARY KEY ("SK_FUNCIONARIO")
+  USING INDEX  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table DIM_PROJETO
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."DIM_PROJETO" MODIFY ("SK_PROJETO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."DIM_PROJETO" MODIFY ("SK_CLIENTE" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."DIM_PROJETO" MODIFY ("CD_PROJETO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."DIM_PROJETO" MODIFY ("DS_PROJETO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."DIM_PROJETO" MODIFY ("ST_PROJETO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."DIM_PROJETO" MODIFY ("TP_COBRANCA" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."DIM_PROJETO" MODIFY ("DT_ULT_ATLZ" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."DIM_PROJETO" ADD CONSTRAINT "PK_PROJETO" PRIMARY KEY ("SK_PROJETO")
+  USING INDEX  ENABLE;
+  ALTER TABLE "TIMESHEET"."DIM_PROJETO" ADD CONSTRAINT "UK_PROJETO" UNIQUE ("CD_PROJETO")
+  USING INDEX  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table DIM_TEMPO_DIA
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."DIM_TEMPO_DIA" MODIFY ("SK_TEMPO_DIA" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."DIM_TEMPO_DIA" MODIFY ("NR_DATA" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."DIM_TEMPO_DIA" MODIFY ("NM_DIA_SEMANA" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."DIM_TEMPO_DIA" MODIFY ("NR_DIA" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."DIM_TEMPO_DIA" MODIFY ("NR_MES" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."DIM_TEMPO_DIA" MODIFY ("NR_ANO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."DIM_TEMPO_DIA" MODIFY ("NR_TRIMESTRE" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."DIM_TEMPO_DIA" MODIFY ("NR_SEMESTRE" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."DIM_TEMPO_DIA" MODIFY ("DT_ULT_ATLZ" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."DIM_TEMPO_DIA" ADD CONSTRAINT "PK_TEMPODIA" PRIMARY KEY ("SK_TEMPO_DIA")
+  USING INDEX  ENABLE;
+  ALTER TABLE "TIMESHEET"."DIM_TEMPO_DIA" ADD CONSTRAINT "UK_TEMPODIA" UNIQUE ("NR_ANO", "NR_MES", "NR_DIA")
+  USING INDEX  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table DIM_VERTICAL
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."DIM_VERTICAL" MODIFY ("SK_VERTICAL" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."DIM_VERTICAL" MODIFY ("NM_VERTICAL" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."DIM_VERTICAL" MODIFY ("DT_ULT_ATLZ" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."DIM_VERTICAL" ADD CONSTRAINT "UK_VERTICAL" UNIQUE ("NM_VERTICAL")
+  USING INDEX  ENABLE;
+  ALTER TABLE "TIMESHEET"."DIM_VERTICAL" ADD CONSTRAINT "PK_VERTICAL" PRIMARY KEY ("SK_VERTICAL")
+  USING INDEX  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table EMPRESA
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."EMPRESA" MODIFY ("CD_EMPRESA" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."EMPRESA" MODIFY ("NM_EMPRESA" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."EMPRESA" ADD CONSTRAINT "EMPRESA_PK" PRIMARY KEY ("CD_EMPRESA")
+  USING INDEX "TIMESHEET"."EMPRESA_PK"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table ENDERECO
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."ENDERECO" MODIFY ("CD_CLIFOR" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."ENDERECO" MODIFY ("CD_ENDERECO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."ENDERECO" MODIFY ("DS_LOGRADOURO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."ENDERECO" MODIFY ("CD_CIDADE" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."ENDERECO" ADD CONSTRAINT "AVCON_37306_TP_EN_000" CHECK (TP_ENDERECO IN ('E01', 'E02', 'E03', 'E04')) ENABLE;
+  ALTER TABLE "TIMESHEET"."ENDERECO" ADD CONSTRAINT "TP_ENDERECO_CH" CHECK (TP_ENDERECO IN ('E01', 'E02', 'E03', 'E04')) ENABLE;
+  ALTER TABLE "TIMESHEET"."ENDERECO" ADD CONSTRAINT "ENDERECO_PK" PRIMARY KEY ("CD_CLIFOR", "CD_ENDERECO")
+  USING INDEX "TIMESHEET"."ENDERECO_PK"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table ERP
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."ERP" MODIFY ("CD_ERP" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."ERP" MODIFY ("DS_ERP" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."ERP" ADD CONSTRAINT "ERP_PK" PRIMARY KEY ("CD_ERP")
+  USING INDEX "TIMESHEET"."ERP_PK"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table ESTADO
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."ESTADO" MODIFY ("SG_ESTADO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."ESTADO" MODIFY ("DS_ESTADO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."ESTADO" ADD CONSTRAINT "ESTADO_PK" PRIMARY KEY ("SG_ESTADO")
+  USING INDEX "TIMESHEET"."ESTADO_PK"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table FASEPROJETO
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."FASEPROJETO" MODIFY ("CD_PROJETO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."FASEPROJETO" MODIFY ("CD_FASE" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."FASEPROJETO" MODIFY ("ST_FASEPROJ" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."FASEPROJETO" MODIFY ("DS_FASE" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."FASEPROJETO" ADD CONSTRAINT "AVCON_8707_ST_FA_000" CHECK (ST_FASEPROJ IN ('A', 'E', 'S')) ENABLE;
+  ALTER TABLE "TIMESHEET"."FASEPROJETO" ADD CONSTRAINT "FASEPROJETO_PK" PRIMARY KEY ("CD_PROJETO", "CD_FASE")
+  USING INDEX "TIMESHEET"."FASEPROJETO_PK"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table FAT_HR_FUNC_PROJ
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."FAT_HR_FUNC_PROJ" MODIFY ("SK_PROJETO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."FAT_HR_FUNC_PROJ" MODIFY ("SK_CLIENTE" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."FAT_HR_FUNC_PROJ" MODIFY ("SK_FILIAL" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."FAT_HR_FUNC_PROJ" MODIFY ("SK_TEMPO_DIA" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."FAT_HR_FUNC_PROJ" MODIFY ("SK_FUNCIONARIO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."FAT_HR_FUNC_PROJ" MODIFY ("SK_VERTICAL" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."FAT_HR_FUNC_PROJ" MODIFY ("DT_ULT_ATLZ" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."FAT_HR_FUNC_PROJ" ADD CONSTRAINT "PK_FAT_HR_FUNC_PROJ" PRIMARY KEY ("SK_PROJETO", "SK_CLIENTE", "SK_FILIAL", "SK_TEMPO_DIA", "SK_FUNCIONARIO", "SK_VERTICAL")
+  USING INDEX  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table FAT_HR_UTEIS_MES_FILI
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."FAT_HR_UTEIS_MES_FILI" MODIFY ("SK_FILIAL" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."FAT_HR_UTEIS_MES_FILI" MODIFY ("SK_TEMPO_DIA" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."FAT_HR_UTEIS_MES_FILI" MODIFY ("DT_ULT_ATLZ" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."FAT_HR_UTEIS_MES_FILI" MODIFY ("QT_DI_UTEIS_MES" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."FAT_HR_UTEIS_MES_FILI" MODIFY ("QT_HR_UTEIS_MES" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."FAT_HR_UTEIS_MES_FILI" ADD CONSTRAINT "PK_FAT_HR_UTEIS_MES_FILI" PRIMARY KEY ("SK_FILIAL", "SK_TEMPO_DIA")
+  USING INDEX  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table FATURAMENTO
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."FATURAMENTO" MODIFY ("DT_EMISSAO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."FATURAMENTO" MODIFY ("NR_NF" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."FATURAMENTO" MODIFY ("CD_CLIFOR" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."FATURAMENTO" MODIFY ("CD_PROJETO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."FATURAMENTO" MODIFY ("CD_EMPRESA" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."FATURAMENTO" MODIFY ("VALOR" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."FATURAMENTO" MODIFY ("DT_TRANSFERENCIA" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."FATURAMENTO" MODIFY ("NM_ARQ_PLANILHA" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."FATURAMENTO" MODIFY ("NM_ABA_PLANILHA" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."FATURAMENTO" MODIFY ("NR_LINHA_PLANILHA" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."FATURAMENTO" MODIFY ("NM_USUARIO_WINDOWS" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."FATURAMENTO" ADD CONSTRAINT "FATURAMENTO_PK" PRIMARY KEY ("NR_NF", "CD_CLIFOR", "CD_PROJETO", "CD_EMPRESA")
+  USING INDEX "TIMESHEET"."FATURAMENTO_PK"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table FATURAMENTO_RLZD_PROJETO
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."FATURAMENTO_RLZD_PROJETO" MODIFY ("CD_PROJETO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."FATURAMENTO_RLZD_PROJETO" MODIFY ("DATA_FATURADO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."FATURAMENTO_RLZD_PROJETO" MODIFY ("VALOR_FATURADO" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table FERIADO
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."FERIADO" MODIFY ("FERI_CD_FERIADO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."FERIADO" MODIFY ("FERI_NM_FERIADO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."FERIADO" MODIFY ("FERI_NR_MES" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."FERIADO" MODIFY ("FERI_NR_DIA" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."FERIADO" MODIFY ("DTA_ULT_ALT" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."FERIADO" MODIFY ("USUR_CD_USUR" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."FERIADO" MODIFY ("FERI_TP_FERIADO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."FERIADO" MODIFY ("FERI_STT_INATIVO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."FERIADO" ADD CONSTRAINT "FERIADO_DIA_CHK" CHECK (FERI_NR_DIA between 1 and 31) ENABLE;
+  ALTER TABLE "TIMESHEET"."FERIADO" ADD CONSTRAINT "AVCON_1024511276_FERI__000" CHECK (FERI_TP_FERIADO IN ('LF', 'LN', 'NF', 'NN')) ENABLE;
+  ALTER TABLE "TIMESHEET"."FERIADO" ADD CONSTRAINT "AVCON_12152_FERI__001" CHECK (FERI_STT_INATIVO IN ('N', 'S')) ENABLE;
+  ALTER TABLE "TIMESHEET"."FERIADO" ADD CONSTRAINT "FERIADO_ANO_CHK" CHECK (FERI_NR_ANO between 1900 and 2100) ENABLE;
+  ALTER TABLE "TIMESHEET"."FERIADO" ADD CONSTRAINT "CALENDARIO_PK" PRIMARY KEY ("FERI_CD_FERIADO")
+  USING INDEX "TIMESHEET"."CALENDARIO_PK"  ENABLE;
+  ALTER TABLE "TIMESHEET"."FERIADO" ADD CONSTRAINT "FERIADO_MES_CHK" CHECK (FERI_NR_MES between 1 and 12) ENABLE;
+  ALTER TABLE "TIMESHEET"."FERIADO" ADD CONSTRAINT "AVCON_12152_FERI__000" CHECK (FERI_TP_FERIADO IN ('LF', 'LN', 'NF', 'NN')) ENABLE;
+--------------------------------------------------------
+--  Constraints for Table FILA_INTEGRACAO
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."FILA_INTEGRACAO" MODIFY ("NR_ORDEM" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."FILA_INTEGRACAO" MODIFY ("CDG_USUR" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."FILA_INTEGRACAO" MODIFY ("TP_OPERACAO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."FILA_INTEGRACAO" MODIFY ("DT_INSERCAO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."FILA_INTEGRACAO" MODIFY ("FIRST_NAME" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."FILA_INTEGRACAO" MODIFY ("LAST_NAME" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."FILA_INTEGRACAO" MODIFY ("FULL_NAME" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."FILA_INTEGRACAO" ADD CONSTRAINT "FILA_FUNCIONARIO_PK" PRIMARY KEY ("NR_ORDEM", "CDG_USUR")
+  USING INDEX "TIMESHEET"."FILA_FUNCIONARIO_PK"  ENABLE;
+  ALTER TABLE "TIMESHEET"."FILA_INTEGRACAO" ADD CONSTRAINT "FILA_INTEGRACAO_CHK1" CHECK (TP_OPERACAO IN ('I','B','C','A','D')) ENABLE;
+--------------------------------------------------------
+--  Constraints for Table FUNC_CLT
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."FUNC_CLT" MODIFY ("CD_FUNCIONARIO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."FUNC_CLT" MODIFY ("NR_CARTEIRA" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."FUNC_CLT" MODIFY ("NR_PIS" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."FUNC_CLT" MODIFY ("ST_IN_PLANO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."FUNC_CLT" MODIFY ("ST_VALE_TRANSP" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."FUNC_CLT" ADD CONSTRAINT "AVCON_38696_ST_VA_000" CHECK (ST_VALE_TRANSP IN ('N', 'S')) ENABLE;
+  ALTER TABLE "TIMESHEET"."FUNC_CLT" ADD CONSTRAINT "FUNC_CLT_PK" PRIMARY KEY ("CD_FUNCIONARIO", "NR_CARTEIRA")
+  USING INDEX "TIMESHEET"."FUNC_CLT_PK"  ENABLE;
+  ALTER TABLE "TIMESHEET"."FUNC_CLT" ADD CONSTRAINT "AVCON_38696_ST_IN_000" CHECK (ST_IN_PLANO IN ('N', 'S')) ENABLE;
+--------------------------------------------------------
+--  Constraints for Table FUNC_EMPR
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."FUNC_EMPR" MODIFY ("CD_FUNCIONARIO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."FUNC_EMPR" MODIFY ("NR_CONTRATO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."FUNC_EMPR" MODIFY ("CD_CLIFOR" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."FUNC_EMPR" ADD CONSTRAINT "FUNC_EMPR_PK" PRIMARY KEY ("CD_FUNCIONARIO", "NR_CONTRATO")
+  USING INDEX "TIMESHEET"."FUNC_EMPR_PK"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table FUNC_ENDERECO
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."FUNC_ENDERECO" MODIFY ("CD_FUNCIONARIO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."FUNC_ENDERECO" MODIFY ("CD_ENDERECO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."FUNC_ENDERECO" MODIFY ("DS_ENDERECO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."FUNC_ENDERECO" MODIFY ("TP_ENDERECO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."FUNC_ENDERECO" ADD CONSTRAINT "TP_FUNC_ENDERECO_CH" CHECK (TP_ENDERECO IN ('R', 'V')) ENABLE;
+  ALTER TABLE "TIMESHEET"."FUNC_ENDERECO" ADD CONSTRAINT "FUNC_END_PK" PRIMARY KEY ("CD_FUNCIONARIO", "CD_ENDERECO")
+  USING INDEX "TIMESHEET"."FUNC_END_PK"  ENABLE;
+  ALTER TABLE "TIMESHEET"."FUNC_ENDERECO" ADD CONSTRAINT "AVCON_12166_TP_EN_000" CHECK (TP_ENDERECO IN ('R', 'V')) ENABLE;
+--------------------------------------------------------
+--  Constraints for Table FUNCIONARIO
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."FUNCIONARIO" MODIFY ("CD_FUNCIONARIO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."FUNCIONARIO" MODIFY ("TP_FUNCIONARIO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."FUNCIONARIO" MODIFY ("NM_FUNCIONARIO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."FUNCIONARIO" MODIFY ("NR_RG" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."FUNCIONARIO" MODIFY ("DS_ORGAO_EMISSOR" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."FUNCIONARIO" MODIFY ("NR_CPF" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."FUNCIONARIO" MODIFY ("DT_ADMISSAO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."FUNCIONARIO" MODIFY ("CDG_USUR" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."FUNCIONARIO" MODIFY ("CD_EMPRESA" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."FUNCIONARIO" MODIFY ("IN_SETOR" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."FUNCIONARIO" MODIFY ("ST_REQUER_APROVACAO_ADMIN" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."FUNCIONARIO" ADD CONSTRAINT "AVCON_1373_IN_SE_000" CHECK (IN_SETOR IN ('A', 'D', 'C', 'S')) ENABLE;
+  ALTER TABLE "TIMESHEET"."FUNCIONARIO" ADD CONSTRAINT "CHECK_ST_VALE_TRANSP" CHECK (ST_VALE_TRANSP IN ('N', 'S')) ENABLE;
+  ALTER TABLE "TIMESHEET"."FUNCIONARIO" ADD CONSTRAINT "AVCON_1373_TP_FU_000" CHECK (TP_FUNCIONARIO IN ('E', 'F')) ENABLE;
+  ALTER TABLE "TIMESHEET"."FUNCIONARIO" ADD CONSTRAINT "CHECK_ST_IN_PLANO" CHECK (ST_IN_PLANO IN ('N', 'S')) ENABLE;
+  ALTER TABLE "TIMESHEET"."FUNCIONARIO" ADD CONSTRAINT "CHECK_IN_POSSUI_BANCO_HORAS" CHECK (IN_POSSUI_BANCO_HORAS IN ('S', 'N')) ENABLE;
+  ALTER TABLE "TIMESHEET"."FUNCIONARIO" ADD CONSTRAINT "AVCON_1373_ST_ES_000" CHECK (ST_EST_CIVIL IN ('S', 'C', 'D', 'V')) ENABLE;
+  ALTER TABLE "TIMESHEET"."FUNCIONARIO" ADD CONSTRAINT "FUNC_PK" PRIMARY KEY ("CD_FUNCIONARIO")
+  USING INDEX "TIMESHEET"."FUNC_PK"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table FUNCIONARIO_BKP
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."FUNCIONARIO_BKP" MODIFY ("CD_FUNCIONARIO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."FUNCIONARIO_BKP" MODIFY ("TP_FUNCIONARIO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."FUNCIONARIO_BKP" MODIFY ("NM_FUNCIONARIO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."FUNCIONARIO_BKP" MODIFY ("NR_RG" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."FUNCIONARIO_BKP" MODIFY ("DS_ORGAO_EMISSOR" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."FUNCIONARIO_BKP" MODIFY ("NR_CPF" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."FUNCIONARIO_BKP" MODIFY ("DT_ADMISSAO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."FUNCIONARIO_BKP" MODIFY ("CDG_USUR" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."FUNCIONARIO_BKP" MODIFY ("CD_EMPRESA" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."FUNCIONARIO_BKP" MODIFY ("IN_SETOR" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."FUNCIONARIO_BKP" MODIFY ("ST_REQUER_APROVACAO_ADMIN" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table FUNCIONARIO_20140826
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."FUNCIONARIO_20140826" MODIFY ("CD_FUNCIONARIO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."FUNCIONARIO_20140826" MODIFY ("TP_FUNCIONARIO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."FUNCIONARIO_20140826" MODIFY ("NM_FUNCIONARIO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."FUNCIONARIO_20140826" MODIFY ("NR_RG" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."FUNCIONARIO_20140826" MODIFY ("DS_ORGAO_EMISSOR" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."FUNCIONARIO_20140826" MODIFY ("NR_CPF" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."FUNCIONARIO_20140826" MODIFY ("DT_ADMISSAO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."FUNCIONARIO_20140826" MODIFY ("CDG_USUR" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."FUNCIONARIO_20140826" MODIFY ("CD_EMPRESA" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."FUNCIONARIO_20140826" MODIFY ("IN_SETOR" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."FUNCIONARIO_20140826" MODIFY ("ST_REQUER_APROVACAO_ADMIN" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table GER_REDE
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."GER_REDE" MODIFY ("CD_GER_REDE" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."GER_REDE" MODIFY ("DS_GER_REDE" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."GER_REDE" ADD CONSTRAINT "GER_REDE_PK" PRIMARY KEY ("CD_GER_REDE")
+  USING INDEX "TIMESHEET"."GER_REDE_PK"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table GRUPOPROD
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."GRUPOPROD" MODIFY ("CD_GRUPOPROD" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."GRUPOPROD" MODIFY ("DS_GRUPOPROD" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."GRUPOPROD" ADD CONSTRAINT "GRUPOPRO_PK" PRIMARY KEY ("CD_GRUPOPROD")
+  USING INDEX "TIMESHEET"."GRUPOPRO_PK"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table HIST_FUNC
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."HIST_FUNC" MODIFY ("CD_FUNCIONARIO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."HIST_FUNC" MODIFY ("CD_HISTORICO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."HIST_FUNC" MODIFY ("CD_CARGO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."HIST_FUNC" MODIFY ("CD_NIVEL" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."HIST_FUNC" MODIFY ("DT_HISTORICO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."HIST_FUNC" ADD CONSTRAINT "HIST_FUNC_PK" PRIMARY KEY ("CD_FUNCIONARIO", "CD_HISTORICO")
+  USING INDEX "TIMESHEET"."HIST_FUNC_PK"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table HISTORICO_VERIFICACAO_REP
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."HISTORICO_VERIFICACAO_REP" MODIFY ("FUNC_CD_FUNC" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table HORAS_DIA
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."HORAS_DIA" MODIFY ("FUNC_CD_FUNC" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."HORAS_DIA" MODIFY ("LOPE_NR_ANO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."HORAS_DIA" MODIFY ("LOPE_NR_MES" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."HORAS_DIA" MODIFY ("PERI_CD_PERIODO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."HORAS_DIA" MODIFY ("LOG_NR_DIA" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."HORAS_DIA" MODIFY ("PROJ_CD_PROJETO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."HORAS_DIA" MODIFY ("DTA_ULT_ALT" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."HORAS_DIA" MODIFY ("USUR_CD_USUR" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."HORAS_DIA" MODIFY ("NR_MES_REAL" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."HORAS_DIA" MODIFY ("NR_ANO_REAL" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."HORAS_DIA" ADD CONSTRAINT "SYS_C001903" PRIMARY KEY ("FUNC_CD_FUNC", "PROJ_CD_PROJETO", "LOPE_NR_ANO", "PERI_CD_PERIODO", "LOG_NR_DIA", "LOPE_NR_MES")
+  USING INDEX  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table JORNADA_TRABALHO
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."JORNADA_TRABALHO" MODIFY ("CD_FUNCIONARIO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."JORNADA_TRABALHO" MODIFY ("HORA_INICIO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."JORNADA_TRABALHO" MODIFY ("HORA_FIM" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."JORNADA_TRABALHO" MODIFY ("DT_INICIO_VIGENCIA" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."JORNADA_TRABALHO" MODIFY ("DT_FIM_VIGENCIA" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."JORNADA_TRABALHO" MODIFY ("DT_ULT_ALT" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."JORNADA_TRABALHO" MODIFY ("USUR_CD_USUR" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."JORNADA_TRABALHO" ADD CONSTRAINT "JORNADA_TRABALHO_PK" PRIMARY KEY ("CD_FUNCIONARIO", "DT_INICIO_VIGENCIA")
+  USING INDEX "TIMESHEET"."JORNADA_TRABALHO_PK"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table LINHA_SERVICO
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."LINHA_SERVICO" MODIFY ("LINHA_SERVICO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."LINHA_SERVICO" ADD CONSTRAINT "LINHA_SERVICO_PK" PRIMARY KEY ("LINHA_SERVICO")
+  USING INDEX "TIMESHEET"."LINHA_SERVICO_PK"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table LOG_DIA
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."LOG_DIA" MODIFY ("FUNC_CD_FUNC" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."LOG_DIA" MODIFY ("LOPE_NR_ANO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."LOG_DIA" MODIFY ("LOPE_NR_MES" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."LOG_DIA" MODIFY ("PERI_CD_PERIODO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."LOG_DIA" MODIFY ("LOG_NR_DIA" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."LOG_DIA" MODIFY ("DTA_ULT_ALT" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."LOG_DIA" MODIFY ("USUR_CD_USUR" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."LOG_DIA" MODIFY ("NR_MES_REAL" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."LOG_DIA" MODIFY ("NR_ANO_REAL" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."LOG_DIA" ADD CONSTRAINT "LDA_PK" PRIMARY KEY ("LOG_NR_DIA", "LOPE_NR_MES", "LOPE_NR_ANO", "FUNC_CD_FUNC", "PERI_CD_PERIODO")
+  USING INDEX "TIMESHEET"."LDA_PK"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table LOG_PERIODO
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."LOG_PERIODO" MODIFY ("FUNC_CD_FUNC" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."LOG_PERIODO" MODIFY ("LOPE_NR_ANO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."LOG_PERIODO" MODIFY ("LOPE_NR_MES" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."LOG_PERIODO" MODIFY ("PERI_CD_PERIODO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."LOG_PERIODO" MODIFY ("LOPE_STT_LOG" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."LOG_PERIODO" MODIFY ("DTA_ULT_ALT" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."LOG_PERIODO" MODIFY ("USUR_CD_USUR" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."LOG_PERIODO" ADD CONSTRAINT "AVCON_1024492546_LOPE__000" CHECK (LOPE_STT_LOG IN ('A', 'F', 'C')) ENABLE;
+  ALTER TABLE "TIMESHEET"."LOG_PERIODO" ADD CONSTRAINT "LPO_PK" PRIMARY KEY ("FUNC_CD_FUNC", "LOPE_NR_ANO", "LOPE_NR_MES", "PERI_CD_PERIODO")
+  USING INDEX "TIMESHEET"."LPO_PK"  ENABLE;
+  ALTER TABLE "TIMESHEET"."LOG_PERIODO" ADD CONSTRAINT "AVCON_12090_LOPE__000" CHECK (LOPE_STT_LOG IN ('A', 'F', 'C')) ENABLE;
+--------------------------------------------------------
+--  Constraints for Table LOG_PERIODO_BKP
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."LOG_PERIODO_BKP" MODIFY ("FUNC_CD_FUNC" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."LOG_PERIODO_BKP" MODIFY ("LOPE_NR_ANO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."LOG_PERIODO_BKP" MODIFY ("LOPE_NR_MES" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."LOG_PERIODO_BKP" MODIFY ("PERI_CD_PERIODO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."LOG_PERIODO_BKP" MODIFY ("LOPE_STT_LOG" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."LOG_PERIODO_BKP" MODIFY ("DTA_ULT_ALT" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."LOG_PERIODO_BKP" MODIFY ("USUR_CD_USUR" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table LOG_TIPO_PERIODO
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."LOG_TIPO_PERIODO" MODIFY ("PERI_CD_PERIODO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."LOG_TIPO_PERIODO" MODIFY ("PERI_NM_PERIODO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."LOG_TIPO_PERIODO" MODIFY ("PERI_NR_DIAS_PERIODO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."LOG_TIPO_PERIODO" MODIFY ("PERI_NR_PERIODO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."LOG_TIPO_PERIODO" MODIFY ("DTA_ULT_ALT" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."LOG_TIPO_PERIODO" MODIFY ("USUR_CD_USUR" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."LOG_TIPO_PERIODO" MODIFY ("PERI_STT_ATIVO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."LOG_TIPO_PERIODO" ADD CONSTRAINT "PEO_PK" PRIMARY KEY ("PERI_CD_PERIODO")
+  USING INDEX "TIMESHEET"."PEO_PK"  ENABLE;
+  ALTER TABLE "TIMESHEET"."LOG_TIPO_PERIODO" ADD CONSTRAINT "AVCON_12079_PERI__000" CHECK (PERI_STT_ATIVO IN ('N', 'S')) ENABLE;
+--------------------------------------------------------
+--  Constraints for Table MOEDA
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."MOEDA" ADD CONSTRAINT "CD_MOEDA_PK" PRIMARY KEY ("CD_MOEDA")
+  USING INDEX "TIMESHEET"."CD_MOEDA_PK"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table MOVIMENTACAO_SALDO_BHE
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."MOVIMENTACAO_SALDO_BHE" MODIFY ("FUNC_CD_FUNC" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."MOVIMENTACAO_SALDO_BHE" MODIFY ("MOSA_DT_DATA" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."MOVIMENTACAO_SALDO_BHE" MODIFY ("USUR_CDG_USUR" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."MOVIMENTACAO_SALDO_BHE" MODIFY ("MOSA_IN_LANCAMENTO_MANUAL" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."MOVIMENTACAO_SALDO_BHE" MODIFY ("MOSA_NR_SEQ" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."MOVIMENTACAO_SALDO_BHE" ADD CONSTRAINT "MOSA_PK" PRIMARY KEY ("FUNC_CD_FUNC", "MOSA_DT_DATA", "MOSA_NR_SEQ")
+  USING INDEX "TIMESHEET"."MOSA_PK"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table NIVEL
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."NIVEL" MODIFY ("CD_CARGO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."NIVEL" MODIFY ("CD_NIVEL" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."NIVEL" MODIFY ("DS_NIVEL" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."NIVEL" ADD CONSTRAINT "NIVEL_PK" PRIMARY KEY ("CD_CARGO", "CD_NIVEL")
+  USING INDEX "TIMESHEET"."NIVEL_PK"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table ORIGEM
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."ORIGEM" MODIFY ("CD_ORIGEM" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."ORIGEM" MODIFY ("DS_ORIGEM" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."ORIGEM" ADD CONSTRAINT "ORIGEM_PK" PRIMARY KEY ("CD_ORIGEM")
+  USING INDEX "TIMESHEET"."ORIGEM_PK"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table OTRS_STAGE
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."OTRS_STAGE" MODIFY ("LOGIN" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."OTRS_STAGE" MODIFY ("TICKET_NUMBER" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table OTRS_STAGE_NEW
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."OTRS_STAGE_NEW" MODIFY ("LOGIN" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."OTRS_STAGE_NEW" MODIFY ("TICKET_NUMBER" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table OTRS_STAGE_NEW_TESTE_201408
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."OTRS_STAGE_NEW_TESTE_201408" MODIFY ("LOGIN" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."OTRS_STAGE_NEW_TESTE_201408" MODIFY ("TICKET_NUMBER" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table PARAM_FASE
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."PARAM_FASE" MODIFY ("CD_FASE" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."PARAM_FASE" MODIFY ("DS_FASE" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."PARAM_FASE" ADD CONSTRAINT "PAR_FASE_PK" PRIMARY KEY ("CD_FASE")
+  USING INDEX "TIMESHEET"."PAR_FASE_PK"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table PARAM_GERAL
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."PARAM_GERAL" MODIFY ("NM_PARAMETRO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."PARAM_GERAL" MODIFY ("VL_COEFICIENTE" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."PARAM_GERAL" ADD CONSTRAINT "AVCON_38336_TP_PA_000" CHECK (TP_PARAMETRO IN ('C', 'N', 'D')) ENABLE;
+--------------------------------------------------------
+--  Constraints for Table PARM_EMPR
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."PARM_EMPR" MODIFY ("CD_EMPRESA" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."PARM_EMPR" ADD CONSTRAINT "PARM_EMPR_PK" PRIMARY KEY ("CD_EMPRESA")
+  USING INDEX "TIMESHEET"."PARM_EMPR_PK"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table PLATAFORMA
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."PLATAFORMA" MODIFY ("DS_PLATAFORMA" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."PLATAFORMA" ADD CONSTRAINT "CDPLAT_PK" PRIMARY KEY ("CD_PLATAFORMA")
+  USING INDEX "TIMESHEET"."CDPLAT_PK"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table PLATAFORMA_VENDOR
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."PLATAFORMA_VENDOR" MODIFY ("PLATAFORMA_VENDOR" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."PLATAFORMA_VENDOR" ADD CONSTRAINT "PLATAFORMA_VENDOR_PK" PRIMARY KEY ("PLATAFORMA_VENDOR")
+  USING INDEX "TIMESHEET"."PLATAFORMA_VENDOR_PK"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table PROJETO
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."PROJETO" MODIFY ("CD_PROJETO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."PROJETO" MODIFY ("DS_PROJETO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."PROJETO" MODIFY ("DT_INICIO_PREV" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."PROJETO" MODIFY ("TP_COBRANCA" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."PROJETO" MODIFY ("ST_PROJETO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."PROJETO" MODIFY ("CD_CLIFOR" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."PROJETO" MODIFY ("CD_RESP_TECNICO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."PROJETO" MODIFY ("CD_RESP_COML" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."PROJETO" MODIFY ("IN_INTERNO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."PROJETO" MODIFY ("FG_COMISSAO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."PROJETO" ADD CONSTRAINT "AVCON_53157_ST_PR_000" CHECK (ST_PROJETO IN ('E', 'G', 'A')) ENABLE;
+  ALTER TABLE "TIMESHEET"."PROJETO" ADD CONSTRAINT "CHECK_TP_COBRANCA" CHECK (TP_COBRANCA IN ('HHM', 'FFA', 'FFM', 'CUS', 'NA')) ENABLE;
+  ALTER TABLE "TIMESHEET"."PROJETO" ADD CONSTRAINT "PROJETO_PK" PRIMARY KEY ("CD_PROJETO")
+  USING INDEX "TIMESHEET"."PROJETO_PK"  ENABLE;
+  ALTER TABLE "TIMESHEET"."PROJETO" ADD CONSTRAINT "AVCON_53157_FG_CO_000" CHECK (FG_COMISSAO IN (0, 1)) ENABLE;
+--------------------------------------------------------
+--  Constraints for Table PROJETO_FASE
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."PROJETO_FASE" MODIFY ("CD_PROJETO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."PROJETO_FASE" MODIFY ("SEQ_PROJETO_FASE" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."PROJETO_FASE" MODIFY ("DS_FASE" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."PROJETO_FASE" MODIFY ("CD_CATEGORIA_FASE" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."PROJETO_FASE" MODIFY ("ST_FASEPROJ" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."PROJETO_FASE" MODIFY ("DT_ULT_ALT" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."PROJETO_FASE" MODIFY ("USUR_CD_USUR" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."PROJETO_FASE" ADD CONSTRAINT "PROJETO_FASE_PK" PRIMARY KEY ("CD_PROJETO", "SEQ_PROJETO_FASE")
+  USING INDEX  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table PROJETO_TAREFA
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."PROJETO_TAREFA" MODIFY ("CD_PROJETO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."PROJETO_TAREFA" MODIFY ("SEQ_PROJETO_FASE" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."PROJETO_TAREFA" MODIFY ("SEQ_PROJETO_TAREFA" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."PROJETO_TAREFA" MODIFY ("DS_TAREFA" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."PROJETO_TAREFA" MODIFY ("ST_TAREFA" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."PROJETO_TAREFA" MODIFY ("CD_CATEGORIA_TAREFA" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."PROJETO_TAREFA" MODIFY ("IN_TAREFA_EXTERNA" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."PROJETO_TAREFA" MODIFY ("DT_ULT_ALT" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."PROJETO_TAREFA" MODIFY ("USUR_CD_USUR" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."PROJETO_TAREFA" ADD CONSTRAINT "PROJETO_TAREFA_PK" PRIMARY KEY ("CD_PROJETO", "SEQ_PROJETO_FASE", "SEQ_PROJETO_TAREFA")
+  USING INDEX  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table PROJETO_TAREFA_FUNCIONARIO
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."PROJETO_TAREFA_FUNCIONARIO" MODIFY ("CD_PROJETO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."PROJETO_TAREFA_FUNCIONARIO" MODIFY ("SEQ_PROJETO_FASE" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."PROJETO_TAREFA_FUNCIONARIO" MODIFY ("SEQ_PROJETO_TAREFA" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."PROJETO_TAREFA_FUNCIONARIO" MODIFY ("FUNC_CD_FUNC" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."PROJETO_TAREFA_FUNCIONARIO" MODIFY ("ST_ALOCACAO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."PROJETO_TAREFA_FUNCIONARIO" MODIFY ("DT_ULT_ALT" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."PROJETO_TAREFA_FUNCIONARIO" MODIFY ("USUR_CD_USUR" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."PROJETO_TAREFA_FUNCIONARIO" ADD CONSTRAINT "PROJETO_TAREFA_FUNCIONARIO_PK" PRIMARY KEY ("CD_PROJETO", "SEQ_PROJETO_FASE", "SEQ_PROJETO_TAREFA", "FUNC_CD_FUNC")
+  USING INDEX  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table PROJ_FUNC
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."PROJ_FUNC" MODIFY ("FUNC_CD_FUNC" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."PROJ_FUNC" MODIFY ("PROJ_CD_PROJETO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."PROJ_FUNC" MODIFY ("PJFU_STT_INTERNO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."PROJ_FUNC" MODIFY ("DTA_ULT_ALT" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."PROJ_FUNC" MODIFY ("USUR_CD_USUR" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."PROJ_FUNC" MODIFY ("CD_FASE" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."PROJ_FUNC" ADD CONSTRAINT "AVCON_1024492546_PJFU__000" CHECK (PJFU_STT_INTERNO IN ('N', 'S')) ENABLE;
+  ALTER TABLE "TIMESHEET"."PROJ_FUNC" ADD CONSTRAINT "PFC_PK" PRIMARY KEY ("PROJ_CD_PROJETO", "CD_FASE", "FUNC_CD_FUNC")
+  USING INDEX "TIMESHEET"."PFC_PK"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table SERVIDOR
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."SERVIDOR" MODIFY ("CD_SERVIDOR" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."SERVIDOR" MODIFY ("DS_SERVIDOR" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."SERVIDOR" ADD CONSTRAINT "SERVIDOR_PK" PRIMARY KEY ("CD_SERVIDOR")
+  USING INDEX "TIMESHEET"."SERVIDOR_PK"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table SITE_CLIENTES_IBM
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."SITE_CLIENTES_IBM" MODIFY ("COD_CLIENTE" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."SITE_CLIENTES_IBM" MODIFY ("CNPJ_SITE" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."SITE_CLIENTES_IBM" MODIFY ("NOME_SITE" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."SITE_CLIENTES_IBM" ADD CONSTRAINT "S_CLI_IBM_PK" PRIMARY KEY ("COD_CLIENTE", "CNPJ_SITE")
+  USING INDEX "TIMESHEET"."S_CLI_IBM_PK"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table STATE
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."STATE" MODIFY ("CD_STATE" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."STATE" MODIFY ("DS_STATE" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."STATE" MODIFY ("CD_REGION" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."STATE" ADD CONSTRAINT "STATE_PK" PRIMARY KEY ("CD_STATE")
+  USING INDEX "TIMESHEET"."STATE_PK"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table SUGAR_HORAS
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."SUGAR_HORAS" MODIFY ("FUNC_CD_FUNC" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."SUGAR_HORAS" MODIFY ("PROJ_CD_PROJETO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."SUGAR_HORAS" MODIFY ("DTHR_INI_ATENDIMENTO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."SUGAR_HORAS" MODIFY ("DTHR_FIM_ATENDIMENTO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."SUGAR_HORAS" MODIFY ("PROCESSADO_S_N" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."SUGAR_HORAS" ADD CONSTRAINT "SUGAR_HORAS_PK" PRIMARY KEY ("FUNC_CD_FUNC", "PROJ_CD_PROJETO", "DTHR_INI_ATENDIMENTO")
+  USING INDEX  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table SUGAR_STAGE
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."SUGAR_STAGE" MODIFY ("CD_PROJETO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."SUGAR_STAGE" MODIFY ("CD_SUGAR" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."SUGAR_STAGE" MODIFY ("FUNC_CD_FUNC" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."SUGAR_STAGE" MODIFY ("DT_LOG" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."SUGAR_STAGE" MODIFY ("HORAS_NR" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."SUGAR_STAGE" ADD CONSTRAINT "SUGAR_STAGE_CHK1" CHECK (HORAS_NR > 0) ENABLE;
+  ALTER TABLE "TIMESHEET"."SUGAR_STAGE" ADD CONSTRAINT "SUGAR_STAGE_PK" PRIMARY KEY ("CD_SUGAR")
+  USING INDEX "TIMESHEET"."SUGAR_STAGE_PK1"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table SUPORTE_SITE_IBM
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."SUPORTE_SITE_IBM" MODIFY ("COD_CLIENTE" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."SUPORTE_SITE_IBM" MODIFY ("CNPJ_SITE" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."SUPORTE_SITE_IBM" MODIFY ("COD_PRODUTO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."SUPORTE_SITE_IBM" MODIFY ("CADASTRO_OK_S_N" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."SUPORTE_SITE_IBM" MODIFY ("SUPORTE_COMMIT_S_N" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."SUPORTE_SITE_IBM" ADD CONSTRAINT "SUP_SIT_IB_PK" PRIMARY KEY ("COD_CLIENTE", "CNPJ_SITE", "COD_PRODUTO")
+  USING INDEX "TIMESHEET"."SUP_SIT_IB_PK"  ENABLE;
+  ALTER TABLE "TIMESHEET"."SUPORTE_SITE_IBM" ADD CONSTRAINT "AVCON_1120766213_CADAS_000" CHECK (CADASTRO_OK_S_N IN ('N', 'S')) ENABLE;
+  ALTER TABLE "TIMESHEET"."SUPORTE_SITE_IBM" ADD CONSTRAINT "AVCON_1120766213_SUPOR_000" CHECK (SUPORTE_COMMIT_S_N IN ('N', 'S')) ENABLE;
+--------------------------------------------------------
+--  Constraints for Table TECNOLOGIA
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."TECNOLOGIA" MODIFY ("TECNOLOGIA" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."TECNOLOGIA" ADD CONSTRAINT "TECNOLOGIA_PK" PRIMARY KEY ("TECNOLOGIA")
+  USING INDEX "TIMESHEET"."TECNOLOGIA_PK"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table T_EMAILS
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."T_EMAILS" MODIFY ("MAILTO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."T_EMAILS" MODIFY ("MAILFROM" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."T_EMAILS" MODIFY ("NM_FUNCIONARIO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."T_EMAILS" MODIFY ("ASSUNTO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."T_EMAILS" MODIFY ("TX_EMAIL1" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."T_EMAILS" ADD PRIMARY KEY ("DT_INCLUSAO", "NM_FUNCIONARIO")
+  USING INDEX  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table T_EMAILS_HIST
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."T_EMAILS_HIST" MODIFY ("MAILTO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."T_EMAILS_HIST" MODIFY ("MAILFROM" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."T_EMAILS_HIST" MODIFY ("NM_FUNCIONARIO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."T_EMAILS_HIST" MODIFY ("ASSUNTO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."T_EMAILS_HIST" MODIFY ("TX_EMAIL1" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table TESTE_INCREMENTAL
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."TESTE_INCREMENTAL" MODIFY ("CHAVE" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."TESTE_INCREMENTAL" MODIFY ("DATAHORA" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."TESTE_INCREMENTAL" MODIFY ("DESCRICAO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."TESTE_INCREMENTAL" MODIFY ("VALOR" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."TESTE_INCREMENTAL" ADD PRIMARY KEY ("CHAVE")
+  USING INDEX  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table TIMESHEET_DIA
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."TIMESHEET_DIA" MODIFY ("FUNC_CD_FUNC" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."TIMESHEET_DIA" MODIFY ("LOPE_NR_ANO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."TIMESHEET_DIA" MODIFY ("LOPE_NR_MES" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."TIMESHEET_DIA" MODIFY ("LOG_NR_DIA" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."TIMESHEET_DIA" MODIFY ("LOG_NR_HNORMAL" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."TIMESHEET_DIA" MODIFY ("ST_TIMESHEET_DIA" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."TIMESHEET_DIA" MODIFY ("DT_ULT_ALT" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."TIMESHEET_DIA" MODIFY ("USUR_CD_USUR" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."TIMESHEET_DIA" ADD CONSTRAINT "TIMESHEET_DIA_PK" PRIMARY KEY ("FUNC_CD_FUNC", "LOPE_NR_ANO", "LOPE_NR_MES", "LOG_NR_DIA")
+  USING INDEX  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table TIMESHEET_DIA_BKP
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."TIMESHEET_DIA_BKP" MODIFY ("FUNC_CD_FUNC" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."TIMESHEET_DIA_BKP" MODIFY ("LOPE_NR_ANO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."TIMESHEET_DIA_BKP" MODIFY ("LOPE_NR_MES" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."TIMESHEET_DIA_BKP" MODIFY ("LOG_NR_DIA" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."TIMESHEET_DIA_BKP" MODIFY ("LOG_NR_HNORMAL" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."TIMESHEET_DIA_BKP" MODIFY ("ST_TIMESHEET_DIA" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."TIMESHEET_DIA_BKP" MODIFY ("DT_ULT_ALT" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."TIMESHEET_DIA_BKP" MODIFY ("USUR_CD_USUR" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table TIMESHEET_DIA_TAREFA
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."TIMESHEET_DIA_TAREFA" MODIFY ("FUNC_CD_FUNC" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."TIMESHEET_DIA_TAREFA" MODIFY ("CD_PROJETO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."TIMESHEET_DIA_TAREFA" MODIFY ("SEQ_PROJETO_FASE" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."TIMESHEET_DIA_TAREFA" MODIFY ("SEQ_PROJETO_TAREFA" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."TIMESHEET_DIA_TAREFA" MODIFY ("LOPE_NR_ANO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."TIMESHEET_DIA_TAREFA" MODIFY ("LOPE_NR_MES" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."TIMESHEET_DIA_TAREFA" MODIFY ("LOG_NR_DIA" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."TIMESHEET_DIA_TAREFA" MODIFY ("DT_ULT_ALT" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."TIMESHEET_DIA_TAREFA" MODIFY ("USUR_CD_USUR" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."TIMESHEET_DIA_TAREFA" ADD CONSTRAINT "TIMESHEET_DIA_TAREFA_PK" PRIMARY KEY ("FUNC_CD_FUNC", "LOPE_NR_ANO", "LOPE_NR_MES", "LOG_NR_DIA", "CD_PROJETO", "SEQ_PROJETO_FASE", "SEQ_PROJETO_TAREFA")
+  USING INDEX  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table TIMESHEET_DIA_20140826
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."TIMESHEET_DIA_20140826" MODIFY ("FUNC_CD_FUNC" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."TIMESHEET_DIA_20140826" MODIFY ("LOPE_NR_ANO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."TIMESHEET_DIA_20140826" MODIFY ("LOPE_NR_MES" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."TIMESHEET_DIA_20140826" MODIFY ("LOG_NR_DIA" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."TIMESHEET_DIA_20140826" MODIFY ("LOG_NR_HNORMAL" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."TIMESHEET_DIA_20140826" MODIFY ("ST_TIMESHEET_DIA" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."TIMESHEET_DIA_20140826" MODIFY ("DT_ULT_ALT" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."TIMESHEET_DIA_20140826" MODIFY ("USUR_CD_USUR" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table TIPO_CONTRATO
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."TIPO_CONTRATO" MODIFY ("TIPO_CONTRATO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."TIPO_CONTRATO" ADD CONSTRAINT "TIPO_CONTRATO_PK" PRIMARY KEY ("TIPO_CONTRATO")
+  USING INDEX "TIMESHEET"."TIPO_CONTRATO_PK"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table TIPO_LANCAMENTO
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."TIPO_LANCAMENTO" MODIFY ("CLAS_CD_CLASSE" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."TIPO_LANCAMENTO" MODIFY ("DETA_NR_SEQUENCIAL" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."TIPO_LANCAMENTO" MODIFY ("TILA_CD_TIPO_LANC" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."TIPO_LANCAMENTO" MODIFY ("TILA_TX_DESCRICAO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."TIPO_LANCAMENTO" MODIFY ("TILA_IN_PREVISAO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."TIPO_LANCAMENTO" MODIFY ("TILA_IN_TIPO_VALOR" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."TIPO_LANCAMENTO" MODIFY ("TILA_IN_TIPO_CUSTO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."TIPO_LANCAMENTO" ADD CONSTRAINT "AVCON_2457_TILA__001" CHECK (TILA_IN_TIPO_VALOR IN ('S', 'N')) ENABLE;
+  ALTER TABLE "TIMESHEET"."TIPO_LANCAMENTO" ADD CONSTRAINT "AVCON_2457_TILA__002" CHECK (TILA_IN_TIPO_CUSTO IN ('S', 'N')) ENABLE;
+  ALTER TABLE "TIMESHEET"."TIPO_LANCAMENTO" ADD CONSTRAINT "AVCON_2457_TILA__000" CHECK (TILA_IN_PREVISAO IN ('S', 'N')) ENABLE;
+  ALTER TABLE "TIMESHEET"."TIPO_LANCAMENTO" ADD CONSTRAINT "SYS_C002230" PRIMARY KEY ("CLAS_CD_CLASSE", "DETA_NR_SEQUENCIAL", "TILA_CD_TIPO_LANC")
+  USING INDEX  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table TIPOLICENCA
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."TIPOLICENCA" MODIFY ("TP_LICENCA" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."TIPOLICENCA" MODIFY ("DS_LICENCA" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."TIPOLICENCA" ADD CONSTRAINT "TIPOLICENCA_PK" PRIMARY KEY ("TP_LICENCA")
+  USING INDEX "TIMESHEET"."TIPOLICENCA_PK"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table TIPO_SERVICO
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."TIPO_SERVICO" MODIFY ("TIPO_SERVICO" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."TIPO_SERVICO" ADD CONSTRAINT "TIPO_SERVICO_PK" PRIMARY KEY ("TIPO_SERVICO")
+  USING INDEX "TIMESHEET"."TIPO_SERVICO_PK"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table T_LOG_TRISCAL
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."T_LOG_TRISCAL" MODIFY ("ID_TRSC" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."T_LOG_TRISCAL" MODIFY ("ID_POSC_TRSC" NOT NULL ENABLE);
+  ALTER TABLE "TIMESHEET"."T_LOG_TRISCAL" ADD CONSTRAINT "PK_LOGTRSCCDTRMSTR" PRIMARY KEY ("ID_TRSC", "ID_POSC_TRSC")
+  USING INDEX "TIMESHEET"."PK_LOGTRSCCDTRMSTR"  ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table AGENCIABCO
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."AGENCIABCO" ADD CONSTRAINT "AGENCIABCO_BANCO_FK" FOREIGN KEY ("CD_BANCO")
+	  REFERENCES "TIMESHEET"."BANCO" ("CD_BANCO") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table ALOCACAOPROJ
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."ALOCACAOPROJ" ADD CONSTRAINT "ALJ_CAO_FK" FOREIGN KEY ("CD_CARGO")
+	  REFERENCES "TIMESHEET"."CARGO" ("CD_CARGO") ENABLE;
+  ALTER TABLE "TIMESHEET"."ALOCACAOPROJ" ADD CONSTRAINT "ALJ_FAO_FK" FOREIGN KEY ("CD_PROJETO", "CD_FASE")
+	  REFERENCES "TIMESHEET"."FASEPROJETO" ("CD_PROJETO", "CD_FASE") ENABLE;
+  ALTER TABLE "TIMESHEET"."ALOCACAOPROJ" ADD CONSTRAINT "ALOCAPROJ_FUNC_FK" FOREIGN KEY ("CD_FUNCIONARIO")
+	  REFERENCES "TIMESHEET"."FUNCIONARIO" ("CD_FUNCIONARIO") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table AMBIENTE_CLIFOR
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."AMBIENTE_CLIFOR" ADD CONSTRAINT "AMB_CLI_APPL_SERVE_FK" FOREIGN KEY ("CD_APPL_SERVER")
+	  REFERENCES "TIMESHEET"."APPL_SERVER" ("CD_APPL_SERVER") ENABLE;
+  ALTER TABLE "TIMESHEET"."AMBIENTE_CLIFOR" ADD CONSTRAINT "AMB_CLI_BANCODADO_FK" FOREIGN KEY ("CD_BANCO")
+	  REFERENCES "TIMESHEET"."BANCODADO" ("CD_BANCO") ENABLE;
+  ALTER TABLE "TIMESHEET"."AMBIENTE_CLIFOR" ADD CONSTRAINT "AMB_CLI_CLIFOR_FK" FOREIGN KEY ("CD_CLIFOR")
+	  REFERENCES "TIMESHEET"."CLIFOR" ("CD_CLIFOR") ENABLE;
+  ALTER TABLE "TIMESHEET"."AMBIENTE_CLIFOR" ADD CONSTRAINT "AMB_CLI_CRM_FK" FOREIGN KEY ("CD_CRM")
+	  REFERENCES "TIMESHEET"."CRM" ("CD_CRM") ENABLE;
+  ALTER TABLE "TIMESHEET"."AMBIENTE_CLIFOR" ADD CONSTRAINT "AMB_CLI_ERP_FK" FOREIGN KEY ("CD_ERP")
+	  REFERENCES "TIMESHEET"."ERP" ("CD_ERP") ENABLE;
+  ALTER TABLE "TIMESHEET"."AMBIENTE_CLIFOR" ADD CONSTRAINT "AMB_CLI_GER_REDE_FK" FOREIGN KEY ("CD_GER_REDE")
+	  REFERENCES "TIMESHEET"."GER_REDE" ("CD_GER_REDE") ENABLE;
+  ALTER TABLE "TIMESHEET"."AMBIENTE_CLIFOR" ADD CONSTRAINT "AMB_CLI_PLATAFORMA_FK" FOREIGN KEY ("CD_PLATAFORMA")
+	  REFERENCES "TIMESHEET"."PLATAFORMA" ("CD_PLATAFORMA") ENABLE;
+  ALTER TABLE "TIMESHEET"."AMBIENTE_CLIFOR" ADD CONSTRAINT "AMB_CLI_SERVIDOR_FK" FOREIGN KEY ("CD_SERVIDOR")
+	  REFERENCES "TIMESHEET"."SERVIDOR" ("CD_SERVIDOR") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table ATIVIDADE_PROJ
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."ATIVIDADE_PROJ" ADD CONSTRAINT "ALOCACAOPROJ_FK" FOREIGN KEY ("CD_PROJETO", "CD_FASE", "CD_FUNCIONARIO")
+	  REFERENCES "TIMESHEET"."ALOCACAOPROJ" ("CD_PROJETO", "CD_FASE", "CD_FUNCIONARIO") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table CEP
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."CEP" ADD CONSTRAINT "CEP_CIDADE_FK" FOREIGN KEY ("CD_CIDADE")
+	  REFERENCES "TIMESHEET"."CIDADE" ("CD_CIDADE") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table CIDADE
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."CIDADE" ADD CONSTRAINT "CIDADE_ESTADO_FK" FOREIGN KEY ("SG_ESTADO")
+	  REFERENCES "TIMESHEET"."ESTADO" ("SG_ESTADO") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table CLAUSULA
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."CLAUSULA" ADD CONSTRAINT "CLAUSULA_CONTRATO_FK" FOREIGN KEY ("CD_CONTRATO")
+	  REFERENCES "TIMESHEET"."CONTRATO" ("CD_CONTRATO") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table CLIFOR
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."CLIFOR" ADD CONSTRAINT "CLIFOR_EMPRESA_FK" FOREIGN KEY ("CD_FILIAL_ORIGEM")
+	  REFERENCES "TIMESHEET"."EMPRESA" ("CD_EMPRESA") ENABLE;
+  ALTER TABLE "TIMESHEET"."CLIFOR" ADD CONSTRAINT "CLIFOR_ORIGEM_FK" FOREIGN KEY ("CD_ORIGEM")
+	  REFERENCES "TIMESHEET"."ORIGEM" ("CD_ORIGEM") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table COM_ACES_ATRIBUTOS
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."COM_ACES_ATRIBUTOS" ADD CONSTRAINT "COM_ACES_ATRI_COM_ACES_MEN_FK" FOREIGN KEY ("CDG_MENU")
+	  REFERENCES "TIMESHEET"."COM_ACES_MENU" ("CDG_MENU") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table COM_ACES_FAVORITOS
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."COM_ACES_FAVORITOS" ADD CONSTRAINT "COM_ACES_FAVO_MENU_FK" FOREIGN KEY ("CDG_MENU")
+	  REFERENCES "TIMESHEET"."COM_ACES_MENU" ("CDG_MENU") DISABLE;
+  ALTER TABLE "TIMESHEET"."COM_ACES_FAVORITOS" ADD CONSTRAINT "COM_ACES_FAVO_USUR_FK" FOREIGN KEY ("CDG_USUR")
+	  REFERENCES "TIMESHEET"."COM_ACES_USUARIO" ("CDG_USUR") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table COM_ACES_MENU
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."COM_ACES_MENU" ADD CONSTRAINT "COM_ACES_MENU_COM_ACES_MOD_FK" FOREIGN KEY ("CD_MODULO")
+	  REFERENCES "TIMESHEET"."COM_ACES_MODULOS" ("CD_MODULO") ENABLE;
+  ALTER TABLE "TIMESHEET"."COM_ACES_MENU" ADD CONSTRAINT "MENU_MENU_FK" FOREIGN KEY ("CDG_MENU_PAI")
+	  REFERENCES "TIMESHEET"."COM_ACES_MENU" ("CDG_MENU") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table COM_ACES_PERFIL_ATRIBUTOS
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."COM_ACES_PERFIL_ATRIBUTOS" ADD CONSTRAINT "COM_PERFILATRIBUTOS_MENU_FK" FOREIGN KEY ("CDG_MENU", "NOME_ATRIBUTO")
+	  REFERENCES "TIMESHEET"."COM_ACES_ATRIBUTOS" ("CDG_MENU", "NOME_ATRIBUTO") ENABLE;
+  ALTER TABLE "TIMESHEET"."COM_ACES_PERFIL_ATRIBUTOS" ADD CONSTRAINT "COM_PERFILATRIBUTOS_PERFIL_FK" FOREIGN KEY ("CDG_PERFIL")
+	  REFERENCES "TIMESHEET"."COM_ACES_PERFIL" ("CDG_PERFIL") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table COM_ACES_PERFIL_MENU
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."COM_ACES_PERFIL_MENU" ADD CONSTRAINT "COM_PERFILMENU_MENU_FK" FOREIGN KEY ("CDG_MENU")
+	  REFERENCES "TIMESHEET"."COM_ACES_MENU" ("CDG_MENU") ENABLE;
+  ALTER TABLE "TIMESHEET"."COM_ACES_PERFIL_MENU" ADD CONSTRAINT "COM_PERFILMENU_PERFIL_FK" FOREIGN KEY ("CDG_PERFIL")
+	  REFERENCES "TIMESHEET"."COM_ACES_PERFIL" ("CDG_PERFIL") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table COM_ACES_USUARIO_PERFIL
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."COM_ACES_USUARIO_PERFIL" ADD CONSTRAINT "COM_USUARIOPERFIL_PERFIL_FK" FOREIGN KEY ("CDG_PERFIL")
+	  REFERENCES "TIMESHEET"."COM_ACES_PERFIL" ("CDG_PERFIL") ENABLE;
+  ALTER TABLE "TIMESHEET"."COM_ACES_USUARIO_PERFIL" ADD CONSTRAINT "COM_USUARIOPERFIL_USUARIO_FK" FOREIGN KEY ("CDG_USUR")
+	  REFERENCES "TIMESHEET"."COM_ACES_USUARIO" ("CDG_USUR") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table COM_PARAM_ADMIN_GERAL
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."COM_PARAM_ADMIN_GERAL" ADD CONSTRAINT "ADMIN_GERA_PARAMETRO_FK" FOREIGN KEY ("CDG_PARAM")
+	  REFERENCES "TIMESHEET"."COM_PARAMETROS_ADMINISTRATIVOS" ("CDG_PARAM") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table CONTA_BANCARIA
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."CONTA_BANCARIA" ADD CONSTRAINT "CBA_BAO_FK" FOREIGN KEY ("CD_BANCO")
+	  REFERENCES "TIMESHEET"."BANCO" ("CD_BANCO") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table CONTABCO
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."CONTABCO" ADD CONSTRAINT "CONTABCO_AGENCIABCO_FK" FOREIGN KEY ("CD_BANCO", "CD_AGENCIA", "NR_DIGITO")
+	  REFERENCES "TIMESHEET"."AGENCIABCO" ("CD_BANCO", "CD_AGENCIA", "NR_DIGITO") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table CRONOGRAMA_FATURAMENTO
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."CRONOGRAMA_FATURAMENTO" ADD CONSTRAINT "CRONOGRAMA_FAT_PROJETO_FK" FOREIGN KEY ("CD_PROJETO")
+	  REFERENCES "TIMESHEET"."PROJETO" ("CD_PROJETO") ENABLE;
+  ALTER TABLE "TIMESHEET"."CRONOGRAMA_FATURAMENTO" ADD CONSTRAINT "CRONOGRAMA_FAT_PROJETO_FASE_FK" FOREIGN KEY ("CD_PROJETO", "SEQ_PROJETO_FASE")
+	  REFERENCES "TIMESHEET"."PROJETO_FASE" ("CD_PROJETO", "SEQ_PROJETO_FASE") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table DETALHAMENTO_CLASSE
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."DETALHAMENTO_CLASSE" ADD CONSTRAINT "SYS_C002248" FOREIGN KEY ("CLAS_CD_CLASSE")
+	  REFERENCES "TIMESHEET"."CLASSES" ("CLAS_CD_CLASSE") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table DIM_PROJETO
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."DIM_PROJETO" ADD CONSTRAINT "FK_PROJETO_01" FOREIGN KEY ("SK_CLIENTE")
+	  REFERENCES "TIMESHEET"."DIM_CLIENTE" ("SK_CLIENTE") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table ENDERECO
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."ENDERECO" ADD CONSTRAINT "ENDERECO_CEP_FK" FOREIGN KEY ("CD_CEP")
+	  REFERENCES "TIMESHEET"."CEP" ("CD_CEP") ENABLE;
+  ALTER TABLE "TIMESHEET"."ENDERECO" ADD CONSTRAINT "ENDERECO_CIDADE_FK" FOREIGN KEY ("CD_CIDADE")
+	  REFERENCES "TIMESHEET"."CIDADE" ("CD_CIDADE") ENABLE;
+  ALTER TABLE "TIMESHEET"."ENDERECO" ADD CONSTRAINT "ENDERECO_CLIFOR_FK" FOREIGN KEY ("CD_CLIFOR")
+	  REFERENCES "TIMESHEET"."CLIFOR" ("CD_CLIFOR") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table FASEPROJETO
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."FASEPROJETO" ADD CONSTRAINT "FAO_PRO_FK" FOREIGN KEY ("CD_PROJETO")
+	  REFERENCES "TIMESHEET"."PROJETO" ("CD_PROJETO") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table FAT_HR_FUNC_PROJ
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."FAT_HR_FUNC_PROJ" ADD CONSTRAINT "FK_FAT_HR_FUNC_PROJ_01" FOREIGN KEY ("SK_PROJETO")
+	  REFERENCES "TIMESHEET"."DIM_PROJETO" ("SK_PROJETO") ENABLE;
+  ALTER TABLE "TIMESHEET"."FAT_HR_FUNC_PROJ" ADD CONSTRAINT "FK_FAT_HR_FUNC_PROJ_02" FOREIGN KEY ("SK_CLIENTE")
+	  REFERENCES "TIMESHEET"."DIM_CLIENTE" ("SK_CLIENTE") ENABLE;
+  ALTER TABLE "TIMESHEET"."FAT_HR_FUNC_PROJ" ADD CONSTRAINT "FK_FAT_HR_FUNC_PROJ_03" FOREIGN KEY ("SK_FILIAL")
+	  REFERENCES "TIMESHEET"."DIM_FILIAL" ("SK_FILIAL") ENABLE;
+  ALTER TABLE "TIMESHEET"."FAT_HR_FUNC_PROJ" ADD CONSTRAINT "FK_FAT_HR_FUNC_PROJ_04" FOREIGN KEY ("SK_TEMPO_DIA")
+	  REFERENCES "TIMESHEET"."DIM_TEMPO_DIA" ("SK_TEMPO_DIA") ENABLE;
+  ALTER TABLE "TIMESHEET"."FAT_HR_FUNC_PROJ" ADD CONSTRAINT "FK_FAT_HR_FUNC_PROJ_05" FOREIGN KEY ("SK_FUNCIONARIO")
+	  REFERENCES "TIMESHEET"."DIM_FUNCIONARIO" ("SK_FUNCIONARIO") ENABLE;
+  ALTER TABLE "TIMESHEET"."FAT_HR_FUNC_PROJ" ADD CONSTRAINT "FK_FAT_HR_FUNC_PROJ_06" FOREIGN KEY ("SK_VERTICAL")
+	  REFERENCES "TIMESHEET"."DIM_VERTICAL" ("SK_VERTICAL") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table FAT_HR_UTEIS_MES_FILI
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."FAT_HR_UTEIS_MES_FILI" ADD CONSTRAINT "FK_FAT_HR_UTEIS_MES_FILI_01" FOREIGN KEY ("SK_FILIAL")
+	  REFERENCES "TIMESHEET"."DIM_FILIAL" ("SK_FILIAL") ENABLE;
+  ALTER TABLE "TIMESHEET"."FAT_HR_UTEIS_MES_FILI" ADD CONSTRAINT "FK_FAT_HR_UTEIS_MES_FILI_02" FOREIGN KEY ("SK_TEMPO_DIA")
+	  REFERENCES "TIMESHEET"."DIM_TEMPO_DIA" ("SK_TEMPO_DIA") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table FATURAMENTO
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."FATURAMENTO" ADD CONSTRAINT "FATURAMENTO_CD_CLIFOR_FK" FOREIGN KEY ("CD_CLIFOR")
+	  REFERENCES "TIMESHEET"."CLIFOR" ("CD_CLIFOR") ENABLE;
+  ALTER TABLE "TIMESHEET"."FATURAMENTO" ADD CONSTRAINT "FATURAMENTO_CD_PROJETO_FK" FOREIGN KEY ("CD_PROJETO")
+	  REFERENCES "TIMESHEET"."PROJETO" ("CD_PROJETO") ENABLE;
+  ALTER TABLE "TIMESHEET"."FATURAMENTO" ADD CONSTRAINT "FATURAMENTO_LINHA_SERVICO_FK" FOREIGN KEY ("LINHA_SERVICO")
+	  REFERENCES "TIMESHEET"."LINHA_SERVICO" ("LINHA_SERVICO") ENABLE;
+  ALTER TABLE "TIMESHEET"."FATURAMENTO" ADD CONSTRAINT "FATURAMENTO_TIPO_SERVICO_FK" FOREIGN KEY ("TIPO_SERVICO")
+	  REFERENCES "TIMESHEET"."TIPO_SERVICO" ("TIPO_SERVICO") ENABLE;
+  ALTER TABLE "TIMESHEET"."FATURAMENTO" ADD CONSTRAINT "FATURAMENTO_TIPO_CONTRATO_FK" FOREIGN KEY ("TIPO_CONTRATO")
+	  REFERENCES "TIMESHEET"."TIPO_CONTRATO" ("TIPO_CONTRATO") ENABLE;
+  ALTER TABLE "TIMESHEET"."FATURAMENTO" ADD CONSTRAINT "FATURAMENTO_CD_EMPRESA_FK" FOREIGN KEY ("CD_EMPRESA")
+	  REFERENCES "TIMESHEET"."EMPRESA" ("CD_EMPRESA") ENABLE;
+  ALTER TABLE "TIMESHEET"."FATURAMENTO" ADD CONSTRAINT "FATURAMENTO_PLATAFORMA_VEND_FK" FOREIGN KEY ("PLATAFORMA_VENDOR")
+	  REFERENCES "TIMESHEET"."PLATAFORMA_VENDOR" ("PLATAFORMA_VENDOR") ENABLE;
+  ALTER TABLE "TIMESHEET"."FATURAMENTO" ADD CONSTRAINT "TECNOLOGIA_FK" FOREIGN KEY ("TECNOLOGIA")
+	  REFERENCES "TIMESHEET"."TECNOLOGIA" ("TECNOLOGIA") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table FERIADO
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."FERIADO" ADD CONSTRAINT "FERIADO_EMPRESA_FK" FOREIGN KEY ("FILIAL_CD_FILIAL")
+	  REFERENCES "TIMESHEET"."EMPRESA" ("CD_EMPRESA") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table FUNC_CLT
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."FUNC_CLT" ADD CONSTRAINT "FUNC_CLT_FUNCIONARIO_FK" FOREIGN KEY ("CD_FUNCIONARIO")
+	  REFERENCES "TIMESHEET"."FUNCIONARIO" ("CD_FUNCIONARIO") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table FUNC_EMPR
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."FUNC_EMPR" ADD CONSTRAINT "FUNC_EMPR_CLIFOR_FK" FOREIGN KEY ("CD_CLIFOR")
+	  REFERENCES "TIMESHEET"."CLIFOR" ("CD_CLIFOR") ENABLE;
+  ALTER TABLE "TIMESHEET"."FUNC_EMPR" ADD CONSTRAINT "FUNC_EMPR_FUNCIONARIO_FK" FOREIGN KEY ("CD_FUNCIONARIO")
+	  REFERENCES "TIMESHEET"."FUNCIONARIO" ("CD_FUNCIONARIO") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table FUNC_ENDERECO
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."FUNC_ENDERECO" ADD CONSTRAINT "FUNCENDERECO_CEP_FK" FOREIGN KEY ("CD_CEP")
+	  REFERENCES "TIMESHEET"."CEP" ("CD_CEP") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table FUNCIONARIO
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."FUNCIONARIO" ADD CONSTRAINT "APROVADOR_FK" FOREIGN KEY ("FUNC_CD_FUNC_APROVADOR")
+	  REFERENCES "TIMESHEET"."FUNCIONARIO" ("CD_FUNCIONARIO") ENABLE;
+  ALTER TABLE "TIMESHEET"."FUNCIONARIO" ADD CONSTRAINT "FUNCIONARIO_COM_ACES_USUAR_FK" FOREIGN KEY ("CDG_USUR")
+	  REFERENCES "TIMESHEET"."COM_ACES_USUARIO" ("CDG_USUR") ENABLE;
+  ALTER TABLE "TIMESHEET"."FUNCIONARIO" ADD CONSTRAINT "FUNCIONARIO_EMPRESA_FK" FOREIGN KEY ("CD_EMPRESA")
+	  REFERENCES "TIMESHEET"."EMPRESA" ("CD_EMPRESA") ENABLE;
+  ALTER TABLE "TIMESHEET"."FUNCIONARIO" ADD CONSTRAINT "FUNCIONARIO_NIVEL_FK" FOREIGN KEY ("CD_CARGO", "CD_NIVEL")
+	  REFERENCES "TIMESHEET"."NIVEL" ("CD_CARGO", "CD_NIVEL") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table HORAS_DIA
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."HORAS_DIA" ADD CONSTRAINT "HORAS_DIA_LOG_DIA_FK" FOREIGN KEY ("LOG_NR_DIA", "LOPE_NR_MES", "LOPE_NR_ANO", "FUNC_CD_FUNC", "PERI_CD_PERIODO")
+	  REFERENCES "TIMESHEET"."LOG_DIA" ("LOG_NR_DIA", "LOPE_NR_MES", "LOPE_NR_ANO", "FUNC_CD_FUNC", "PERI_CD_PERIODO") ENABLE;
+  ALTER TABLE "TIMESHEET"."HORAS_DIA" ADD CONSTRAINT "HORAS_DIA_PROJETO_FK" FOREIGN KEY ("PROJ_CD_PROJETO")
+	  REFERENCES "TIMESHEET"."PROJETO" ("CD_PROJETO") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table JORNADA_TRABALHO
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."JORNADA_TRABALHO" ADD CONSTRAINT "JORNADA_FUNC_FK" FOREIGN KEY ("CD_FUNCIONARIO")
+	  REFERENCES "TIMESHEET"."FUNCIONARIO" ("CD_FUNCIONARIO") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table LOG_DIA
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."LOG_DIA" ADD CONSTRAINT "LOG_DIA_LOG_PERIODO_FK" FOREIGN KEY ("FUNC_CD_FUNC", "LOPE_NR_ANO", "LOPE_NR_MES", "PERI_CD_PERIODO")
+	  REFERENCES "TIMESHEET"."LOG_PERIODO" ("FUNC_CD_FUNC", "LOPE_NR_ANO", "LOPE_NR_MES", "PERI_CD_PERIODO") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table LOG_PERIODO
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."LOG_PERIODO" ADD CONSTRAINT "LOG_PERIODO_FUNCIONARIO_FK" FOREIGN KEY ("FUNC_CD_FUNC")
+	  REFERENCES "TIMESHEET"."FUNCIONARIO" ("CD_FUNCIONARIO") ENABLE;
+  ALTER TABLE "TIMESHEET"."LOG_PERIODO" ADD CONSTRAINT "LOG_PERIODO_LOG_TIPO_PERIO_FK" FOREIGN KEY ("PERI_CD_PERIODO")
+	  REFERENCES "TIMESHEET"."LOG_TIPO_PERIODO" ("PERI_CD_PERIODO") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table MOVIMENTACAO_SALDO_BHE
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."MOVIMENTACAO_SALDO_BHE" ADD CONSTRAINT "MOSA_FUNC_FK" FOREIGN KEY ("FUNC_CD_FUNC")
+	  REFERENCES "TIMESHEET"."FUNCIONARIO" ("CD_FUNCIONARIO") ENABLE;
+  ALTER TABLE "TIMESHEET"."MOVIMENTACAO_SALDO_BHE" ADD CONSTRAINT "MOSA_USUR_FK" FOREIGN KEY ("USUR_CDG_USUR")
+	  REFERENCES "TIMESHEET"."COM_ACES_USUARIO" ("CDG_USUR") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table NIVEL
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."NIVEL" ADD CONSTRAINT "NIVEL_CARGO_FK" FOREIGN KEY ("CD_CARGO")
+	  REFERENCES "TIMESHEET"."CARGO" ("CD_CARGO") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table PARM_EMPR
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."PARM_EMPR" ADD CONSTRAINT "PARM_EMPR_EMPRESA_FK" FOREIGN KEY ("CD_EMPRESA")
+	  REFERENCES "TIMESHEET"."EMPRESA" ("CD_EMPRESA") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table PROJETO
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."PROJETO" ADD CONSTRAINT "CLIFOR_FK" FOREIGN KEY ("CD_CLIFOR")
+	  REFERENCES "TIMESHEET"."CLIFOR" ("CD_CLIFOR") ENABLE;
+  ALTER TABLE "TIMESHEET"."PROJETO" ADD CONSTRAINT "PROJETO_CONTATO_FK" FOREIGN KEY ("CD_CLIFOR", "CD_CONTATO")
+	  REFERENCES "TIMESHEET"."CONTATO" ("CD_CLIFOR", "CD_CONTATO") ENABLE;
+  ALTER TABLE "TIMESHEET"."PROJETO" ADD CONSTRAINT "PROJETO_FUNC_FK" FOREIGN KEY ("CD_RESP_TECNICO")
+	  REFERENCES "TIMESHEET"."FUNCIONARIO" ("CD_FUNCIONARIO") ENABLE;
+  ALTER TABLE "TIMESHEET"."PROJETO" ADD CONSTRAINT "PROJETO_FUNC_RESPONSAVEL_CO_FK" FOREIGN KEY ("CD_RESP_COML")
+	  REFERENCES "TIMESHEET"."FUNCIONARIO" ("CD_FUNCIONARIO") ENABLE;
+  ALTER TABLE "TIMESHEET"."PROJETO" ADD CONSTRAINT "PRO_EMA_FK" FOREIGN KEY ("CD_EMPRESA")
+	  REFERENCES "TIMESHEET"."EMPRESA" ("CD_EMPRESA") ENABLE;
+  ALTER TABLE "TIMESHEET"."PROJETO" ADD CONSTRAINT "PROJETO_LINHA_SERVICO_FK" FOREIGN KEY ("LINHA_SERVICO")
+	  REFERENCES "TIMESHEET"."LINHA_SERVICO" ("LINHA_SERVICO") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table PROJETO_FASE
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."PROJETO_FASE" ADD CONSTRAINT "PROJETO_FASE_PROJETO_FK" FOREIGN KEY ("CD_PROJETO")
+	  REFERENCES "TIMESHEET"."PROJETO" ("CD_PROJETO") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table PROJETO_TAREFA
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."PROJETO_TAREFA" ADD CONSTRAINT "PROJETO_TAREFA_PROJETO_FASE_FK" FOREIGN KEY ("CD_PROJETO", "SEQ_PROJETO_FASE")
+	  REFERENCES "TIMESHEET"."PROJETO_FASE" ("CD_PROJETO", "SEQ_PROJETO_FASE") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table PROJETO_TAREFA_FUNCIONARIO
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."PROJETO_TAREFA_FUNCIONARIO" ADD CONSTRAINT "PROJETO_TAREFA_FUNC_TAREFA_FK" FOREIGN KEY ("CD_PROJETO", "SEQ_PROJETO_FASE", "SEQ_PROJETO_TAREFA")
+	  REFERENCES "TIMESHEET"."PROJETO_TAREFA" ("CD_PROJETO", "SEQ_PROJETO_FASE", "SEQ_PROJETO_TAREFA") ENABLE;
+  ALTER TABLE "TIMESHEET"."PROJETO_TAREFA_FUNCIONARIO" ADD CONSTRAINT "PROJETO_TAREFA_FUNC_FUNC_FK" FOREIGN KEY ("FUNC_CD_FUNC")
+	  REFERENCES "TIMESHEET"."FUNCIONARIO" ("CD_FUNCIONARIO") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table PROJ_FUNC
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."PROJ_FUNC" ADD CONSTRAINT "PROJ_FUNC_FUNCIONARIO_FK" FOREIGN KEY ("FUNC_CD_FUNC")
+	  REFERENCES "TIMESHEET"."FUNCIONARIO" ("CD_FUNCIONARIO") ENABLE;
+  ALTER TABLE "TIMESHEET"."PROJ_FUNC" ADD CONSTRAINT "PROJ_FUNC_PROJETO_FK" FOREIGN KEY ("PROJ_CD_PROJETO")
+	  REFERENCES "TIMESHEET"."PROJETO" ("CD_PROJETO") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table SITE_CLIENTES_IBM
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."SITE_CLIENTES_IBM" ADD CONSTRAINT "CLI_IBM_FK" FOREIGN KEY ("COD_CLIENTE")
+	  REFERENCES "TIMESHEET"."CLIENTES_IBM" ("COD_CLIENTE") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table SUPORTE_SITE_IBM
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."SUPORTE_SITE_IBM" ADD CONSTRAINT "SITE_CLI_IBM_FK" FOREIGN KEY ("COD_CLIENTE", "CNPJ_SITE")
+	  REFERENCES "TIMESHEET"."SITE_CLIENTES_IBM" ("COD_CLIENTE", "CNPJ_SITE") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table TIMESHEET_DIA
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."TIMESHEET_DIA" ADD CONSTRAINT "TIMESHEET_DIA_FUNC_FK" FOREIGN KEY ("FUNC_CD_FUNC")
+	  REFERENCES "TIMESHEET"."FUNCIONARIO" ("CD_FUNCIONARIO") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table TIMESHEET_DIA_TAREFA
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."TIMESHEET_DIA_TAREFA" ADD CONSTRAINT "TIMESHEET_DIA_TAREFA_FUNC_FK" FOREIGN KEY ("FUNC_CD_FUNC")
+	  REFERENCES "TIMESHEET"."FUNCIONARIO" ("CD_FUNCIONARIO") ENABLE;
+  ALTER TABLE "TIMESHEET"."TIMESHEET_DIA_TAREFA" ADD CONSTRAINT "TIMESHEET_DIA_TAREFA_TAREFA_FK" FOREIGN KEY ("CD_PROJETO", "SEQ_PROJETO_FASE", "SEQ_PROJETO_TAREFA")
+	  REFERENCES "TIMESHEET"."PROJETO_TAREFA" ("CD_PROJETO", "SEQ_PROJETO_FASE", "SEQ_PROJETO_TAREFA") ENABLE;
+  ALTER TABLE "TIMESHEET"."TIMESHEET_DIA_TAREFA" ADD CONSTRAINT "TIMESHEET_DIA_TAREFA_ALOCA_FK" FOREIGN KEY ("CD_PROJETO", "SEQ_PROJETO_FASE", "SEQ_PROJETO_TAREFA", "FUNC_CD_FUNC")
+	  REFERENCES "TIMESHEET"."PROJETO_TAREFA_FUNCIONARIO" ("CD_PROJETO", "SEQ_PROJETO_FASE", "SEQ_PROJETO_TAREFA", "FUNC_CD_FUNC") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table TIPO_LANCAMENTO
+--------------------------------------------------------
+
+  ALTER TABLE "TIMESHEET"."TIPO_LANCAMENTO" ADD CONSTRAINT "TIPO_LANC_DETALHE_FK" FOREIGN KEY ("CLAS_CD_CLASSE", "DETA_NR_SEQUENCIAL")
+	  REFERENCES "TIMESHEET"."DETALHAMENTO_CLASSE" ("CLAS_CD_CLASSE", "DETA_NR_SEQUENCIAL") ENABLE;

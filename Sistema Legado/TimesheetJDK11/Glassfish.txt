@@ -1,0 +1,73 @@
+Glassfish 3
+
+domain1
+4848
+8080
+
+admin/welcome1
+
+domain1Service
+
+cchamma/cchamma#123
+jferrari/jferrari#123
+
+Livro JAVA EE 7 RECIPES.pdf, página 491:
+
+	Configuration > server-config > Security > Realms menu option, and click the New button.
+	JDBCAuth for this example. Next, for the class name, choose com.sun.enterprise.security.auth.realm.jdbc.JDBCRealm
+	Realm Name: JDBCAuth
+	JAAS jdbcRealm
+	JNDI jdbc/OracleConnASDB
+	User Table COM_ACES_USUARIO
+	User Name Column CDG_USUR
+	Password Column SENHA
+	Group Table COM_ACES_GRUPOS
+	Group Name Column CDG_USUR
+	Group Name Column: DESCRICAO
+	Digest Algorithm: MD5
+	Password Encryption Algorithm: MD5
+
+#one liner for copy and paste
+asadmin create-auth-realm --classname com.sun.enterprise.security.auth.realm.jdbc.JDBCRealm --property jaas-context=jdbcRealm:datasource-jndi="jdbc/auth":user-table=users:user-name-column=email:password-column=password:group-table=users_groups:group-name-column=groupname:digest-algorithm=SHA-512 userMgmtJdbcRealm
+ 
+#better to read (do not copy and paste this => use previous line for copy and paste!!):
+asadmin create-auth-realm 
+  --classname com.sun.enterprise.security.auth.realm.jdbc.JDBCRealm 
+  --property jaas-context=jdbcRealm
+             :datasource-jndi="jdbc/auth"
+             :user-table=users
+             :user-name-column=email
+             :password-column=password
+             :group-table=users_groups
+             :group-name-column=groupname
+             :digest-algorithm=MD5
+  userMgmtJdbcRealm
+	
+	Alterar web.xml
+	Criar sun-web.xml e glassfish-web.xml
+	
+	Criar JDBC connection pool:
+G:
+cd G:\glassfish3\glassfish\bin
+asadmin
+asadmin> create-jdbc-connection-pool --restype javax.sql.DataSource --datasourceclassname oracle.jdbc.pool.OracleDataSource --property "user=commit9ias:password=commit9ias10g: url=jdbc\\:oracle\\:thin\\:@localhost\\:1521\\:star" OracleConnASDBPool
+asadmin> ping-connection-pool OracleConnASDBPool
+Depois entrar no console de administração e remover o espaço antes da propriedade url e salvar, depois fazer um ping novamente
+
+--Weblogic SQL Authenticator Provider:
+
+SELECT SENHA FROM COM_ACES_USUARIO WHERE CDG_USUR = ?
+UPDATE COM_ACES_USUARIO SET SENHA = ? WHERE CDG_USUR = ?
+SELECT CDG_USUR FROM COM_ACES_USUARIO WHERE CDG_USUR = ?
+SELECT CDG_USUR FROM COM_ACES_USUARIO WHERE CDG_USUR LIKE ?
+INSERT INTO USERS VALUES ( ? , ? , ? )
+SELECT DESCRICAO FROM COM_ACES_PERFIL WHERE DESCRICAO LIKE ?
+SELECT DESCRICAO FROM COM_ACES_PERFIL WHERE DESCRICAO = ?
+SELECT DESCRICAO FROM COM_ACES_GRUPOS WHERE CDG_USUR = ? AND DESCRICAO = ?
+SELECT DESCRICAO FROM COM_ACES_GRUPOS WHERE CDG_USUR = ?
+
+SELECT CDG_USUR FROM COM_ACES_GRUPOS WHERE DESCRICAO = ? AND CDG_USUR LIKE ?
+SELECT CDG_USUR FROM COM_ACES_USUARIO WHERE CDG_USUR = ?
+SELECT DESCRICAO FROM COM_ACES_PERFIL WHERE DESCRICAO = ?
+
+triscal$123

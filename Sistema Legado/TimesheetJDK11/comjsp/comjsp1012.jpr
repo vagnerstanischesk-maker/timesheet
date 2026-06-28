@@ -1,0 +1,531 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<jpr:project xmlns:jpr="http://xmlns.oracle.com/ide/project">
+   <value n="BIBEANSVERSION" v="3.2.2.0.24.1"/>
+   <value n="CachedConfigTable" v=""/>
+   <hash n="component-versions">
+      <value n="oracle.adfdt.controller.adfc.source.migration.AdfControllerSchemaMigrator" v="11.1.1.1.0"/>
+      <value n="oracle.adfdt.controller.common.migrator.ProjectMigrator" v="11.1.1.1.0"/>
+      <value n="oracle.adfdt.controller.jsf2.diagram.migrate.JsfNodeMigratorHelper" v="11.1.1.1.0"/>
+      <value n="oracle.adfdt.controller.migrate.TrinidadDatabindingsProjectMigrator" v="11.1.2.0.0"/>
+      <value n="oracle.adfdt.controller.struts.addin.db.ADFStrutsProjectMigrator" v="11.1.1.1.0"/>
+      <value n="oracle.adfdt.controller.struts.addin.StrutsProjectMigrator" v="11.1.1.1.0"/>
+      <value n="oracle.adfdtinternal.dvt.datapresdt.migration.DVTDataMapMigrator" v="11.1.1.1.0;11.1.1.1.0.3"/>
+      <value n="oracle.adfdtinternal.model.ide.migration.ProjectMigrator" v="11.1.1.1.0.11.1.1"/>
+      <value n="oracle.adfdtinternal.model.ide.placeholderdc.migrator.PlaceholderProjectMigrator" v="12.1.4.0.0"/>
+      <value n="oracle.adfdtinternal.model.ide.security.wizard.FormPageMigrator" v="11.1.1.0.0"/>
+      <value n="oracle.adfdtinternal.model.ide.security.wizard.JpsFilterMigrator" v="11.1.1.1.0"/>
+      <value n="oracle.adfdtinternal.model.ide.xmled.migration.ADFNodeMigrator" v="11.1.1.1.0.5"/>
+      <value n="oracle.adfdtinternal.model.ide.xmled.migration.PageDefinitionParameterValueMigrator" v="11.1.1.1.0.5"/>
+      <value n="oracle.adfdtinternal.model.ide.xmled.migration.RestDataControlMigrator" v="12.1.4.0.0"/>
+      <value n="oracle.adfdtinternal.model.ide.xmled.migration.WebXmlMigrator" v="11.1.1.1.0"/>
+      <value n="oracle.adfdtinternal.view.common.migration.wizards.MigrationHelper" v="11.1.1.1.0.3"/>
+      <value n="oracle.adfdtinternal.view.rich.binding.migration.JarResourceMigrator" v="11.1.1.1.0"/>
+      <value n="oracle.adfdtinternal.view.rich.migration.ComponentIdNodeMigratorHelper" v="11.1.1.1.0.01"/>
+      <value n="oracle.adfdtinternal.view.rich.migration.FacesLibraryVersionMigrator" v="11.1.1.1.0.1"/>
+      <value n="oracle.adfdtinternal.view.rich.migration.LibraryVersionMigrator" v="11.1.1.1.0"/>
+      <value n="oracle.bm.commonIde.ProjectUpgrader" v="11.1.1.1.0"/>
+      <value n="oracle.bm.migration.project.MigratorRegistryProjectUpgradeAdapter" v="11.1.1.1.0"/>
+      <value n="oracle.ide.model.Project" v="10.1.2.0.0;11.1.1.1.0;12.2.1.4.0"/>
+      <value n="oracle.ide.model.ResourcePathsMigrator" v="11.1.1.1.0"/>
+      <value n="oracle.ideimpl.model.TechnologyScopeUpdateMigrator" v="11.1.2.0.0.6"/>
+      <value n="oracle.jbo.dt.jclient.migrator.JCProjectMigrator" v="11.1.1.1.0"/>
+      <value n="oracle.jbo.dt.jdevx.deployment.JbdProjectMigrator" v="11.1.1.1.0;11.1.2.0.0"/>
+      <value n="oracle.jbo.dt.jdevx.ui.appnav.APAdfConfigMigrator" v="11.1.2.0.0"/>
+      <value n="oracle.jbo.dt.jdevx.ui.appnav.APProjectMigrator" v="11.1.1.0.1.5"/>
+      <value n="oracle.jbo.dt.migrate.ResourceBundlePathMigrator" v="11.1.1.1.0.5"/>
+      <value n="oracle.jbo.dt.migration.ServiceInterfaceMigrator" v="11.1.1.1.0"/>
+      <value n="oracle.jdeveloper.dbmodeler.Migration" v="12.1.1.0.0"/>
+      <value n="oracle.jdeveloper.ejb.EjbMigrator" v="11.1.1.1.0"/>
+      <value n="oracle.jdeveloper.library.ProjectLibraryMigrator" v="11.1.1.1.0"/>
+      <value n="oracle.jdeveloper.maven.migrator.POMNodeMigrator" v="12.2.1.0.0"/>
+      <value n="oracle.jdeveloper.model.OutputDirectoryMigrator" v="11.1.1.1.0"/>
+      <value n="oracle.jdevimpl.deploy.DeploymentProfilesMigrator" v="11.1.1.1.0"/>
+      <value n="oracle.jdevimpl.deploy.jps.JpsDataMigrator" v="11.1.1.1.0"/>
+      <value n="oracle.jdevimpl.deploy.migrators.DeploymentMigrator" v="12.1.2.0.1"/>
+      <value n="oracle.jdevimpl.jsp.JspMigrator" v="11.1.1"/>
+      <value n="oracle.jdevimpl.offlinedb.migration.OfflineDBProjectMigrator" v="11.1.1.1.0;12.1.1.0.0"/>
+      <value n="oracle.jdevimpl.offlinedb.migration.OfflineTransferMigrator" v="11.1.1.1.0"/>
+      <value n="oracle.jdevimpl.offlinedb.migration.SXMLOfflineDBProjectMigrator" v="12.1.4.0.0"/>
+      <value n="oracle.jdevimpl.resourcebundle.XliffAddin$XliffMigratorHelper" v="11.1.1.1.0"/>
+      <value n="oracle.jdevimpl.webapp.facelets.libraries.FaceletsLibraryMigrator" v="12.2.1.0.0"/>
+      <value n="oracle.jdevimpl.webapp.jsp.libraries.JspLibraryMigrator" v="11.1.1.1.4;12.1.4.0.0"/>
+      <value n="oracle.jdevimpl.webapp.jsp.taglibraries.trinidad.migration.TrinidadLibraryVersionMigrator" v="11.1.1.1.0.1"/>
+      <value n="oracle.jdevimpl.webapp.WebAppContentSetNodeMigratorHelper" v="11.1.1"/>
+      <value n="oracle.jdevimpl.webapp.WebAppNodeMigratorHelper" v="11.1.1.1.0"/>
+      <value n="oracle.jdevimpl.webapp.WebAppProjectNodeMigratorHelper" v="12.2.1.0.0"/>
+      <value n="oracle.jdevimpl.webservices.rest.migration.RestAppClassMigrator" v="12.1.3.0.0"/>
+      <value n="oracle.jdevimpl.webservices.rest.migration.RestJerseyLibMigrator" v="12.1.3.0.0"/>
+      <value n="oracle.jdevimpl.webservices.rest.migration.RestLibraryMigrator" v="12.1.1.0.0"/>
+      <value n="oracle.jdevimpl.webservices.rest.migration.RestOwsmPolicyMigrator" v="12.1.3.0.0"/>
+      <value n="oracle.jdevimpl.webservices.rest.migration.RestPathMigrator" v="11.1.2.0.0"/>
+      <value n="oracle.jdevimpl.webservices.rest.migration.RestWebAppMigrator" v="12.1.3.0.0"/>
+      <value n="oracle.jdevimpl.webservices.rest.migration.RestWeblogicWebAppMigrator" v="12.1.3.0.0"/>
+      <value n="oracle.jdevimpl.webservices.WebServicesMigratorHelper" v="11.1.1.1.0"/>
+      <value n="oracle.jdevimpl.xml.wl.WeblogicMigratorHelper" v="11.1.1.1.0"/>
+      <value n="oracle.modeler.bmmigrate.management.Migration" v="11.1.1.1.0"/>
+      <value n="oracle.toplink.workbench.addin.migration.PersistenceProjectMigrator" v="11.1.1.1.1"/>
+      <value n="oracle.toplink.workbench.addin.migration.TopLinkProjectMigrator" v="11.1.1.1.0"/>
+   </hash>
+   <list n="contentSets">
+      <string v="oracle.jdeveloper.model.PathsConfiguration/javaContentSet"/>
+      <string v="oracle.ide.model.ResourcePaths/resourcesContentSet"/>
+      <string v="oracle.jdeveloper.model.J2eeSettings/webContentSet"/>
+      <string v="oracle.bm.commonIde.data.project.ModelerProjectSettings/modelersContentSet"/>
+      <string v="oracle.jdeveloper.offlinedb.model.OfflineDBProjectSettings/offlineDBContentSet"/>
+      <string v="oracle.mds.internal.dt.ide.MDSLibraryCustCSProvider/mdsContentSet"/>
+      <string v="oracle.adfdtinternal.model.ide.settings.ADFMSettings/adfmContentSet"/>
+      <string v="oracle.toplink.workbench.addin/toplinkContentSet"/>
+      <string v="oracle.mds.internal.dt.ide.MDSADFLibVirtualNodeCSProvider/mdsLibVirtualNodeContentSet"/>
+   </list>
+   <value n="defaultPackage" v=""/>
+   <hash n="oracle.bm.commonIde.data.project.ModelerProjectSettings">
+      <hash n="modelersContentSet">
+         <list n="pattern-filters">
+            <string v="+**"/>
+         </list>
+         <list n="url-path">
+            <url path="model/"/>
+         </list>
+      </hash>
+      <value n="modelersVersion" v="0.0"/>
+   </hash>
+   <hash n="oracle.ide.model.DependencyConfiguration">
+      <list n="dependencyList"/>
+   </hash>
+   <hash n="oracle.ide.model.ResourcePaths">
+      <hash n="resourcesContentSet"/>
+   </hash>
+   <hash n="oracle.ide.model.TechnologyScopeConfiguration">
+      <list n="technologyScope">
+         <string v="HTML"/>
+         <string v="JAVASCRIPT"/>
+         <string v="JSP"/>
+         <string v="Java"/>
+         <string v="XML"/>
+      </list>
+   </hash>
+   <hash n="oracle.jdeveloper.compiler.OjcConfiguration">
+      <list n="copyRes">
+         <string v=".gif"/>
+         <string v=".properties"/>
+         <string v=".jpg"/>
+         <string v=".jpeg"/>
+         <string v=".xml"/>
+         <string v="-apf.xml"/>
+      </list>
+      <list n="excludedUrls">
+         <string v="finclude/includeabreLoopAlteracaoDetalhe.jsp"/>
+         <string v="finclude/includeabreLoopAlteracaoDetalheSemIns.jsp"/>
+         <string v="finclude/includeabreLoopAlteracaoDetalheSemInsercao.jsp"/>
+         <string v="finclude/includeabreLoopDetalhe.jsp"/>
+         <string v="finclude/includeAbreLoopLog.jsp"/>
+         <string v="finclude/includealerta.jsp"/>
+         <string v="finclude/includebody.jsp"/>
+         <string v="finclude/includebodyerro.jsp"/>
+         <string v="finclude/includebodyhelp.jsp"/>
+         <string v="finclude/includebodyJs.jsp"/>
+         <string v="finclude/includebodyLov.jsp"/>
+         <string v="finclude/includecomandosql.jsp"/>
+         <string v="finclude/includecontrole.jsp"/>
+         <string v="finclude/includeerro.jsp"/>
+         <string v="finclude/includeestruturafim.jsp"/>
+         <string v="finclude/includeestruturafimLov.jsp"/>
+         <string v="finclude/includeestruturafimLovModal.jsp"/>
+         <string v="finclude/includeestruturaini.jsp"/>
+         <string v="finclude/includeestruturainiLov.jsp"/>
+         <string v="finclude/includefechaLoopDetalhe.jsp"/>
+         <string v="finclude/includefinaliza.jsp"/>
+         <string v="finclude/includeheader.jsp"/>
+         <string v="finclude/includeheadererro.jsp"/>
+         <string v="finclude/includeHeaderLov.jsp"/>
+         <string v="finclude/includeincluiBotoesSalva.jsp"/>
+         <string v="finclude/includeincluiBotoesSalvaLimpa.jsp"/>
+         <string v="finclude/includeincluiBotoesSalvaTabela.jsp"/>
+         <string v="finclude/includeinputsbrowse.jsp"/>
+         <string v="finclude/includeinputsedit.jsp"/>
+         <string v="finclude/includeinputseditsembrowse.jsp"/>
+         <string v="finclude/includeinputspesquisa.jsp"/>
+         <string v="finclude/includejscalendario.jsp"/>
+         <string v="finclude/includelink.jsp"/>
+         <string v="finclude/includeLovFim.jsp"/>
+         <string v="finclude/includemenuesqfim.jsp"/>
+         <string v="finclude/includemenuesqini.jsp"/>
+         <string v="finclude/includemenuhead.jsp"/>
+         <string v="finclude/includemenuheaderro.jsp"/>
+         <string v="finclude/includemeta.jsp"/>
+         <string v="finclude/includemetaerror.jsp"/>
+         <string v="finclude/includesetaoper.jsp"/>
+         <string v="finclude/includesetDataeUsuarioAlteracaoDetalhe.jsp"/>
+         <string v="finclude/includesetDataeUsuarioAlteracaoMaster.jsp"/>
+         <string v="finclude/includesetDataeUsuarioDetalhe.jsp"/>
+         <string v="finclude/includesetDataeUsuarioMaster.jsp"/>
+         <string v="finclude/includevariaveis.jsp"/>
+         <string v="fwebapp/jsp/chart_common.jsp"/>
+         <string v="fwebapp/jsp/container_bottom.jsp"/>
+         <string v="fwebapp/jsp/container_tabs.jsp"/>
+         <string v="fwebapp/jsp/container_top.jsp"/>
+         <string v="fwebapp/jsp/desktop.ini"/>
+         <string v="fwebapp/jsp/errorpage.jsp"/>
+         <string v="fwebapp/jsp/lov.jsp"/>
+         <string v="fwebapp/admin/showappdetails.jsp"/>
+         <string v="fwebapp/admin/showbc4jrtdetails.jsp"/>
+         <string v="fwebapp/admin/showjavartdetails.jsp"/>
+         <string v="fwebapp/admin/showpooldetails.jsp"/>
+         <string v="fwebapp/admin/showsessiondetails.jsp"/>
+         <string v="fwebapp/admin/showvodetails.jsp"/>
+      </list>
+      <value n="internalEncoding" v="ISO_8859-1"/>
+      <value n="showWarnings" v="false"/>
+   </hash>
+   <hash n="oracle.jdeveloper.deploy.dt.DeploymentProfiles">
+      <hash n="profileDefinitions">
+         <hash n="portalcom2">
+            <hash n="appletArchives"/>
+            <hash n="appletFiles">
+               <value n="autoInclude" v="true"/>
+               <list n="selectionFilters">
+                  <string v="oracle.jdevimpl.deploy.common.JavaSelectionFilter"/>
+               </list>
+            </hash>
+            <hash n="archiveOptions">
+               <value n="hasManifest" v="false"/>
+            </hash>
+            <value n="enterpriseAppName" v="portalcom2"/>
+            <hash n="fileGroups">
+               <list n="groups">
+                  <hash>
+                     <list n="contributors">
+                        <hash>
+                           <value n="type" v="5"/>
+                        </hash>
+                     </list>
+                     <value n="displayName" v="Web Files"/>
+                     <hash n="filters">
+                        <list n="rules">
+                           <hash>
+                              <value n="pattern" v="**"/>
+                              <value n="type" v="0"/>
+                           </hash>
+                        </list>
+                     </hash>
+                     <value n="internalName" v="web-files"/>
+                     <value n="type" v="1"/>
+                  </hash>
+                  <hash>
+                     <list n="contributors">
+                        <hash>
+                           <value n="type" v="2"/>
+                        </hash>
+                        <hash>
+                           <value n="type" v="7"/>
+                        </hash>
+                     </list>
+                     <value n="displayName" v="WEB-INF/classes"/>
+                     <hash n="filters">
+                        <list n="rules">
+                           <hash>
+                              <value n="pattern" v="**"/>
+                              <value n="type" v="0"/>
+                           </hash>
+                        </list>
+                     </hash>
+                     <value n="internalName" v="project-output"/>
+                     <value n="targetWithinJar" v="WEB-INF/classes"/>
+                     <value n="type" v="1"/>
+                  </hash>
+                  <hash>
+                     <value n="displayName" v="WEB-INF/lib"/>
+                     <hash n="filters">
+                        <list n="rules">
+                           <hash>
+                              <value n="pattern" v="**"/>
+                              <value n="type" v="0"/>
+                           </hash>
+                        </list>
+                     </hash>
+                     <value n="internalName" v="libraries"/>
+                     <list n="selectedLibraries"/>
+                     <value n="targetWithinJar" v="WEB-INF/lib"/>
+                     <value n="type" v="3"/>
+                     <list n="unselectedLibraries">
+                        <string v="Oraclebr.zip"/>
+                     </list>
+                  </hash>
+               </list>
+            </hash>
+            <url n="jarURL" path="deploy/portalcom.war"/>
+            <hash n="libraryDependencies">
+               <list n="unselectedLibraries">
+                  <string v="Oraclebr.zip"/>
+               </list>
+            </hash>
+            <value n="profileClass" v="oracle.jdeveloper.deploy.war.WarProfile"/>
+            <value n="profileName" v="portalcom2"/>
+         </hash>
+      </hash>
+      <list n="profileList">
+         <string v="portalcom2"/>
+      </list>
+   </hash>
+   <hash n="oracle.jdeveloper.model.J2eeSettings">
+      <value n="j2eeWebAppName" v="portalcom"/>
+      <value n="j2eeWebContextRoot" v="/portalcom"/>
+      <hash n="webContentSet">
+         <list n="pattern-filters">
+            <string v="-combeans/comup/"/>
+            <string v="-jsp/Tela_Log_20131222.jsp"/>
+            <string v="-jsp/Tela_Log_20131127.jsp"/>
+            <string v="-jsp/Tela_Log_20121213.jsp"/>
+            <string v="-jsp/rwerror.jsp"/>
+            <string v="-jsp/forms.jsp"/>
+            <string v="-jsp/converter.props"/>
+            <string v="-jsp/chamareport.jsp"/>
+            <string v="-jsp/TesteRel2.jsp"/>
+            <string v="-jsp/TesteRel1.jsp"/>
+            <string v="-portlet.jsp"/>
+            <string v="-WebAppRunner.html"/>
+            <string v="-Tela_Log_20131127.jsp"/>
+            <string v="-Tela_Log_20121213.jsp"/>
+            <string v="-Cópia de Tela_Log.jsp"/>
+            <string v="-Cópia de signout.jsp"/>
+            <string v="-Cópia de includeheadererro.jsp"/>
+            <string v="-Cópia de includeheader.jsp"/>
+            <string v="-Cópia de com_msgtimeout.jsp"/>
+            <string v="-Cópia de com_AltSenha.jsp"/>
+            <string v="-Cópia de com_AltSenha_SubmitEdit.jsp"/>
+            <string v="-~hello.jsp"/>
+            <string v="-~TESTE.jsp"/>
+            <string v="-rwerror.jsp"/>
+            <string v="-runInstaller"/>
+            <string v="-TesteRel2.jsp"/>
+            <string v="-TesteRel1.jsp"/>
+            <string v="-META-INF"/>
+            <string v="-WEB-INF/lib"/>
+            <string v="-classes"/>
+            <string v="-deploy"/>
+            <string v="-help"/>
+            <string v="-help_html"/>
+            <string v="-output"/>
+            <string v="-reports"/>
+            <string v="+**"/>
+         </list>
+         <list n="url-path">
+            <url path="."/>
+         </list>
+      </hash>
+   </hash>
+   <hash n="oracle.jdeveloper.model.PathsConfiguration">
+      <hash n="javaContentSet">
+         <list n="pattern-filters">
+            <string v="-combeans/comup/"/>
+            <string v="-jsp/Tela_Log_20131222.jsp"/>
+            <string v="-jsp/Tela_Log_20131127.jsp"/>
+            <string v="-jsp/Tela_Log_20121213.jsp"/>
+            <string v="-jsp/rwerror.jsp"/>
+            <string v="-jsp/forms.jsp"/>
+            <string v="-jsp/converter.props"/>
+            <string v="-jsp/chamareport.jsp"/>
+            <string v="-jsp/TesteRel2.jsp"/>
+            <string v="-jsp/TesteRel1.jsp"/>
+            <string v="-portlet.jsp"/>
+            <string v="-webapp/jsp/errorpage.jsp"/>
+            <string v="-WebAppRunner.html"/>
+            <string v="-Tela_Log_20131127.jsp"/>
+            <string v="-Tela_Log_20121213.jsp"/>
+            <string v="-Cópia de Tela_Log.jsp"/>
+            <string v="-Cópia de signout.jsp"/>
+            <string v="-Cópia de includeheadererro.jsp"/>
+            <string v="-Cópia de includeheader.jsp"/>
+            <string v="-Cópia de com_msgtimeout.jsp"/>
+            <string v="-Cópia de com_AltSenha.jsp"/>
+            <string v="-Cópia de com_AltSenha_SubmitEdit.jsp"/>
+            <string v="-~hello.jsp"/>
+            <string v="-~TESTE.jsp"/>
+            <string v="-rwerror.jsp"/>
+            <string v="-runInstaller"/>
+            <string v="-reports/"/>
+            <string v="-TesteRel2.jsp"/>
+            <string v="-TesteRel1.jsp"/>
+            <string v="-webapp/jsp/lov.jsp"/>
+            <string v="-webapp/jsp/chart_common.jsp"/>
+            <string v="-webapp/jsp/container_top.jsp"/>
+            <string v="-webapp/jsp/container_bottom.jsp"/>
+            <string v="-webapp/jsp/container_tabs.jsp"/>
+            <string v="-webapp/admin/showvodetails.jsp"/>
+            <string v="-webapp/admin/showsessiondetails.jsp"/>
+            <string v="-webapp/admin/showpooldetails.jsp"/>
+            <string v="-webapp/admin/showjavartdetails.jsp"/>
+            <string v="-webapp/admin/showbc4jrtdetails.jsp"/>
+            <string v="-webapp/admin/showappdetails.jsp"/>
+            <string v="-output/"/>
+            <string v="-deploy/"/>
+            <string v="-classes/"/>
+            <string v="+**"/>
+         </list>
+         <list n="url-path">
+            <url path="."/>
+         </list>
+      </hash>
+   </hash>
+   <hash n="oracle.jdeveloper.offlinedb.model.OfflineDBProjectSettings">
+      <hash n="offlineDBContentSet">
+         <list n="pattern-filters">
+            <string v="+**"/>
+         </list>
+         <list n="url-path">
+            <url path="database/"/>
+         </list>
+      </hash>
+   </hash>
+   <hash n="oracle.jdeveloper.runner.RunConfigurations">
+      <hash n="runConfigurationDefinitions">
+         <hash n="Default">
+            <value n="clearLogBeforeRun" v="false"/>
+            <value n="compileBeforeRun" v="false"/>
+            <value n="custom" v="false"/>
+            <value n="javaOptions" v="-Dorg.omg.CORBA.ORBClass=com.inprise.vbroker.orb.ORB -Dorg.omg.CORBA.ORBSingletonClass=com.inprise.vbroker.orb.ORB"/>
+            <value n="name" v="Default"/>
+            <url n="targetURL" path="index.jsp"/>
+         </hash>
+      </hash>
+      <list n="runConfigurationList">
+         <string v="Default"/>
+      </list>
+   </hash>
+   <hash n="oracle.jdevimpl.config.JProjectLibraries">
+      <list n="exportedReferences">
+         <hash>
+            <value n="id" v="JDeveloper Runtime"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+         <hash>
+            <value n="id" v="Java EE"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+         <hash>
+            <value n="id" v="JSP Runtime"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+         <hash>
+            <value n="id" v="Oracle XML Parser v2"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+         <hash>
+            <value n="id" v="Servlet Runtime"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+         <hash>
+            <value n="id" v="Combeans"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+         <hash>
+            <value n="id" v="Ojdbc8.jar"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+      </list>
+      <hash n="internalDefinitions">
+         <list n="jdkDefinitions"/>
+         <list n="libraryDefinitions">
+            <hash>
+               <list n="classPath">
+                  <url path="../Lib/PropertyManager.jar" jar-entry=""/>
+               </list>
+               <value n="description" v="PropertyManager.jar"/>
+               <value n="id" v="PropertyManager.jar"/>
+            </hash>
+            <hash>
+               <list n="classPath">
+                  <url path="combeans/"/>
+               </list>
+               <value n="deployedByDefault" v="true"/>
+               <value n="description" v="Combeans"/>
+               <value n="id" v="Combeans"/>
+               <value n="locked" v="true"/>
+            </hash>
+            <hash>
+               <list n="classPath">
+                  <url path="../Lib/ojdbc8.jar" jar-entry=""/>
+               </list>
+               <value n="deployedByDefault" v="true"/>
+               <value n="description" v="Ojdbc8.jar"/>
+               <value n="id" v="Ojdbc8.jar"/>
+               <value n="locked" v="true"/>
+            </hash>
+         </list>
+      </hash>
+      <hash n="jdkReference">
+         <value n="id" v="1.4.2_06"/>
+         <value n="isJDK" v="true"/>
+         <value n="jdkVersion" v="1.4.2_06"/>
+      </hash>
+      <list n="libraryReferences">
+         <hash>
+            <value n="id" v="JDeveloper Runtime"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+         <hash>
+            <value n="id" v="Java EE"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+         <hash>
+            <value n="id" v="JSP Runtime"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+         <hash>
+            <value n="id" v="Oracle XML Parser v2"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+         <hash>
+            <value n="id" v="Servlet Runtime"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+         <hash>
+            <value n="id" v="PropertyManager.jar"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+         <hash>
+            <value n="id" v="Combeans"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+         <hash>
+            <value n="id" v="Ojdbc8.jar"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+      </list>
+   </hash>
+   <hash n="oracle.jdevimpl.config.JProjectPaths">
+      <url n="outputDirectory" path="output/"/>
+   </hash>
+   <hash n="oracle.jdevimpl.webapp.jsp.libraries.model.ProjectTagLibraries">
+      <list n="tag-libraries">
+         <hash>
+            <value n="jspVersion" v="1.1"/>
+            <value n="name" v="jbo"/>
+            <value n="prefix" v="jbo"/>
+            <value n="runInEditor" v="false"/>
+            <value n="showInPalette" v="true"/>
+            <value n="tldURL" v="@project@WEB-INF/lib/datatags.jar!/META-INF/taglib.tld"/>
+            <value n="URI" v="/webapp/DataTags.tld"/>
+            <value n="version" v="5.0"/>
+         </hash>
+         <hash>
+            <value n="jspVersion" v="1.1"/>
+            <value n="name" v="ReportsTagLib"/>
+            <value n="prefix" v="ReportsTagLib"/>
+            <value n="runInEditor" v="false"/>
+            <value n="showInPalette" v="true"/>
+            <value n="tldURL" v="@project@WEB-INF/lib/reports_tld.jar!/META-INF/taglib.tld"/>
+            <value n="URI" v="/WEB-INF/lib/reports_tld.jar"/>
+            <value n="version" v="1.0"/>
+         </hash>
+      </list>
+   </hash>
+   <list n="recentlyUsedPackages">
+      <string v=""/>
+      <string v="FormsTeste"/>
+      <string v="mypackage1"/>
+   </list>
+   <hash n="ResourceBundleOptions">
+      <list n="RegisteredResourceBundles"/>
+   </hash>
+</jpr:project>

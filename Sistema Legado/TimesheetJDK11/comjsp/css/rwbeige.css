@@ -1,0 +1,19 @@
+.OraTable {border: 0; cellpadding: 0;  cellspacing: 0; width: 100%  }
+.OraColumnHeader {  color: #336699; font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-style: normal; font-weight: bold; background-color: #EEEEEE; text-align: center}
+.OraCellDate {  color: #000000; background-color: #f7f7e7; font-family: Arial, Helvetica, sans-serif; font-size: 10px}
+.OraHeader {  color: #336699; font-family: Arial, Helvetica, sans-serif; font-size: 14px; font-weight: bold; background-color: #f7f7e7; text-align: center}
+.OraCellNumber { color: #000000; background-color: #f7f7e7; font-family: Arial, Helvetica, sans-serif; font-size: 10px ; text-align: right}
+.OraCellText { color: #000000; background-color: #f7f7e7; font-family: Arial, Helvetica, sans-serif; font-size: 10px }
+.OraHeaderSub { color: #336699; font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-weight: bold; background-color: #f7f7e7; text-align: center }
+.OraHeaderSubSub { color: #336699; font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-weight: normal; background-color: #f7f7e7; text-align: center }
+.OraRowHeader { color: #336699; font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-style: normal; font-weight: bold; background-color: #EEEEEE }
+.OraTotalText { color: #000000; background-color: #ffffcc; font-family: Arial, Helvetica, sans-serif; font-size: 10px ; font-weight: bold; text-align: center}
+.OraTotalNumber { color: #000000; background-color: #ffffcc; font-family: Arial, Helvetica, sans-serif; font-size: 10px ; font-weight: bold ; text-align: right}
+
+.FormLabel { color: #336699; font-family: Arial, Helvetica, sans-serif; font-size: 10px }
+.FormData { color: #003366; font-family: Arial, Helvetica, sans-serif; font-size: 10px; font-weight: bold; font-style: bold }
+.FormHeaderLabel { color: #000066; font-family: Arial, Helvetica, sans-serif; font-size: 12px }
+.FormHeaderData { color: #000066; font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-weight: bold }
+
+.OraTotalNumberHigh { color: #FF0000; background-color: #ffffcc; font-family: Arial, Helvetica, sans-serif; font-size: 10px ; font-weight: bold ; text-align: right}
+

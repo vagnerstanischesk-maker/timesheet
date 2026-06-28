@@ -1,0 +1,64 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.2.0/dist/tabler-icons.min.css">
+<title>06 - Dashboard gerencial · Triscal</title>
+<style>
+:root{
+--brand-orange:#CC4700;--brand-orange-dark:#9A3600;--brand-orange-bright:#E2640F;--brand-blue:#004ECC;--brand-indigo:#365899;
+--color-background-primary:#ffffff;--color-background-secondary:#efefef;--color-background-tertiary:#f5f5f5;
+--color-background-info:#FBEAE0;--color-background-success:#E4F3EB;--color-background-warning:#FCF3D6;--color-background-danger:#FBE7E5;
+--color-text-primary:#222222;--color-text-secondary:#686868;--color-text-tertiary:#9a9a9a;
+--color-text-info:#9A3600;--color-text-success:#0B6E3C;--color-text-warning:#8A6D00;--color-text-danger:#B5362C;
+--color-border-tertiary:rgba(17,17,17,.12);--color-border-secondary:rgba(17,17,17,.22);--color-border-primary:rgba(17,17,17,.34);
+--color-border-info:#E2640F;--color-border-success:#0F9D58;--color-border-danger:#DB4437;
+--border-radius-md:8px;--border-radius-lg:12px;--border-radius-xl:16px;
+}
+@media (prefers-color-scheme:dark){:root{
+--color-background-primary:#1a1a1a;--color-background-secondary:#222222;--color-background-tertiary:#111111;
+--color-background-info:#3a1c0c;--color-background-success:#0d3a22;--color-background-warning:#3d3206;--color-background-danger:#3d1512;
+--color-text-primary:#efefef;--color-text-secondary:#b0b0b0;--color-text-tertiary:#888888;
+--color-text-info:#E2640F;--color-text-success:#5BD08C;--color-text-warning:#F4B400;--color-text-danger:#E8736A;
+--color-border-tertiary:rgba(255,255,255,.14);--color-border-secondary:rgba(255,255,255,.28);
+--color-border-info:#E2640F;--color-border-success:#0F9D58;--color-border-danger:#DB4437;
+}}
+*{box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--color-text-primary);background:var(--color-background-tertiary);margin:0;padding:24px;line-height:1.5;-webkit-font-smoothing:antialiased}
+.frame{max-width:760px;margin:0 auto}
+.frame>h1{font-size:14px;font-weight:500;color:var(--color-text-secondary);margin:0 0 12px}
+button{font:inherit;display:inline-flex;align-items:center;background:transparent;color:var(--color-text-primary);border:0.5px solid var(--color-border-secondary);border-radius:var(--border-radius-md);padding:8px 14px;cursor:pointer}
+button:hover{background:var(--color-background-secondary)}
+input,select,textarea{font:inherit;color:var(--color-text-primary);background:var(--color-background-primary);border:0.5px solid var(--color-border-secondary);border-radius:var(--border-radius-md);padding:7px 10px;height:36px}
+textarea{height:auto}
+p{margin:0}
+table{border-collapse:collapse}
+</style></head><body><div class="frame"><h1>Triscal · Apontamento de Horas — 06 - Dashboard gerencial (mockup)</h1>
+<div style="font-size:13px;">
+  <div style="display:flex; align-items:center; gap:8px; margin-bottom:12px; flex-wrap:wrap;"><i class="ti ti-chart-bar" style="font-size:18px;" aria-hidden="true"></i><strong style="font-size:15px;">Dashboard gerencial</strong><div style="margin-left:auto; display:flex; gap:8px;"><select style="width:auto;"><option>Todos os projetos</option></select><button style="gap:6px;"><i class="ti ti-download" aria-hidden="true"></i> Exportar</button></div></div>
+  <div style="display:grid; grid-template-columns: repeat(4, 1fr); gap:12px; margin-bottom:14px;">
+    <div style="background: var(--color-background-secondary); border-radius: var(--border-radius-md); padding:1rem;"><p style="margin:0; font-size:12px; color: var(--color-text-secondary);">Horas no mês</p><p style="margin:4px 0 0; font-size:22px; font-weight:500;">3.240h</p></div>
+    <div style="background: var(--color-background-secondary); border-radius: var(--border-radius-md); padding:1rem;"><p style="margin:0; font-size:12px; color: var(--color-text-secondary);">% faturável</p><p style="margin:4px 0 0; font-size:22px; font-weight:500;">68%</p></div>
+    <div style="background: var(--color-background-secondary); border-radius: var(--border-radius-md); padding:1rem;"><p style="margin:0; font-size:12px; color: var(--color-text-secondary);">Aderência de log</p><p style="margin:4px 0 0; font-size:22px; font-weight:500;">91%</p></div>
+    <div style="background: var(--color-background-secondary); border-radius: var(--border-radius-md); padding:1rem;"><p style="margin:0; font-size:12px; color: var(--color-text-secondary);">Saldo BHE equipe</p><p style="margin:4px 0 0; font-size:22px; font-weight:500;">214h</p></div>
+  </div>
+  <div style="display:grid; grid-template-columns: 1.3fr 1fr; gap:14px;">
+    <div style="border:0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding:14px;">
+      <p style="margin:0 0 12px; font-size:13px; font-weight:500;">Previsto × realizado por projeto</p>
+      <div style="display:flex; flex-direction:column; gap:12px;">
+        <div><div style="display:flex; justify-content:space-between; font-size:12px; margin-bottom:4px;"><span>Alfa</span><span style="color: var(--color-text-secondary);">840 / 1200h</span></div><div style="height:10px; background: var(--color-background-secondary); border-radius:999px; overflow:hidden;"><div style="width:70%; height:100%; background:#378ADD;"></div></div></div>
+        <div><div style="display:flex; justify-content:space-between; font-size:12px; margin-bottom:4px;"><span>Beta</span><span style="color: var(--color-text-secondary);">430 / 500h</span></div><div style="height:10px; background: var(--color-background-secondary); border-radius:999px; overflow:hidden;"><div style="width:86%; height:100%; background:#1D9E75;"></div></div></div>
+        <div><div style="display:flex; justify-content:space-between; font-size:12px; margin-bottom:4px;"><span>Gama</span><span style="color: var(--color-text-danger);">610 / 560h</span></div><div style="height:10px; background: var(--color-background-secondary); border-radius:999px; overflow:hidden;"><div style="width:100%; height:100%; background:#E24B4A;"></div></div></div>
+        <div><div style="display:flex; justify-content:space-between; font-size:12px; margin-bottom:4px;"><span>Interno</span><span style="color: var(--color-text-secondary);">180 / 300h</span></div><div style="height:10px; background: var(--color-background-secondary); border-radius:999px; overflow:hidden;"><div style="width:60%; height:100%; background:#888780;"></div></div></div>
+      </div>
+    </div>
+    <div style="border:0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding:14px;">
+      <p style="margin:0 0 12px; font-size:13px; font-weight:500;">Utilização da equipe</p>
+      <div style="display:flex; align-items:flex-end; gap:10px; height:120px; padding-top:6px;">
+        <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:6px;"><div style="width:100%; background:#378ADD; height:88px; border-radius:4px 4px 0 0;"></div><span style="font-size:11px; color: var(--color-text-secondary);">Carla</span></div>
+        <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:6px;"><div style="width:100%; background:#378ADD; height:74px; border-radius:4px 4px 0 0;"></div><span style="font-size:11px; color: var(--color-text-secondary);">Rafael</span></div>
+        <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:6px;"><div style="width:100%; background:#E24B4A; height:108px; border-radius:4px 4px 0 0;"></div><span style="font-size:11px; color: var(--color-text-secondary);">Paula</span></div>
+        <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:6px;"><div style="width:100%; background:#888780; height:52px; border-radius:4px 4px 0 0;"></div><span style="font-size:11px; color: var(--color-text-secondary);">João</span></div>
+      </div>
+      <p style="margin:10px 0 0; font-size:11px; color: var(--color-text-secondary);">alocado vs. capacidade (100% = linha cheia)</p>
+    </div>
+  </div>
+</div>
+</div></body></html>

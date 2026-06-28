@@ -1,0 +1,805 @@
+.menuOp
+	{
+	ackground-image: url(/portalcom/imagesportalcom/commit/631.jpg);
+	background-color: #FFFFFF
+	}
+.headerOp
+	{
+	ackground-image: url(/portalcom/imagesportalcom/commit/navega_topo.jpg);
+	ackground-color: #bd1010
+	}	
+
+.comBodyLov
+	{
+	background-color: #a0a0a0
+	}
+.comBodyHome
+	{
+	}
+.comBodyMenu
+	{
+	}
+.comBodyBrowse
+	{
+	}
+.comBodyPesq
+	{
+	}
+.comBodyEdit
+	{
+	}
+.comBodySubmit
+	{
+	}
+.comTablePesq
+	{
+	}
+
+.comfontTitulo
+	{
+	color: #888888;
+	font-family: Arial;
+	font-size: 14pt;
+	font-weight: bold;
+	background-image: url(/rbs/separa_gera.gif);
+	height: 35px;
+	width: 552px
+	}
+.comfontTitulo
+	{
+	color: #888888;
+	font-family: Arial;
+	font-size: 14pt;
+	font-weight: bold;
+	background-image: url(/portalcom/imagesportalcom/separa_gera.gif);
+	height: 35px;
+	width: 552px
+	}
+.comTdPesqTitulo
+	{
+	background-color: #C0C0C0
+	}
+.comTdPesqLabelCol
+	{
+	background-color: #E4E4E4
+	}
+.comTdPesqCol
+	{
+	background-color: #E4E4E4
+	}
+.comTdPesqColEO
+	{
+	background-color: #E4E4E4
+	}
+.comTableOrdena
+	{
+	}
+.comTdOrdenaTitulo
+	{
+	background-color: #C0C0C0
+	}
+.comTdOrdenaTitulo2
+	{
+	background-color: #E4E4E4
+	}
+.comTdOrdenaColuna
+	{
+	background-color: #E4E4E4
+	}
+.comTdOrdenaColunaAD {
+	background-color: #E4E4E4
+	}
+.comTableConsulta
+	{
+	font-family:Arial;
+	font-size: 10px;
+	background-color: #eeeeee;
+	}
+.comTableEdit
+	{
+	background-color: #eeeeee
+	}
+.comTableMaster
+	{
+	background-color: #eeeeee
+	}
+.comTableDetail
+	{
+	}
+.comTableTema
+	{
+	}
+.comTrTemaPar
+	{
+	}
+.comTrTemaImpar
+	{
+	background-color: #eeeeee
+	}
+.comTableMenu
+	{
+	background-color: #ffffff
+	}
+.comTablecolor01
+	{
+	background-color: #eeeeee;
+	font-family:Arial;
+	font-size: 10px
+	}
+
+.comTdcolor01
+	{
+	background-color: #c0c0c0;
+	 font-family:Arial;
+	 font-size: 10px
+	}
+.comTdcolor02
+	{
+	background-color: #eeeeee;
+	font-family:Arial;
+	font-size: 10px
+	}
+.comTdcolor03
+	{
+	background-color: #c0c0c0;
+	font-family:Arial;
+	font-size: 10px
+	}
+.comTdcolor04
+	{
+	background-color: #d5d2c9;
+	font-family:Arial;
+	font-size: 10px
+	}
+.comTdcolor05 {
+	background-color: #dbdbdb;
+	font-family:Arial;
+	font-size: 10px
+}
+.comTdcolor06 {
+	background-color: #cdcdcd; font-family:Arial; font-size: 10px
+}
+.comTdcolor07 {
+	background-color: #808080; font-family:Arial; font-size: 10px
+}
+.comTdcolor08 {
+	background-color: #999999; font-family:Arial; font-size: 10px
+}
+.comTdcolor09 {
+	background-color: #e4e4e4; font-family:Arial; font-size: 10px
+}
+.comTdcolor10 {
+	background-color: #006699; font-family:Arial; font-size: 10px
+}
+.comTdcolorDefault {
+	background-color: #FFFFFF; font-family:Arial; font-size: 10px
+}
+.comTdcolorLinhaImpar {
+	background-color: #FFFFFF; font-family:Arial; font-size: 10px
+}
+
+
+.comfontTableTitulo01 {
+	color:#000000; font-family: Arial, Verdana, sans-serif; font-size: 11pt; font-weight: bold; font-family: Verdana, sans-serif
+}
+.comfontTableTitulo02 {
+	font-family: Arial, Verdana, sans-serif; font-size: 11pt; font-weight: bold; font-family: Verdana, sans-serif
+}
+.comfontTableTitulo03 {
+	color: #000062; font-family: Arial, Verdana, sans-serif; font-size: 10px; font-weight: bold; font-family: Verdana, sans-serif
+
+}
+.comfontTableTexto01 {
+	color: #000000; font-family: Verdana, sans-serif; font-size: 10px; font-family: Verdana, sans-serif
+}
+.comfontTableTexto02 {
+	color: #ffffff; font-family: Verdana, sans-serif; font-size: 10px; font-family: Verdana, sans-serif
+}
+H1 {
+	font-family: Arial, sans-serif; font-family: Arial, sans-serif
+}
+H2 {
+	font-family: Arial, sans-serif; font-family: Arial, sans-serif
+}
+H3 {
+	font-family: Arial, sans-serif; font-family: Arial, sans-serif
+}
+.clsTitleBody {
+	background-color: #336699; color: white; font-family: Arial, sans-serif; font-size: 17pt; font-weight: bold; font-family: Arial, sans-serif
+}
+.clsContentsBody {
+	background-color: #6699cc; color: white; font-family: Arial, sans-serif; font-size: 11pt; font-weight: bold; font-family: Arial, sans-serif; link: #FFFFFF; alink: #666666; vlink: #336699
+}
+.clsViewCurrentRecord .vrTableRow TD {
+	background-color: #6699cc; color: black; font-family: Arial, sans-serif; font-size: 10px; font-weight: bold; TEXT-ALIGN: left; VERTICAL-ALIGN: bottom; font-family: Arial, sans-serif
+}
+.clsViewCurrentRecord .vrTableRow .clsFieldValue {
+	background-color: white; color: black; font-family: Arial, sans-serif; font-size: 10px; font-weight: bold; TEXT-ALIGN: left; VERTICAL-ALIGN: bottom; font-family: Arial, sans-serif
+}
+.vrTableRow TD {
+	background-color: white; color: black; font-family: Arial, sans-serif; font-size: 10px; font-weight: bold; TEXT-ALIGN: left; VERTICAL-ALIGN: bottom; font-family: Arial, sans-serif
+}
+.clsOddTableRow TD {
+	background-color: white; color: black; font-family: Arial, sans-serif; font-size: 10px; TEXT-ALIGN: left; VERTICAL-ALIGN: bottom; font-family: Arial, sans-serif
+}
+.clsEvenTableRow TD {
+	background-color: #ededed; color: black; font-family: Arial, sans-serif; font-size: 10px; TEXT-ALIGN: left; VERTICAL-ALIGN: bottom; font-family: Arial, sans-serif
+}
+.clsCurrentTableRow TD {
+	background: cyan; font-family: Arial, sans-serif; font-size: 10px; font-weight: bold; TEXT-ALIGN: left; VERTICAL-ALIGN: bottom; font-family: Arial, sans-serif; fontsize: 10pt; fontweight: bold
+}
+.vrTableHeader {
+	background-color: #6699cc; color: #ffffff; font-family: Arial, sans-serif; font-size: 10px; font-weight: bold; TEXT-ALIGN: left; VERTICAL-ALIGN: bottom
+}
+.PANEL {
+	background-color: #efefef
+}
+.container {
+	background-color: purple
+}
+.color1 {
+	background-color: #000000
+}
+.color2 {
+	background-color: #003366
+}
+.color3 {
+	background-color: #336699
+}
+.color4 {
+	background-color: #6699cc
+}
+.color5 {
+	background-color: #99ccff
+}
+.color6 {
+	background-color: #ffffff
+}
+.colorG2 {
+	background-color: #333333
+}
+.colorG3 {
+	background-color: #666666
+}
+.colorG4 {
+	background-color: #999999
+}
+.colorG5 {
+	background-color: #cccccc
+}
+.APPSWINDOW {
+	background-color: #336699
+}
+.BISWINDOW {
+	background-color: #ffffff
+}
+.PRINTWINDOW {
+	background-color: #ffffff
+}
+.HOMEWINDOW {
+	background-color: #ffffff
+}
+.HIGHLIGHT {
+	background-color: #ffffff
+}
+.SHADOW {
+	background-color: #666666
+}
+.DARKSHADOW {
+	background-color: #333333
+}
+.SOFTPANEL {
+	background-color: #eeeeee; background-IMAGE: url(FNDBKBLU.gif)
+}
+.HELPTEXT {
+	color: #000000; font-family: Verdana, Arial, Helvetica, Geneva, sans-serif; font-size: 10px
+}
+.PROMPTBLACK {
+	color: #000000; font-family: Verdana, Arial, Helvetica, Geneva, sans-serif; font-size: 10px
+}
+.PROMPTWHITE {
+	color: #ffffff; font-family: Verdana, Arial, Helvetica, Geneva, sans-serif; font-size: 10px
+}
+.DATABLACK {
+	color: #000000; font-family: Verdana, Arial, Helvetica, Geneva, sans-serif; font-size: 10px; font-weight: bold
+}
+.DATAWHITE {
+	color: #ffffff; font-family: Verdana, Arial, Helvetica, Geneva, sans-serif; font-size: 10px; font-weight: bold
+}
+.DATATOTALS {
+	color: #000000; font-family: Verdana, Arial, Helvetica, Geneva, sans-serif; font-size: 10px; font-weight: bold
+}
+.INFOBLACK {
+	color: #000000; font-family: Verdana, Arial, Helvetica, Geneva, sans-serif; font-size: 10px
+}
+.INFOWHITE {
+	color: #ffffff; font-family: Verdana, Arial, Helvetica, Geneva, sans-serif; font-size: 10px
+}
+.ALERTTEXT {
+	color: #000000; font-family: Verdana, Arial, Helvetica, Geneva, sans-serif; font-size: 10px
+}
+.ALERTTITLE {
+	color: #000000; font-family: Arial, Helvetica, Geneva, sans-serif; font-size: 12pt; font-weight: bold
+}
+.FIELDDATA {
+	color: #000000; font-family: Arial, Helvetica, Geneva, sans-serif; font-size: 10pt; font-weight: bold
+}
+.LINK {
+	font-family: Arial, Helvetica, Geneva, sans-serif; font-size: 10pt
+}
+.TEXTOLINK {
+	color: #000080; font-family: arial, Helvetica, Geneva, sans-serif; font-size: 12px; text-decoration: none
+}
+.WIDEFIELDDATA {
+	color: #000000; font-family: "Arial narrow", Arial, Helvetica, Geneva, sans-serif; font-size: 10pt
+}
+.TABLEHEADERCENTER {
+	background-color: #6699cc; color: #ffffff; font-family: Arial, sans-serif; font-size: 10pt; font-weight: bold; TEXT-ALIGN: center; VERTICAL-ALIGN: bottom
+}
+.TABLEHEADERLEFT {
+	background-color: #6699cc; color: #ffffff; font-family: Arial,
+
+}
+
+
+.cmpText
+	{
+	text-decoration: none;
+	font-family: arial;
+	font-size: 12px;
+	color: #000000
+	}
+.cmpTextObrig
+	{
+	text-decoration: none;
+	font-family: arial;
+	font-size: 12px;
+	color: #000000
+	}
+.cmpCheck
+	{
+	text-decoration: none;
+	font-family: arial;
+	font-size: 12px;
+	color: #000000
+	}
+.cmpTextarea
+	{
+	text-decoration: none;
+	font-family: arial;
+	font-size: 12px;
+	color: #000000
+	}
+.cmpRadio
+	{
+	text-decoration: none;
+	font-family: arial;
+	font-size: 12px;
+	color: #000000
+	}
+.cmpSelect
+	{
+	text-decoration: none;
+	font-family: arial;
+	font-size: 12px;
+	color: #000000
+	}
+.cmpOption
+	{
+	text-decoration: none;
+	font-family: arial;
+	font-size: 12px;
+	color: #000000
+	}
+.cmpPassword
+	{
+	text-decoration: none;
+	font-family: arial;
+	font-size: 12px;
+	color: #000000
+	}
+.cmpFile
+	{
+	text-decoration: none;
+	font-family: arial;
+	font-size: 12px;
+	color: #000000
+	}
+
+.botImage
+	{
+	font-family: Tahoma;
+	font-size: 9px;
+	font-weight: bold;
+	color: #000000;
+	background-color: #FFFFFF;
+	text-transform: uppercase
+	}
+.botSubmit
+	{
+	font-family: Tahoma;
+	font-size: 9px;
+	font-weight: bold;
+	color: #000000;
+	background-color: #FFFFFF;
+	text-transform: uppercase
+	}
+.botReset
+	{
+	font-family: Tahoma;
+	font-size: 9px;
+	font-weight: bold;
+	color: #000000;
+	background-color: #FFFFFF;
+	text-transform: uppercase
+	}
+.botButton
+	{
+	font-family: Tahoma;
+	font-size: 9px;
+	font-weight: bold;
+	color: #000000;
+	background-color: #FFFFFF;
+	text-transform: uppercase
+	}
+.botPesquisa
+	{
+	font-family: Tahoma;
+	font-size: 9px;
+	font-weight: bold;
+	color: #000000;
+	background-color: #FFFFFF;
+	text-transform: uppercase
+	}
+
+.comTdcolorDefault
+	{
+	background-color: #FFFFFF; font-family:Arial; font-size: 10px
+	}
+.comTdcolorLinhaImpar
+	{
+	background-color: #F4F4F4; font-family:Arial; font-size: 10px
+	}
+
+.comTdErro
+	{
+	background-color: #D01F10; font-family:Arial; font-size: 10pt; font-weight: bold; color: #FFFFFF
+	}
+
+.comTdAviso
+	{
+	background-color: #C5BEB1; font-family:Arial; font-size: 10pt; font-weight: bold; color: #FFFFFF
+	}
+
+.comTdMessage
+	{
+	background-color: #F4F4F4; font-family:Arial; font-size: 10pt
+	}
+
+.comTextoErro
+	{
+	color: #FF0000; font-family: Verdana, sans-serif; font-size: 10pt; font-family: Verdana, sans-serif
+	}
+.comfontTexto01
+	{
+	color: #000000; font-family: Verdana, sans-serif; font-size: 9pt; font-family: Verdana, sans-serif
+	}
+
+.comfontTexto02
+	{
+	color: #000000; font-family: Verdana, sans-serif; font-size: 10px; font-family: Verdana, sans-serif
+	}
+.comfontTexto03
+	{
+	color: #000000; font-family: Verdana, sans-serif; font-size: 7pt; font-family: Verdana, sans-serif
+	}
+
+.comfontTitulo02
+	{
+	color: #888888; font-family: Arial, Verdana, sans-serif; font-size: 12pt; font-weight: bold; font-family: Verdana, sans-serif;
+	}
+
+.comfontTitulo03
+	{
+	color: #888888; font-family: Arial, Verdana, sans-serif; font-size: 9pt; font-weight: bold; font-family: Verdana, sans-serif;
+	}
+
+
+.comfontHelp01 {
+	color: #000000; font-family: Verdana, sans-serif; font-size: 10px; 
+}
+
+.comBodyHelp {
+	background-color: #ffffff; link= #000000; vlink= #000000;
+}
+
+.comTablecolorHelp {
+	background-color: #ffffff; font-family:Arial; font-size: 10px
+}
+.comTdcolorHelp {
+	background-color: #C0C0C0; font-family:Arial; font-size: 10px
+}
+
+
+.menuAzul
+	{
+	text-decoration: none;
+  	font-family: Verdana, Arial, Sans-serif; 
+  	font-size: 9px; 
+  	color: #808080;
+  	word-spacing: 0px; 
+  	letter-spacing: 0px;
+	}
+.menuAzul:hover
+	{
+  	font-family: Verdana, Arial, Sans-serif; 
+  	font-size: 9px; 
+  	font-style: normal;
+	text-decoration: underline;
+  	color: #808080;
+  	word-spacing: 0px; 
+  	letter-spacing: 0px;
+	}
+.menuAzulOld
+	{
+	text-decoration: none;
+	font-family: verdana;
+	font-size: 9px;
+	color: #E6E6E6
+	}
+.menuAzulOld:hover
+	{
+	text-decoration: underline;
+	font-family: verdana;
+	font-size: 9px;
+	color: #E6E6E6
+	}
+.menuAmarelo
+	{
+	text-decoration: none;
+  	font-family: Verdana, Arial, Sans-serif; 
+  	font-size: 9px; 
+  	font-weight: 200; 
+  	font-style: normal;
+  	color: #FFCC99;
+  	word-spacing: 0px; 
+  	letter-spacing: 0px;
+  	}
+.menuAmareloOld
+        {
+	text-decoration: none;
+	font-family: verdana;
+	font-size: 9px;
+	color: #FFFF99
+	}
+.menuAmarelo:hover
+	{
+  	font-family: Verdana, Arial, Sans-serif; 
+  	font-size: 9px; 
+  	font-weight: 200; 
+  	font-style: normal;
+	text-decoration: underline;
+  	color: #FFFF55;
+  	word-spacing: 0px; 
+  	letter-spacing: 0px;
+	}
+.menuAmareloOld:hover
+	{
+	text-decoration: underline;
+	font-family: verdana;
+	font-size: 9px;
+	color: #E6E6E6
+	}
+.txtCinza
+	{
+	text-decoration: none;
+	font-family: arial;
+	font-size: 10px;
+	color: #666666
+	}
+.txtChumbo
+	{
+	text-decoration: none;
+	font-family: arial;
+	font-size: 12px;
+	color: #666666
+	}
+.txtChumboBold
+	{
+	text-decoration: none;
+	font-family: arial;
+	font-size: 12px;
+	font-weight: bold;
+	color: #666666
+	}
+
+.txtAzulLink 
+	{
+	text-decoration: underline;
+	font-family: arial;
+	font-size: 10px;
+	color: #000080
+	}
+
+.txtPreto
+	{
+	text-decoration: none;
+	font-family: arial;
+	font-size: 10px;
+	color: #000000
+	}
+.txtPretoLink
+	{
+	text-decoration: underline;
+	font-family: arial;
+	font-size: 10px;
+	color: #000000
+	}
+.txtCaramelo
+	{
+	text-decoration: none;
+	font-family: arial;
+	font-size: 10px;
+	color: #7F5600
+	}
+.txtHeader	
+	{
+	text-decoration: none;
+	font-family: arial;
+	font-size: 11px;
+	font-weight: bold;
+	color: #BD1010
+	}
+.txtHeaderLink
+	{
+	text-decoration: underline;	
+	font-family: arial;
+	font-size: 11px;
+	font-weight: bold;
+	color: #BD1010
+	}
+.txtBlackBold
+	{
+	text-decoration: none;
+	font-family: arial;
+	font-size: 12px;
+	font-weight: bold;
+	color: #000000
+	}
+.txtBlack
+	{
+	text-decoration: none;
+	font-family: arial;
+	font-size: 12px;
+	color: #000000
+	}
+.txtBlackLink
+	{
+	text-decoration: underline;
+	font-family: arial;
+	font-size: 12px;
+	color: #000000
+	}
+
+.txtPassos
+	{
+	text-decoration: none;
+	font-family: arial;
+	font-size: 10px;
+	color: #5E5542
+	}
+.txtPassosNfeito
+	{
+	text-decoration: none;
+	font-family: arial;
+	font-size: 10px;
+	color: #CFC4B0
+	}
+.formBasic
+	{
+	text-decoration: none;
+	font-family: arial;
+	font-size: 12px;
+	color: #000000
+	}
+	
+#oportunidades
+	{
+	position: absolute;
+	left: 654px;
+	top: 120px;
+	width: 121px;
+	height: 20px;
+	z-index: 3;
+	visibility: visible
+	}
+#info
+	{
+	position: absolute;
+	left: 654px;
+	top: 79px;
+	width: 121px;
+	height: 20px;
+	z-index: 3;
+	visibility: visible
+	}
+#bannerOp
+	{
+	position: absolute;
+	left: 200px;
+	top: 14px;
+	width: 100px;
+	height: 20px;
+	z-index: 4;
+	visibility: visible
+	}
+#parceiro
+	{
+	position: absolute;
+	left: 670px;
+	top: 9px;
+	width: 104px;
+	height: 54px;
+	z-index: 2;
+	visibility: visible
+	}
+#layoutdir
+	{
+	position: absolute;
+	left: 654px;
+	top: 79px;
+	width: 121px;
+	height: 20px;
+	z-index: 1;
+	visibility: visible
+	}
+.TxtBlack2
+	{
+	color: #000000;
+	 font-family:Arial;
+	 font-size: 10px;
+	}
+
+.txtForumBlackBold
+	{
+	text-decoration: none;
+	font-family: arial;
+	font-size: 11px;
+	font-weight: bold;
+	color: #000000
+	}
+.txtForumBlack
+	{
+	text-decoration: none;
+	font-family: arial;
+	font-size: 11px;
+	color: #000000
+	}
+.txtForumBlackBoldLink
+	{
+	text-decoration: underline;
+	font-family: arial;
+	font-size: 11px;
+	font-weight: bold;
+	color: #000000
+	}
+
+.txtForumBlackLink
+	{
+	text-decoration: underline;
+	font-family: arial;
+	font-size: 11px;
+	color: #000000
+	}
+.txtForumBlack2
+	{
+	font-family: arial;
+	font-size: 11px;
+	color: #000000
+	}
+.txtForumBlackPath
+	{
+	font-family: arial;
+	font-size: 12px;
+	color: #000000
+	}

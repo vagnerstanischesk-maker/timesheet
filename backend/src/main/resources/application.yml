@@ -1,0 +1,45 @@
+spring:
+  application:
+    name: triscal-timesheet-api
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/timesheet}
+    username: ${DB_USER:timesheet}
+    password: ${DB_PASSWORD:timesheet}
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate.format_sql: true
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+  mail:
+    host: ${SMTP_HOST:}
+    port: ${SMTP_PORT:587}
+    username: ${SMTP_USER:}
+    password: ${SMTP_PASSWORD:}
+    properties:
+      mail.smtp.auth: ${SMTP_AUTH:true}
+      mail.smtp.starttls.enable: ${SMTP_TLS:true}
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          # Emissor = Microsoft Entra ID (v2). Direto, sem Keycloak.
+          # Prod: https://login.microsoftonline.com/<tenant-id>/v2.0
+          issuer-uri: ${OIDC_ISSUER_URI:https://login.microsoftonline.com/2b42ae36-0393-4fc6-b055-5d2a93ceb4b4/v2.0}
+          # Audience = client-id da App Registration da API (validada no SecurityConfig).
+          audiences: ${OIDC_AUDIENCE:}
+server:
+  port: ${SERVER_PORT:8080}
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+
+app:
+  alertas:
+    diario-cron: "0 0 17 * * MON-FRI"
+    quinzenal-cron: "0 0 9 11,26 * *"

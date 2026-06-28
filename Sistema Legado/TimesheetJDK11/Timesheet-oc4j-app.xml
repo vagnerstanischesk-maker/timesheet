@@ -1,0 +1,11 @@
+<?xml version = '1.0' encoding = 'windows-1252'?>
+<!DOCTYPE orion-application PUBLIC "-//Evermind//DTD J2EE Application runtime 1.2//EN" "http://xmlns.oracle.com/ias/dtds/orion-application.dtd">
+<orion-application>
+  <web-module id="portalcom" path="E:\Commit9IAS\comjsp"/>
+  <web-module id="Timesheet-Project2-webapp" path="E:\Commit9IAS\public_html"/>
+  <log>
+    <file path="Timesheet-oc4j-app.log"/>
+  </log>
+  <jazn provider="XML" location="Timesheet-jazn-data.xml" default-realm="jazn.com"/>
+  <data-sources path="Timesheet-data-sources.xml"/>
+</orion-application>

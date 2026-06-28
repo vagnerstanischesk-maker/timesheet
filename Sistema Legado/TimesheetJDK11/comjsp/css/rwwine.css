@@ -1,0 +1,11 @@
+.OraTable {border: 0; cellpadding: 0;  cellspacing: 0; width: 100%  }
+.OraColumnHeader {  color: #ffffff; font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-style: normal; font-weight: bold; background-color: #93065D; text-align: center}
+.OraCellDate {  color: #000000; background-color: #e4c1d6; font-family: Arial, Helvetica, sans-serif; font-size: 10px}
+.OraHeader {  color: #000000; font-family: Arial, Helvetica, sans-serif; font-size: 14px; font-weight: bold; background-color: #e4c1d6; text-align: center}
+.OraCellNumber { color: #000000; background-color: #e4c1d6; font-family: Arial, Helvetica, sans-serif; font-size: 10px ; text-align: right}
+.OraCellText { color: #000000; background-color: #e4c1d6; font-family: Arial, Helvetica, sans-serif; font-size: 10px }
+.OraHeaderSub { color: #000003; font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-weight: bold; background-color: #e4c1d6; text-align: center }
+.OraHeaderSubSub { color: #000000; font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-weight: normal; background-color: #e4c1d6; text-align: center }
+.OraRowHeader { color: #ffffff; font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-style: normal; font-weight: bold; background-color: #93065D}
+.OraTotalText { color: #000000; background-color: #c982ae; font-family: Arial, Helvetica, sans-serif; font-size: 10px ; font-weight: bold; text-align: center}
+.OraTotalNumber { color: #000000; background-color: #c982ae; font-family: Arial, Helvetica, sans-serif; font-size: 10px ; font-weight: bold ; text-align: right}

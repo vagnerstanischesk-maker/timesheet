@@ -1,0 +1,21 @@
+# Ambiente de desenvolvimento local — Triscal Apontamento de Horas
+# Apenas PostgreSQL. A autenticação é DIRETO no Microsoft Entra ID (sem Keycloak):
+# o backend valida o JWT do Entra e o SPA loga direto no Entra. Ver docs/ENTRA_SSO.md.
+# Para dev, registre no Entra um redirect SPA http://localhost:5173/ e use o tenant da Triscal.
+services:
+  postgres:
+    image: postgres:16
+    environment:
+      POSTGRES_DB: timesheet
+      POSTGRES_USER: timesheet
+      POSTGRES_PASSWORD: timesheet
+    ports: ["5432:5432"]
+    volumes: ["pgdata:/var/lib/postgresql/data"]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U timesheet"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+volumes:
+  pgdata:

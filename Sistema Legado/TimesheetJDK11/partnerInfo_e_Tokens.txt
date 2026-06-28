@@ -1,0 +1,11 @@
+ID: 1329 
+Token: W3X03D4J1329 
+Encryption Key: EF5ADE21567E142E 
+Login URL: http://commit-big/pls/portal30_sso/portal30_sso.wwsso_app_admin.ls_login 
+Name: COMMIT9IAS
+Home URL: http://commit-big/commit9ias/
+Success URL: http://commit-big/commit9ias/ssosignon.jsp
+ou
+Success URL: http://commit-big:8888/comjsp/ssosignon.jsp
+
+--exec papp_reg(p_listener_token => 'commit9ias:commit-big:8888', p_site_token => 'W3X03D4J1329', p_site_id => '1329', p_login_url => 'http://commit-big/pls/portal30_sso/portal30_sso.wwsso_app_admin.ls_login', p_cookie_version => 'v1.0', p_encryption_key => 'EF5ADE21567E142E', p_ip_ckeck => 'N');

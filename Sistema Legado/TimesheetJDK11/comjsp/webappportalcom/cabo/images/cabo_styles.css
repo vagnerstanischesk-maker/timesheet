@@ -1,0 +1,355 @@
+<!--
+.COLOR1 {
+  background-color:#000000 }
+.COLOR2 {
+  background-color:#003366 }
+.COLOR3 {
+  background-color:#336699 }
+.COLOR4 {
+  background-color:#6699cc }
+.COLOR5 {
+  background-color:#99ccff }
+.COLOR6 {
+  background-color:#ffffff }
+.COLORG2 {
+  background-color:#333333 }
+.COLORG3 {
+  background-color:#666666 }
+.COLORG4 {
+  background-color:#999999 }
+.COLORG5 {
+  background-color:#cccccc }
+.APPSWINDOW {
+  background-color:#FFFFFF }
+.BISWINDOW {
+  background-color:#FFFFFF }
+.PRINTWINDOW {
+  background-color:#FFFFFF }
+.HOMEWINDOW {
+  background-color:#003366 }
+.HIGHLIGHT {
+  background-color:#FFFFFF }
+.SHADOW {
+  background-color:#666666 }
+.DARKSHADOW {
+  background-color:#333333 }
+.PANEL {
+  background-color:#CCCCCC }
+.LIGHTPANEL {
+  background-color:#FFFFFF }
+.SOFTPANEL {
+  background-image:url(images/page_background_blue.gif);
+  background-color:#99CCFF}
+.HELPTEXT {
+  font-family:Arial, Helvetica, Geneva, sans-serif; 
+  color:#000000; 
+  font-size:10pt }
+.PROMPTBLACK {
+  font-family:Arial, Helvetica, Geneva, sans-serif; 
+  color:#000000; 
+  font-size:10pt }
+.PROMPTWHITE {
+  font-family:Arial, Helvetica, Geneva, sans-serif; 
+  color:#FFFFFF; 
+  font-size:10pt }
+.DATABLACK {
+  font-family:Arial, Helvetica, Geneva, sans-serif; 
+  color:#000000; 
+  font-size:10pt;
+  font-weight:bold }
+.DATAWHITE {
+  font-family:Arial, Helvetica, Geneva, sans-serif; 
+  color:#FFFFFF; 
+  font-size:10pt;
+  font-weight:bold }
+.DATATOTALS {
+  font-family:Arial, Helvetica, Geneva, sans-serif; 
+  color:#000000; 
+  font-size:10pt;
+  font-weight:bold }
+.INFOBLACK {
+  font-family:Arial, Helvetica, Geneva, sans-serif; 
+  color:#000000; 
+  font-size:10pt }
+.INFOWHITE {
+  font-family:Arial, Helvetica, Geneva, sans-serif; 
+  color:#FFFFFF; 
+  font-size:10pt }
+.ALERTTEXT {
+  font-family:Arial, Helvetica, Geneva, sans-serif; 
+  color:#000000; 
+  font-size:10pt }
+.ALERTTITLE {
+  font-family:Arial, Helvetica, Geneva, sans-serif; 
+  color:#000000; 
+  font-size:12pt;
+  font-weight:bold }
+.FIELDDATA {
+  font-family:Arial, Helvetica, Geneva, sans-serif; 
+  color:#000000; 
+  font-size:10pt;
+  font-weight:bold }
+.LINK {
+  font-family:Arial, Helvetica, Geneva, sans-serif; 
+  font-size:10pt; }
+.LINKBOLD {
+  font-family:Arial, Helvetica, Geneva, sans-serif;
+  font-weight:bold; 
+  font-size:10pt; }
+.WIDEFIELDDATA {
+  font-family:"Arial narrow", Arial, Helvetica, Geneva, sans-serif; 
+  color:#000000; 
+  font-size:10pt }
+.TABLEHEADER {
+  font-family:Arial, sans-serif; 
+  color:#FFFFFF; 
+  font-size:10pt; 
+  font-weight: bold; 
+  background-color:#6699CC; 
+  vertical-align:bottom }
+.TABLEHEADERCENTER {
+  font-family:Arial, sans-serif; 
+  color:#FFFFFF; 
+  font-size:10pt; 
+  font-weight: bold; 
+  background-color:#6699CC; 
+  text-align:center; 
+  vertical-align:bottom }
+.TABLEHEADERLEFT {
+  font-family:Arial, sans-serif; 
+  color:#FFFFFF; 
+  font-size:10pt; 
+  font-weight: bold; 
+  background-color:#6699CC; 
+  text-align:left; 
+  vertical-align:bottom }
+.TABLEHEADERRIGHT {
+  font-family:Arial, sans-serif; 
+  color:#FFFFFF; 
+  font-size:10pt; 
+  font-weight: bold; 
+  background-color:#6699CC; 
+  text-align:right; 
+  vertical-align:bottom }
+.SORTHEADER {
+  font-family:Arial, sans-serif; 
+  color:#FFFFFF; 
+  font-size:10pt; 
+  font-weight: bold; 
+  text-decoration:none }  
+.TABLECELL {
+  font-family:Arial, Helvetica, Geneva, sans-serif;
+  color:#000000; 
+  font-size:10pt; 
+  background-color:#FFFFFF }
+.TABLEROWHEADER {
+  font-family:Arial, Helvetica, Geneva, sans-serif;
+  color:#FFFFFF; 
+  font-size:10pt; 
+  font-weight: bold; 
+  background-color:#6699CC }
+.TABLECELLSHADED {
+  font-family:Arial, Helvetica, Geneva, sans-serif; 
+  color:#000000; 
+  font-size:10pt;
+  background-color:#99CCFF }
+.TABLECELLGRAYSHADED {
+  font-family:Arial, Helvetica, Geneva, sans-serif; 
+  color:#000000; 
+  font-size:10pt;
+  background-color:#CCCCCC }
+.TEXTAREACELL {
+  font-family:"Arial narrow", Arial, Helvetica, Geneva, sans-serif;
+  color:#000000; 
+  font-size:10pt; 
+  font-weight:bold;
+  background-color:#FFFFFF }
+.TEXTAREACELLSHADED {
+  font-family:"Arial narrow", Arial, Helvetica, Geneva, sans-serif;
+  color:#000000; 
+  font-size:10pt; 
+  font-weight:bold;
+  background-color:#99CCFF }
+.TEXTAREACELLGRAYSHADED {
+  font-family:"Arial narrow", Arial, Helvetica, Geneva, sans-serif;
+  color:#000000; 
+  font-size:10pt; 
+  font-weight:bold;
+  background-color:#CCCCCC }
+.INPUTCELL {
+  font-family:"Arial narrow", Arial, Helvetica, Geneva, sans-serif;
+  color:#000000; 
+  font-size:10pt; 
+  background-color:#FFFFFF }
+.INPUTCELLSHADED {
+  font-family:"Arial narrow", Arial, Helvetica, Geneva, sans-serif; 
+  color:#000000; 
+  font-size:10pt; 
+  background-color:#99CCFF }
+.TABLESURROUND {
+  background-color:#6699CC }
+.PRINTHEADER {
+  font-family:Arial, sans-serif; 
+  color:#FFFFFF; 
+  font-size:10pt; 
+  font-weight: bold; 
+  background-color:#6699CC; 
+  text-align:center; 
+  vertical-align:bottom }
+.PRINTCELL {
+  font-family:Arial, Helvetica, Geneva, sans-serif;
+  color:#000000; 
+  font-size:10pt; 
+  background-color:#FFFFFF }
+.PRINTROWHEADER {
+  font-family:Arial, Helvetica, Geneva, sans-serif;
+  color:#FFFFFF; 
+  font-size:10pt; 
+  font-weight: bold; 
+  background-color:#6699CC }
+.PRINTCELLSHADED {
+  font-family:Arial, Helvetica, Geneva, sans-serif; 
+  color:#000000; 
+  font-size:10pt;
+  background-color:#99CCFF }
+.PRINTSURROUND {
+  background-color:#6699CC }
+.BISHEADER {
+  font-family:Arial, sans-serif; 
+  color:#FFFFFF; 
+  font-size:10pt; 
+  font-weight: bold; 
+  background-color:#6699CC; 
+  text-align:center; 
+  vertical-align:bottom }
+.BISCELL {
+  font-family:Arial, Helvetica, Geneva, sans-serif;
+  color:#000000; 
+  font-size:10pt; 
+  background-color:#FFFFFF }
+.BISROWHEADER {
+  font-family:Arial, Helvetica, Geneva, sans-serif;
+  color:#FFFFFF; 
+  font-size:10pt; 
+  font-weight: bold; 
+  background-color:#6699CC }
+.BISCELLSHADED {
+  font-family:Arial, Helvetica, Geneva, sans-serif; 
+  color:#000000; 
+  font-size:10pt;
+  background-color:#99CCFF }
+.BISSURROUND {
+  background-color:#6699CC }
+.BUTTON {
+  background-color:#CCCCCC }
+.BUTTONTEXT {
+  font-family:Arial, Helvetica, Geneva, sans-serif; 
+  color:#000000;  
+  font-size:10pt;
+  text-decoration:none }
+.DISABLEDBUTTONTEXT {
+  font-family:Arial, Helvetica, Geneva, sans-serif; 
+  color:#999999;  
+  font-size:10pt;
+  text-decoration:none }
+.TOOLBAR {
+  font-family:Arial, Helvetica, Geneva, sans-serif; 
+  color:#336699;
+  font-size:13PT;
+  font-style:italic;  
+  font-weight:bold;
+  background-color:#CCCCCC }
+.PANELTITLE {
+  font-family:Arial, Helvetica, Geneva, sans-serif; 
+  color:#FFFFFF;
+  font-size:10PT;
+  font-weight:bold;
+  background-color:#003366 }
+.TABTITLE {
+  font-family:Arial, Helvetica, Geneva, sans-serif; 
+  color:#FFFFFF;
+  font-size:10PT;
+  font-weight:bold }
+.CURRENTTAB {
+  background-color:#CCCCCC }
+.lIGHTCURRENTTAB {
+  background-color:#FFFFFF }
+.CURRENTTABTEXT {
+  font-family:Arial, Helvetica, Geneva, sans-serif; 
+  color:#000000;
+  font-size:10PT;
+  text-decoration:none }
+.OTHERTAB {
+  background-color:#6699CC }
+.OTHERTABTEXT {
+  font-family:Arial, Helvetica, Geneva, sans-serif; 
+  color:#000000;
+  font-size:10PT;
+  text-decoration:none }
+.DISABLEDTABTEXT {
+  font-family:Arial, Helvetica, Geneva, sans-serif; 
+  color:#CCCCCC;  
+  font-size:10pt;
+  text-decoration:none }
+.WEEKDAYCELL {
+  font-family:Arial, Helvetica, Geneva, sans-serif; 
+  color:#FFFFFF;
+  font-size:10PT;
+  font-weight: bold;
+  background-color: #888888}
+.MONTHDAYCELL {
+  background-color: #FFFFFF }
+.DAYLINK {
+  font-family:Arial, Helvetica, Geneva, sans-serif; 
+  color: #000000;
+  font-size:10PT;
+  font-weight: bold;
+  text-decoration:none }
+.DISABLEDDAYLINK {
+  font-family:Arial, Helvetica, Geneva, sans-serif; 
+  color: #999999;
+  font-size:10PT;
+  font-weight: bold;
+  text-decoration:none }
+.GROUPBOX {
+  background-color:#333333 }
+.GROUPBOXLAYER {
+  position:absolute;
+  layer-background-color:#FFFFFF; 
+  font-family:Arial, Geneva, arial, sans-serif; 
+  font-size:14pt;
+  color:#000000; 
+  font-weight:bold;
+  visibility:hidden }
+.GROUPBOXTEXT {
+  font-family:Arial, Geneva, arial, sans-serif; 
+  font-size:12pt;
+  color:#000000; 
+  font-weight:bold }
+.TREE {
+  font-family:Arial, Helvetica, Geneva, sans-serif; 
+  color:#000000;  
+  font-size:10pt;
+  text-decoration:none; }
+.TREESELECTED {
+  font-family:Arial, Helvetica, Geneva, sans-serif; 
+  background-color:#000099;
+  color:#FFFFFF;  
+  font-weight:bold;
+  font-size:10pt;
+  text-decoration:none; } 
+  
+  
+.SECTIONBAR {}
+.SECTIONTEXT {}
+.SUBSECTIONBAR {}
+.SUBSECTIONTEXT {}
+
+.MENUCURRENT {}
+.MENUHEADERBAR {}
+.MENUHEADERTEXT {}
+.MENUSUBHEADERBAR {}
+.MENUSUBHEADERTEXT {}
+.MENUVERTICALBAR {}
+
+-->

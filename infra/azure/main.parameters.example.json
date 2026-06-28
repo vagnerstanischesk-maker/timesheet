@@ -1,0 +1,17 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "prefix":               { "value": "triscal" },
+    "tags":                 { "value": { "app": "triscal-timesheet", "env": "prod", "centro_custo": "TROQUE" } },
+    "pgAdmin":              { "value": "tsadmin" },
+    "pgPassword":           { "value": "TROQUE-por-senha-forte" },
+    "entraTenantId":        { "value": "2b42ae36-0393-4fc6-b055-5d2a93ceb4b4" },
+    "entraClientId":        { "value": "TROQUE-pelo-client-id-da-App-Registration" },
+    "imageTag":             { "value": "latest" },
+    "smtpHost":             { "value": "" },
+    "smtpPort":             { "value": "587" },
+    "smtpUser":             { "value": "" },
+    "smtpPassword":         { "value": "" }
+  }
+}

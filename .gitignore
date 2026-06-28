@@ -1,0 +1,24 @@
+# Dependências
+node_modules/
+# Build / artefatos
+bin/
+obj/
+dist/
+build/
+*.log
+
+# Arquivos temporários do SO / editor
+Thumbs.db
+desktop.ini
+.DS_Store
+.vs/
+.vscode/
+.idea/
+
+# Segredos / configs locais
+*.env
+appsettings.*.local.json
+secrets.json
+
+# IaC: parâmetros com segredos
+infra/azure/main.parameters.json

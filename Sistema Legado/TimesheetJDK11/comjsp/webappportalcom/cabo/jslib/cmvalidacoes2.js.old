@@ -1,0 +1,42 @@
+Este arquivo foi renomeado para cmvalida_insercao
+
+
+function goinserir( pagina )
+{
+   document.iForm.oper.value = "I";
+   document.iForm.action = pagina;
+   document.iForm.submit();
+   return true;
+}
+
+function editar(registro, pagina)
+{
+   document.iForm.oper.value = "E";
+   document.iForm.reg.value = registro;
+   document.iForm.action = pagina;
+   document.iForm.submit();
+   return true;
+}
+function excluir(registro, pagina)
+{
+   document.iForm.reg.value = registro;
+   document.iForm.EXCLUSAO.value = "S";
+   document.iForm.action = pagina;
+   document.iForm.submit();
+   return true;
+}
+
+function salva()
+{ 
+   document.iForm.EXCLUSAO.value = "N";
+   if( validaform() ) {
+     document.iForm.submit();
+   }
+   return true;
+}
+function exclui()
+{
+   document.iForm.EXCLUSAO.value = "S";
+   document.iForm.submit();
+   return true;
+}

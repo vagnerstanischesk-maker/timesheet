@@ -1,0 +1,138 @@
+
+insert into com_aces_grupo values ('SY', 'SYSADM');
+insert into com_aces_grupo values ('AD', 'Administração');
+insert into com_aces_grupo values ('DI', 'Diretoria');
+insert into com_aces_grupo values ('CS', 'Consultoria');
+insert into com_aces_grupo values ('CO', 'Comercial');
+commit;
+
+insert into com_aces_usuario (CDG_USUR               
+,NOME                   
+,NOME_ABREVIADO         
+,DT_INCLUSAO            
+,USUR_INCLUSAO          
+,STATUS                 
+,SENHA                  
+,CDG_GRUPO_ACESSO       
+,DSC_EMAIL              
+,DT_ALTERACAO           
+,USUR_ALTERACAO         
+,DT_EXCLUSAO            
+,IN_ALTEROU_SENHA ) values ('COMMIT', 'Commit Consultores', 'Commit', SYSDATE, 'COMMIT', 'L', 
+COM_ACES_CRIPT('COMMIT'), 'SY', 'cchamma@commitconsultores.com.br', null, null, null, 'S');
+commit;
+
+insert into com_aces_trata_erro (TPO_ERRO                       
+,NMR_ERRO                       
+,DSC_CONSTRAINT_EXCEPTION       
+,TPO_RETORNO                    
+,TXT_RETORNO
+,IN_GERA_LOG                    
+,DTA_CADASTRO                   ) select * from bsp_aces_trata_erro@d07;
+commit;
+
+insert into com_aces_perfil (CDG_PERFIL             
+,CDG_GRUPO_ACESSO       
+,DESCRICAO              
+,DT_INCLUSAO            
+,USUR_INCLUSAO          
+,DT_ALTERACAO           
+,USUR_ALTERACAO) values (1, 'SY', 'Desenvolvimento', sysdate, 'COMMIT', null, null);
+
+insert into com_aces_usuario_perfil values ('COMMIT', 1, SYSDATE, 'COMMIT');
+commit;
+
+insert into com_aces_aplicacao (CDG_APLICACAO                  
+,DESCRICAO                      
+,DESCRICAO_RESUMIDA             
+,EXECUTAVEL                     
+,IN_BLOQUEADO                   
+,IN_RASTREAVEL                  
+,DT_INCLUSAO                    
+,USUR_INCLUSAO                  
+,DT_ALTERACAO                   
+,URL_HELP                       
+,EXE_REDIR_QUEDA_SESSAO         
+,SQLCMD_HABILITA, CDG_GRUPO_ACESSO) select CDG_APLICACAO                  
+,DESCRICAO                      
+,DESCRICAO_RESUMIDA             
+,EXECUTAVEL                     
+,IN_BLOQUEADO                   
+,IN_RASTREAVEL                  
+,DT_INCLUSAO                    
+,USUR_INCLUSAO                  
+,DT_ALTERACAO                   
+,URL_HELP                       
+,EXE_REDIR_QUEDA_SESSAO         
+,SQLCMD_HABILITA, null from bsp_aces_aplicacao@d07
+where TPO_APLICACAO IN ('S', 'I');
+commit;
+
+alter table  com_aces_menu disable constraint  MENU_MENU_FK;
+
+insert into com_aces_menu (CDG_MENU               
+,DESCRICAO              
+,DESCR_RESUMIDA         
+,DT_INICIO              
+,DT_FIM                 
+,CDG_APLICACAO          
+,IN_BLOQUEADO           
+,IN_RASTREAVEL          
+,DT_INCLUSAO            
+,USUR_INCLUSAO          
+,CDG_MENU_PAI           
+,IN_VOLTAR              
+,IN_VISIVEL             
+,DT_ALTERACAO           
+,USUR_ALTERACAO         
+,IN_POPUP) select m.CDG_MENU               
+,m.DESCRICAO              
+,m.DESCR_RESUMIDA         
+,m.DT_INICIO              
+,m.DT_FIM                 
+,m.CDG_APLICACAO          
+,m.IN_BLOQUEADO           
+,m.IN_RASTREAVEL          
+,m.DT_INCLUSAO            
+,m.USUR_INCLUSAO          
+,m.CDG_MENU_PAI           
+,m.IN_VOLTAR              
+,m.IN_VISIVEL             
+,m.DT_ALTERACAO           
+,m.USUR_ALTERACAO         
+,m.IN_POPUP from bsp_aces_menu@d07 M
+where m.cdg_aplicacao in (select cdg_aplicacao from com_aces_aplicacao)
+or m.cdg_aplicacao is null
+order by decode(m.cdg_aplicacao, null, 1, m.cdg_aplicacao);
+
+delete from com_aces_menu where cdg_menu_pai is not null
+and cdg_menu_pai not in (select m.cdg_menu from com_aces_menu m);
+
+commit;
+
+alter table  com_aces_menu enable constraint  MENU_MENU_FK;
+
+insert into com_aces_perfil_menu (CDG_PERFIL             
+,CDG_MENU               
+,TIPO_ACESSO            
+,DT_INICIO              
+,DT_FIM                 
+,DT_INCLUSAO            
+,USUR_INCLUSAO          
+,ORDEM                  
+,DT_ALTERACAO           
+,USUR_ALTERACAO) select 1, CDG_MENU               
+,TIPO_ACESSO            
+,DT_INICIO              
+,DT_FIM                 
+,DT_INCLUSAO            
+,USUR_INCLUSAO          
+,ORDEM                  
+,DT_ALTERACAO           
+,USUR_ALTERACAO from bsp_aces_perfil_menu@d07
+where cdg_menu in (select cdg_menu from com_aces_menu)
+and cdg_perfil = 272;
+
+commit;
+
+

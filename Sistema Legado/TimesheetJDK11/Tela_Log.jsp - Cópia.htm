@@ -1,0 +1,3277 @@
+<!-- includevariaveis.jsp -->
+<!-- Fim includevariaveis.jsp -->
+<html><head>
+<!-- Inicio includemeta.jsp -->
+
+
+
+
+
+
+
+
+
+
+
+
+<meta name="GENERATOR" content="Oracle JDeveloper">
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta name="description" content="Triscal - O portal Triscal...">
+<meta name="keywords" content="Triscal, Commit, Oracle, banco de dados, database, application, aplicação, ...">
+<meta name="author" content="Triscal">
+
+<script language="JavaScript">
+function mostra(item){
+	if (item.style.display=='none'){
+  		item.style.display='';
+  }else{
+  		item.style.display='none';
+   	}
+}
+</script>
+
+<!-- Fim includemeta.jsp -->
+
+<!-- Inicio includelink.jsp -->
+
+<link rel="stylesheet" type="text/css" href="Tela_Log.jsp_arquivos/oracle.css">
+<style type="text/css">
+<!--
+.semsub1 {  font-family: Verdana, Arial, Helvetica, sans-serif, Tahoma; font-size: 7pt; color: #FFFFFF; text-decoration: none}
+-->
+</style>
+
+<script language="JavaScript1.2">
+<!--
+function chamahelp( urlhelp ) {
+  window.open(".\\help\\"+urlhelp,"help","toolbar=no,location=no,directories=no,menubar=no,scrollbars=yes,status=no,width=560,height=440,resizable=no");
+  return true;
+}
+//-->
+</script>
+<!-- Fim includelink.jsp -->
+
+<!-- Inicio includemenuhead.jsp -->
+
+
+<!--script language="JavaScript" src="/portalcom/webappportalcom/cabo/jslib/menuesquerda.js"></script-->
+<script src="Tela_Log.jsp_arquivos/over.js"></script>
+
+
+
+<!--script language="JavaScript1.2" src="/portalcom/webappportalcom/cabo/jslib/menu.js"></script-->
+<script language="JavaScript1.2">
+<!--
+var isMinNS4=(navigator.appName.indexOf("Netscape")>=0&&parseFloat(navigator.appVersion)>=4)?1:0; //c
+var isMinIE4=(document.all)?1:0; //c
+var isMinIE5=(isMinIE4&&navigator.appVersion.indexOf("5.")>=0)?1:0; //c
+
+function onLoad() {
+        loadMenus();
+}
+function loadMenus() {
+    //Dynamic Menus
+    //addMenuItem(label, action, color, mouseover, mouseout)
+    window.topMenu = new Menu();
+    topMenu.addMenuItem("my menu item A");
+
+//---Menu para telas de pesquisa:-------------------------------------------------------------
+    window.myMenu = new Menu("White");
+    //myMenu.addMenuItem("Para opções: o texto no campo deve ser separado por vírgulas! Para maiores informações clique aqui.","top.window.location='http://www...html'");
+    myMenu.addMenuItem("Para opções: o texto no campo deve ser separado por vírgulas! Para maiores informações clique aqui.","");
+    myMenu.fontColor = "blue";
+    myMenu.fontColorHilite = "blue";
+    myMenu.bgColor = "#dddddd";
+    myMenu.menuItemBgColor = "white";
+    myMenu.menuHiliteBgColor = "white";
+    myMenu.menuItemHeight = 50;
+    myMenu.fontSize = 12;
+    myMenu.fontWeight = "Bold";
+    myMenu.fontFamily = "corrier";
+
+
+     window.topMenu0 = new Menu("ROOT"); 
+
+    topMenu0.disableDrag = true;
+    topMenu.writeMenus();
+}
+//-->
+</script>
+<!-- Fim includemenuhead.jsp -->
+
+<script src="Tela_Log.jsp_arquivos/cmvalidacoes.js" language="javascript"></script>
+<script src="Tela_Log.jsp_arquivos/cmvalida_insercao.js" language="javascript"></script>
+<script language="javascript">
+
+var tooltip_window = null;
+function aviso_obs(msg_obs){
+  var vheight;
+    vheight=200;
+  var vwidth;
+    vwidth= 350;
+  var vtop;
+      vtop= (screen.availheight-vheight)/2;
+  var vleft;
+      vleft= (screen.availwidth-vwidth)/2;
+
+  var popupObj = window.createPopup();
+  popupObj.show(vleft, vtop, vwidth, vheight);
+
+  popupObj.document.writeln("<html> ");
+  popupObj.document.writeln("  <head>");
+  popupObj.document.writeln("    <title>Observação</title>");
+  popupObj.document.writeln("  <link REL=\"STYLESHEET\" TYPE=\"text/css\" HREF=\"webappportalcom/css/oracle.css\"> ");
+  popupObj.document.writeln("  </head>");
+  popupObj.document.writeln("<body bgcolor=\"#FFFFE1\">");
+  popupObj.document.writeln("  <CENTER>");
+  popupObj.document.writeln("  <span class=\"txtHeader\">");
+  popupObj.document.writeln(msg_obs.value);
+  popupObj.document.writeln("  </span> ");
+  popupObj.document.writeln("  </CENTER>");
+  popupObj.document.writeln("</body>");
+  popupObj.document.writeln("</html>");
+  popupObj.document.close();
+
+}
+
+
+function impressao(){
+
+  var vheight;
+    vheight=screen.availheight - 150;
+  var vwidth;
+    vwidth= screen.availwidth - 180;
+  var vtop;
+      vtop= (screen.availheight-vheight)/2;
+  var vleft;
+      vleft= (screen.availwidth-vwidth)/2;
+
+  p_bot_ok = document.getElementById("bot_ok");
+  p_bot_ok.style.display = "none";
+
+  p_impressao = document.getElementById("impressao");
+  p_impressao.document.iForm2.PERIODO.disabled = true;
+
+  var popupObj = window.createPopup();
+  popupObj.show(vleft, vtop, vwidth, vheight);
+
+  popupObj.document.writeln("<html> ");
+  popupObj.document.writeln("  <head>");
+  popupObj.document.writeln("    <TITLE>Triscal</TITLE>");
+  popupObj.document.writeln("  <link REL=\"STYLESHEET\" TYPE=\"text/css\" HREF=\"webappportalcom/css/oracle.css\"> ");
+  popupObj.document.writeln("  </head>");
+  popupObj.document.writeln("<body>");
+  popupObj.document.writeln(p_impressao.innerHTML);
+  popupObj.document.writeln("<br> <table>  <TR>");
+  popupObj.document.writeln(" <TD align=\"left\" width=\"100%\" height=\"30\"> ");
+  popupObj.document.writeln("  <a href=\"javascript: void false\" onClick=\"print()\">");
+  popupObj.document.writeln(" <img src=\"/portalcom/imagesportalcom/commit/botoes/bot_imprimir_01.gif\" BORDER=\"0\"></a>");
+  popupObj.document.writeln("    </TD> ");
+  popupObj.document.writeln("  </TR></table> "); 
+  popupObj.document.writeln("</body>");
+  popupObj.document.writeln("</html>");
+  popupObj.document.close();
+
+  p_impressao.document.iForm2.PERIODO.disabled = false;
+  p_bot_ok.style.display = "";
+
+}
+
+function validalog() {
+  if( (document.iForm2.PERIODO.selectedIndex == 0) &&
+      (document.iForm2.PERIODO[0].value == "") ) {
+    if( confirm("Deseja criar um Log?") ) {
+      document.iForm2.action = "com_CriaLog.jsp";
+    }
+    else {
+      return false;
+    }
+  }
+  return true;
+}
+function validalog_diretocombo() {
+  if(validalog()) { document.iForm2.submit(); }
+}
+
+function abreTela(pagina, cod_proj, desc_proj) {
+
+  var vheight;
+    vheight=360;
+  var vwidth;
+    vwidth=480;
+
+  if( pagina == "com_Popup_Retirar_Projeto" ) {
+    vheight=150;
+    vwidth=300;
+  }
+
+  var vtop;
+      vtop= (screen.availheight-vheight)/2;
+  var vleft;
+      vleft= (screen.availwidth-vwidth)/2;
+  var url;
+
+  url=pagina + ".jsp?CD_FUNCIONARIO=" + document.iForm.CD_FUNCIONARIO.value +
+                        "&mes=" + document.iForm.mes.value +
+                        "&ano=" + document.iForm.ano.value +
+                        "&PERI_CD_PERIODO=" + document.iForm.PERI_CD_PERIODO.value +
+                        "&cd_Projeto=" + cod_proj +
+                        "&desc_Projeto=" + desc_proj +
+                        "&iniDia=" + document.iForm.iniDia.value +
+                        "&finDia=" + document.iForm.finDia.value;
+
+  window.open(url,"popup","toolbar=no,location=no,directories=no,menubar=no, scrollbars=no,status=no,top="+vtop+", left="+vleft+",  width="+vwidth+", height="+vheight+", resizable=no");
+  return true;
+}
+
+var fecha = true;
+function fechaLog() {
+  if(fecha == false) {
+    alert("Seu log contém horas incorretas");
+    return false;
+  }
+    
+  if(confirm("Tem certeza que deseja fechar o LOG?")) {
+    document.iForm.action = "com_Fecha_Log.jsp";
+    document.iForm.submit();
+    return true;
+  }
+
+  return false;
+}
+
+var p_reprova;
+function aprovacao(st, valor, saldo) {
+  if( confirm("Deseja " + st + " esse log?") ) {
+     var vheight;
+      vheight=430;
+     var vwidth;
+      vwidth= 600;
+     var vtop;
+        vtop= (screen.availheight-vheight)/2;
+     var vleft;
+        vleft= (screen.availwidth-vwidth)/2;
+
+     if(st == "REPROVAR") 
+        window.showModalDialog("lovMotivoReprovacao_Log.jsp",window,"edge:raised;dialogLeft:" + vleft + "px;dialogHeight:" + vheight + "px;dialogWidth:" + vwidth + "px;dialogTop:" + vtop + "px;center:yes;status:no;unadorned:no;dialogHide:no;resizable:no;help:no;scroll:no");
+     else {
+       p_reprova = 1;
+       var saldo50  = document.iForm.FUNC_NR_SALDO_BHE50.value;
+       var saldo100 = document.iForm.FUNC_NR_SALDO_BHE100.value;
+       if( (parseFloat(saldo50)+parseFloat(saldo100)) != parseFloat(saldo) ) {
+         p_reprova = 0;
+         alert("Saldo do BHE incorreto!");
+       }
+     }
+
+     if(p_reprova > 0) {
+        document.iForm.action = "com_Log_Adm.jsp";
+        document.iForm.status_log.value = valor;
+        document.iForm.submit();
+        return true;
+     }
+  }
+  return false;
+}
+
+</script>
+<title>Triscal</title>
+<script language="javascript">
+function setaclicou()
+{  var elemento;
+   var bPossuiForm = false;
+   var bPossuiCampo = false;
+   for(elemento in document)
+   {  if(elemento == "iForm")
+      {  bPossuiForm = true; }
+   }
+   if(bPossuiForm)
+   {  for(elemento in document.iForm)
+      {  if(elemento == "clicou")
+         {  bPossuiCampo = true; }
+      }
+   }
+   if(bPossuiCampo)
+   {  document.iForm.clicou.value = "N"; }
+
+   setaclicou2();
+   return true;
+}
+
+function setaclicou2()
+{  var elemento2;
+   var bPossuiForm2 = false;
+   var bPossuiCampo2 = false;
+   for(elemento2 in document)
+   {  if(elemento2 == "iNavega")
+      {  bPossuiForm2 = true; }
+   }
+   if(bPossuiForm2)
+   {  for(elemento2 in document.iNavega)
+      {  if(elemento2 == "INAVEGACLICOU")
+         {  bPossuiCampo2 = true; }
+      }
+   }
+   if(bPossuiCampo2)
+   {  document.iNavega.INAVEGACLICOU.value = "N"; }
+   return true;
+}
+
+function FNCNAVEGA( destino ) {
+   if(document.iNavega.INAVEGACLICOU.value == "N")
+   {  document.iNavega.INAVEGACLICOU.value = "S";
+      setTimeout('setaclicou2()', 15000);
+      if(destino.substring(0,4) == "REL*") {
+         window.open("chamareport.jsp?rel="+destino.substring(4),"relatorio","toolbar=no,location=no,directories=no,menubar=yes,scrollbars=yes,status=no,width=700,height=550,resizable=yes");
+      }
+      else
+         parent.location.href = destino;
+      //return true;
+   }
+   //return false;
+}
+
+function TESTAFNCNAVEGA( destino )
+{
+   if(document.iNavega.INAVEGACLICOU.value == "N")
+   {  //document.iNavega.INAVEGACLICOU.value = "S";
+      //setTimeout('setaclicou2()', 15000);
+      //document.location.href = destino;
+      return true;
+   }
+   return false;
+}
+
+function carrega()
+{  setaclicou(); //03/12/2001
+   return true;
+}
+function fnc_onunload() {
+   //alert("goodbye1");
+   if (navigator.appVersion.indexOf('MSIE') != -1)
+   {  var pagina = "com_libconn.jsp?p=Tela_Log.jsp";
+      if((window.screenLeft > 10000) && (window.screenTop > 10000))
+      {  window.open(pagina, "lib", "toolbar=no,location=no,directories=no,menubar=no,scrollbars=no,status=no,top=2000,left=2000,width=10,height=10,resizable=no");
+      }
+   }
+   return true;
+}
+</script></head>
+<!-- Inicio includebody.jsp -->
+
+<body id="iBody" topmargin="0" leftmargin="0" onload="carrega()" onunload="fnc_onunload()" bgcolor="#ffffff" link="#000000" text="#000000" vlink="#000000" alink="#000000">
+<a name="topo"></a>
+<!-- Fim includebody.jsp -->
+<!-- Inicio includeheader.jsp -->
+
+<!-- | box info | -->
+
+<!-- | end : box info | -->
+
+<!-- | box banner | --> 
+<div id="bannerOp">
+</div>
+<!-- | end : box banner | -->
+
+<table border="0" cellpadding="0" cellspacing="0" height="100%" width="780"><tbody><tr height="79"><td colspan="2"><!--| cabeçalho |-->
+<table border="0" height="80px" width="100%"><tbody><tr><td colspan="2"><img src="Tela_Log.jsp_arquivos/pixel.gif" height="5px"></td></tr>
+   <tr>
+    <td width="100%"><img src="Tela_Log.jsp_arquivos/LogoCommit120.jpg"></td>
+    <td cellpadding="0" class="headerOp" height="100%" valign="baseline" align="right">
+     <img src="Tela_Log.jsp_arquivos/pixel.gif" height="1px" width="550px">
+     <span style="font-family:Arial; color:#BD1010; font-size:8pt; font-weight:bold;">
+     <a href="http://www.triscal.com.br/" target="_parent" name="home" style="color: rgb(189, 16, 16);">HOME</a>&nbsp;|&nbsp;
+       <a href="javascript:%20void%20FNCNAVEGA(%20'TelaInicial.jsp'%20);" style="color: rgb(189, 16, 16);" onclick="return TESTAFNCNAVEGA('TelaInicial.jsp');">TELA INICIAL</a>&nbsp;|&nbsp;
+       <a href="javascript:%20void%20window.open('http://www.triscal.com.br/portalcom/forms.jsp?s=-1606771645','SISADM','width=1,%20height=1,%20left=20000,%20top=20000,menubar=no,%20top=yes'%20);" style="color: rgb(189, 16, 16);">FORMS (SISADM)</a>&nbsp;|&nbsp;
+       <!--a href="https://www.triscal.com.br:7779/pls/orasso/orasso.wwsso_app_user_mgr.change_password?p_done_url=http%3A%2F%2Fwww.triscal.com.br%2Fportalcom%2F" style="color: #BD1010;" >ALT.SENHA</a>&nbsp;|&nbsp;-->
+       <a href="javascript:%20void%20FNCNAVEGA(%20'signout.jsp'%20);" style="color: rgb(189, 16, 16);">LOGOUT</a>
+       <!--a href="javascript: void FNCNAVEGA( 'com_logout.jsp' );"  style="color:#BD1010;" onClick="return TESTAFNCNAVEGA( 'com_logout.jsp' )">SAIR</a-->
+    &nbsp;&nbsp;      
+     </span>
+    </td>
+   </tr>
+   <tr>
+    <td colspan="2"><img src="Tela_Log.jsp_arquivos/footer.gif" height="3px" width="100%"></td>
+   </tr>
+   <tr>
+
+    <td colspan="2" style="color: rgb(0, 0, 0); background-color: rgb(204, 204, 153); font-family: Helvetica,Verdana,Arial; font-size: 7pt;" align="center">07:30 | Quinta-feira, 26 de Dezembro de 02013 | CCHAMMA</td>
+   </tr>
+  </tbody></table>
+  </td>
+  </tr>
+  <!-- Fim includeheader.jsp -->
+<!-- Inicio includemenuesqini.jsp -->
+<tr>
+<form name="iNavega" method="post" action=""></form>
+<input name="INAVEGACLICOU" value="N" type="hidden">
+
+<td class="menuOp" valign="top" width="166">
+   <!--| coluna esquerda |-->
+<img src="Tela_Log.jsp_arquivos/pixel.gif" height="1" width="1"><br>
+<table border="0" cellpadding="0" cellspacing="0" width="166">
+	<tbody><tr>
+	 <td width="6"><img src="Tela_Log.jsp_arquivos/pixel.htm" height="1" width="6"></td>
+	 <td width="160"><img src="Tela_Log.jsp_arquivos/pixel.htm" height="1" width="160"><br>
+	 	
+        
+         <table border="0" cellpadding="0" cellspacing="0">
+		<tbody><tr>
+		<!--td width="10"><img src="/portalcom/imagesportalcom/images/pixel.gif" width="10" height="1"></td-->
+		<td width="150"><img src="Tela_Log.jsp_arquivos/pixel.gif" height="1" width="150"><br>
+			<table border="0" cellpadding="0" cellspacing="0" width="150">
+	<tbody><tr>
+			<td width="11"><img src="Tela_Log.jsp_arquivos/seta_nor.gif" name="seta25"></td>
+			<td width="7"><img src="Tela_Log.jsp_arquivos/pixel.gif" height="1" width="7"></td>
+			<td width="100%"><a href="javascript:%20void%20FNCNAVEGA(%20'redirmain.jsp'%20)" onclick="return TESTAFNCNAVEGA( 'redirmain.jsp' )" class="menuAzul" onmouseover="swapImage('seta25','','/portalcom/imagesportalcom/images/layout/seta_ovr.gif',1);window.status='TELA INICIAL';return true" onmouseout="swapImgRestore();window.status='';return true">TELA INICIAL</a></td>
+			</tr>
+			<tr>
+			<td colspan="3"><img src="Tela_Log.jsp_arquivos/pixel.gif" height="11" width="1"></td>
+			</tr>
+	<tr>
+			<td width="11"><img src="Tela_Log.jsp_arquivos/seta_vis.gif" name="seta26"></td>
+			<td width="7"><img src="Tela_Log.jsp_arquivos/pixel.gif" height="1" width="7"></td>
+			<td width="100%"><a href="javascript:%20void%20FNCNAVEGA(%20'Tela_Log.jsp'%20)" onclick="return TESTAFNCNAVEGA( 'Tela_Log.jsp' )" class="menuAmarelo" onmouseover="swapImage('seta26','','/portalcom/imagesportalcom/images/layout/seta_ovr.gif',1);window.status='Log Commit';return true" onmouseout="swapImgRestore();window.status='';return true">Log Commit</a></td>
+			</tr>
+			<tr>
+			<td colspan="3"><img src="Tela_Log.jsp_arquivos/pixel.gif" height="11" width="1"></td>
+			</tr>
+	<tr>
+			<td width="11"><img src="Tela_Log.jsp_arquivos/seta_nor.gif" name="seta27"></td>
+			<td width="7"><img src="Tela_Log.jsp_arquivos/pixel.gif" height="1" width="7"></td>
+			<td width="100%"><a href="javascript:%20void%20FNCNAVEGA(%20'Logs_Pendentes.jsp'%20)" onclick="return TESTAFNCNAVEGA( 'Logs_Pendentes.jsp' )" class="menuAzul" onmouseover="swapImage('seta27','','/portalcom/imagesportalcom/images/layout/seta_ovr.gif',1);window.status='Logs Pendentes';return true" onmouseout="swapImgRestore();window.status='';return true">Logs Pendentes</a></td>
+			</tr>
+			<tr>
+			<td colspan="3"><img src="Tela_Log.jsp_arquivos/pixel.gif" height="11" width="1"></td>
+			</tr>
+	<tr>
+			<td width="11"><img src="Tela_Log.jsp_arquivos/seta_nor.gif" name="seta28"></td>
+			<td width="7"><img src="Tela_Log.jsp_arquivos/pixel.gif" height="1" width="7"></td>
+			<td width="100%"><a href="javascript:%20void%20FNCNAVEGA(%20'Visualiza_Logs.jsp'%20)" onclick="return TESTAFNCNAVEGA( 'Visualiza_Logs.jsp' )" class="menuAzul" onmouseover="swapImage('seta28','','/portalcom/imagesportalcom/images/layout/seta_ovr.gif',1);window.status='Visualização de Logs';return true" onmouseout="swapImgRestore();window.status='';return true">Visualização de Logs</a></td>
+			</tr>
+			<tr>
+			<td colspan="3"><img src="Tela_Log.jsp_arquivos/pixel.gif" height="11" width="1"></td>
+			</tr>
+	<tr>
+			<td width="11"><img src="Tela_Log.jsp_arquivos/seta_nor.gif" name="seta29"></td>
+			<td width="7"><img src="Tela_Log.jsp_arquivos/pixel.gif" height="1" width="7"></td>
+			<td width="100%"><a href="javascript:mostra(idNivel1_idMenuPai1245)" class="menuAzul" onmouseover="swapImage('seta29','','/portalcom/imagesportalcom/images/layout/seta_ovr.gif',1);window.status='Plano Operadora';return true" onmouseout="swapImgRestore();window.status='';return true">Plano Operadora</a></td>
+			</tr>
+			<tr>
+			<td colspan="3">
+			<span id="idNivel1_idMenuPai1245" style="display:'none'">
+				<table border="0" cellpadding="0" cellspacing="0">
+				<tbody><tr>
+				<td width="18"><img src="Tela_Log.jsp_arquivos/pixel.gif" height="1" width="18"></td>
+				<td bgcolor="#660000" valign="bottom" width="1"><img src="Tela_Log.jsp_arquivos/pixelazulescuro.gif" height="6" width="1"></td>
+				<td>
+					<table border="0" cellpadding="0" cellspacing="0" width="100%">
+					<tbody><tr><td colspan="3"><img src="Tela_Log.jsp_arquivos/pixel.gif" height="4" width="1"></td></tr>
+			<tr>
+					<td width="8"><img src="Tela_Log.jsp_arquivos/pixelazul.gif" height="1" width="8"></td>
+					<td width="6"><img src="Tela_Log.jsp_arquivos/pixel.gif" height="1" width="6"></td>
+					<td width="100%"><a href="javascript:%20void%20FNCNAVEGA(%20'com_PlanoContaMes_Browse.jsp'%20)" onclick="return TESTAFNCNAVEGA( 'com_PlanoContaMes_Browse.jsp' )" class="menuAzul" onmouseover="window.status='Gera Conta';return true" onmouseout="window.status='';return true">Gera Conta</a></td>
+					</tr>
+			<tr>
+					<td width="8"><img src="Tela_Log.jsp_arquivos/pixelazul.gif" height="1" width="8"></td>
+					<td width="6"><img src="Tela_Log.jsp_arquivos/pixel.gif" height="1" width="6"></td>
+					<td width="100%"><a href="javascript:%20void%20FNCNAVEGA(%20'com_PlanoConta_Browse.jsp'%20)" onclick="return TESTAFNCNAVEGA( 'com_PlanoConta_Browse.jsp' )" class="menuAzul" onmouseover="window.status='Conta Usuário';return true" onmouseout="window.status='';return true">Conta Usuário</a></td>
+					</tr>
+			<tr>
+					<td width="8"><img src="Tela_Log.jsp_arquivos/pixelazul.gif" height="1" width="8"></td>
+					<td width="6"><img src="Tela_Log.jsp_arquivos/pixel.gif" height="1" width="6"></td>
+					<td width="100%"><a href="javascript:%20void%20FNCNAVEGA(%20'com_PlanoOperadora_Browse.jsp'%20)" onclick="return TESTAFNCNAVEGA( 'com_PlanoOperadora_Browse.jsp' )" class="menuAzul" onmouseover="window.status='Operadora';return true" onmouseout="window.status='';return true">Operadora</a></td>
+					</tr>
+					</tbody></table>
+				</td>
+				</tr>
+				</tbody></table>
+				</span>
+			</td>
+			</tr>
+			<tr>
+			<td colspan="3"><img src="Tela_Log.jsp_arquivos/pixel.gif" height="11" width="1"></td>
+			</tr>
+	<tr>
+			<td width="11"><img src="Tela_Log.jsp_arquivos/seta_nor.gif" name="seta30"></td>
+			<td width="7"><img src="Tela_Log.jsp_arquivos/pixel.gif" height="1" width="7"></td>
+			<td width="100%"><a href="javascript:%20void%20FNCNAVEGA(%20'com_PlanoExtrato.jsp'%20)" onclick="return TESTAFNCNAVEGA( 'com_PlanoExtrato.jsp' )" class="menuAzul" onmouseover="swapImage('seta30','','/portalcom/imagesportalcom/images/layout/seta_ovr.gif',1);window.status='Plano Extrato';return true" onmouseout="swapImgRestore();window.status='';return true">Plano Extrato</a></td>
+			</tr>
+			<tr>
+			<td colspan="3"><img src="Tela_Log.jsp_arquivos/pixel.gif" height="11" width="1"></td>
+			</tr>
+	<tr>
+			<td width="11"><img src="Tela_Log.jsp_arquivos/seta_nor.gif" name="seta31"></td>
+			<td width="7"><img src="Tela_Log.jsp_arquivos/pixel.gif" height="1" width="7"></td>
+			<td width="100%"><a href="javascript:%20void%20FNCNAVEGA(%20'com_AltSenha.jsp'%20)" onclick="return TESTAFNCNAVEGA( 'com_AltSenha.jsp' )" class="menuAzul" onmouseover="swapImage('seta31','','/portalcom/imagesportalcom/images/layout/seta_ovr.gif',1);window.status='ALTERAÇÃO DE SENHA';return true" onmouseout="swapImgRestore();window.status='';return true">ALTERAÇÃO DE SENHA</a></td>
+			</tr>
+			<tr>
+			<td colspan="3"><img src="Tela_Log.jsp_arquivos/pixel.gif" height="11" width="1"></td>
+			</tr>
+	<tr>
+			<td width="11"><img src="Tela_Log.jsp_arquivos/seta_nor.gif" name="seta32"></td>
+			<td width="7"><img src="Tela_Log.jsp_arquivos/pixel.gif" height="1" width="7"></td>
+			<td width="100%"><a href="javascript:%20void%20FNCNAVEGA(%20'com_Forum_Browse.jsp'%20)" onclick="return TESTAFNCNAVEGA( 'com_Forum_Browse.jsp' )" class="menuAzul" onmouseover="swapImage('seta32','','/portalcom/imagesportalcom/images/layout/seta_ovr.gif',1);window.status='Forum Commit';return true" onmouseout="swapImgRestore();window.status='';return true">Forum Commit</a></td>
+			</tr>
+			<tr>
+			<td colspan="3"><img src="Tela_Log.jsp_arquivos/pixel.gif" height="11" width="1"></td>
+			</tr>
+	<tr>
+			<td width="11"><img src="Tela_Log.jsp_arquivos/seta_nor.gif" name="seta33"></td>
+			<td width="7"><img src="Tela_Log.jsp_arquivos/pixel.gif" height="1" width="7"></td>
+			<td width="100%"><a href="javascript:%20void%20FNCNAVEGA(%20'com_ChatSala.jsp'%20)" onclick="return TESTAFNCNAVEGA( 'com_ChatSala.jsp' )" class="menuAzul" onmouseover="swapImage('seta33','','/portalcom/imagesportalcom/images/layout/seta_ovr.gif',1);window.status='Sala de Chat';return true" onmouseout="swapImgRestore();window.status='';return true">Sala de Chat</a></td>
+			</tr>
+			<tr>
+			<td colspan="3"><img src="Tela_Log.jsp_arquivos/pixel.gif" height="11" width="1"></td>
+			</tr>
+	<tr>
+			<td width="11"><img src="Tela_Log.jsp_arquivos/seta_nor.gif" name="seta34"></td>
+			<td width="7"><img src="Tela_Log.jsp_arquivos/pixel.gif" height="1" width="7"></td>
+			<td width="100%"><a href="javascript:mostra(idNivel1_idMenuPai1202)" class="menuAzul" onmouseover="swapImage('seta34','','/portalcom/imagesportalcom/images/layout/seta_ovr.gif',1);window.status='Relatorios';return true" onmouseout="swapImgRestore();window.status='';return true">Relatorios</a></td>
+			</tr>
+			<tr>
+			<td colspan="3">
+			<span id="idNivel1_idMenuPai1202" style="display:'none'">
+				<table border="0" cellpadding="0" cellspacing="0">
+				<tbody><tr>
+				<td width="18"><img src="Tela_Log.jsp_arquivos/pixel.gif" height="1" width="18"></td>
+				<td bgcolor="#660000" valign="bottom" width="1"><img src="Tela_Log.jsp_arquivos/pixelazulescuro.gif" height="6" width="1"></td>
+				<td>
+					<table border="0" cellpadding="0" cellspacing="0" width="100%">
+					<tbody><tr><td colspan="3"><img src="Tela_Log.jsp_arquivos/pixel.gif" height="4" width="1"></td></tr>
+			<tr>
+					<td width="8"><img src="Tela_Log.jsp_arquivos/pixelazul.gif" height="1" width="8"></td>
+					<td width="6"><img src="Tela_Log.jsp_arquivos/pixel.gif" height="1" width="6"></td>
+					<td width="100%"><a href="javascript:%20void%20FNCNAVEGA(%20'com_Relatorios.jsp'%20)" onclick="return TESTAFNCNAVEGA( 'com_Relatorios.jsp' )" class="menuAzul" onmouseover="window.status='Chamada de Relatorios';return true" onmouseout="window.status='';return true">Chamada de Relatorios</a></td>
+					</tr>
+					</tbody></table>
+				</td>
+				</tr>
+				</tbody></table>
+				</span>
+			</td>
+			</tr>
+			<tr>
+			<td colspan="3"><img src="Tela_Log.jsp_arquivos/pixel.gif" height="11" width="1"></td>
+			</tr>
+	<tr>
+			<td width="11"><img src="Tela_Log.jsp_arquivos/seta_nor.gif" name="seta35"></td>
+			<td width="7"><img src="Tela_Log.jsp_arquivos/pixel.gif" height="1" width="7"></td>
+			<td width="100%"><a href="javascript:%20void%20FNCNAVEGA(%20'com_ChatLeMsg_Array.jsp'%20)" onclick="return TESTAFNCNAVEGA( 'com_ChatLeMsg_Array.jsp' )" class="menuAzul" onmouseover="swapImage('seta35','','/portalcom/imagesportalcom/images/layout/seta_ovr.gif',1);window.status='Controle do Chat';return true" onmouseout="swapImgRestore();window.status='';return true">Controle do Chat</a></td>
+			</tr>
+			<tr>
+			<td colspan="3"><img src="Tela_Log.jsp_arquivos/pixel.gif" height="11" width="1"></td>
+			</tr>
+	<tr>
+			<td width="11"><img src="Tela_Log.jsp_arquivos/seta_nor.gif" name="seta36"></td>
+			<td width="7"><img src="Tela_Log.jsp_arquivos/pixel.gif" height="1" width="7"></td>
+			<td width="100%"><a href="javascript:mostra(idNivel1_idMenuPai513)" class="menuAzul" onmouseover="swapImage('seta36','','/portalcom/imagesportalcom/images/layout/seta_ovr.gif',1);window.status='HOME ADM PORTAL';return true" onmouseout="swapImgRestore();window.status='';return true">HOME ADM PORTAL</a></td>
+			</tr>
+			<tr>
+			<td colspan="3">
+			<span id="idNivel1_idMenuPai513" style="display:'none'">
+				<table border="0" cellpadding="0" cellspacing="0">
+				<tbody><tr>
+				<td width="18"><img src="Tela_Log.jsp_arquivos/pixel.gif" height="1" width="18"></td>
+				<td bgcolor="#660000" valign="bottom" width="1"><img src="Tela_Log.jsp_arquivos/pixelazulescuro.gif" height="6" width="1"></td>
+				<td>
+					<table border="0" cellpadding="0" cellspacing="0" width="100%">
+					<tbody><tr><td colspan="3"><img src="Tela_Log.jsp_arquivos/pixel.gif" height="4" width="1"></td></tr>
+			<tr>
+					<td width="8"><img src="Tela_Log.jsp_arquivos/pixelazul.gif" height="1" width="8"></td>
+					<td width="6"><img src="Tela_Log.jsp_arquivos/pixel.gif" height="1" width="6"></td>
+					<td width="100%"><a href="javascript:mostra(idNivel2_idMenuPai526)" class="menuAzul" onmouseover="window.status='Cadastros Básicos';return true" onmouseout="window.status='';return true">Cadastros Básicos</a></td>
+					</tr>
+			<tr>
+			<td colspan="3">
+			<span id="idNivel2_idMenuPai526" style="display:'none'">
+				<table border="0" cellpadding="0" cellspacing="0">
+				<tbody><tr>
+				<td width="17"><img src="Tela_Log.jsp_arquivos/pixel.gif" height="1" width="17"></td>
+				<td bgcolor="#660000" valign="bottom" width="1"><img src="Tela_Log.jsp_arquivos/pixelazulescuro.gif" height="6" width="1"></td>
+				<td>
+					<table border="0" cellpadding="0" cellspacing="0" width="100%">
+					<tbody><tr><td colspan="3"><img src="Tela_Log.jsp_arquivos/pixel.gif" height="4" width="1"></td></tr>
+			<tr>
+					<td width="8"><img src="Tela_Log.jsp_arquivos/pixelazul.gif" height="1" width="8"></td>
+					<td width="6"><img src="Tela_Log.jsp_arquivos/pixel.gif" height="1" width="6"></td>
+					<td width="100%"><a href="javascript:%20void%20FNCNAVEGA(%20'com_CadParamAdmin_Browse.jsp'%20)" onclick="return TESTAFNCNAVEGA( 'com_CadParamAdmin_Browse.jsp' )" class="menuAzul" onmouseover="window.status='Parâmetros Admin.';return true" onmouseout="window.status='';return true">Parâmetros Admin.</a></td>
+					</tr>
+			<tr>
+					<td width="8"><img src="Tela_Log.jsp_arquivos/pixelazul.gif" height="1" width="8"></td>
+					<td width="6"><img src="Tela_Log.jsp_arquivos/pixel.gif" height="1" width="6"></td>
+					<td width="100%"><a href="javascript:%20void%20FNCNAVEGA(%20'com_CadParametrosGerais_Edit.jsp'%20)" onclick="return TESTAFNCNAVEGA( 'com_CadParametrosGerais_Edit.jsp' )" class="menuAzul" onmouseover="window.status='Cadastro de Parâmetros Gerais';return true" onmouseout="window.status='';return true">Cadastro de Parâmetros Gerais</a></td>
+					</tr>
+			<tr>
+					<td width="8"><img src="Tela_Log.jsp_arquivos/pixelazul.gif" height="1" width="8"></td>
+					<td width="6"><img src="Tela_Log.jsp_arquivos/pixel.gif" height="1" width="6"></td>
+					<td width="100%"><a href="javascript:%20void%20FNCNAVEGA(%20'com_CadFeriado_Browse.jsp'%20)" onclick="return TESTAFNCNAVEGA( 'com_CadFeriado_Browse.jsp' )" class="menuAzul" onmouseover="window.status='Cadastro de Feriado';return true" onmouseout="window.status='';return true">Cadastro de Feriado</a></td>
+					</tr>
+			<tr>
+					<td width="8"><img src="Tela_Log.jsp_arquivos/pixelazul.gif" height="1" width="8"></td>
+					<td width="6"><img src="Tela_Log.jsp_arquivos/pixel.gif" height="1" width="6"></td>
+					<td width="100%"><a href="javascript:%20void%20FNCNAVEGA(%20'com_CadNewsSecao.jsp'%20)" onclick="return TESTAFNCNAVEGA( 'com_CadNewsSecao.jsp' )" class="menuAzul" onmouseover="window.status='Cadastro de Seção News';return true" onmouseout="window.status='';return true">Cadastro de Seção News</a></td>
+					</tr>
+			<tr>
+					<td width="8"><img src="Tela_Log.jsp_arquivos/pixelazul.gif" height="1" width="8"></td>
+					<td width="6"><img src="Tela_Log.jsp_arquivos/pixel.gif" height="1" width="6"></td>
+					<td width="100%"><a href="javascript:%20void%20FNCNAVEGA(%20'com_CadNews_Browse.jsp'%20)" onclick="return TESTAFNCNAVEGA( 'com_CadNews_Browse.jsp' )" class="menuAzul" onmouseover="window.status='Cadastro de News';return true" onmouseout="window.status='';return true">Cadastro de News</a></td>
+					</tr>
+					</tbody></table>
+				</td>
+				</tr>
+				</tbody></table>
+				</span>
+			</td>
+			</tr>
+			<tr>
+					<td width="8"><img src="Tela_Log.jsp_arquivos/pixelazul.gif" height="1" width="8"></td>
+					<td width="6"><img src="Tela_Log.jsp_arquivos/pixel.gif" height="1" width="6"></td>
+					<td width="100%"><a href="javascript:mostra(idNivel2_idMenuPai514)" class="menuAzul" onmouseover="window.status='Controle de Acesso';return true" onmouseout="window.status='';return true">Controle de Acesso</a></td>
+					</tr>
+			<tr>
+			<td colspan="3">
+			<span id="idNivel2_idMenuPai514" style="display:'none'">
+				<table border="0" cellpadding="0" cellspacing="0">
+				<tbody><tr>
+				<td width="17"><img src="Tela_Log.jsp_arquivos/pixel.gif" height="1" width="17"></td>
+				<td bgcolor="#660000" valign="bottom" width="1"><img src="Tela_Log.jsp_arquivos/pixelazulescuro.gif" height="6" width="1"></td>
+				<td>
+					<table border="0" cellpadding="0" cellspacing="0" width="100%">
+					<tbody><tr><td colspan="3"><img src="Tela_Log.jsp_arquivos/pixel.gif" height="4" width="1"></td></tr>
+			<tr>
+					<td width="8"><img src="Tela_Log.jsp_arquivos/pixelazul.gif" height="1" width="8"></td>
+					<td width="6"><img src="Tela_Log.jsp_arquivos/pixel.gif" height="1" width="6"></td>
+					<td width="100%"><a href="javascript:%20void%20FNCNAVEGA(%20'com_CadMenu_Browse.jsp'%20)" onclick="return TESTAFNCNAVEGA( 'com_CadMenu_Browse.jsp' )" class="menuAzul" onmouseover="window.status='Menus';return true" onmouseout="window.status='';return true">Menus</a></td>
+					</tr>
+			<tr>
+					<td width="8"><img src="Tela_Log.jsp_arquivos/pixelazul.gif" height="1" width="8"></td>
+					<td width="6"><img src="Tela_Log.jsp_arquivos/pixel.gif" height="1" width="6"></td>
+					<td width="100%"><a href="javascript:%20void%20FNCNAVEGA(%20'com_ConsHistoricoLogin_Browse.jsp'%20)" onclick="return TESTAFNCNAVEGA( 'com_ConsHistoricoLogin_Browse.jsp' )" class="menuAzul" onmouseover="window.status='Histórico de Login';return true" onmouseout="window.status='';return true">Histórico de Login</a></td>
+					</tr>
+			<tr>
+					<td width="8"><img src="Tela_Log.jsp_arquivos/pixelazul.gif" height="1" width="8"></td>
+					<td width="6"><img src="Tela_Log.jsp_arquivos/pixel.gif" height="1" width="6"></td>
+					<td width="100%"><a href="javascript:%20void%20FNCNAVEGA(%20'com_ConsHistoricoBD.jsp'%20)" onclick="return TESTAFNCNAVEGA( 'com_ConsHistoricoBD.jsp' )" class="menuAzul" onmouseover="window.status='Sessões Banco de Dados';return true" onmouseout="window.status='';return true">Sessões Banco de Dados</a></td>
+					</tr>
+			<tr>
+					<td width="8"><img src="Tela_Log.jsp_arquivos/pixelazul.gif" height="1" width="8"></td>
+					<td width="6"><img src="Tela_Log.jsp_arquivos/pixel.gif" height="1" width="6"></td>
+					<td width="100%"><a href="javascript:%20void%20FNCNAVEGA(%20'com_ConsLogErros_Browse.jsp'%20)" onclick="return TESTAFNCNAVEGA( 'com_ConsLogErros_Browse.jsp' )" class="menuAzul" onmouseover="window.status='Log de Erros';return true" onmouseout="window.status='';return true">Log de Erros</a></td>
+					</tr>
+			<tr>
+					<td width="8"><img src="Tela_Log.jsp_arquivos/pixelazul.gif" height="1" width="8"></td>
+					<td width="6"><img src="Tela_Log.jsp_arquivos/pixel.gif" height="1" width="6"></td>
+					<td width="100%"><a href="javascript:%20void%20FNCNAVEGA(%20'com_CadTrataErro_Edit.jsp'%20)" onclick="return TESTAFNCNAVEGA( 'com_CadTrataErro_Edit.jsp' )" class="menuAzul" onmouseover="window.status='Tratamento de Erro';return true" onmouseout="window.status='';return true">Tratamento de Erro</a></td>
+					</tr>
+			<tr>
+					<td width="8"><img src="Tela_Log.jsp_arquivos/pixelazul.gif" height="1" width="8"></td>
+					<td width="6"><img src="Tela_Log.jsp_arquivos/pixel.gif" height="1" width="6"></td>
+					<td width="100%"><a href="javascript:%20void%20FNCNAVEGA(%20'com_CadUsu_Browse.jsp'%20)" onclick="return TESTAFNCNAVEGA( 'com_CadUsu_Browse.jsp' )" class="menuAzul" onmouseover="window.status='Usuários';return true" onmouseout="window.status='';return true">Usuários</a></td>
+					</tr>
+ </tbody></table>
+		</td>
+		</tr>
+		</tbody></table>
+ </span></td></tr></tbody></table>
+		</td>
+		</tr>
+		</tbody></table>
+ </span></td></tr></tbody></table>
+		</td>
+		</tr>
+		</tbody></table>
+
+         <!-- | end : menu | -->
+	 </td>
+	</tr>
+      </tbody></table>      
+   <!--| end : coluna esquerda |-->
+</td>
+<td valign="top" width="604">
+ 
+<!-- Fim includemenuesqini.jsp -->
+
+
+	<!--| coluna direita [conteúdo] |-->
+
+	<table border="0" cellpadding="0" cellspacing="0" height="100%" width="100%">
+
+	<tbody><tr>
+	<td valign="top" width="4">
+  </td>
+	<td valign="top" width="600">
+		<!-- |  topo | -->
+		<table border="0" cellpadding="0" cellspacing="0" width="100%">
+		<tbody><tr>
+		<td width="100%">
+			<table border="0" cellpadding="0" cellspacing="0" width="100%">
+			<tbody><tr>
+			<td width="6"><img src="Tela_Log.jsp_arquivos/pixel.gif" height="11" width="6"></td>
+			<td class="txtHeaderLink" width="100%"><!-- | txt | -->Log<!-- | end : txt | --></td>
+			</tr>
+			<tr>
+			<td colspan="2"><!--img src="/portalcom/imagesportalcom/images/layout/pontilhado.gif"--></td>
+			</tr>
+			</tbody></table>
+		</td>
+		</tr>
+		<tr>
+		<td><img src="Tela_Log.jsp_arquivos/pixel.gif" height="4" width="1"></td>
+		</tr>
+		</tbody></table>
+		<!-- | end : topo | -->
+		<!--| estrutura do conteúdo |-->
+		<table border="0" cellpadding="0" cellspacing="0" width="470">
+		<tbody><tr>
+		<td colspan="2"><img src="Tela_Log.jsp_arquivos/pixel.gif" height="18" width="1"></td>
+		</tr>
+		<tr>
+		<td width="16"><img src="Tela_Log.jsp_arquivos/pixel.gif" height="1" width="16"></td>
+		<td width="100%">
+			<!-- | conteúdo | -->
+			<table border="0" cellpadding="0" cellspacing="0" width="460">
+			<tbody><tr>
+			<td valign="top" width="13"></td>
+			<td width="7"><img src="Tela_Log.jsp_arquivos/pixel.gif" height="1" width="7"></td>
+			<td class="txtChumbo">
+	
+
+
+
+
+
+<!-- Início do DIV da impressão -->
+<div id="impressao">
+
+<!--        Início do Cabeçalho Commit          -->
+<table border="0" cellpadding="4" cellspacing="0" width="560">
+  <tbody><tr>
+    <td class="txtBlackBold" colspan="5" align="right">
+      <span class="txtBlackBold" style="font-size:9px">CGC: 68555473/0001-99</span>
+    </td>
+  </tr>
+  <tr>
+    <td class="txtBlackBold" align="left">
+      Resumo Periodo
+    </td>
+    <td colspan="4" align="left">
+      <span class="txtBlackBold">Nome:</span>
+      <img src="Tela_Log.jsp_arquivos/pixel.gif" height="1" width="5">
+      <span class="txtBlack">CHRISTIANO CHAMMA DE SOUZA CASTRO</span>
+    </td>
+  </tr>
+  <tr>
+    <td class="txtBlackBold" align="left">
+       Banco de Horas:
+    </td>
+    <td colspan="4" align="left">
+      <span class="txtBlackBold">BHE50%:</span>
+      <img src="Tela_Log.jsp_arquivos/pixel.gif" height="1" width="5">
+      <span class="txtBlack">174.5</span>
+      <span class="txtBlackBold">BHE100%:</span>
+      <img src="Tela_Log.jsp_arquivos/pixel.gif" height="1" width="5">
+      <span class="txtBlack">45.5</span>
+    </td>
+  </tr>
+
+  <form name="iForm2" method="post" action="Tela_Log.jsp" onsubmit="return validalog(this)"></form>
+   <input name="CD_FUNCIONARIO" value="47" type="HIDDEN">
+   <input name="CDG_USUR" value="CCHAMMA" type="HIDDEN">
+   <input name="FUNC_ADM" value="N" type="HIDDEN">
+    
+    <tr><td class="txtBlackBold" width="100" align="left">
+      Período <br>
+      <nobr>
+
+
+
+<select class="cmpSelect" name="PERIODO" size="1" onchange="javascript: void validalog_diretocombo();">
+<option class="cmpOption" value="">Criar Log</option>
+<option class="cmpOption" value="2013;12;1;15;1;Periodo">Periodo 1 - 12/2013
+</option>
+<option class="cmpOption" value="2013;11;2;15;2;Periodo">Periodo 2 - 11/2013
+</option>
+<option class="cmpOption" selected="selected" value="2013;11;1;15;1;Periodo">Periodo 1 - 11/2013
+</option>
+<option class="cmpOption" value="2013;10;2;15;2;Periodo">Periodo 2 - 10/2013
+</option>
+<option class="cmpOption" value="2013;10;1;15;1;Periodo">Periodo 1 - 10/2013
+</option>
+<option class="cmpOption" value="2013;9;2;15;2;Periodo">Periodo 2 - 9/2013
+</option>
+<option class="cmpOption" value="2013;9;1;15;1;Periodo">Periodo 1 - 9/2013
+</option>
+<option class="cmpOption" value="2013;8;2;15;2;Periodo">Periodo 2 - 8/2013
+</option>
+<option class="cmpOption" value="2013;8;1;15;1;Periodo">Periodo 1 - 8/2013
+</option>
+<option class="cmpOption" value="2013;7;2;15;2;Periodo">Periodo 2 - 7/2013
+</option>
+<option class="cmpOption" value="2013;7;1;15;1;Periodo">Periodo 1 - 7/2013
+</option>
+<option class="cmpOption" value="2013;6;2;15;2;Periodo">Periodo 2 - 6/2013
+</option>
+<option class="cmpOption" value="2013;6;1;15;1;Periodo">Periodo 1 - 6/2013
+</option>
+<option class="cmpOption" value="2013;5;2;15;2;Periodo">Periodo 2 - 5/2013
+</option>
+<option class="cmpOption" value="2013;5;1;15;1;Periodo">Periodo 1 - 5/2013
+</option>
+<option class="cmpOption" value="2013;4;2;15;2;Periodo">Periodo 2 - 4/2013
+</option>
+<option class="cmpOption" value="2013;4;1;15;1;Periodo">Periodo 1 - 4/2013
+</option>
+<option class="cmpOption" value="2013;3;2;15;2;Periodo">Periodo 2 - 3/2013
+</option>
+<option class="cmpOption" value="2013;3;1;15;1;Periodo">Periodo 1 - 3/2013
+</option>
+<option class="cmpOption" value="2013;2;2;15;2;Periodo">Periodo 2 - 2/2013
+</option>
+<option class="cmpOption" value="2013;2;1;15;1;Periodo">Periodo 1 - 2/2013
+</option>
+<option class="cmpOption" value="2013;1;2;15;2;Periodo">Periodo 2 - 1/2013
+</option>
+<option class="cmpOption" value="2013;1;1;15;1;Periodo">Periodo 1 - 1/2013
+</option>
+<option class="cmpOption" value="2012;12;2;15;2;Periodo">Periodo 2 - 12/2012
+</option>
+<option class="cmpOption" value="2012;12;1;15;1;Periodo">Periodo 1 - 12/2012
+</option>
+<option class="cmpOption" value="2012;11;2;15;2;Periodo">Periodo 2 - 11/2012
+</option>
+<option class="cmpOption" value="2012;11;1;15;1;Periodo">Periodo 1 - 11/2012
+</option>
+<option class="cmpOption" value="2012;10;2;15;2;Periodo">Periodo 2 - 10/2012
+</option>
+<option class="cmpOption" value="2012;10;1;15;1;Periodo">Periodo 1 - 10/2012
+</option>
+<option class="cmpOption" value="2012;9;2;15;2;Periodo">Periodo 2 - 9/2012
+</option>
+<option class="cmpOption" value="2012;9;1;15;1;Periodo">Periodo 1 - 9/2012
+</option>
+<option class="cmpOption" value="2012;8;2;15;2;Periodo">Periodo 2 - 8/2012
+</option>
+<option class="cmpOption" value="2012;8;1;15;1;Periodo">Periodo 1 - 8/2012
+</option>
+<option class="cmpOption" value="2012;7;2;15;2;Periodo">Periodo 2 - 7/2012
+</option>
+<option class="cmpOption" value="2012;7;1;15;1;Periodo">Periodo 1 - 7/2012
+</option>
+<option class="cmpOption" value="2012;6;2;15;2;Periodo">Periodo 2 - 6/2012
+</option>
+<option class="cmpOption" value="2012;6;1;15;1;Periodo">Periodo 1 - 6/2012
+</option>
+<option class="cmpOption" value="2012;5;2;15;2;Periodo">Periodo 2 - 5/2012
+</option>
+<option class="cmpOption" value="2012;5;1;15;1;Periodo">Periodo 1 - 5/2012
+</option>
+<option class="cmpOption" value="2012;4;2;15;2;Periodo">Periodo 2 - 4/2012
+</option>
+<option class="cmpOption" value="2012;4;1;15;1;Periodo">Periodo 1 - 4/2012
+</option>
+<option class="cmpOption" value="2012;3;2;15;2;Periodo">Periodo 2 - 3/2012
+</option>
+<option class="cmpOption" value="2012;3;1;15;1;Periodo">Periodo 1 - 3/2012
+</option>
+<option class="cmpOption" value="2012;2;2;15;2;Periodo">Periodo 2 - 2/2012
+</option>
+<option class="cmpOption" value="2012;2;1;15;1;Periodo">Periodo 1 - 2/2012
+</option>
+<option class="cmpOption" value="2012;1;2;15;2;Periodo">Periodo 2 - 1/2012
+</option>
+<option class="cmpOption" value="2012;1;1;15;1;Periodo">Periodo 1 - 1/2012
+</option>
+<option class="cmpOption" value="2011;12;2;15;2;Periodo">Periodo 2 - 12/2011
+</option>
+<option class="cmpOption" value="2011;12;1;15;1;Periodo">Periodo 1 - 12/2011
+</option>
+<option class="cmpOption" value="2011;11;2;15;2;Periodo">Periodo 2 - 11/2011
+</option>
+<option class="cmpOption" value="2011;11;1;15;1;Periodo">Periodo 1 - 11/2011
+</option>
+<option class="cmpOption" value="2011;10;2;15;2;Periodo">Periodo 2 - 10/2011
+</option>
+<option class="cmpOption" value="2011;10;1;15;1;Periodo">Periodo 1 - 10/2011
+</option>
+<option class="cmpOption" value="2011;9;2;15;2;Periodo">Periodo 2 - 9/2011
+</option>
+<option class="cmpOption" value="2011;9;1;15;1;Periodo">Periodo 1 - 9/2011
+</option>
+<option class="cmpOption" value="2011;8;2;15;2;Periodo">Periodo 2 - 8/2011
+</option>
+<option class="cmpOption" value="2011;8;1;15;1;Periodo">Periodo 1 - 8/2011
+</option>
+<option class="cmpOption" value="2011;7;2;15;2;Periodo">Periodo 2 - 7/2011
+</option>
+<option class="cmpOption" value="2011;7;1;15;1;Periodo">Periodo 1 - 7/2011
+</option>
+<option class="cmpOption" value="2011;6;2;15;2;Periodo">Periodo 2 - 6/2011
+</option>
+<option class="cmpOption" value="2011;6;1;15;1;Periodo">Periodo 1 - 6/2011
+</option>
+<option class="cmpOption" value="2011;5;2;15;2;Periodo">Periodo 2 - 5/2011
+</option>
+<option class="cmpOption" value="2011;5;1;15;1;Periodo">Periodo 1 - 5/2011
+</option>
+<option class="cmpOption" value="2011;4;2;15;2;Periodo">Periodo 2 - 4/2011
+</option>
+<option class="cmpOption" value="2011;4;1;15;1;Periodo">Periodo 1 - 4/2011
+</option>
+<option class="cmpOption" value="2011;3;2;15;2;Periodo">Periodo 2 - 3/2011
+</option>
+<option class="cmpOption" value="2011;3;1;15;1;Periodo">Periodo 1 - 3/2011
+</option>
+<option class="cmpOption" value="2011;2;2;15;2;Periodo">Periodo 2 - 2/2011
+</option>
+<option class="cmpOption" value="2011;2;1;15;1;Periodo">Periodo 1 - 2/2011
+</option>
+<option class="cmpOption" value="2011;1;2;15;2;Periodo">Periodo 2 - 1/2011
+</option>
+<option class="cmpOption" value="2011;1;1;15;1;Periodo">Periodo 1 - 1/2011
+</option>
+<option class="cmpOption" value="2010;12;2;15;2;Periodo">Periodo 2 - 12/2010
+</option>
+<option class="cmpOption" value="2010;12;1;15;1;Periodo">Periodo 1 - 12/2010
+</option>
+<option class="cmpOption" value="2010;11;2;15;2;Periodo">Periodo 2 - 11/2010
+</option>
+<option class="cmpOption" value="2010;11;1;15;1;Periodo">Periodo 1 - 11/2010
+</option>
+<option class="cmpOption" value="2010;10;2;15;2;Periodo">Periodo 2 - 10/2010
+</option>
+<option class="cmpOption" value="2010;10;1;15;1;Periodo">Periodo 1 - 10/2010
+</option>
+<option class="cmpOption" value="2010;9;2;15;2;Periodo">Periodo 2 - 9/2010
+</option>
+<option class="cmpOption" value="2010;9;1;15;1;Periodo">Periodo 1 - 9/2010
+</option>
+<option class="cmpOption" value="2010;8;2;15;2;Periodo">Periodo 2 - 8/2010
+</option>
+<option class="cmpOption" value="2010;8;1;15;1;Periodo">Periodo 1 - 8/2010
+</option>
+<option class="cmpOption" value="2010;7;2;15;2;Periodo">Periodo 2 - 7/2010
+</option>
+<option class="cmpOption" value="2010;7;1;15;1;Periodo">Periodo 1 - 7/2010
+</option>
+<option class="cmpOption" value="2010;6;2;15;2;Periodo">Periodo 2 - 6/2010
+</option>
+<option class="cmpOption" value="2010;6;1;15;1;Periodo">Periodo 1 - 6/2010
+</option>
+<option class="cmpOption" value="2010;5;2;15;2;Periodo">Periodo 2 - 5/2010
+</option>
+<option class="cmpOption" value="2010;5;1;15;1;Periodo">Periodo 1 - 5/2010
+</option>
+<option class="cmpOption" value="2010;4;2;15;2;Periodo">Periodo 2 - 4/2010
+</option>
+<option class="cmpOption" value="2010;4;1;15;1;Periodo">Periodo 1 - 4/2010
+</option>
+<option class="cmpOption" value="2010;3;2;15;2;Periodo">Periodo 2 - 3/2010
+</option>
+<option class="cmpOption" value="2010;3;1;15;1;Periodo">Periodo 1 - 3/2010
+</option>
+<option class="cmpOption" value="2010;2;2;15;2;Periodo">Periodo 2 - 2/2010
+</option>
+<option class="cmpOption" value="2010;2;1;15;1;Periodo">Periodo 1 - 2/2010
+</option>
+<option class="cmpOption" value="2010;1;2;15;2;Periodo">Periodo 2 - 1/2010
+</option>
+<option class="cmpOption" value="2010;1;1;15;1;Periodo">Periodo 1 - 1/2010
+</option>
+<option class="cmpOption" value="2009;12;2;15;2;Periodo">Periodo 2 - 12/2009
+</option>
+<option class="cmpOption" value="2009;12;1;15;1;Periodo">Periodo 1 - 12/2009
+</option>
+<option class="cmpOption" value="2009;11;2;15;2;Periodo">Periodo 2 - 11/2009
+</option>
+<option class="cmpOption" value="2009;11;1;15;1;Periodo">Periodo 1 - 11/2009
+</option>
+<option class="cmpOption" value="2009;10;2;15;2;Periodo">Periodo 2 - 10/2009
+</option>
+<option class="cmpOption" value="2009;10;1;15;1;Periodo">Periodo 1 - 10/2009
+</option>
+<option class="cmpOption" value="2009;9;2;15;2;Periodo">Periodo 2 - 9/2009
+</option>
+<option class="cmpOption" value="2009;9;1;15;1;Periodo">Periodo 1 - 9/2009
+</option>
+<option class="cmpOption" value="2009;8;2;15;2;Periodo">Periodo 2 - 8/2009
+</option>
+<option class="cmpOption" value="2009;8;1;15;1;Periodo">Periodo 1 - 8/2009
+</option>
+<option class="cmpOption" value="2009;7;2;15;2;Periodo">Periodo 2 - 7/2009
+</option>
+<option class="cmpOption" value="2009;7;1;15;1;Periodo">Periodo 1 - 7/2009
+</option>
+<option class="cmpOption" value="2009;6;2;15;2;Periodo">Periodo 2 - 6/2009
+</option>
+<option class="cmpOption" value="2009;6;1;15;1;Periodo">Periodo 1 - 6/2009
+</option>
+<option class="cmpOption" value="2009;5;2;15;2;Periodo">Periodo 2 - 5/2009
+</option>
+<option class="cmpOption" value="2009;5;1;15;1;Periodo">Periodo 1 - 5/2009
+</option>
+<option class="cmpOption" value="2009;4;2;15;2;Periodo">Periodo 2 - 4/2009
+</option>
+<option class="cmpOption" value="2009;4;1;15;1;Periodo">Periodo 1 - 4/2009
+</option>
+<option class="cmpOption" value="2009;3;2;15;2;Periodo">Periodo 2 - 3/2009
+</option>
+<option class="cmpOption" value="2009;3;1;15;1;Periodo">Periodo 1 - 3/2009
+</option>
+<option class="cmpOption" value="2009;2;2;15;2;Periodo">Periodo 2 - 2/2009
+</option>
+<option class="cmpOption" value="2009;2;1;15;1;Periodo">Periodo 1 - 2/2009
+</option>
+<option class="cmpOption" value="2009;1;2;15;2;Periodo">Periodo 2 - 1/2009
+</option>
+<option class="cmpOption" value="2009;1;1;15;1;Periodo">Periodo 1 - 1/2009
+</option>
+<option class="cmpOption" value="2008;12;2;15;2;Periodo">Periodo 2 - 12/2008
+</option>
+<option class="cmpOption" value="2008;12;1;15;1;Periodo">Periodo 1 - 12/2008
+</option>
+<option class="cmpOption" value="2008;11;2;15;2;Periodo">Periodo 2 - 11/2008
+</option>
+<option class="cmpOption" value="2008;11;1;15;1;Periodo">Periodo 1 - 11/2008
+</option>
+<option class="cmpOption" value="2008;10;2;15;2;Periodo">Periodo 2 - 10/2008
+</option>
+<option class="cmpOption" value="2008;10;1;15;1;Periodo">Periodo 1 - 10/2008
+</option>
+<option class="cmpOption" value="2008;9;2;15;2;Periodo">Periodo 2 - 9/2008
+</option>
+<option class="cmpOption" value="2008;9;1;15;1;Periodo">Periodo 1 - 9/2008
+</option>
+<option class="cmpOption" value="2008;8;2;15;2;Periodo">Periodo 2 - 8/2008
+</option>
+<option class="cmpOption" value="2008;8;1;15;1;Periodo">Periodo 1 - 8/2008
+</option>
+<option class="cmpOption" value="2008;7;2;15;2;Periodo">Periodo 2 - 7/2008
+</option>
+<option class="cmpOption" value="2008;7;1;15;1;Periodo">Periodo 1 - 7/2008
+</option>
+<option class="cmpOption" value="2008;6;2;15;2;Periodo">Periodo 2 - 6/2008
+</option>
+<option class="cmpOption" value="2008;6;1;15;1;Periodo">Periodo 1 - 6/2008
+</option>
+<option class="cmpOption" value="2008;5;2;15;2;Periodo">Periodo 2 - 5/2008
+</option>
+<option class="cmpOption" value="2008;5;1;15;1;Periodo">Periodo 1 - 5/2008
+</option>
+<option class="cmpOption" value="2008;4;2;15;2;Periodo">Periodo 2 - 4/2008
+</option>
+<option class="cmpOption" value="2008;4;1;15;1;Periodo">Periodo 1 - 4/2008
+</option>
+<option class="cmpOption" value="2008;3;2;15;2;Periodo">Periodo 2 - 3/2008
+</option>
+<option class="cmpOption" value="2008;3;1;15;1;Periodo">Periodo 1 - 3/2008
+</option>
+<option class="cmpOption" value="2008;2;2;15;2;Periodo">Periodo 2 - 2/2008
+</option>
+<option class="cmpOption" value="2008;2;1;15;1;Periodo">Periodo 1 - 2/2008
+</option>
+<option class="cmpOption" value="2008;1;2;15;2;Periodo">Periodo 2 - 1/2008
+</option>
+<option class="cmpOption" value="2008;1;1;15;1;Periodo">Periodo 1 - 1/2008
+</option>
+<option class="cmpOption" value="2007;12;2;15;2;Periodo">Periodo 2 - 12/2007
+</option>
+<option class="cmpOption" value="2007;12;1;15;1;Periodo">Periodo 1 - 12/2007
+</option>
+<option class="cmpOption" value="2007;11;2;15;2;Periodo">Periodo 2 - 11/2007
+</option>
+<option class="cmpOption" value="2007;11;1;15;1;Periodo">Periodo 1 - 11/2007
+</option>
+<option class="cmpOption" value="2007;10;2;15;2;Periodo">Periodo 2 - 10/2007
+</option>
+<option class="cmpOption" value="2007;10;1;15;1;Periodo">Periodo 1 - 10/2007
+</option>
+<option class="cmpOption" value="2007;9;2;15;2;Periodo">Periodo 2 - 9/2007
+</option>
+<option class="cmpOption" value="2007;9;1;15;1;Periodo">Periodo 1 - 9/2007
+</option>
+<option class="cmpOption" value="2007;8;2;15;2;Periodo">Periodo 2 - 8/2007
+</option>
+<option class="cmpOption" value="2007;8;1;15;1;Periodo">Periodo 1 - 8/2007
+</option>
+<option class="cmpOption" value="2007;7;2;15;2;Periodo">Periodo 2 - 7/2007
+</option>
+<option class="cmpOption" value="2007;7;1;15;1;Periodo">Periodo 1 - 7/2007
+</option>
+<option class="cmpOption" value="2007;6;2;15;2;Periodo">Periodo 2 - 6/2007
+</option>
+<option class="cmpOption" value="2007;6;1;15;1;Periodo">Periodo 1 - 6/2007
+</option>
+<option class="cmpOption" value="2007;5;2;15;2;Periodo">Periodo 2 - 5/2007
+</option>
+<option class="cmpOption" value="2007;5;1;15;1;Periodo">Periodo 1 - 5/2007
+</option>
+<option class="cmpOption" value="2007;4;2;15;2;Periodo">Periodo 2 - 4/2007
+</option>
+<option class="cmpOption" value="2007;4;1;15;1;Periodo">Periodo 1 - 4/2007
+</option>
+<option class="cmpOption" value="2007;3;2;15;2;Periodo">Periodo 2 - 3/2007
+</option>
+<option class="cmpOption" value="2007;3;1;15;1;Periodo">Periodo 1 - 3/2007
+</option>
+<option class="cmpOption" value="2007;2;2;15;2;Periodo">Periodo 2 - 2/2007
+</option>
+<option class="cmpOption" value="2007;2;1;15;1;Periodo">Periodo 1 - 2/2007
+</option>
+<option class="cmpOption" value="2007;1;2;15;2;Periodo">Periodo 2 - 1/2007
+</option>
+<option class="cmpOption" value="2007;1;1;15;1;Periodo">Periodo 1 - 1/2007
+</option>
+<option class="cmpOption" value="2006;12;2;15;2;Periodo">Periodo 2 - 12/2006
+</option>
+<option class="cmpOption" value="2006;12;1;15;1;Periodo">Periodo 1 - 12/2006
+</option>
+<option class="cmpOption" value="2006;11;2;15;2;Periodo">Periodo 2 - 11/2006
+</option>
+<option class="cmpOption" value="2006;11;1;15;1;Periodo">Periodo 1 - 11/2006
+</option>
+<option class="cmpOption" value="2006;10;2;15;2;Periodo">Periodo 2 - 10/2006
+</option>
+<option class="cmpOption" value="2006;10;1;15;1;Periodo">Periodo 1 - 10/2006
+</option>
+<option class="cmpOption" value="2006;9;2;15;2;Periodo">Periodo 2 - 9/2006
+</option>
+<option class="cmpOption" value="2006;9;1;15;1;Periodo">Periodo 1 - 9/2006
+</option>
+<option class="cmpOption" value="2006;8;2;15;2;Periodo">Periodo 2 - 8/2006
+</option>
+<option class="cmpOption" value="2006;8;1;15;1;Periodo">Periodo 1 - 8/2006
+</option>
+<option class="cmpOption" value="2006;7;2;15;2;Periodo">Periodo 2 - 7/2006
+</option>
+<option class="cmpOption" value="2006;7;1;15;1;Periodo">Periodo 1 - 7/2006
+</option>
+<option class="cmpOption" value="2006;6;2;15;2;Periodo">Periodo 2 - 6/2006
+</option>
+<option class="cmpOption" value="2006;6;1;15;1;Periodo">Periodo 1 - 6/2006
+</option>
+<option class="cmpOption" value="2006;5;2;15;2;Periodo">Periodo 2 - 5/2006
+</option>
+<option class="cmpOption" value="2006;5;1;15;1;Periodo">Periodo 1 - 5/2006
+</option>
+<option class="cmpOption" value="2006;4;2;15;2;Periodo">Periodo 2 - 4/2006
+</option>
+<option class="cmpOption" value="2006;4;1;15;1;Periodo">Periodo 1 - 4/2006
+</option>
+<option class="cmpOption" value="2006;3;2;15;2;Periodo">Periodo 2 - 3/2006
+</option>
+<option class="cmpOption" value="2006;3;1;15;1;Periodo">Periodo 1 - 3/2006
+</option>
+<option class="cmpOption" value="2006;2;2;15;2;Periodo">Periodo 2 - 2/2006
+</option>
+<option class="cmpOption" value="2006;2;1;15;1;Periodo">Periodo 1 - 2/2006
+</option>
+<option class="cmpOption" value="2006;1;2;15;2;Periodo">Periodo 2 - 1/2006
+</option>
+<option class="cmpOption" value="2006;1;1;15;1;Periodo">Periodo 1 - 1/2006
+</option>
+<option class="cmpOption" value="2005;12;2;15;2;Periodo">Periodo 2 - 12/2005
+</option>
+<option class="cmpOption" value="2005;12;1;15;1;Periodo">Periodo 1 - 12/2005
+</option>
+<option class="cmpOption" value="2005;11;2;15;2;Periodo">Periodo 2 - 11/2005
+</option>
+<option class="cmpOption" value="2005;11;1;15;1;Periodo">Periodo 1 - 11/2005
+</option>
+<option class="cmpOption" value="2005;10;2;15;2;Periodo">Periodo 2 - 10/2005
+</option>
+<option class="cmpOption" value="2005;10;1;15;1;Periodo">Periodo 1 - 10/2005
+</option>
+<option class="cmpOption" value="2005;9;2;15;2;Periodo">Periodo 2 - 9/2005
+</option>
+<option class="cmpOption" value="2005;9;1;15;1;Periodo">Periodo 1 - 9/2005
+</option>
+<option class="cmpOption" value="2005;8;2;15;2;Periodo">Periodo 2 - 8/2005
+</option>
+<option class="cmpOption" value="2005;8;1;15;1;Periodo">Periodo 1 - 8/2005
+</option>
+<option class="cmpOption" value="2005;7;2;15;2;Periodo">Periodo 2 - 7/2005
+</option>
+<option class="cmpOption" value="2005;7;1;15;1;Periodo">Periodo 1 - 7/2005
+</option>
+<option class="cmpOption" value="2005;6;2;15;2;Periodo">Periodo 2 - 6/2005
+</option>
+<option class="cmpOption" value="2005;6;1;15;1;Periodo">Periodo 1 - 6/2005
+</option>
+<option class="cmpOption" value="2005;5;2;15;2;Periodo">Periodo 2 - 5/2005
+</option>
+<option class="cmpOption" value="2005;5;1;15;1;Periodo">Periodo 1 - 5/2005
+</option>
+<option class="cmpOption" value="2005;4;2;15;2;Periodo">Periodo 2 - 4/2005
+</option>
+<option class="cmpOption" value="2005;4;1;15;1;Periodo">Periodo 1 - 4/2005
+</option>
+<option class="cmpOption" value="2005;3;2;15;2;Periodo">Periodo 2 - 3/2005
+</option>
+<option class="cmpOption" value="2005;3;1;15;1;Periodo">Periodo 1 - 3/2005
+</option>
+<option class="cmpOption" value="2005;2;2;15;2;Periodo">Periodo 2 - 2/2005
+</option>
+<option class="cmpOption" value="2005;2;1;15;1;Periodo">Periodo 1 - 2/2005
+</option>
+<option class="cmpOption" value="2005;1;2;15;2;Periodo">Periodo 2 - 1/2005
+</option>
+<option class="cmpOption" value="2005;1;1;15;1;Periodo">Periodo 1 - 1/2005
+</option>
+<option class="cmpOption" value="2004;12;2;15;2;Periodo">Periodo 2 - 12/2004
+</option>
+<option class="cmpOption" value="2004;12;1;15;1;Periodo">Periodo 1 - 12/2004
+</option>
+<option class="cmpOption" value="2004;11;2;15;2;Periodo">Periodo 2 - 11/2004
+</option>
+<option class="cmpOption" value="2004;11;1;15;1;Periodo">Periodo 1 - 11/2004
+</option>
+<option class="cmpOption" value="2004;10;2;15;2;Periodo">Periodo 2 - 10/2004
+</option>
+<option class="cmpOption" value="2004;10;1;15;1;Periodo">Periodo 1 - 10/2004
+</option>
+<option class="cmpOption" value="2004;9;2;15;2;Periodo">Periodo 2 - 9/2004
+</option>
+<option class="cmpOption" value="2004;9;1;15;1;Periodo">Periodo 1 - 9/2004
+</option>
+<option class="cmpOption" value="2004;8;2;15;2;Periodo">Periodo 2 - 8/2004
+</option>
+<option class="cmpOption" value="2004;8;1;15;1;Periodo">Periodo 1 - 8/2004
+</option>
+<option class="cmpOption" value="2004;7;2;15;2;Periodo">Periodo 2 - 7/2004
+</option>
+<option class="cmpOption" value="2004;7;1;15;1;Periodo">Periodo 1 - 7/2004
+</option>
+<option class="cmpOption" value="2004;6;2;15;2;Periodo">Periodo 2 - 6/2004
+</option>
+<option class="cmpOption" value="2004;6;1;15;1;Periodo">Periodo 1 - 6/2004
+</option>
+<option class="cmpOption" value="2004;5;2;15;2;Periodo">Periodo 2 - 5/2004
+</option>
+<option class="cmpOption" value="2004;5;1;15;1;Periodo">Periodo 1 - 5/2004
+</option>
+<option class="cmpOption" value="2004;4;2;15;2;Periodo">Periodo 2 - 4/2004
+</option>
+<option class="cmpOption" value="2004;4;1;15;1;Periodo">Periodo 1 - 4/2004
+</option>
+<option class="cmpOption" value="2004;3;2;15;2;Periodo">Periodo 2 - 3/2004
+</option>
+<option class="cmpOption" value="2004;3;1;15;1;Periodo">Periodo 1 - 3/2004
+</option>
+<option class="cmpOption" value="2004;2;2;15;2;Periodo">Periodo 2 - 2/2004
+</option>
+<option class="cmpOption" value="2004;2;1;15;1;Periodo">Periodo 1 - 2/2004
+</option>
+<option class="cmpOption" value="2004;1;2;15;2;Periodo">Periodo 2 - 1/2004
+</option>
+<option class="cmpOption" value="2004;1;1;15;1;Periodo">Periodo 1 - 1/2004
+</option>
+<option class="cmpOption" value="2003;12;2;15;2;Periodo">Periodo 2 - 12/2003
+</option>
+<option class="cmpOption" value="2003;12;1;15;1;Periodo">Periodo 1 - 12/2003
+</option>
+<option class="cmpOption" value="2003;11;2;15;2;Periodo">Periodo 2 - 11/2003
+</option>
+<option class="cmpOption" value="2003;11;1;15;1;Periodo">Periodo 1 - 11/2003
+</option>
+<option class="cmpOption" value="2003;10;2;15;2;Periodo">Periodo 2 - 10/2003
+</option>
+<option class="cmpOption" value="2003;10;1;15;1;Periodo">Periodo 1 - 10/2003
+</option>
+<option class="cmpOption" value="2003;9;2;15;2;Periodo">Periodo 2 - 9/2003
+</option>
+<option class="cmpOption" value="2003;9;1;15;1;Periodo">Periodo 1 - 9/2003
+</option>
+<option class="cmpOption" value="2003;8;2;15;2;Periodo">Periodo 2 - 8/2003
+</option>
+<option class="cmpOption" value="2003;8;1;15;1;Periodo">Periodo 1 - 8/2003
+</option>
+<option class="cmpOption" value="2003;7;2;15;2;Periodo">Periodo 2 - 7/2003
+</option>
+<option class="cmpOption" value="2003;7;1;15;1;Periodo">Periodo 1 - 7/2003
+</option>
+<option class="cmpOption" value="2003;6;2;15;2;Periodo">Periodo 2 - 6/2003
+</option>
+<option class="cmpOption" value="2003;6;1;15;1;Periodo">Periodo 1 - 6/2003
+</option>
+<option class="cmpOption" value="2003;5;2;15;2;Periodo">Periodo 2 - 5/2003
+</option>
+<option class="cmpOption" value="2003;5;1;15;1;Periodo">Periodo 1 - 5/2003
+</option>
+<option class="cmpOption" value="2003;4;2;15;2;Periodo">Periodo 2 - 4/2003
+</option>
+<option class="cmpOption" value="2003;4;1;15;1;Periodo">Periodo 1 - 4/2003
+</option>
+<option class="cmpOption" value="2003;3;2;15;2;Periodo">Periodo 2 - 3/2003
+</option>
+<option class="cmpOption" value="2003;3;1;15;1;Periodo">Periodo 1 - 3/2003
+</option>
+<option class="cmpOption" value="2003;2;2;15;2;Periodo">Periodo 2 - 2/2003
+</option>
+<option class="cmpOption" value="2003;2;1;15;1;Periodo">Periodo 1 - 2/2003
+</option>
+<option class="cmpOption" value="2003;1;2;15;2;Periodo">Periodo 2 - 1/2003
+</option>
+<option class="cmpOption" value="2003;1;1;15;1;Periodo">Periodo 1 - 1/2003
+</option>
+<option class="cmpOption" value="2002;12;2;15;2;Periodo">Periodo 2 - 12/2002
+</option>
+ </select>
+
+      <span id="bot_ok">
+      <input src="Tela_Log.jsp_arquivos/bot_ok_01.gif" type="image">
+      
+      </span></nobr>
+    </td>
+    
+    <td width="50" align="left">
+      <span class="txtBlackBold">Código</span> <br>
+      <span class="txtBlack">47</span>
+    </td>
+    <td width="150" align="left">
+      <span class="txtBlackBold">Categoria</span> <br>
+      <span class="txtBlack">COORDENADOR III</span>
+    </td>
+    <td width="150" align="left">
+      <span class="txtBlackBold">Assinatura</span> <br>
+      &nbsp;
+    </td>
+    <td width="110" align="left">
+      <span class="txtBlackBold">Visto Resp.</span> <br>
+      &nbsp;
+    </td>
+  </tr>
+</tbody></table>
+<br>
+<!--        Fim   do  Cabeçalho Commit          -->
+
+<!--        Início Botões             -->
+
+
+
+
+
+  
+
+<table border="0" cellpadding="0" cellspacing="0" width="580">
+<form name="iForm" method="post" action="Tela_Log.jsp"></form>
+  <input name="CD_FUNCIONARIO" value="47" type="HIDDEN">
+  <input name="parcela" value="1" type="HIDDEN">
+  <input name="nome_periodo" value="Periodo" type="HIDDEN">
+  <input name="mes" value="11" type="HIDDEN">
+  <input name="ano" value="2013" type="HIDDEN">
+  <input name="iniDia" value="11" type="HIDDEN">
+  <input name="finDia" value="25" type="HIDDEN">
+  <input name="PERI_CD_PERIODO" value="1" type="HIDDEN">
+  <input name="CDG_USUR" value="CCHAMMA" type="HIDDEN">
+  <input name="FUNC_ADM" value="N" type="HIDDEN">
+   
+  <input name="NM_FUNCIONARIO" value="CHRISTIANO CHAMMA DE SOUZA CASTRO" type="HIDDEN">
+
+
+
+
+
+<!--         Início Tabela              -->
+  </table>
+  <table border="0" cellpadding="3" cellspacing="0">
+    <tbody><tr>
+      <td rowspan="2" bgcolor="#cccccc" width="222" align="center">
+        <span class="txtBlackBold">Projetos</span>
+      </td>
+      <td rowspan="2" bgcolor="#cccccc" width="49" align="center">
+        <span class="txtBlackBold">Cod</span>
+      </td>
+      <td rowspan="2" bgcolor="#cccccc" width="31" align="center">
+        &nbsp;
+      </td>
+
+      <td bgcolor="#cccccc" width="222" align="center">
+        <span class="txtBlackBold">Seg</span>
+      </td>
+
+      <td bgcolor="#cccccc" width="222" align="center">
+        <span class="txtBlackBold">Ter</span>
+      </td>
+
+      <td bgcolor="#cccccc" width="222" align="center">
+        <span class="txtBlackBold">Qua</span>
+      </td>
+
+      <td bgcolor="#cccccc" width="222" align="center">
+        <span class="txtBlackBold">Qui</span>
+      </td>
+
+      <td bgcolor="#cccccc" width="222" align="center">
+        <span class="txtBlackBold">Sex</span>
+      </td>
+
+      <td bgcolor="#cccccc" width="222" align="center">
+        <span class="txtBlackBold">Sáb</span>
+      </td>
+
+      <td bgcolor="#cccccc" width="222" align="center">
+        <span class="txtBlackBold">Dom</span>
+      </td>
+
+      <td bgcolor="#cccccc" width="222" align="center">
+        <span class="txtBlackBold">Seg</span>
+      </td>
+
+      <td bgcolor="#cccccc" width="222" align="center">
+        <span class="txtBlackBold">Ter</span>
+      </td>
+
+      <td bgcolor="#cccccc" width="222" align="center">
+        <span class="txtBlackBold">Qua</span>
+      </td>
+
+      <td bgcolor="#cccccc" width="222" align="center">
+        <span class="txtBlackBold">Qui</span>
+      </td>
+
+      <td bgcolor="#cccccc" width="222" align="center">
+        <span class="txtBlackBold">Sex</span>
+      </td>
+
+      <td bgcolor="#cccccc" width="222" align="center">
+        <span class="txtBlackBold">Sáb</span>
+      </td>
+
+      <td bgcolor="#cccccc" width="222" align="center">
+        <span class="txtBlackBold">Dom</span>
+      </td>
+
+      <td bgcolor="#cccccc" width="222" align="center">
+        <span class="txtBlackBold">Seg</span>
+      </td>
+
+      <td rowspan="2" bgcolor="#cccccc" width="49" align="center">
+        <span class="txtBlackBold">Total</span>
+      </td>
+    </tr>
+
+      <tr><td bgcolor="#cccccc" width="49" align="center">
+        <span class="txtBlackBold">11</span>
+      </td>
+
+      <td bgcolor="#cccccc" width="49" align="center">
+        <span class="txtBlackBold">12</span>
+      </td>
+
+      <td bgcolor="#cccccc" width="49" align="center">
+        <span class="txtBlackBold">13</span>
+      </td>
+
+      <td bgcolor="#cccccc" width="49" align="center">
+        <span class="txtBlackBold">14</span>
+      </td>
+
+      <td bgcolor="#cccccc" width="49" align="center">
+        <span class="txtBlackBold">15</span>
+      </td>
+
+      <td bgcolor="#cccccc" width="49" align="center">
+        <span class="txtBlackBold">16</span>
+      </td>
+
+      <td bgcolor="#cccccc" width="49" align="center">
+        <span class="txtBlackBold">17</span>
+      </td>
+
+      <td bgcolor="#cccccc" width="49" align="center">
+        <span class="txtBlackBold">18</span>
+      </td>
+
+      <td bgcolor="#cccccc" width="49" align="center">
+        <span class="txtBlackBold">19</span>
+      </td>
+
+      <td bgcolor="#cccccc" width="49" align="center">
+        <span class="txtBlackBold">20</span>
+      </td>
+
+      <td bgcolor="#cccccc" width="49" align="center">
+        <span class="txtBlackBold">21</span>
+      </td>
+
+      <td bgcolor="#cccccc" width="49" align="center">
+        <span class="txtBlackBold">22</span>
+      </td>
+
+      <td bgcolor="#cccccc" width="49" align="center">
+        <span class="txtBlackBold">23</span>
+      </td>
+
+      <td bgcolor="#cccccc" width="49" align="center">
+        <span class="txtBlackBold">24</span>
+      </td>
+
+      <td bgcolor="#cccccc" width="49" align="center">
+        <span class="txtBlackBold">25</span>
+      </td>
+
+    </tr>
+
+
+<tr>
+<td rowspan="2">
+<nobr><span class="txtPretoLink">
+SCHLUMBERGER - REPETRO
+</span></nobr>
+</td>
+<td rowspan="2" width="41" align="CENTER">
+<span class="txtPreto">
+277
+</span>
+</td>
+<td width="31">
+<span class="txtBlackBold">CO</span>
+</td>
+<td bgcolor="#FFFFFF" width="49" align="center">
+<span class="txtPreto">
+8
+</span>
+</td>
+<td bgcolor="#FFFFFF" width="49" align="center">
+<span class="txtPreto">
+8
+</span>
+</td>
+<td bgcolor="#FFFFFF" width="49" align="center">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td bgcolor="#FFFFFF" width="49" align="center">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td bgcolor="#FFCC5D" width="49" align="center">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td bgcolor="#E6A233" width="49" align="center">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td bgcolor="#E6A233" width="49" align="center">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td bgcolor="#FFFFFF" width="49" align="center">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td bgcolor="#FFFFFF" width="49" align="center">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td bgcolor="#FFCC5D" width="49" align="center">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td bgcolor="#FFFFFF" width="49" align="center">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td bgcolor="#FFFFFF" width="49" align="center">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td bgcolor="#E6A233" width="49" align="center">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td bgcolor="#E6A233" width="49" align="center">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td bgcolor="#FFFFFF" width="49" align="center">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td width="41" align="center">
+<span class="txtPreto">
+16
+</span>
+</td>
+</tr>
+<tr><td height="2" width="31"><span class="txtBlackBold" style="font-size: 9px;">Obs</span></td>
+<td bgcolor="#FFFFFF" width="49" align="CENTER">
+<span class="txtPreto">
+ <input name="obs_277_0" value="Alterações nos 3 relatórios" type="hidden"> <a href="javascript:%20void%20aviso_obs(document.iForm.obs_277_0)">...</a> 
+</span>
+</td>
+<td bgcolor="#FFFFFF" width="49" align="CENTER">
+<span class="txtPreto">
+ <input name="obs_277_1" value="Ajustes de layout e testes da aplicação" type="hidden"> <a href="javascript:%20void%20aviso_obs(document.iForm.obs_277_1)">...</a> 
+</span>
+</td>
+<td bgcolor="#FFFFFF" width="49" align="CENTER">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td bgcolor="#FFFFFF" width="49" align="CENTER">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td bgcolor="#FFCC5D" width="49" align="CENTER">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td bgcolor="#E6A233" width="49" align="CENTER">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td bgcolor="#E6A233" width="49" align="CENTER">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td bgcolor="#FFFFFF" width="49" align="CENTER">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td bgcolor="#FFFFFF" width="49" align="CENTER">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td bgcolor="#FFCC5D" width="49" align="CENTER">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td bgcolor="#FFFFFF" width="49" align="CENTER">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td bgcolor="#FFFFFF" width="49" align="CENTER">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td bgcolor="#E6A233" width="49" align="CENTER">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td bgcolor="#E6A233" width="49" align="CENTER">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td bgcolor="#FFFFFF" width="49" align="CENTER">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td width="49">
+&nbsp;
+</td>
+</tr>
+<tr>
+<td rowspan="2">
+<nobr><span class="txtPretoLink">
+BROOKFIELD - PLSQL
+</span></nobr>
+</td>
+<td rowspan="2" width="41" align="CENTER">
+<span class="txtPreto">
+637
+</span>
+</td>
+<td width="31">
+<span class="txtBlackBold">CO</span>
+</td>
+<td bgcolor="#FFFFFF" width="49" align="center">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td bgcolor="#FFFFFF" width="49" align="center">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td bgcolor="#FFFFFF" width="49" align="center">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td bgcolor="#FFFFFF" width="49" align="center">
+<span class="txtPreto">
+8
+</span>
+</td>
+<td bgcolor="#FFCC5D" width="49" align="center">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td bgcolor="#E6A233" width="49" align="center">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td bgcolor="#E6A233" width="49" align="center">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td bgcolor="#FFFFFF" width="49" align="center">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td bgcolor="#FFFFFF" width="49" align="center">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td bgcolor="#FFCC5D" width="49" align="center">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td bgcolor="#FFFFFF" width="49" align="center">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td bgcolor="#FFFFFF" width="49" align="center">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td bgcolor="#E6A233" width="49" align="center">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td bgcolor="#E6A233" width="49" align="center">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td bgcolor="#FFFFFF" width="49" align="center">
+<span class="txtPreto">
+5
+</span>
+</td>
+<td width="41" align="center">
+<span class="txtPreto">
+13
+</span>
+</td>
+</tr>
+<tr><td height="2" width="31"><span class="txtBlackBold" style="font-size: 9px;">Obs</span></td>
+<td bgcolor="#FFFFFF" width="49" align="CENTER">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td bgcolor="#FFFFFF" width="49" align="CENTER">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td bgcolor="#FFFFFF" width="49" align="CENTER">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td bgcolor="#FFFFFF" width="49" align="CENTER">
+<span class="txtPreto">
+ <input name="obs_637_3" value="Desenvolvimento de modelo (template) de script de cópia e execução de teste com sucesso." type="hidden"> <a href="javascript:%20void%20aviso_obs(document.iForm.obs_637_3)">...</a> 
+</span>
+</td>
+<td bgcolor="#FFCC5D" width="49" align="CENTER">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td bgcolor="#E6A233" width="49" align="CENTER">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td bgcolor="#E6A233" width="49" align="CENTER">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td bgcolor="#FFFFFF" width="49" align="CENTER">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td bgcolor="#FFFFFF" width="49" align="CENTER">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td bgcolor="#FFCC5D" width="49" align="CENTER">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td bgcolor="#FFFFFF" width="49" align="CENTER">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td bgcolor="#FFFFFF" width="49" align="CENTER">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td bgcolor="#E6A233" width="49" align="CENTER">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td bgcolor="#E6A233" width="49" align="CENTER">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td bgcolor="#FFFFFF" width="49" align="CENTER">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td width="49">
+&nbsp;
+</td>
+</tr>
+<tr>
+<td rowspan="2">
+<nobr><span class="txtPretoLink">
+COMERCIAL - BI
+</span></nobr>
+</td>
+<td rowspan="2" width="41" align="CENTER">
+<span class="txtPreto">
+672
+</span>
+</td>
+<td width="31">
+<span class="txtBlackBold">NC</span>
+</td>
+<td bgcolor="#FFFFFF" width="49" align="center">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td bgcolor="#FFFFFF" width="49" align="center">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td bgcolor="#FFFFFF" width="49" align="center">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td bgcolor="#FFFFFF" width="49" align="center">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td bgcolor="#FFCC5D" width="49" align="center">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td bgcolor="#E6A233" width="49" align="center">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td bgcolor="#E6A233" width="49" align="center">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td bgcolor="#FFFFFF" width="49" align="center">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td bgcolor="#FFFFFF" width="49" align="center">
+<span class="txtPreto">
+4
+</span>
+</td>
+<td bgcolor="#FFCC5D" width="49" align="center">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td bgcolor="#FFFFFF" width="49" align="center">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td bgcolor="#FFFFFF" width="49" align="center">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td bgcolor="#E6A233" width="49" align="center">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td bgcolor="#E6A233" width="49" align="center">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td bgcolor="#FFFFFF" width="49" align="center">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td width="41" align="center">
+<span class="txtPreto">
+4
+</span>
+</td>
+</tr>
+<tr><td height="2" width="31"><span class="txtBlackBold" style="font-size: 9px;">Obs</span></td>
+<td bgcolor="#FFFFFF" width="49" align="CENTER">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td bgcolor="#FFFFFF" width="49" align="CENTER">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td bgcolor="#FFFFFF" width="49" align="CENTER">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td bgcolor="#FFFFFF" width="49" align="CENTER">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td bgcolor="#FFCC5D" width="49" align="CENTER">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td bgcolor="#E6A233" width="49" align="CENTER">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td bgcolor="#E6A233" width="49" align="CENTER">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td bgcolor="#FFFFFF" width="49" align="CENTER">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td bgcolor="#FFFFFF" width="49" align="CENTER">
+<span class="txtPreto">
+ <input name="obs_672_8" value="Reunião MDL Construtora" type="hidden"> <a href="javascript:%20void%20aviso_obs(document.iForm.obs_672_8)">...</a> 
+</span>
+</td>
+<td bgcolor="#FFCC5D" width="49" align="CENTER">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td bgcolor="#FFFFFF" width="49" align="CENTER">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td bgcolor="#FFFFFF" width="49" align="CENTER">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td bgcolor="#E6A233" width="49" align="CENTER">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td bgcolor="#E6A233" width="49" align="CENTER">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td bgcolor="#FFFFFF" width="49" align="CENTER">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td width="49">
+&nbsp;
+</td>
+</tr>
+<tr>
+<td rowspan="2">
+<nobr><span class="txtPretoLink">
+GOVERNANÇA OPERACIONAL - ERP, BI, SISTEMA ADMINISTRATIVO
+</span></nobr>
+</td>
+<td rowspan="2" width="41" align="CENTER">
+<span class="txtPreto">
+708
+</span>
+</td>
+<td width="31">
+<span class="txtBlackBold">NC</span>
+</td>
+<td bgcolor="#FFFFFF" width="49" align="center">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td bgcolor="#FFFFFF" width="49" align="center">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td bgcolor="#FFFFFF" width="49" align="center">
+<span class="txtPreto">
+8
+</span>
+</td>
+<td bgcolor="#FFFFFF" width="49" align="center">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td bgcolor="#FFCC5D" width="49" align="center">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td bgcolor="#E6A233" width="49" align="center">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td bgcolor="#E6A233" width="49" align="center">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td bgcolor="#FFFFFF" width="49" align="center">
+<span class="txtPreto">
+8
+</span>
+</td>
+<td bgcolor="#FFFFFF" width="49" align="center">
+<span class="txtPreto">
+4
+</span>
+</td>
+<td bgcolor="#FFCC5D" width="49" align="center">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td bgcolor="#FFFFFF" width="49" align="center">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td bgcolor="#FFFFFF" width="49" align="center">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td bgcolor="#E6A233" width="49" align="center">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td bgcolor="#E6A233" width="49" align="center">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td bgcolor="#FFFFFF" width="49" align="center">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td width="41" align="center">
+<span class="txtPreto">
+20
+</span>
+</td>
+</tr>
+<tr><td height="2" width="31"><span class="txtBlackBold" style="font-size: 9px;">Obs</span></td>
+<td bgcolor="#FFFFFF" width="49" align="CENTER">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td bgcolor="#FFFFFF" width="49" align="CENTER">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td bgcolor="#FFFFFF" width="49" align="CENTER">
+<span class="txtPreto">
+ <input name="obs_708_2" value="4 horas: integração entre OTRS e Log. 4 horas: reunião sobre avaliação do framework em .net da Triscal." type="hidden"> <a href="javascript:%20void%20aviso_obs(document.iForm.obs_708_2)">...</a> 
+</span>
+</td>
+<td bgcolor="#FFFFFF" width="49" align="CENTER">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td bgcolor="#FFCC5D" width="49" align="CENTER">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td bgcolor="#E6A233" width="49" align="CENTER">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td bgcolor="#E6A233" width="49" align="CENTER">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td bgcolor="#FFFFFF" width="49" align="CENTER">
+<span class="txtPreto">
+ <input name="obs_708_7" value="Desenvolvimento da Interface OTRS para Log." type="hidden"> <a href="javascript:%20void%20aviso_obs(document.iForm.obs_708_7)">...</a> 
+</span>
+</td>
+<td bgcolor="#FFFFFF" width="49" align="CENTER">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td bgcolor="#FFCC5D" width="49" align="CENTER">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td bgcolor="#FFFFFF" width="49" align="CENTER">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td bgcolor="#FFFFFF" width="49" align="CENTER">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td bgcolor="#E6A233" width="49" align="CENTER">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td bgcolor="#E6A233" width="49" align="CENTER">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td bgcolor="#FFFFFF" width="49" align="CENTER">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td width="49">
+&nbsp;
+</td>
+</tr>
+<tr>
+<td rowspan="2">
+<nobr><span class="txtPretoLink">
+SCHLUMBERGER - SUPORTE WEBLOGIC
+</span></nobr>
+</td>
+<td rowspan="2" width="41" align="CENTER">
+<span class="txtPreto">
+714
+</span>
+</td>
+<td width="31">
+<span class="txtBlackBold">CO</span>
+</td>
+<td bgcolor="#FFFFFF" width="49" align="center">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td bgcolor="#FFFFFF" width="49" align="center">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td bgcolor="#FFFFFF" width="49" align="center">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td bgcolor="#FFFFFF" width="49" align="center">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td bgcolor="#FFCC5D" width="49" align="center">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td bgcolor="#E6A233" width="49" align="center">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td bgcolor="#E6A233" width="49" align="center">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td bgcolor="#FFFFFF" width="49" align="center">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td bgcolor="#FFFFFF" width="49" align="center">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td bgcolor="#FFCC5D" width="49" align="center">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td bgcolor="#FFFFFF" width="49" align="center">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td bgcolor="#FFFFFF" width="49" align="center">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td bgcolor="#E6A233" width="49" align="center">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td bgcolor="#E6A233" width="49" align="center">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td bgcolor="#FFFFFF" width="49" align="center">
+<span class="txtPreto">
+4
+</span>
+</td>
+<td width="41" align="center">
+<span class="txtPreto">
+4
+</span>
+</td>
+</tr>
+<tr><td height="2" width="31"><span class="txtBlackBold" style="font-size: 9px;">Obs</span></td>
+<td bgcolor="#FFFFFF" width="49" align="CENTER">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td bgcolor="#FFFFFF" width="49" align="CENTER">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td bgcolor="#FFFFFF" width="49" align="CENTER">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td bgcolor="#FFFFFF" width="49" align="CENTER">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td bgcolor="#FFCC5D" width="49" align="CENTER">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td bgcolor="#E6A233" width="49" align="CENTER">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td bgcolor="#E6A233" width="49" align="CENTER">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td bgcolor="#FFFFFF" width="49" align="CENTER">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td bgcolor="#FFFFFF" width="49" align="CENTER">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td bgcolor="#FFCC5D" width="49" align="CENTER">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td bgcolor="#FFFFFF" width="49" align="CENTER">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td bgcolor="#FFFFFF" width="49" align="CENTER">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td bgcolor="#E6A233" width="49" align="CENTER">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td bgcolor="#E6A233" width="49" align="CENTER">
+<span class="txtPreto">
+&nbsp;
+</span>
+</td>
+<td bgcolor="#FFFFFF" width="49" align="CENTER">
+<span class="txtPreto">
+ <input name="obs_714_14" value="Erro no rel_4_04 e erro ao clicar no botão Limpar em todos os relatórios." type="hidden"> <a href="javascript:%20void%20aviso_obs(document.iForm.obs_714_14)">...</a> 
+</span>
+</td>
+<td width="49">
+&nbsp;
+</td>
+</tr>
+
+
+
+
+
+
+
+
+
+<!--                    Total  Quinzena                 -->
+
+  
+
+    <tr>
+      <td colspan="2" height="5">
+        &nbsp;
+      </td>
+      <td width="31">
+        &nbsp;
+      </td>
+
+      <td bgcolor="#FFFFFF" width="49">
+        &nbsp;
+      </td>
+
+      <td bgcolor="#FFFFFF" width="49">
+        &nbsp;
+      </td>
+
+      <td bgcolor="#FFFFFF" width="49">
+        &nbsp;
+      </td>
+
+      <td bgcolor="#FFFFFF" width="49">
+        &nbsp;
+      </td>
+
+      <td bgcolor="#FFCC5D" width="49">
+        &nbsp;
+      </td>
+
+      <td bgcolor="#E6A233" width="49">
+        &nbsp;
+      </td>
+
+      <td bgcolor="#E6A233" width="49">
+        &nbsp;
+      </td>
+
+      <td bgcolor="#FFFFFF" width="49">
+        &nbsp;
+      </td>
+
+      <td bgcolor="#FFFFFF" width="49">
+        &nbsp;
+      </td>
+
+      <td bgcolor="#FFCC5D" width="49">
+        &nbsp;
+      </td>
+
+      <td bgcolor="#FFFFFF" width="49">
+        &nbsp;
+      </td>
+
+      <td bgcolor="#FFFFFF" width="49">
+        &nbsp;
+      </td>
+
+      <td bgcolor="#E6A233" width="49">
+        &nbsp;
+      </td>
+
+      <td bgcolor="#E6A233" width="49">
+        &nbsp;
+      </td>
+
+      <td bgcolor="#FFFFFF" width="49">
+        &nbsp;
+      </td>
+
+      <td width="49">
+        &nbsp;
+      </td>
+    </tr>
+
+    <tr>
+      <td colspan="2" bgcolor="#e6e6e6" width="222">
+        <nobr><span class="txtBlackBold">Total de Horas da Quinzena</span></nobr>
+      </td>
+      <td bgcolor="#e6e6e6" width="31">
+        &nbsp;
+      </td>
+<td bgcolor="#E6E6E6" width="49" align="center">
+
+        <span class="txtPreto">8</span>
+      </td>
+<td bgcolor="#E6E6E6" width="49" align="center">
+
+        <span class="txtPreto">8</span>
+      </td>
+<td bgcolor="#E6E6E6" width="49" align="center">
+
+        <span class="txtPreto">8</span>
+      </td>
+<td bgcolor="#E6E6E6" width="49" align="center">
+
+        <span class="txtPreto">8</span>
+      </td>
+<td bgcolor="#CEA54B" width="49" align="center">
+
+        <span class="txtPreto">&nbsp;</span>
+      </td>
+<td bgcolor="#BA8329" width="49" align="center">
+
+        <span class="txtPreto">&nbsp;</span>
+      </td>
+<td bgcolor="#BA8329" width="49" align="center">
+
+        <span class="txtPreto">&nbsp;</span>
+      </td>
+<td bgcolor="#E6E6E6" width="49" align="center">
+
+        <span class="txtPreto">8</span>
+      </td>
+<td bgcolor="#E6E6E6" width="49" align="center">
+
+        <span class="txtPreto">8</span>
+      </td>
+<td bgcolor="#CEA54B" width="49" align="center">
+
+        <span class="txtPreto">&nbsp;</span>
+      </td>
+<td bgcolor="#E6E6E6" width="49" align="center">
+
+        <span class="txtPreto">&nbsp;</span>
+      </td>
+<td bgcolor="#E6E6E6" width="49" align="center">
+
+        <span class="txtPreto">&nbsp;</span>
+      </td>
+<td bgcolor="#BA8329" width="49" align="center">
+
+        <span class="txtPreto">&nbsp;</span>
+      </td>
+<td bgcolor="#BA8329" width="49" align="center">
+
+        <span class="txtPreto">&nbsp;</span>
+      </td>
+<td bgcolor="#E6E6E6" width="49" align="center">
+
+        <span class="txtPreto">9</span>
+      </td>
+
+      <td bgcolor="#e6e6e6" width="49" align="center">
+        <span class="txtPreto">57</span>
+      </td>
+    </tr>
+
+<!--                Fim   Total  Quinzena               -->
+
+<!--                        Ausência                    -->
+
+    <tr>
+      <td colspan="2" height="10">
+        &nbsp;
+      </td>
+      <td width="31">
+        &nbsp;
+      </td>
+
+      <td bgcolor="#FFFFFF" width="49">
+        &nbsp;
+      </td>
+
+      <td bgcolor="#FFFFFF" width="49">
+        &nbsp;
+      </td>
+
+      <td bgcolor="#FFFFFF" width="49">
+        &nbsp;
+      </td>
+
+      <td bgcolor="#FFFFFF" width="49">
+        &nbsp;
+      </td>
+
+      <td bgcolor="#FFCC5D" width="49">
+        &nbsp;
+      </td>
+
+      <td bgcolor="#E6A233" width="49">
+        &nbsp;
+      </td>
+
+      <td bgcolor="#E6A233" width="49">
+        &nbsp;
+      </td>
+
+      <td bgcolor="#FFFFFF" width="49">
+        &nbsp;
+      </td>
+
+      <td bgcolor="#FFFFFF" width="49">
+        &nbsp;
+      </td>
+
+      <td bgcolor="#FFCC5D" width="49">
+        &nbsp;
+      </td>
+
+      <td bgcolor="#FFFFFF" width="49">
+        &nbsp;
+      </td>
+
+      <td bgcolor="#FFFFFF" width="49">
+        &nbsp;
+      </td>
+
+      <td bgcolor="#E6A233" width="49">
+        &nbsp;
+      </td>
+
+      <td bgcolor="#E6A233" width="49">
+        &nbsp;
+      </td>
+
+      <td bgcolor="#FFFFFF" width="49">
+        &nbsp;
+      </td>
+
+      <td width="49">
+        &nbsp;
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" bgcolor="#e6e6e6" width="222">
+        <span class="txtBlackBold">Ausência</span>
+      </td>
+
+      <td bgcolor="#e6e6e6" width="31">
+        <span class="txtBlackBold">BHE</span>
+      </td>
+
+      <td bgcolor="#E6E6E6" width="49" align="center">
+      <span class="txtPreto">
+&nbsp;
+      </span>
+      </td>
+
+      <td bgcolor="#E6E6E6" width="49" align="center">
+      <span class="txtPreto">
+&nbsp;
+      </span>
+      </td>
+
+      <td bgcolor="#E6E6E6" width="49" align="center">
+      <span class="txtPreto">
+&nbsp;
+      </span>
+      </td>
+
+      <td bgcolor="#E6E6E6" width="49" align="center">
+      <span class="txtPreto">
+&nbsp;
+      </span>
+      </td>
+
+      <td bgcolor="#CEA54B" width="49" align="center">
+      <span class="txtPreto">
+&nbsp;
+      </span>
+      </td>
+
+      <td bgcolor="#BA8329" width="49" align="center">
+      <span class="txtPreto">
+&nbsp;
+      </span>
+      </td>
+
+      <td bgcolor="#BA8329" width="49" align="center">
+      <span class="txtPreto">
+&nbsp;
+      </span>
+      </td>
+
+      <td bgcolor="#E6E6E6" width="49" align="center">
+      <span class="txtPreto">
+&nbsp;
+      </span>
+      </td>
+
+      <td bgcolor="#E6E6E6" width="49" align="center">
+      <span class="txtPreto">
+&nbsp;
+      </span>
+      </td>
+
+      <td bgcolor="#CEA54B" width="49" align="center">
+      <span class="txtPreto">
+&nbsp;
+      </span>
+      </td>
+
+      <td bgcolor="#E6E6E6" width="49" align="center">
+      <span class="txtPreto">
+8
+      </span>
+      </td>
+
+      <td bgcolor="#E6E6E6" width="49" align="center">
+      <span class="txtPreto">
+8
+      </span>
+      </td>
+
+      <td bgcolor="#BA8329" width="49" align="center">
+      <span class="txtPreto">
+&nbsp;
+      </span>
+      </td>
+
+      <td bgcolor="#BA8329" width="49" align="center">
+      <span class="txtPreto">
+&nbsp;
+      </span>
+      </td>
+
+      <td bgcolor="#E6E6E6" width="49" align="center">
+      <span class="txtPreto">
+&nbsp;
+      </span>
+      </td>
+
+      <td bgcolor="#e6e6e6" width="49" align="center">
+        <span class="txtPreto">16</span>
+      </td>
+    </tr>
+
+
+<!--                    Fim Ausência                    -->
+
+<!--                     Horas Extras                   -->
+
+    <tr>
+      <td colspan="2" height="10">
+        &nbsp;
+      </td>
+      <td width="31">
+        &nbsp;
+      </td>
+
+      <td bgcolor="#FFFFFF" width="49">
+        &nbsp;
+      </td>
+
+      <td bgcolor="#FFFFFF" width="49">
+        &nbsp;
+      </td>
+
+      <td bgcolor="#FFFFFF" width="49">
+        &nbsp;
+      </td>
+
+      <td bgcolor="#FFFFFF" width="49">
+        &nbsp;
+      </td>
+
+      <td bgcolor="#FFCC5D" width="49">
+        &nbsp;
+      </td>
+
+      <td bgcolor="#E6A233" width="49">
+        &nbsp;
+      </td>
+
+      <td bgcolor="#E6A233" width="49">
+        &nbsp;
+      </td>
+
+      <td bgcolor="#FFFFFF" width="49">
+        &nbsp;
+      </td>
+
+      <td bgcolor="#FFFFFF" width="49">
+        &nbsp;
+      </td>
+
+      <td bgcolor="#FFCC5D" width="49">
+        &nbsp;
+      </td>
+
+      <td bgcolor="#FFFFFF" width="49">
+        &nbsp;
+      </td>
+
+      <td bgcolor="#FFFFFF" width="49">
+        &nbsp;
+      </td>
+
+      <td bgcolor="#E6A233" width="49">
+        &nbsp;
+      </td>
+
+      <td bgcolor="#E6A233" width="49">
+        &nbsp;
+      </td>
+
+      <td bgcolor="#FFFFFF" width="49">
+        &nbsp;
+      </td>
+
+      <td width="49">
+        &nbsp;
+      </td>
+    </tr>
+
+    <tr>
+      <td colspan="2" bgcolor="#e6e6e6" width="222">
+        <span class="txtBlackBold">Horas Extras</span>
+      </td>
+
+      <td bgcolor="#e6e6e6" width="31">
+        <span class="txtBlackBold">BHE</span>
+      </td>
+
+      <td bgcolor="#E6E6E6" width="49" align="center">
+      <span class="txtPreto">
+&nbsp;
+      </span>
+      </td>
+
+      <td bgcolor="#E6E6E6" width="49" align="center">
+      <span class="txtPreto">
+&nbsp;
+      </span>
+      </td>
+
+      <td bgcolor="#E6E6E6" width="49" align="center">
+      <span class="txtPreto">
+&nbsp;
+      </span>
+      </td>
+
+      <td bgcolor="#E6E6E6" width="49" align="center">
+      <span class="txtPreto">
+&nbsp;
+      </span>
+      </td>
+
+      <td bgcolor="#CEA54B" width="49" align="center">
+      <span class="txtPreto">
+&nbsp;
+      </span>
+      </td>
+
+      <td bgcolor="#BA8329" width="49" align="center">
+      <span class="txtPreto">
+&nbsp;
+      </span>
+      </td>
+
+      <td bgcolor="#BA8329" width="49" align="center">
+      <span class="txtPreto">
+&nbsp;
+      </span>
+      </td>
+
+      <td bgcolor="#E6E6E6" width="49" align="center">
+      <span class="txtPreto">
+&nbsp;
+      </span>
+      </td>
+
+      <td bgcolor="#E6E6E6" width="49" align="center">
+      <span class="txtPreto">
+&nbsp;
+      </span>
+      </td>
+
+      <td bgcolor="#CEA54B" width="49" align="center">
+      <span class="txtPreto">
+&nbsp;
+      </span>
+      </td>
+
+      <td bgcolor="#E6E6E6" width="49" align="center">
+      <span class="txtPreto">
+&nbsp;
+      </span>
+      </td>
+
+      <td bgcolor="#E6E6E6" width="49" align="center">
+      <span class="txtPreto">
+&nbsp;
+      </span>
+      </td>
+
+      <td bgcolor="#BA8329" width="49" align="center">
+      <span class="txtPreto">
+&nbsp;
+      </span>
+      </td>
+
+      <td bgcolor="#BA8329" width="49" align="center">
+      <span class="txtPreto">
+&nbsp;
+      </span>
+      </td>
+
+      <td bgcolor="#E6E6E6" width="49" align="center">
+      <span class="txtPreto">
+1
+      </span>
+      </td>
+
+      <td bgcolor="#e6e6e6" width="49" align="center">
+        <span class="txtPreto">1</span>
+      </td>
+    </tr>
+
+<!--                    Fim Horas Extras                -->
+
+<!--                    Horas Normais                   -->
+
+    <tr>
+      <td colspan="2" height="10">
+        &nbsp;
+      </td>
+      <td width="31">
+        &nbsp;
+      </td>
+
+      <td bgcolor="#FFFFFF" width="49">
+        &nbsp;
+      </td>
+
+      <td bgcolor="#FFFFFF" width="49">
+        &nbsp;
+      </td>
+
+      <td bgcolor="#FFFFFF" width="49">
+        &nbsp;
+      </td>
+
+      <td bgcolor="#FFFFFF" width="49">
+        &nbsp;
+      </td>
+
+      <td bgcolor="#FFCC5D" width="49">
+        &nbsp;
+      </td>
+
+      <td bgcolor="#E6A233" width="49">
+        &nbsp;
+      </td>
+
+      <td bgcolor="#E6A233" width="49">
+        &nbsp;
+      </td>
+
+      <td bgcolor="#FFFFFF" width="49">
+        &nbsp;
+      </td>
+
+      <td bgcolor="#FFFFFF" width="49">
+        &nbsp;
+      </td>
+
+      <td bgcolor="#FFCC5D" width="49">
+        &nbsp;
+      </td>
+
+      <td bgcolor="#FFFFFF" width="49">
+        &nbsp;
+      </td>
+
+      <td bgcolor="#FFFFFF" width="49">
+        &nbsp;
+      </td>
+
+      <td bgcolor="#E6A233" width="49">
+        &nbsp;
+      </td>
+
+      <td bgcolor="#E6A233" width="49">
+        &nbsp;
+      </td>
+
+      <td bgcolor="#FFFFFF" width="49">
+        &nbsp;
+      </td>
+
+      <td width="49">
+        &nbsp;
+      </td>
+    </tr>
+
+    <tr>
+      <td colspan="2" bgcolor="#e6e6e6" width="222">
+        <span class="txtBlackBold">Horas Normais</span>
+      </td>
+      <td bgcolor="#e6e6e6" width="31">
+        &nbsp;
+      </td>
+
+      <td bgcolor="#E6E6E6" width="49" align="center">
+      <span class="txtPreto">
+8
+      </span>
+      </td>
+
+      <td bgcolor="#E6E6E6" width="49" align="center">
+      <span class="txtPreto">
+8
+      </span>
+      </td>
+
+      <td bgcolor="#E6E6E6" width="49" align="center">
+      <span class="txtPreto">
+8
+      </span>
+      </td>
+
+      <td bgcolor="#E6E6E6" width="49" align="center">
+      <span class="txtPreto">
+8
+      </span>
+      </td>
+
+      <td bgcolor="#CEA54B" width="49" align="center">
+      <span class="txtPreto">
+&nbsp;
+      </span>
+      </td>
+
+      <td bgcolor="#BA8329" width="49" align="center">
+      <span class="txtPreto">
+&nbsp;
+      </span>
+      </td>
+
+      <td bgcolor="#BA8329" width="49" align="center">
+      <span class="txtPreto">
+&nbsp;
+      </span>
+      </td>
+
+      <td bgcolor="#E6E6E6" width="49" align="center">
+      <span class="txtPreto">
+8
+      </span>
+      </td>
+
+      <td bgcolor="#E6E6E6" width="49" align="center">
+      <span class="txtPreto">
+8
+      </span>
+      </td>
+
+      <td bgcolor="#CEA54B" width="49" align="center">
+      <span class="txtPreto">
+&nbsp;
+      </span>
+      </td>
+
+      <td bgcolor="#E6E6E6" width="49" align="center">
+      <span class="txtPreto">
+8
+      </span>
+      </td>
+
+      <td bgcolor="#E6E6E6" width="49" align="center">
+      <span class="txtPreto">
+8
+      </span>
+      </td>
+
+      <td bgcolor="#BA8329" width="49" align="center">
+      <span class="txtPreto">
+&nbsp;
+      </span>
+      </td>
+
+      <td bgcolor="#BA8329" width="49" align="center">
+      <span class="txtPreto">
+&nbsp;
+      </span>
+      </td>
+
+      <td bgcolor="#E6E6E6" width="49" align="center">
+      <span class="txtPreto">
+8
+      </span>
+      </td>
+
+      <td bgcolor="#e6e6e6" width="49" align="center">
+        <span class="txtPreto">72</span>
+      </td>
+    </tr>
+
+<!--                 Fim Horas Normais                  -->
+</tbody></table>
+</div> 
+<!-- fim do DIV da impressão -->
+
+      
+             <br>
+             <table border="0" cellpadding="0" cellspacing="0" width="500">
+             <tbody><tr class="txtBlackBold" bgcolor="#E3E3E3"><td align="left">
+               <div id="obs_imp">Observações &gt;&gt; </div> 
+               <div style="display: none;" id="obs_hide">Observações &lt;&lt; </div> 
+             </td>
+             <td align="right"><a href="javascript:%20void%20imprime_obs();" class="txtCinza">(clique aqui)</a></td></tr>
+             <tr><td colspan="2">
+             <div style="display: none;" id="obs_lay">
+             <table border="0" cellpadding="0" cellspacing="5" width="100%">
+  <tbody><tr><td class="txtBlackbold" width="5%" align="center">11</td><td class="txtPreto" width="95%" align="LEFT">Alterações nos 3 relatórios</td></tr><tr><td class="txtBlackbold" width="5%" align="center">12</td><td class="txtPreto" width="95%" align="LEFT">Ajustes de layout e testes da aplicação</td></tr><tr><td class="txtBlackbold" width="5%" align="center">13</td><td class="txtPreto" width="95%" align="LEFT">4 horas: integração entre OTRS e Log. 4 horas: reunião sobre avaliação do framework em .net da Triscal.</td></tr><tr><td class="txtBlackbold" width="5%" align="center">14</td><td class="txtPreto" width="95%" align="LEFT">Desenvolvimento de modelo (template) de script de cópia e execução de teste com sucesso.</td></tr><tr><td class="txtBlackbold" width="5%" align="center">18</td><td class="txtPreto" width="95%" align="LEFT">Desenvolvimento da Interface OTRS para Log.</td></tr><tr><td class="txtBlackbold" width="5%" align="center">19</td><td class="txtPreto" width="95%" align="LEFT">Reunião MDL Construtora</td></tr><tr><td class="txtBlackbold" width="5%" align="center">25</td><td class="txtPreto" width="95%" align="LEFT">Erro no rel_4_04 e erro ao clicar no botão Limpar em todos os relatórios.</td></tr>    
+          </tbody></table>
+        </div>
+        </td></tr>
+           <script language="javascript">
+             p_obs_hide = document.getElementById("obs_hide");
+             p_obs_lay = document.getElementById("obs_lay");
+             p_obs_imp = document.getElementById("obs_imp");
+
+             p_obs_hide.style.display = "none";
+             p_obs_lay.style.display = "none";
+
+             function imprime_obs() {
+               if(p_obs_lay.style.display == "none") {
+                 p_obs_imp.style.display = "none";
+                 p_obs_hide.style.display = "";
+                 p_obs_lay.style.display = "";
+               }
+               else {
+                 p_obs_hide.style.display = "none";
+                 p_obs_lay.style.display = "none";
+                 p_obs_imp.style.display = "";
+               }
+               return false;
+             }
+           </script>
+        </tbody></table>
+
+<br>
+
+
+
+  
+<table border="0" cellpadding="4" cellspacing="4" width="560">
+<tbody><tr>
+<td valign="top" align="left">
+<table border="1" cellpadding="4" cellspacing="4" width="200">
+  <tbody><tr>
+    <td class="txtBlackBold" colspan="2" align="center">
+    Legenda
+    </td>
+  </tr>
+  <tr>
+    <td class="txtBlackBold" bgcolor="#E6A233" width="10" align="left">
+    </td>
+    <td class="txtPreto" align="left">
+    Sábado ou Domingo
+    </td>
+  </tr>
+  <tr>
+    <td class="txtBlackBold" bgcolor="#CCCCFF" width="10" align="left">
+    </td>
+    <td class="txtPreto" align="left">
+    Horas incorretas
+    </td>
+  </tr>
+  <tr>
+    <td class="txtBlackBold" bgcolor="#FFCC5D" width="10" align="left">
+    </td>
+    <td class="txtPreto" align="left">
+    Feriado
+    </td>
+  </tr>
+</tbody></table>
+</td>
+<td valign="top" align="left">
+<table border="1" cellpadding="4" cellspacing="4" width="250">
+  <tbody><tr>
+    <td class="txtBlackBold" colspan="2" align="center">
+    Feriado
+    </td>
+  </tr>
+  <tr>
+    <td class="txtBlackBold" width="10" align="center">
+    Dia
+    </td>
+    <td class="txtBlackBold" align="center">
+    Descrição
+    </td>
+  </tr>
+
+  <tr>
+    <td class="txtPreto" align="center">
+    15
+    </td>
+    <td class="txtPreto" align="left">
+    Proclamacao da Republica
+    </td>
+  </tr>
+
+  <tr>
+    <td class="txtPreto" align="center">
+    20
+    </td>
+    <td class="txtPreto" align="left">
+    ZUMBI
+    </td>
+  </tr>
+
+</tbody></table>
+</td>
+</tr>
+</tbody></table>
+
+<br>
+<table border="0" cellpadding="0" cellspacing="0" width="560">
+  <tbody><tr>
+    <td class="txtBlackBold" align="left">
+      <span class="txtBlackBold" style="font-size:9px"><a href="javascript:%20void%20false" onclick="javascript: impressao()">[Imprimir]</a></span>
+    </td>
+  </tr>
+  <tr>
+    <td class="txtBlackBold" align="left">
+     <img src="Tela_Log.jsp_arquivos/pixel.gif" height="10" width="5">
+    </td>
+  </tr>
+</tbody></table>
+
+                	</td>
+			</tr>
+
+			</tbody></table>
+			<!-- | end : conteúdo | -->
+		</td>
+		</tr>
+		</tbody></table>
+		<!--| end : estrutura do conteúdo |-->
+
+	</td>
+	</tr>
+	</tbody></table>
+	<!--| end : coluna direita [conteúdo] |-->
+
+
+<!-- Inicio includemenuesqfim.jsp -->
+  </td>
+ </tr>
+ <tr height="20">
+  <td colspan="2">
+    <!--| rodapé |-->
+     <table bgcolor="#E6E6E6" border="0" cellpadding="0" cellspacing="0" height="20" width="100%">
+      <tbody><tr>
+
+       <td style="background-color: rgb(204, 204, 153);" width="100%" align="right"><a href="#topo"><img src="Tela_Log.jsp_arquivos/gotop2.gif" border="0"></a></td>
+
+       <td width="5" align="right"><img src="Tela_Log.jsp_arquivos/sombra_bege.gif"></td>
+      </tr>
+     </tbody></table>
+    <!--| end : rodapé |-->
+  </td>
+ </tr>
+</tbody></table>
+<script language="javascript">
+  setaclicou2(); //12/12/2001
+</script>
+
+<!-- Fim includemenuesqfim.jsp -->
+
+
+
+
+   
+
+
+
+
+
+
+<script src="Tela_Log.jsp_arquivos/oracle_smp_chronos.js"></script></body></html>

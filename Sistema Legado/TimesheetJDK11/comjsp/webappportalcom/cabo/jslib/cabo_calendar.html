@@ -1,0 +1,29 @@
+<!--*******************************************
+* cabo_calendar.html                          *
+***********************************************
+* Cabo/JSUI version 0.5 November, 1999        *
+* Written by Robert Hoexter                   *
+* Oracle Corporation                          *
+********************************************-->
+
+<HTML>
+<HEAD>
+<script language=javascript src="cabo_utilities.js"></script>
+<script language=javascript src="calendar_content.js"></script>
+<script language=javascript>
+document.write("<base href=" + opener.document.location + "><title>" + opener.calWindowTitle + "</title>")
+var image_dir= opener.image_dir;
+var jslib_dir= opener.jslib_dir;
+</script>
+<script language=javascript>
+document.write(("<link rel=stylesheet type=\"text/css\" href=" + image_dir + "cabo_styles.css >"))
+</script>
+</HEAD>
+<BODY class=appswindow TOPMARGIN=5 LEFTMARGIN=5 onload="window.focus()">
+<CENTER>
+<SCRIPT LANGUAGE="JavaScript">
+   document.write(Calendar(opener.month,opener.year));
+</SCRIPT>
+</CENTER>
+</BODY>
+</HTML>
