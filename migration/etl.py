@@ -141,7 +141,7 @@ def migrar(truncate=False):
                     "COALESCE((SELECT MAX(feri_cd_feriado) FROM feriado),1));")
         pgc.execute("SELECT setval(pg_get_serial_sequence('movimentacao_saldo_bhe','mosa_nr_seq'), "
                     "COALESCE((SELECT MAX(mosa_nr_seq) FROM movimentacao_saldo_bhe),1));")
-        pgc.execute("SET session_replication_role = DEFAULT;")
+        #pgc.execute("SET session_replication_role = DEFAULT;")
         pg.commit()
         print("Migração concluída e commitada.")
     except Exception as e:
